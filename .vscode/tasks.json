@@ -1,0 +1,119 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build theme",
+      "detail": "ng build @roc-web/theme --watch",
+      "type": "npm",
+      "script": "watch:theme",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Compilation complete.+"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
+      "label": "build theme",
+      "detail": "ng build @roc-web/theme --watch",
+      "type": "npm",
+      "script": "watch:theme",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Compilation complete.+"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
+      "label": "build core",
+      "detail": "ng build @roc-web/core --watch",
+      "type": "npm",
+      "script": "watch:core",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Compilation complete.+"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
+      "label": "build web",
+      "detail": "ng build @roc-web/web --watch",
+      "type": "npm",
+      "script": "watch:web",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Compilation complete.+"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
+      "label": "build identity",
+      "detail": "ng build @roc-web/identity --watch",
+      "type": "npm",
+      "script": "watch:identity",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Compilation complete.+"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
+      "label": "build libs",
+      "type": "shell",
+      "command": "echo build started...",
+      "isBackground": true,
+      "dependsOrder": "sequence",
+      "dependsOn": ["build theme", "build core", "build web", "build identity"],
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "build started..."
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    }
+  ]
+}

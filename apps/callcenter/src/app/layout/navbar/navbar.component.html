@@ -1,0 +1,20 @@
+<button
+  i18n="@@nav.stakeholders"
+  mat-button
+  [matMenuTriggerFor]="menu">
+  Stakeholders
+</button>
+<mat-menu #menu="matMenu">
+  <a
+    i18n="@@nav.prescriber"
+    mat-menu-item
+    routerLink="/prescriber">
+    Prescriber
+  </a>
+</mat-menu>
+<a
+  mat-button
+  i18n="@@nav.administrators"
+  routerLink="/admin">
+  Administrators
+</a>

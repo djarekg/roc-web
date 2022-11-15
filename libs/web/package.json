@@ -1,0 +1,13 @@
+{
+  "name": "@roc-web/web",
+  "version": "3.0.0",
+  "peerDependencies": {
+    "@angular/common": "^15.0.0-rc.0",
+    "@angular/core": "^15.0.0-rc.0",
+    "@roc-web/core": "^3.0.0",
+    "rxjs": "~7.5.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

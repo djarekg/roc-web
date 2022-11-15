@@ -1,0 +1,16 @@
+@use '../typography/typography-variables' as typography-vars;
+@use '../scrollbar/scrollbar-utils' as scrollbar-utils;
+
+@mixin defaults {
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: typography-vars.$font-family;
+  }
+
+  @include scrollbar-utils.scrollbar-theme();
+}

@@ -1,0 +1,18 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": [],
+    "paths": {
+      "@roc-web/core": ["dist/@roc-web/core"],
+      "@roc-web/core/*": ["dist/@roc-web/core/*"],
+      "@roc-web/web": ["dist/@roc-web/web"],
+      "@roc-web/web/*": ["dist/@roc-web/web/*"]
+    }
+  },
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
+}

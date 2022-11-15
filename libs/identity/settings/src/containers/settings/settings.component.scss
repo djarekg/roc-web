@@ -1,0 +1,35 @@
+@use '../../../../../theme/styles/layout/layout-utils' as layout-utils;
+@use '../../../../../theme/styles/layout/layout-variables' as layout-vars;
+@use '../../../../../theme/styles/theme/theme-variables' as theme-vars;
+
+$mat-toolbar-height: 64px;
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.mat-toolbar {
+  gap: 10px;
+}
+
+.mat-drawer-container {
+  height: 100%;
+}
+
+.mat-drawer-content {
+  @include layout-utils.adjusted-height($mat-toolbar-height);
+  overflow-y: auto;
+}
+
+.mat-drawer {
+  width: 200px;
+}
+
+.mdc-list-item--activated {
+  background: theme-vars.$selection-active-color;
+}
+
+.rw-settings-content {
+  padding: 20px;
+}

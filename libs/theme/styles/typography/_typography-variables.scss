@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+
+$font-family: 'Exo 2', sans-serif;
+$typography-config: mat.define-typography-config(
+  $font-family: $font-family,
+  $button:
+    mat.define-typography-level(
+      $font-size: 1.04em,
+      $line-height: 46px,
+    ),
+);

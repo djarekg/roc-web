@@ -1,0 +1,10 @@
+@use '@angular/cdk';
+
+input.cdk-text-field-autofilled {
+  @include cdk.text-field-autofill-color(transparent);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}

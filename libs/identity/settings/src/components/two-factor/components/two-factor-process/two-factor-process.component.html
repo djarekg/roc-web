@@ -1,0 +1,56 @@
+<mat-horizontal-stepper linear>
+  <mat-step>
+    <ng-template matStepLabel>Information</ng-template>
+    <ng-template matStepContent>
+      <div class="rw-grid">
+        <div class="rw-grid-header">
+          <p>
+            Two-factor authentication adds an extra layer of security to your
+            account. In addition to your username and password, you'll need to
+            enter a code generated from a two-factor authentication application
+            on your phone in order to log in.
+          </p>
+        </div>
+        <div class="rw-grid-item">
+          When you sign into the application, you'll enter your username and
+          password as normal.
+        </div>
+        <div class="rw-grid-item">
+          You'll then need to enter an additional code from your phone.
+        </div>
+        <div class="rw-grid-item">
+          Once you enter the code on the website, you'll be logged in.
+        </div>
+        <div class="rw-grid-footer">
+          <button
+            mat-flat-button
+            color="primary">
+            Set up
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Scan Bar Code</ng-template>
+    <ng-template matStepContent>
+      <p>This content was rendered lazily</p>
+      <button
+        mat-button
+        matStepperNext>
+        Next
+      </button>
+    </ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Complete</ng-template>
+    <ng-template matStepContent>
+      <p>This content was rendered lazily</p>
+      <button
+        mat-button
+        matStepperNext>
+        Next
+      </button>
+    </ng-template>
+  </mat-step>
+</mat-horizontal-stepper>

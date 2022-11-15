@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.rw-signin-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 350px;
+}

@@ -1,0 +1,77 @@
+@use '@angular/material' as mat;
+@use './theme-variables' as theme-vars;
+@use '../layout/layout-variables' as layout-vars;
+@use '../typography/typography-variables' as typography-vars;
+
+@function dark-theme(
+  $primary,
+  $accent,
+  $warn: mat.define-palette(mat.$red-palette),
+  $success: mat.define-palette(mat.$green-palette),
+  $danger: mat.define-palette(mat.$red-palette)
+) {
+  $dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+      ),
+      typography: typography-vars.$typography-config,
+    )
+  );
+
+  $danger-success: (
+    success: $success,
+    danger: $danger,
+  );
+
+  @return map-merge($dark-theme, $danger-success);
+}
+
+@function light-theme(
+  $primary,
+  $accent,
+  $warn: mat.define-palette(mat.$red-palette),
+  $success: mat.define-palette(mat.$green-palette),
+  $danger: mat.define-palette(mat.$red-palette)
+) {
+  $light-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+      ),
+      typography: typography-vars.$typography-config,
+    )
+  );
+
+  $danger-success: (
+    success: $success,
+    danger: $danger,
+  );
+
+  @return map-merge($light-theme, $danger-success);
+}
+
+@mixin component-overrides {
+  .mat-mdc-card.mdc-card {
+    border-radius: layout-vars.$border-radius;
+    border-top: 6px solid theme-vars.$primary;
+  }
+
+  .mdc-notched-outline__leading {
+    border-top-left-radius: layout-vars.$border-radius !important;
+    border-bottom-left-radius: layout-vars.$border-radius !important;
+  }
+
+  .mdc-notched-outline__trailing {
+    border-top-right-radius: layout-vars.$border-radius !important;
+    border-bottom-right-radius: layout-vars.$border-radius !important;
+  }
+
+  button.mdc-button--unelevated {
+    padding: 0.3em 6px;
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "lib": ["ES2022", "dom"],
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES2022",
+    "useDefineForClassFields": false,
+    "paths": {
+      "@roc-web/callcenter/environments": [
+        "apps/callcenter/src/environments/index.ts"
+      ],
+      "@roc-web/callcenter/layout": ["apps/callcenter/src/app/layout/index.ts"],
+      "@roc-web/callcenter/shared": ["apps/callcenter/src/app/shared/index.ts"],
+      "@roc-web/core": ["libs/core/src"],
+      "@roc-web/core/*": ["libs/core/src/*"],
+      "@roc-web/identity": ["libs/identity/src"],
+      "@roc-web/identity/*": ["libs/identity/src/*"],
+      "@roc-web/identity/auth": ["libs/identity/auth/src"],
+      "@roc-web/identity/auth/*": ["libs/identity/auth/src/*"],
+      "@roc-web/identity/settings": ["libs/identity/settings/src"],
+      "@roc-web/identity/settings/*": ["libs/identity/settings/src/*"],
+      "@roc-web/theme": ["libs/theme/src"],
+      "@roc-web/theme/*": ["libs/theme/src/*"],
+      "@roc-web/web": ["libs/web/src"],
+      "@roc-web/web/*": ["libs/web/src/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

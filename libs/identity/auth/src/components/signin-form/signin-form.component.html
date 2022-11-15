@@ -1,0 +1,31 @@
+<form
+  [formGroup]="fb"
+  (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label i18n="@@user.userName">User Name</mat-label>
+    <input
+      matInput
+      formControlName="userName" />
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label i18n="@@user.password">Password</mat-label>
+    <input
+      autocomplete="off"
+      matInput
+      formControlName="password"
+      [attr.type]="passwordInputType" />
+    <mat-icon
+      matSuffix
+      (click)="togglePasswordInputType()">
+      {{ passwordInputIcon }}
+    </mat-icon>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    color="primary"
+    i18n="@@form.continue"
+    [disabled]="fb.invalid || disabled">
+    Continue
+  </button>
+</form>

@@ -1,0 +1,5 @@
+<span>Status:</span>
+<span [attr.class]="twoFactorStateClass">{{ twoFactorState | titlecase }}</span>
+<mat-icon [attr.class]="twoFactorStateClass">
+  {{ twoFactorStateActionIcon }}
+</mat-icon>

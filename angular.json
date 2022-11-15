@@ -1,0 +1,329 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "analytics": false,
+    "schematicCollections": ["@angular-eslint/schematics", "@ngrx/schematics"]
+  },
+  "newProjectRoot": "apps",
+  "projects": {
+    "@roc-web/callcenter": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "standalone": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "apps/callcenter",
+      "sourceRoot": "apps/callcenter/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "localize": true,
+            "outputPath": "dist/@roc-web/callcenter",
+            "index": "apps/callcenter/src/index.html",
+            "main": "apps/callcenter/src/main.ts",
+            "polyfills": "apps/callcenter/src/polyfills.ts",
+            "tsConfig": "apps/callcenter/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/callcenter/src/favicon.ico",
+              "apps/callcenter/src/assets"
+            ],
+            "styles": ["apps/callcenter/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "apps/callcenter/src/styles",
+                "libs/theme/styles"
+              ]
+            },
+            "scripts": [],
+            "i18nDuplicateTranslation": "error",
+            "i18nMissingTranslation": "warning"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1.5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/callcenter/src/environments/environment.ts",
+                  "with": "apps/callcenter/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "localize": false,
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
+            "de": {
+              "localize": ["de"]
+            },
+            "en": {
+              "localize": ["en"]
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "@roc-web/callcenter:build:production"
+            },
+            "development": {
+              "browserTarget": "@roc-web/callcenter:build:development"
+            },
+            "de": {
+              "browserTarget": "@roc-web/callcenter:build:development,de"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "@roc-web/callcenter:build",
+            "format": "json",
+            "outputPath": "apps/callcenter/src/locale",
+            "outFile": "messages.en.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/callcenter/src/test.ts",
+            "polyfills": "apps/callcenter/src/polyfills.ts",
+            "tsConfig": "apps/callcenter/tsconfig.spec.json",
+            "karmaConfig": "apps/callcenter/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/callcenter/src/favicon.ico",
+              "apps/callcenter/src/assets"
+            ],
+            "styles": ["apps/callcenter/src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/callcenter/**/*.ts",
+              "apps/callcenter/**/*.html"
+            ]
+          }
+        }
+      },
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "de": "apps/callcenter/src/locale/messages.de.json",
+          "en": "apps/callcenter/src/locale/messages.en.json"
+        }
+      }
+    },
+    "@roc-web/core": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "standalone": true
+        }
+      },
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "prefix": "rw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libs/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/core/src/test.ts",
+            "tsConfig": "libs/core/tsconfig.spec.json",
+            "karmaConfig": "libs/core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["libs/core/**/*.ts", "libs/core/**/*.html"]
+          }
+        }
+      }
+    },
+    "@roc-web/identity": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "standalone": true
+        }
+      },
+      "root": "libs/identity",
+      "sourceRoot": "libs/identity",
+      "prefix": "rw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libs/identity/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/identity/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/identity/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/identity/src/test.ts",
+            "tsConfig": "libs/identity/tsconfig.spec.json",
+            "karmaConfig": "libs/identity/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/identity/**/*.ts",
+              "libs/identity/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "@roc-web/web": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "standalone": true
+        }
+      },
+      "root": "libs/web",
+      "sourceRoot": "libs/web/src",
+      "prefix": "rw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libs/web/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/web/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/web/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/web/src/test.ts",
+            "tsConfig": "libs/web/tsconfig.spec.json",
+            "karmaConfig": "libs/web/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["libs/web/**/*.ts", "libs/web/**/*.html"]
+          }
+        }
+      }
+    },
+    "@roc-web/theme": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "standalone": true
+        }
+      },
+      "root": "libs/theme",
+      "sourceRoot": "libs/theme/src",
+      "prefix": "rw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libs/theme/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/theme/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/theme/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "libs/theme/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["libs/theme/**/*.ts", "libs/theme/**/*.html"]
+          }
+        }
+      }
+    }
+  }
+}

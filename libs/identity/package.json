@@ -1,0 +1,21 @@
+{
+  "name": "@roc-web/identity",
+  "version": "3.0.0",
+  "peerDependencies": {
+    "@angular/common": "^15.0.0-rc.0",
+    "@angular/core": "^15.0.0-rc.0",
+    "@angular/forms": "^15.0.0-rc.0",
+    "@angular/localize": "^15.0.0-rc.0",
+    "@angular/material": "^15.0.0-rc.0",
+    "@ngrx/component": "^15.0.0-beta.0",
+    "@ngrx/component-store": "^15.0.0-beta.0",
+    "@ngrx/effects": "^15.0.0-beta.0",
+    "@ngrx/store": "^15.0.0-beta.0",
+    "@roc-web/core": "^3.0.0",
+    "@roc-web/web": "^3.0.0",
+    "rxjs": "~7.5.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

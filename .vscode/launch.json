@@ -1,0 +1,40 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ng serve: callcenter",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run start:callcenter",
+      "preLaunchTask": "build libs"
+    },
+    {
+      "name": "ng serve: callcenter de",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run start:callcenter:de",
+      "preLaunchTask": "build libs"
+    },
+    {
+      "name": "msedge: callcenter",
+      "type": "pwa-msedge",
+      "request": "launch",
+      "url": "http://localhost:4400",
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": "${workspaceFolder}/.out/edge"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "launch: callcenter",
+      "configurations": ["ng serve: callcenter", "msedge: callcenter"]
+    },
+    {
+      "name": "launch: callcenter de",
+      "configurations": ["ng serve: callcenter de", "msedge: callcenter"]
+    }
+  ]
+}

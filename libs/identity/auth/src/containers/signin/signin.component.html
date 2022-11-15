@@ -1,0 +1,12 @@
+<div class="rw-signin-content">
+  <ng-container *ngrxLet="errors$ as errors">
+    <rw-alert
+      *ngFor="let error of errors | keyvalue"
+      [type]="'danger'">
+      {{ error.value }}
+    </rw-alert>
+  </ng-container>
+  <rw-signin-form
+    [disabled]="pending$ | ngrxPush"
+    (submitted)="onSigninSubmit($event)"></rw-signin-form>
+</div>

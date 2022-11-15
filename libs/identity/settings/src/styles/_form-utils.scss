@@ -1,0 +1,14 @@
+@mixin settings-form {
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 100%;
+  }
+
+  .rw-form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}

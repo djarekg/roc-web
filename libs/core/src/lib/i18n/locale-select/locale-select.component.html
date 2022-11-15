@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label i18n="@@i18n.region">Region</mat-label>
+  <mat-select>
+    <mat-option
+      *ngFor="let locale of locales"
+      [value]="locale"
+    >
+      {{ locale.countryId }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

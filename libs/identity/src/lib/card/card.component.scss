@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  min-width: 300px;
+}
+
+.mat-mdc-card-title,
+.mat-mdc-card-content,
+.mdc-card__actions {
+  padding: 16px;
+}

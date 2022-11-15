@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "types": [],
+    "paths": {
+      "@roc-web/core": ["dist/@roc-web/core"],
+      "@roc-web/core/*": ["dist/@roc-web/core?8"],
+      "@roc-web/identity": ["dist/@roc-web/identity"],
+      "@roc-web/identity/*": ["dist/@roc-web/identity/*"],
+      "@roc-web/identity/auth": ["dist/@roc-web/identity/auth"],
+      "@roc-web/identity/auth/*": ["dist/@roc-web/identity/auth/*"],
+      "@roc-web/identity/settings": ["dist/@roc-web/identity/settings"],
+      "@roc-web/identity/settings/*": [
+        "dist/@roc-web/identity/settings/*"
+      ],
+      "@roc-web/web": ["dist/@roc-web/web"],
+      "@roc-web/web/*": ["dist/@roc-web/web/*"]
+      // "@roc-web/core": ["libs/core/src/index.ts"],
+      // "@roc-web/identity/auth": ["libs/identity/auth/index.ts"],
+      // "@roc-web/identity/settings": ["libs/identity/settings/index.ts"],
+      // "@roc-web/identity": ["libs/identity/src/index.ts"],
+      // "@roc-web/web": ["libs/web/src/index.ts"]
+    }
+  },
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["src/**/*.d.ts"]
+}

@@ -1,0 +1,28 @@
+@use '@angular/material' as mat;
+@use './theme-utils' as theme-utils;
+
+@include mat.core();
+
+/*
+* global variable to disable duplication warning
+* https://rc.material.angular.io/guide/duplicate-theming-styles#disabling-duplication-warnings
+*/
+mat.$theme-ignore-duplication-warnings: true;
+
+// dark theme
+$primary-dark: mat.define-palette(mat.$indigo-palette);
+$accent-dark: mat.define-palette(mat.$pink-palette);
+$core-dark-theme: theme-utils.dark-theme($primary-dark, $accent-dark);
+
+// light theme
+$primary-light: mat.define-palette(mat.$indigo-palette);
+$accent-light: mat.define-palette(mat.$pink-palette);
+$core-light-theme: theme-utils.light-theme($primary-dark, $accent-dark);
+
+@include mat.all-component-themes($core-dark-theme);
+
+.core-light-theme {
+  @include mat.all-component-themes($core-light-theme);
+}
+
+@include theme-utils.component-overrides();
