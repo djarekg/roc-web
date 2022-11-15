@@ -7,7 +7,8 @@ import {
   RouteProgressBarComponent,
 } from '@roc-web/core';
 import { SignoutComponent } from '@roc-web/identity/auth';
-import { NavbarComponent } from '../navbar';
+
+import { NavbarComponent } from '../../navbar';
 
 @Component({
   selector: 'app-header',

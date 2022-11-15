@@ -1,7 +1,11 @@
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
+
+import { navRoutes } from '../../models';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +13,16 @@ import { RouterLink } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, MatMenuModule, RouterLink],
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    NgClass,
+    NgFor,
+    NgIf,
+    RouterLink,
+  ],
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  protected routes = navRoutes;
+}

@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+}
+
+.mdc-button {
+  column-gap: 4px;
+
+  &.app-menu-expanded,
+  &:hover {
+    .mat-icon {
+      opacity: 1;
+    }
+  }
+
+  .mat-icon {
+    opacity: 0;
+    order: 2;
+    margin: 0;
+  }
+}
