@@ -6,7 +6,7 @@ import {
   Input,
   OnDestroy,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -40,22 +40,22 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
 
   protected displayedColumns: string[] = ['id'];
 
-  protected applyFilter(event: Event) {
-    const filter = (event.target as HTMLInputElement).value;
-    this.prescribers = this.#prescribers.filter(prescriber =>
-      new RegExp(filter, 'i').test(Object.values(prescriber).join())
-    );
-  }
+  // protected applyFilter(event: Event) {
+  //   const filter = (event.target as HTMLInputElement).value;
+  //   this.prescribers = this.#prescribers.filter(prescriber =>
+  //     new RegExp(filter, 'i').test(Object.values(prescriber).join())
+  //   );
+  // }
 
   @Input()
-  accessor prescribers: ReadonlyArray<Prescriber> = [];
-  // get prescribers(): ReadonlyArray<Prescriber> {
-  //   return this.#prescribers;
-  // }
-  // set prescribers(value: ReadonlyArray<Prescriber>) {
-  //   this.#prescribers = value;
-  // }
-
+  // accessor prescribers: ReadonlyArray<Prescriber> = [];
+  get prescribers(): ReadonlyArray<Prescriber> {
+    return this.#prescribers;
+  }
+  set prescribers(value: ReadonlyArray<Prescriber>) {
+    this.#prescribers = value;
+  }
+  #prescribers: ReadonlyArray<Prescriber> = [];
   @ViewChild(MatPaginator) protected paginator!: MatPaginator;
   @ViewChild(MatSort) protected sort!: MatSort;
   @Output() readonly pageChanged = new EventEmitter<PaginationOptions>();
