@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
 
 import { Pagination } from '@roc-web/web/lib/shared/models';
@@ -12,7 +11,6 @@ import {
 export const prescriberCollectionFeatureKey = 'prescriberCollection';
 
 export interface State {
-  error: HttpErrorResponse | null;
   pagination: Pagination;
   loaded: boolean;
   loading: boolean;
