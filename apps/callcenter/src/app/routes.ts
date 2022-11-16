@@ -11,6 +11,6 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'prescriber',
-    loadChildren: () => import('./stakeholders/containers/routes'),
+    loadChildren: () => import('./stakeholders/prescriber/containers/routes'),
   },
 ];

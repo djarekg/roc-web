@@ -1,3 +1,4 @@
+export * from './auditable';
 export * from './claim';
 export * from './permission';
 export * from './role';

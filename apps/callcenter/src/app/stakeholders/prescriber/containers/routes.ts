@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 
 import { authCanActivate } from '@roc-web/identity/auth';
+import { PrescriberComponent } from './prescriber';
 
 export default [
   {
     path: '',
-    canActivate: [authCanActivate],
+    component: PrescriberComponent,
     children: [
       {
         path: '',
@@ -16,7 +17,9 @@ export default [
         path: 'list',
         loadComponent: () =>
           import('./prescriber-list').then(m => m.PrescriberListComponent),
+        title: 'Prescriber List',
       },
     ],
+    canActivate: [authCanActivate],
   },
 ] as Routes;

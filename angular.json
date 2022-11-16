@@ -6,7 +6,7 @@
     "analytics": false,
     "schematicCollections": ["@angular-eslint/schematics", "@ngrx/schematics"]
   },
-  "newProjectRoot": "apps",
+  "newProjectRoot": "libs",
   "projects": {
     "@roc-web/callcenter": {
       "projectType": "application",

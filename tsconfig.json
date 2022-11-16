@@ -24,7 +24,7 @@
         "apps/callcenter/src/environments/index.ts"
       ],
       "@roc-web/callcenter/layout": ["apps/callcenter/src/app/layout/index.ts"],
-      "@roc-web/callcenter/shared": ["apps/callcenter/src/app/shared/index.ts"],
+      "@roc-web/callcenter/shared/*": ["apps/callcenter/src/app/shared/*"],
       "@roc-web/core": ["libs/core/src"],
       "@roc-web/core/*": ["libs/core/src/*"],
       "@roc-web/identity": ["libs/identity/src"],

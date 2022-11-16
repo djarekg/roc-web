@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  padding: 20px;
+}
+
+.app-page-header {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  align-items: center;
+}
+
+.mat-divider {
+  margin: 30px 0;
+}
