@@ -3,9 +3,11 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Endpoints } from '@roc-web/callcenter/shared/models';
-import { PaginatedList, PaginationOptions } from '@roc-web/web';
-
-import { createHttpParams } from '@roc-web/web';
+import {
+  createHttpParams,
+  PaginatedEntityResponse,
+  PaginationOptions,
+} from '@roc-web/web';
 
 import { Prescriber } from '../models';
 
@@ -13,37 +15,51 @@ import { Prescriber } from '../models';
 export class PrescriberService {
   #http = inject(HttpClient);
 
-  addPrescriber(prescriber: Prescriber): Observable<Prescriber> {
+  add(prescriber: Prescriber): Observable<Prescriber> {
     return this.#http.post<Prescriber>(Endpoints.prescribers, prescriber);
   }
 
-  getPrescriber(id: string): Observable<Prescriber> {
+  get(
+    options?: PaginationOptions
+  ): Observable<PaginatedEntityResponse<Prescriber>> {
+    if (!options) {
+      options = {
+        pageIndex: 0,
+        pageSize: 10,
+        filter: '',
+        sort: {
+          active: 'date',
+          direction: 'asc',
+        },
+      };
+    }
+    const params = createHttpParams(options);
+
+    return this.#http.get<PaginatedEntityResponse<Prescriber>>(
+      Endpoints.prescribers,
+      {
+        params,
+      }
+    );
+  }
+
+  getById(id: string): Observable<Prescriber> {
     return this.#http.get<Prescriber>(`${Endpoints.prescribers}/${id}`);
   }
 
-  getPrescribers(
-    options: PaginationOptions
-  ): Observable<PaginatedList<Prescriber>> {
-    const params = createHttpParams(options);
-
-    return this.#http.get<PaginatedList<Prescriber>>(Endpoints.prescribers, {
-      params,
-    });
-  }
-
-  removePrescriber(prescriber: Prescriber): Observable<Prescriber> {
+  remove(prescriber: Prescriber): Observable<Prescriber> {
     return this.#http.delete<Prescriber>(
       `${Endpoints.prescribers}/${prescriber.id}`
     );
   }
 
-  searchPrescribers(query: string): Observable<PaginatedList<Prescriber>> {
-    return this.#http.get<PaginatedList<Prescriber>>(
+  search(query: string): Observable<PaginatedEntityResponse<Prescriber>> {
+    return this.#http.get<PaginatedEntityResponse<Prescriber>>(
       `${Endpoints.prescribers}/search/${query}`
     );
   }
 
-  updatePrescriber(prescriber: Prescriber): Observable<Prescriber> {
+  update(prescriber: Prescriber): Observable<Prescriber> {
     return this.#http.put<Prescriber>(
       `${Endpoints.prescribers}/${prescriber.id}`,
       prescriber

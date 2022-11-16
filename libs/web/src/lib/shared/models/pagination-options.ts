@@ -1,9 +1,8 @@
-export abstract class PaginationOptions {
-  constructor(
-    public pageIndex: number,
-    public pageSize: number,
-    public filter: string,
-    public sortColumn: string,
-    public isSortDescending: boolean
-  ) {}
+import { Sort } from '@angular/material/sort';
+import { Pagination } from './pagination';
+
+export interface PaginationOptions
+  extends Pick<Pagination, 'pageIndex' | 'pageSize'> {
+  filter: string;
+  sort: Sort;
 }

@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { isNullOrEmpty } from '@roc-web/core';
 import {
   asyncScheduler,
   catchError,
@@ -12,13 +13,11 @@ import {
   takeUntil,
 } from 'rxjs';
 
-import { isNullOrEmpty } from '@roc-web/core';
-
 import { PrescriberService } from '../../services';
 import { findPrescriberPageActions, prescribersApiActions } from '../actions';
 
 @Injectable()
-export class PrescriberEffects {
+export class SearchEffects {
   readonly #actions$ = inject(Actions);
   readonly #prescriberService = inject(PrescriberService);
 
@@ -38,10 +37,10 @@ export class PrescriberEffects {
               skip(1)
             );
 
-            return this.#prescriberService.searchPrescribers(query).pipe(
+            return this.#prescriberService.search(query).pipe(
               takeUntil(nextSearch$),
-              map(prescribers =>
-                prescribersApiActions.searchSuccess({ prescribers })
+              map(response =>
+                prescribersApiActions.searchSuccess({ response })
               ),
               catchError(error =>
                 of(prescribersApiActions.searchFailure({ error }))

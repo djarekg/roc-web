@@ -1,7 +1,6 @@
 export * from './animations';
 export * from './components';
 export * from './defaults';
-export * from './entity';
 export * from './i18n';
 export * from './options';
 export * from './storage';

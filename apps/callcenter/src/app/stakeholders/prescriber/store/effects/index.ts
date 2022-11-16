@@ -1,2 +1,2 @@
-export * from './prescriber-collection.effects';
-export * from './prescriber.effects';
+export * from './prescribers.effects';
+export * from './search.effects';

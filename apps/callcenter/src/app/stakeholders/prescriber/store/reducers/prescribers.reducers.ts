@@ -1,47 +1,84 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
-import { Prescriber } from '../../models';
 import {
-  prescriberActions,
-  prescriberCollectionApiActions,
   prescribersApiActions,
-  viewPrescriberPageActions,
+  prescribersPageActions,
+  selectedPrescriberPageActions,
 } from '../actions';
+import * as fromState from '../state/prescribers.state';
 
 export const prescribersFeatureKey = 'prescribers';
 
-export interface State extends EntityState<Prescriber> {
-  selectedPrescriberId: string | null;
-}
-
-export const adapter: EntityAdapter<Prescriber> =
-  createEntityAdapter<Prescriber>({
-    selectId: (prescriber: Prescriber) => prescriber.id,
-    sortComparer: false,
-  });
-
-export const initialState: State = adapter.getInitialState({
-  selectedPrescriberId: null,
-});
-
 export const reducer = createReducer(
-  initialState,
+  fromState.initialState,
   on(
+    prescribersPageActions.enter,
+    (state): fromState.State => ({
+      ...state,
+      loading: true,
+    })
+  ),
+  on(
+    prescribersApiActions.loadPrescriberSuccess,
     prescribersApiActions.searchSuccess,
-    prescriberCollectionApiActions.loadPrescriberSuccess,
-    (state, { prescribers }) => adapter.addMany(prescribers, state)
-  ),
-  on(prescriberActions.loadPrescriber, (state, { prescriber }) =>
-    adapter.addOne(prescriber, state)
+    (state, { response }): fromState.State => ({
+      ...state,
+      entities: response.entities,
+      loaded: true,
+      loading: false,
+      pagination: response.pagination,
+    })
   ),
   on(
-    viewPrescriberPageActions.selectPrescriber,
-    (state, { id }): State => ({
+    prescribersPageActions.changePage,
+    (state, { options }): fromState.State => {
+      return {
+        ...state,
+        ...options,
+      };
+    }
+  ),
+  on(
+    prescribersApiActions.removePrescriberFailure,
+    (state, { prescriber }): fromState.State => {
+      return {
+        ...state,
+        entities: [...state.entities, prescriber],
+      };
+    }
+  ),
+  on(
+    prescribersApiActions.addPrescriberFailure,
+    (state, { prescriber }): fromState.State => {
+      return {
+        ...state,
+        entities: state.entities.filter(entity => entity.id !== prescriber.id),
+      };
+    }
+  ),
+  on(
+    prescribersApiActions.updatePrescriberFailure,
+    (state, { prescriber }): fromState.State => {
+      return {
+        ...state,
+        entities: state.entities.map(entity =>
+          entity.id === prescriber.id ? prescriber : entity
+        ),
+      };
+    }
+  ),
+  on(
+    selectedPrescriberPageActions.selectPrescriber,
+    (state, { id }): fromState.State => ({
       ...state,
       selectedPrescriberId: id,
     })
   )
 );
 
-export const selectId = (state: State) => state.selectedPrescriberId;
+export const getEntities = (state: fromState.State) => state.entities;
+export const getLoaded = (state: fromState.State) => state.loaded;
+export const getLoading = (state: fromState.State) => state.loading;
+export const getPagination = (state: fromState.State) => state.pagination;
+export const getSort = (state: fromState.State) => state.sort;
+export const selectId = (state: fromState.State) => state.selectedPrescriberId;
