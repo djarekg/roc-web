@@ -6,7 +6,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {
     RouterLinkActive,
-    RouterLinkWithHref,
+    RouterLink,
     RouterOutlet
 } from '@angular/router';
 import { PushModule } from '@ngrx/component';
@@ -28,7 +28,7 @@ import { selectTitle, slideInAnimation } from '@roc-web/core';
     PushModule,
     RouterOutlet,
     RouterLinkActive,
-    RouterLinkWithHref,
+    RouterLink,
   ],
   animations: [slideInAnimation],
 })

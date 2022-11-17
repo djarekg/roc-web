@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './layout';
 
 @Component({
@@ -8,6 +8,6 @@ import { HeaderComponent } from './layout';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [HeaderComponent, RouterOutlet, RouterLinkWithHref],
+  imports: [HeaderComponent, RouterOutlet, RouterLink],
 })
 export class AppComponent {}
