@@ -9,17 +9,17 @@ export const reducer = createReducer(
   fromState.initialState,
   on(
     findPrescriberPageActions.searchPrescribers,
-    (state, { query }): fromState.State => {
-      return query === ''
+    (state, { filter }): fromState.State => {
+      return filter === ''
         ? {
             ...fromState.initialState,
-            query,
+            filter,
           }
         : {
             ...state,
             loading: true,
             error: '',
-            query,
+            filter,
           };
     }
   ),
@@ -45,5 +45,5 @@ export const reducer = createReducer(
 
 export const getEntities = (state: fromState.State) => state.entities;
 export const getError = (state: fromState.State) => state.error;
+export const getFilter = (state: fromState.State) => state.filter;
 export const getLoading = (state: fromState.State) => state.loading;
-export const getQuery = (state: fromState.State) => state.query;

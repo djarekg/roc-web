@@ -1,2 +1,4 @@
 <app-prescriber-table
-  [prescribers]="prescribers$ | ngrxPush"></app-prescriber-table>
+  [prescribers]="prescribers$ | ngrxPush"
+  (filtered)="onFilter($event)"
+  (pageChanged)="onPageChanged($event)"></app-prescriber-table>

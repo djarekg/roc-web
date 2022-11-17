@@ -33,26 +33,43 @@ export const selectAuthStatusState = createSelector(
   selectAuthState,
   state => state.status
 );
+
+export const selectClaims = createSelector(
+  selectAuthStatusState,
+  fromAuth.getClaims
+);
+
 export const selectToken = createSelector(
   selectAuthStatusState,
   state => state.token
 );
+
 export const selectIsAuthenticated = createSelector(
   selectAuthStatusState,
   state => !!state.token
 );
+
+export const selectAuthenticatedUser = createSelector(
+  selectClaims,
+  selectIsAuthenticated,
+  (claims, isAuthenticated) => ({ claims, isAuthenticated })
+);
+
 export const selectUser = createSelector(
   selectAuthStatusState,
   state => state.user
 );
+
 export const selectSigninPageState = createSelector(
   selectAuthState,
   state => state.signinPage
 );
+
 export const selectSigninPageError = createSelector(
   selectSigninPageState,
   fromSigninPage.getError
 );
+
 export const selectSigninPagePending = createSelector(
   selectSigninPageState,
   fromSigninPage.getPending

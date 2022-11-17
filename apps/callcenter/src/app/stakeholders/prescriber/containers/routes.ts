@@ -17,7 +17,8 @@ export default [
       },
       {
         path: 'list',
-        loadComponent: () => import('./prescriber-list').then(m => m.default),
+        loadComponent: () =>
+          import('./prescriber-list').then(m => m.PrescriberListComponent),
         title: 'Prescriber List',
       },
     ],

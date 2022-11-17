@@ -1,1 +1,2 @@
-export * from './token-utils';
+export * from './claims-util';
+export * from './token-util';

@@ -6,9 +6,15 @@ import {
 } from '@angular/core';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
+import { PaginationOptions } from '@roc-web/web';
+import { Observable } from 'rxjs';
 
 import { PrescriberTableComponent } from '../../components';
-import { prescribersPageActions } from '../../store/actions';
+import { Prescriber } from '../../models';
+import {
+  findPrescriberPageActions,
+  prescribersPageActions,
+} from '../../store/actions';
 import * as fromPrescribers from '../../store/reducers';
 
 @Component({
@@ -22,9 +28,20 @@ import * as fromPrescribers from '../../store/reducers';
 export class PrescriberListComponent implements OnInit {
   readonly #store = inject(Store);
 
-  protected prescribers$ = this.#store.select(fromPrescribers.selectEntities);
+  protected prescribers$: Observable<ReadonlyArray<Prescriber>> =
+    this.#store.select(fromPrescribers.selectEntities);
 
   ngOnInit(): void {
     this.#store.dispatch(prescribersPageActions.enter());
+  }
+
+  protected onFilter(filter: string): void {
+    this.#store.dispatch(
+      findPrescriberPageActions.searchPrescribers({ filter: filter })
+    );
+  }
+
+  protected onPageChanged(options: PaginationOptions): void {
+    this.#store.dispatch(prescribersPageActions.changePage({ options }));
   }
 }

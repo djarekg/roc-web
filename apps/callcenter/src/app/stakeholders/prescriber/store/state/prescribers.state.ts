@@ -7,17 +7,18 @@ import { Prescriber } from '../../models';
 export interface State {
   entities: ReadonlyArray<Prescriber>;
   error: string;
+  filter: string;
   loaded: boolean;
   loading: boolean;
   pagination: Pagination;
   selectedPrescriberId: string | null;
   sort: Sort;
-  query: string;
 }
 
 export const initialState: State = {
   entities: [],
   error: '',
+  filter: '',
   loaded: false,
   loading: false,
   pagination: {
@@ -30,5 +31,4 @@ export const initialState: State = {
     active: 'name',
     direction: 'asc',
   },
-  query: '',
 };

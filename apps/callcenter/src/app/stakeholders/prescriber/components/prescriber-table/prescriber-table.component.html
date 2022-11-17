@@ -11,10 +11,9 @@
 <mat-table
   class="mat-elevation-z8"
   recycleRows
-  [dataSource]="prescribers">
+  [dataSource]="data">
   <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    <mat-text-column name="id"></mat-text-column>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

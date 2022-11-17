@@ -18,6 +18,7 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2022",
+
     "useDefineForClassFields": false,
     "paths": {
       "@roc-web/callcenter/environments": [

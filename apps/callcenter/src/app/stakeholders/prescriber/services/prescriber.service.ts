@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Endpoints } from '@roc-web/callcenter/shared/models';
 import {
   createHttpParams,
   PaginatedEntityResponse,
   PaginationOptions,
 } from '@roc-web/web';
 
+import { Endpoints } from '../../../shared/models';
 import { Prescriber } from '../models';
 
 @Injectable()
@@ -26,7 +26,6 @@ export class PrescriberService {
       options = {
         pageIndex: 0,
         pageSize: 10,
-        filter: '',
         sort: {
           active: 'date',
           direction: 'asc',
@@ -44,25 +43,23 @@ export class PrescriberService {
   }
 
   getById(id: string): Observable<Prescriber> {
-    return this.#http.get<Prescriber>(`${Endpoints.prescribers}/${id}`);
+    const url = `${Endpoints.prescribers.toString()}/${id}`;
+
+    return this.#http.get<Prescriber>(url);
   }
 
   remove(prescriber: Prescriber): Observable<Prescriber> {
-    return this.#http.delete<Prescriber>(
-      `${Endpoints.prescribers}/${prescriber.id}`
-    );
+    const url = `${Endpoints.prescribers}/${prescriber.id}`;
+    return this.#http.delete<Prescriber>(url);
   }
 
-  search(query: string): Observable<PaginatedEntityResponse<Prescriber>> {
-    return this.#http.get<PaginatedEntityResponse<Prescriber>>(
-      `${Endpoints.prescribers}/search/${query}`
-    );
+  search(filter: string): Observable<PaginatedEntityResponse<Prescriber>> {
+    const url = `${Endpoints.prescribers}/search/${filter}`;
+    return this.#http.get<PaginatedEntityResponse<Prescriber>>(url);
   }
 
   update(prescriber: Prescriber): Observable<Prescriber> {
-    return this.#http.put<Prescriber>(
-      `${Endpoints.prescribers}/${prescriber.id}`,
-      prescriber
-    );
+    const url = `${Endpoints.prescribers}/${prescriber.id}`;
+    return this.#http.put<Prescriber>(url, prescriber);
   }
 }

@@ -9,20 +9,20 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 import { LocalStorageService } from '@roc-web/core';
 import { Endpoints } from '@roc-web/identity';
 import { Outcome, SKIP_ERROR_INTERCEPTOR_HEADER } from '@roc-web/web';
+
 import {
   INCORRECT_CREDENTIALS_REGEX,
   REQUEST_TOKEN_ERROR_MESSAGE,
-  TOKEN_EXPIRATION_KEY,
-  TOKEN_KEY,
-  TOKEN_USER_KEY,
 } from '../constants';
 import {
   DecodedToken,
+  HttpCacheKey,
   HttpTokenResponse,
   ResponseTokenError,
+  TokenResponse,
   TokenUser,
 } from '../models';
-import { decode, parseUser } from '../utils';
+import { decode, parseClaimsPrincipal, parseUser } from '../utils';
 
 @Injectable({
   providedIn: 'root',
@@ -54,7 +54,7 @@ export class TokenService {
       return false;
     }
 
-    const expiration = this.#storage.get(TOKEN_EXPIRATION_KEY);
+    const expiration = this.#storage.get(HttpCacheKey.tokenExperation);
 
     if (!expiration) {
       return false;
@@ -77,11 +77,11 @@ export class TokenService {
    * @type {(string | null)} - The JWT token.
    */
   get token(): string | null {
-    return this.#storage.get(TOKEN_KEY);
+    return this.#storage.get(HttpCacheKey.token);
   }
 
   get tokenExperation(): string | null {
-    return this.#storage.get(TOKEN_EXPIRATION_KEY);
+    return this.#storage.get(HttpCacheKey.tokenExperation);
   }
 
   /**
@@ -91,7 +91,7 @@ export class TokenService {
    * @type {(TokenUser | null)}
    */
   get user(): TokenUser | null {
-    return this.#storage.get<TokenUser>(TOKEN_USER_KEY);
+    return this.#storage.get<TokenUser>(HttpCacheKey.tokenUser);
   }
   // set user(value: TokenUser | null) {
   //   this.#storage.set(TOKEN_USER_KEY, value);
@@ -104,10 +104,7 @@ export class TokenService {
    * @param {string} password - The password.
    * @returns {*} {Observable<HttpTokenResponse>}
    */
-  requestToken(
-    userName: string,
-    password: string
-  ): Observable<{ token: string | null; user: TokenUser | null }> {
+  requestToken(userName: string, password: string): Observable<TokenResponse> {
     const headers = new HttpHeaders().set(SKIP_ERROR_INTERCEPTOR_HEADER, '');
 
     return this.#http
@@ -123,9 +120,11 @@ export class TokenService {
       .pipe(
         map(response => {
           const { token } = response;
+          const claims = parseClaimsPrincipal(token);
           const user = parseUser(token);
 
           return {
+            claims,
             token,
             user,
           };
@@ -173,13 +172,13 @@ export class TokenService {
   #storeToken(token: string, expiration: string): void {
     const expirationPrimitive = Date.parse(expiration).valueOf();
 
-    this.#storage.set(TOKEN_KEY, token);
-    this.#storage.set(TOKEN_EXPIRATION_KEY, expirationPrimitive);
+    this.#storage.set(HttpCacheKey.token, token);
+    this.#storage.set(HttpCacheKey.tokenExperation, expirationPrimitive);
   }
 
   #storeUser(token: string): void {
     const user = parseUser(token);
 
-    this.#storage.set(TOKEN_USER_KEY, user);
+    this.#storage.set(HttpCacheKey.tokenUser, user);
   }
 }

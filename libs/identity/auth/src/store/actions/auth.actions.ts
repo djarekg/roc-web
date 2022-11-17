@@ -5,6 +5,7 @@ import { TokenResponse } from '../../models';
 export const authActions = createActionGroup({
   source: 'Auth',
   events: {
+    'Set Claims': props<Pick<TokenResponse, 'claims'>>(),
     'Set Token': props<Pick<TokenResponse, 'token'>>(),
     'Remove Token': emptyProps(),
     'Set User': props<Pick<TokenResponse, 'user'>>(),

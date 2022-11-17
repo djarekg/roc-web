@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { merge, startWith, Subject, tap } from 'rxjs';
 
 import { PaginationOptions } from '@roc-web/web';
@@ -37,28 +37,31 @@ import { Prescriber } from '../../models';
 })
 export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   readonly #destroyed$ = new Subject<void>();
+  #prescribers: ReadonlyArray<Prescriber> = [];
 
   protected displayedColumns: string[] = ['id'];
 
-  // protected applyFilter(event: Event) {
-  //   const filter = (event.target as HTMLInputElement).value;
-  //   this.prescribers = this.#prescribers.filter(prescriber =>
-  //     new RegExp(filter, 'i').test(Object.values(prescriber).join())
-  //   );
-  // }
+  protected applyFilter(event: Event) {
+    const filter = (event.target as HTMLInputElement).value;
+    this.filtered.emit(filter);
+  }
+
+  protected data = new MatTableDataSource<Prescriber>([]);
 
   @Input()
-  // accessor prescribers: ReadonlyArray<Prescriber> = [];
-  get prescribers(): ReadonlyArray<Prescriber> {
+  get prescribers(): ReadonlyArray<Prescriber> | undefined {
     return this.#prescribers;
   }
-  set prescribers(value: ReadonlyArray<Prescriber>) {
-    this.#prescribers = value;
+  set prescribers(value: ReadonlyArray<Prescriber> | undefined) {
+    this.#prescribers = value ?? [];
+    this.data.data = value as Mutable<Prescriber[]>;
   }
-  #prescribers: ReadonlyArray<Prescriber> = [];
+
+  @Output() readonly filtered = new EventEmitter<string>();
+  @Output() readonly pageChanged = new EventEmitter<PaginationOptions>();
+
   @ViewChild(MatPaginator) protected paginator!: MatPaginator;
   @ViewChild(MatSort) protected sort!: MatSort;
-  @Output() readonly pageChanged = new EventEmitter<PaginationOptions>();
 
   ngAfterViewInit(): void {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
@@ -70,7 +73,6 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
         const { active, direction } = this.sort;
 
         this.pageChanged.emit({
-          filter: '',
           pageIndex,
           pageSize,
           sort: { active, direction },

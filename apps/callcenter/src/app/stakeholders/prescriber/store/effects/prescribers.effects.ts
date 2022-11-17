@@ -83,8 +83,8 @@ export class PrescribersEffects {
         return this.#actions$.pipe(
           ofType(findPrescriberPageActions.searchPrescribers),
           debounceTime(debounce, scheduler),
-          switchMap(({ query }) => {
-            if (isNullOrEmpty(query)) {
+          switchMap(({ filter }) => {
+            if (isNullOrEmpty(filter)) {
               return EMPTY;
             }
 
@@ -93,7 +93,7 @@ export class PrescribersEffects {
               skip(1)
             );
 
-            return this.#prescriberService.search(query).pipe(
+            return this.#prescriberService.search(filter).pipe(
               takeUntil(nextSearch$),
               map(response =>
                 prescribersApiActions.searchSuccess({ response })
