@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
 
-import { RouteUrl } from '../../models';
+import { Roles, RouteUrl } from '../../models';
 import { AuthService } from '../../services';
+import { hasRole } from '../../utils';
 import { authActions, authApiActions, signinPageActions } from '../actions';
 
 @Injectable()
@@ -19,8 +20,8 @@ export class AuthEffects {
       ofType(signinPageActions.signin),
       mergeMap(({ userName, password }) =>
         this.#authService.signin(userName, password).pipe(
-          map(({ claims, token, user }) =>
-            authApiActions.signinSuccess({ claims, token, user })
+          map(({ token, user }) =>
+            authApiActions.signinSuccess({ token, user })
           ),
           catchError(error => of(authApiActions.signinFailure({ error })))
         )
@@ -32,12 +33,14 @@ export class AuthEffects {
     () =>
       this.#actions$.pipe(
         ofType(authApiActions.signinSuccess),
-        map(({ claims, token, user }) => {
-          authActions.setClaims({ claims });
-          authActions.setToken({ token });
+        map(({ token, user }) => {
           authActions.setUser({ user });
-        }),
-        map(() => this.#router.navigate([RouteUrl.settingsAccount]))
+
+          const isAdministrator = hasRole(Roles.administrator, token);
+          const relativeUrl = isAdministrator ? RouteUrl.settingsAccount : '';
+
+          return this.#router.navigate([relativeUrl]);
+        })
       ),
     { dispatch: false }
   );

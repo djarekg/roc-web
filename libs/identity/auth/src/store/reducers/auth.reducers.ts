@@ -8,19 +8,12 @@ export const statusFeatureKey = 'status';
 export interface State extends TokenResponse {}
 
 export const initialState: State = {
-  claims: null,
   token: null,
   user: null,
 };
 
 export const reducer = createReducer(
   initialState,
-  on(
-    authActions.setClaims,
-    (state, { claims }): State => ({ ...state, claims })
-  ),
-  on(authActions.setToken, (state, { token }): State => ({ ...state, token })),
-  on(authActions.removeToken, (state): State => ({ ...state, token: null })),
   on(authActions.setUser, (state, { user }): State => ({ ...state, user })),
   on(
     authApiActions.signinSuccess,
@@ -33,6 +26,4 @@ export const reducer = createReducer(
   on(authActions.signout, (): State => initialState)
 );
 
-export const getClaims = (state: State) => state.claims;
-export const getToken = (state: State) => state.token;
 export const getUser = (state: State) => state.user;

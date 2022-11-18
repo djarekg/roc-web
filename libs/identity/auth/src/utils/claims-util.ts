@@ -9,7 +9,7 @@ import { decode } from './token-util';
  * @param {string} token The token to decode.
  * @returns {*}  {boolean} True if the token has the role and false if it does not.
  */
-export function hasRole(name: string, token: string): boolean {
+export function hasRole(name: string, token: string | null): boolean {
   return hasProperty('role', name, token);
 }
 
@@ -20,7 +20,7 @@ export function hasRole(name: string, token: string): boolean {
  * @param {string} token The token to decode.
  * @returns {*}  {boolean} True if the token has the permission and false if it does not.
  */
-export function hasPermission(name: string, token: string): boolean {
+export function hasPermission(name: string, token: string | null): boolean {
   return hasProperty('permission', name, token);
 }
 
@@ -33,7 +33,15 @@ export function hasPermission(name: string, token: string): boolean {
  * @param {string} token The token to decode.
  * @returns {*}  {boolean} True if the token has the property and value and false if it does not.
  */
-function hasProperty(property: string, value: string, token: string): boolean {
+function hasProperty(
+  property: string,
+  value: string,
+  token: string | null
+): boolean {
+  if (isNullOrEmpty(token)) {
+    return false;
+  }
+
   const decodedToken = decode(token);
 
   if (!decodedToken || !(property in decodedToken)) {
@@ -44,8 +52,6 @@ function hasProperty(property: string, value: string, token: string): boolean {
     return false;
   }
 
-  value = value.toLowerCase();
-
   const propertyValue = decodedToken[property];
 
   // check property value array for value
@@ -54,26 +60,33 @@ function hasProperty(property: string, value: string, token: string): boolean {
   }
 
   if (typeof propertyValue === 'string') {
-    return propertyValue === value;
+    return (
+      propertyValue.localeCompare(value, undefined, {
+        sensitivity: 'accent',
+      }) === 0
+    );
   }
 
   return false;
 }
 
-export function parseClaimsPrincipal(token: string): ClaimsPrincipal {
-  const decodedToken = decode(token);
+export function parseClaimsPrincipal(token: string | null): ClaimsPrincipal {
   let permissions: string[] | null = null;
   let roles: string[] | null = null;
 
-  if (decodedToken) {
-    if ('permission' in decodedToken) {
-      const { permission } = decodedToken;
-      permissions = Array.isArray(permission) ? permission : [permission];
-    }
+  if (!!token) {
+    const decodedToken = decode(token);
 
-    if ('role' in decodedToken) {
-      const { role } = decodedToken;
-      roles = Array.isArray(role) ? role : [role];
+    if (decodedToken) {
+      if ('permission' in decodedToken) {
+        const { permission } = decodedToken;
+        permissions = Array.isArray(permission) ? permission : [permission];
+      }
+
+      if ('role' in decodedToken) {
+        const { role } = decodedToken;
+        roles = Array.isArray(role) ? role : [role];
+      }
     }
   }
 

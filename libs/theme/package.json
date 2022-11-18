@@ -2,9 +2,9 @@
   "name": "@roc-web/theme",
   "version": "3.0.0",
   "peerDependencies": {
-    "@angular/common": "^15.0.0-rc.0",
-    "@angular/core": "^15.0.0-rc.0",
-    "@angular/material": "^15.0.0-rc.0",
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/material": "^15.0.0",
     "rxjs": "~7.5.0"
   },
   "dependencies": {

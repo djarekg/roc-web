@@ -22,7 +22,7 @@ import {
   TokenResponse,
   TokenUser,
 } from '../models';
-import { decode, parseClaimsPrincipal, parseUser } from '../utils';
+import { decode, parseUser } from '../utils';
 
 @Injectable({
   providedIn: 'root',
@@ -120,11 +120,9 @@ export class TokenService {
       .pipe(
         map(response => {
           const { token } = response;
-          const claims = parseClaimsPrincipal(token);
           const user = parseUser(token);
 
           return {
-            claims,
             token,
             user,
           };

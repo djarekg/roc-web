@@ -6,6 +6,7 @@ import {
 } from '@ngrx/store';
 
 import { CoreState } from '@roc-web/core';
+import { parseClaimsPrincipal } from '../../utils';
 import * as fromAuth from './auth.reducers';
 import * as fromSigninPage from './signin-page.reducers';
 
@@ -34,30 +35,29 @@ export const selectAuthStatusState = createSelector(
   state => state.status
 );
 
-export const selectClaims = createSelector(
-  selectAuthStatusState,
-  fromAuth.getClaims
-);
-
-export const selectToken = createSelector(
-  selectAuthStatusState,
-  state => state.token
-);
-
 export const selectIsAuthenticated = createSelector(
   selectAuthStatusState,
   state => !!state.token
 );
 
-export const selectAuthenticatedUser = createSelector(
-  selectClaims,
+export const selectClaims = createSelector(selectAuthStatusState, state =>
+  parseClaimsPrincipal(state.token)
+);
+
+export const selectAuthentication = createSelector(
   selectIsAuthenticated,
-  (claims, isAuthenticated) => ({ claims, isAuthenticated })
+  selectClaims,
+  (isAuthenticated, claims) => ({ isAuthenticated, claims })
 );
 
 export const selectUser = createSelector(
   selectAuthStatusState,
   state => state.user
+);
+
+export const selectRoles = createSelector(
+  selectClaims,
+  claims => claims?.roles ?? []
 );
 
 export const selectSigninPageState = createSelector(

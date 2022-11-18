@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
 export const APP_ROUTES: Routes = [
-  { path: '', redirectTo: 'prescribers', pathMatch: 'full' },
+  { path: '', redirectTo: 'prescriber', pathMatch: 'full' },
   {
-    path: 'prescribers',
+    path: 'prescriber',
     loadChildren: () => import('./stakeholders/prescriber/containers/routes'),
   },
 ];
