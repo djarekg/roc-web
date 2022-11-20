@@ -20,7 +20,10 @@ $accent-text-color: mat.get-color-from-palette(
   'darker-contrast'
 );
 
-$scrollbar-color: mat.get-color-from-palette(mat.$grey-palette, 800);
+$scrollbar-color: darken(
+  mat.get-color-from-palette(mat.$grey-palette, 700),
+  10%
+);
 
 $selection-active-color: mat.get-color-from-palette(
   mat.$grey-palette,
