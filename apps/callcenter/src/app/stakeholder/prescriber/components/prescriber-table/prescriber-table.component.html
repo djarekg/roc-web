@@ -12,9 +12,7 @@
   class="mat-elevation-z8"
   recycleRows
   [dataSource]="data">
-  <ng-container matColumnDef="id">
-    <mat-text-column name="id"></mat-text-column>
-  </ng-container>
+  <mat-text-column name="id"></mat-text-column>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>

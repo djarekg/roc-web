@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
+import { providePrescriber } from '@roc-web/callcenter/stakeholder/prescriber/store';
 import { authCanActivate } from '@roc-web/identity/auth';
 
-import { providePrescriber } from '../store/provider';
 import { PrescriberComponent } from './prescriber';
 
 export default [

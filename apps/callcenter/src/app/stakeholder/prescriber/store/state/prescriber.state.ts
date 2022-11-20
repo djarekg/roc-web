@@ -1,11 +1,11 @@
 import { Sort } from '@angular/material/sort';
 
+import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { ImmutableArray } from '@roc-web/core';
 import { Pagination } from '@roc-web/web';
 
-import { Prescriber } from '../../models';
-
 export interface State {
-  entities: ReadonlyArray<Prescriber>;
+  entities: ImmutableArray<Prescriber>;
   error: string;
   filter: string;
   loaded: boolean;

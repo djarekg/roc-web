@@ -6,16 +6,16 @@ import {
 } from '@angular/core';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
-import { PaginationOptions } from '@roc-web/web';
 import { Observable } from 'rxjs';
 
-import { PrescriberTableComponent } from '../../components';
-import { Prescriber } from '../../models';
+import { PrescriberTableComponent } from '@roc-web/callcenter/stakeholder/prescriber/components';
+import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 import {
-  findPrescriberPageActions,
-  prescribersPageActions,
-} from '../../store/actions';
-import * as fromPrescribers from '../../store/reducers';
+  fromPrescribers,
+  prescriberActions,
+} from '@roc-web/callcenter/stakeholder/prescriber/store';
+import { ImmutableArray } from '@roc-web/core';
+import { PaginationOptions } from '@roc-web/web';
 
 @Component({
   selector: 'app-prescriber-list',
@@ -28,20 +28,24 @@ import * as fromPrescribers from '../../store/reducers';
 export class PrescriberListComponent implements OnInit {
   readonly #store = inject(Store);
 
-  protected prescribers$: Observable<ReadonlyArray<Prescriber>> =
+  protected prescribers$: Observable<ImmutableArray<Prescriber>> =
     this.#store.select(fromPrescribers.selectEntities);
 
   ngOnInit(): void {
-    this.#store.dispatch(prescribersPageActions.enter());
+    this.#store.dispatch(prescriberActions.prescribersPageActions.enter());
   }
 
   protected onFilter(filter: string): void {
     this.#store.dispatch(
-      findPrescriberPageActions.searchPrescribers({ filter: filter })
+      prescriberActions.findPrescriberPageActions.searchPrescribers({
+        filter: filter,
+      })
     );
   }
 
   protected onPageChanged(options: PaginationOptions): void {
-    this.#store.dispatch(prescribersPageActions.changePage({ options }));
+    this.#store.dispatch(
+      prescriberActions.prescribersPageActions.changePage({ options })
+    );
   }
 }

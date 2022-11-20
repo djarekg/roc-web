@@ -6,5 +6,6 @@ export * from './options';
 export * from './storage';
 export * from './store';
 export * from './tokens';
+export * from './types';
 export * from './utils';
 export * from './validators';

@@ -4,6 +4,25 @@
     "outDir": "../../out-tsc/app",
     "types": [],
     "paths": {
+      "@roc-web/callcenter/stakeholder/prescriber/*": [
+        "apps/callcenter/src/app/stakeholder/prescriber/index.ts"
+      ],
+      // "@roc-web/callcenter/stakeholder/prescriber/components": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/components/index.ts"
+      // ],
+      // "@roc-web/callcenter/stakeholder/prescriber/containers": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/containers/index.ts"
+      // ],
+      // "@roc-web/callcenter/stakeholder/prescriber/models": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/models/index.ts"
+      // ],
+      // "@roc-web/callcenter/stakeholder/prescriber/services": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/services/index.ts"
+      // ],
+      // "@roc-web/callcenter/stakeholder/prescriber/store": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/store/index.ts"
+      // ],
+      "@roc-web/callcenter/store": ["apps/callcenter/src/app/store/index.ts"],
       "@roc-web/core": ["dist/@roc-web/core"],
       "@roc-web/core/*": ["dist/@roc-web/core?8"],
       "@roc-web/identity": ["dist/@roc-web/identity"],
@@ -14,13 +33,8 @@
       "@roc-web/identity/settings/*": ["dist/@roc-web/identity/settings/*"],
       "@roc-web/web": ["dist/@roc-web/web"],
       "@roc-web/web/*": ["dist/@roc-web/web/*"]
-      // "@roc-web/core": ["libs/core/src/index.ts"],
-      // "@roc-web/identity/auth": ["libs/identity/auth/index.ts"],
-      // "@roc-web/identity/settings": ["libs/identity/settings/index.ts"],
-      // "@roc-web/identity": ["libs/identity/src/index.ts"],
-      // "@roc-web/web": ["libs/web/src/index.ts"]
     }
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
-  "include": ["src/**/*.d.ts", "../../types.d.ts"]
+  "include": ["src/**/*.d.ts"]
 }

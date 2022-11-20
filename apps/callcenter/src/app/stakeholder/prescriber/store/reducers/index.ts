@@ -5,8 +5,8 @@ import {
   createSelector,
 } from '@ngrx/store';
 
-import * as fromRoot from '../../../../store/reducers';
-import * as fromState from '../state/prescribers.state';
+import * as fromRoot from '@roc-web/callcenter/store';
+import * as fromState from '../state/prescriber.state';
 import * as fromPrescribers from './prescribers.reducers';
 import * as fromSearch from './search.reducers';
 

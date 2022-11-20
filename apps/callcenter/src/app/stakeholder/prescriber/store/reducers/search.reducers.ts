@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { findPrescriberPageActions, prescribersApiActions } from '../actions';
 
-import * as fromState from '../state/prescribers.state';
+import * as fromState from '../state/prescriber.state';
 
 export const searchFeatureKey = 'search';
 

@@ -18,7 +18,6 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2022",
-
     "useDefineForClassFields": false,
     "paths": {
       "@roc-web/callcenter/environments": [
@@ -26,6 +25,25 @@
       ],
       "@roc-web/callcenter/layout": ["apps/callcenter/src/app/layout/index.ts"],
       "@roc-web/callcenter/shared/*": ["apps/callcenter/src/app/shared/*"],
+      "@roc-web/callcenter/stakeholder/prescriber/*": [
+        "apps/callcenter/src/app/stakeholder/prescriber/index.ts"
+      ],
+      // "@roc-web/callcenter/stakeholder/prescriber/components": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/components/index.ts"
+      // ],
+      // "@roc-web/callcenter/stakeholder/prescriber/containers": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/containers/index.ts"
+      // ],
+      // "@roc-web/callcenter/stakeholder/prescriber/models": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/models/index.ts"
+      // ],
+      // "@roc-web/callcenter/stakeholder/prescriber/services": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/services/index.ts"
+      // ],
+      // "@roc-web/callcenter/stakeholder/prescriber/store": [
+      //   "apps/callcenter/src/app/stakeholder/prescriber/store/index.ts"
+      // ],
+      "@roc-web/callcenter/store": ["apps/callcenter/src/app/store/index.ts"],
       "@roc-web/core": ["libs/core/src"],
       "@roc-web/core/*": ["libs/core/src/*"],
       "@roc-web/identity": ["libs/identity/src"],

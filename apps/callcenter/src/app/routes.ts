@@ -4,6 +4,6 @@ export const APP_ROUTES: Routes = [
   { path: '', redirectTo: 'prescriber', pathMatch: 'full' },
   {
     path: 'prescriber',
-    loadChildren: () => import('./stakeholders/prescriber/containers/routes'),
+    loadChildren: () => import('./stakeholder/prescriber/containers/routes'),
   },
 ];

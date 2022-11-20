@@ -2,7 +2,7 @@ import { NavRoute } from './nav-route';
 
 export const navRoutes: NavRoute[] = [
   {
-    name: 'Stakeholders',
+    name: 'Stakeholder',
     children: [
       {
         name: 'Prescriber',

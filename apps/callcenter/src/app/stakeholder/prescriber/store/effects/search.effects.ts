@@ -13,7 +13,8 @@ import {
   takeUntil,
 } from 'rxjs';
 
-import { PrescriberService } from '../../services';
+import { PrescriberService } from '@roc-web/callcenter/stakeholder/prescriber/services';
+
 import { findPrescriberPageActions, prescribersApiActions } from '../actions';
 
 @Injectable()

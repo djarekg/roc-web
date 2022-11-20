@@ -5,7 +5,7 @@ import {
   prescribersPageActions,
   selectedPrescriberPageActions,
 } from '../actions';
-import * as fromState from '../state/prescribers.state';
+import * as fromState from '../state/prescriber.state';
 
 export const prescribersFeatureKey = 'prescribers';
 

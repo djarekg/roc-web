@@ -5,10 +5,10 @@ import {
 } from '@angular/core';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
-import { PrescriberService } from '../services';
+
+import { PrescriberService } from '@roc-web/callcenter/stakeholder/prescriber/services';
 
 import { PrescribersEffects, SearchEffects } from './effects';
-
 import { prescribersFeature } from './prescribers.features';
 
 export function providePrescriber(): EnvironmentProviders {

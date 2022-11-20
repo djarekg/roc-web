@@ -5,7 +5,7 @@ import {
   createSelector,
 } from '@ngrx/store';
 
-import { CoreState } from '@roc-web/core';
+import { CoreState, selectRouteRole } from '@roc-web/core';
 import { parseClaimsPrincipal } from '../../utils';
 import * as fromAuth from './auth.reducers';
 import * as fromSigninPage from './signin-page.reducers';
@@ -58,6 +58,12 @@ export const selectUser = createSelector(
 export const selectRoles = createSelector(
   selectClaims,
   claims => claims?.roles ?? []
+);
+
+export const selectHasRouteRole = createSelector(
+  selectRoles,
+  selectRouteRole,
+  (roles, routeRole) => roles.includes(routeRole)
 );
 
 export const selectSigninPageState = createSelector(

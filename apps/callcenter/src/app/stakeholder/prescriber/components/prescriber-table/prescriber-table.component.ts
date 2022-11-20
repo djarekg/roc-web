@@ -16,9 +16,10 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { merge, startWith, Subject, tap } from 'rxjs';
 
+import { ImmutableArray, Mutable } from '@roc-web/core';
 import { PaginationOptions } from '@roc-web/web';
 
-import { Prescriber } from '../../models';
+import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 
 @Component({
   selector: 'app-prescriber-table',
@@ -29,15 +30,15 @@ import { Prescriber } from '../../models';
   imports: [
     MatButtonModule,
     MatIconModule,
-    MatTableModule,
     MatInputModule,
+    MatTableModule,
     MatPaginatorModule,
     MatSortModule,
   ],
 })
 export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
-  readonly #destroyed$ = new Subject<void>();
-  #prescribers: ReadonlyArray<Prescriber> = [];
+  readonly #destroy$ = new Subject<void>();
+  #prescribers: ImmutableArray<Prescriber> = [];
 
   protected displayedColumns: string[] = ['id'];
 
@@ -49,10 +50,10 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   protected data = new MatTableDataSource<Prescriber>([]);
 
   @Input()
-  get prescribers(): ReadonlyArray<Prescriber> | undefined {
+  get prescribers(): ImmutableArray<Prescriber> | undefined {
     return this.#prescribers;
   }
-  set prescribers(value: ReadonlyArray<Prescriber> | undefined) {
+  set prescribers(value: ImmutableArray<Prescriber> | undefined) {
     this.#prescribers = value ?? [];
     this.data.data = value as Mutable<Prescriber[]>;
   }
@@ -82,7 +83,7 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.#destroyed$.next();
-    this.#destroyed$.complete();
+    this.#destroy$.next();
+    this.#destroy$.complete();
   }
 }

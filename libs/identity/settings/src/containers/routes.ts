@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { authCanActivate } from '@roc-web/identity/auth';
+import { authCanActivate, Roles } from '@roc-web/identity/auth';
 
 import {
   AccountComponent,
@@ -12,6 +12,7 @@ export const settingsRoutes: Route[] = [
   {
     path: 'settings',
     component: SettingsComponent,
+    data: { role: Roles.administrator },
     children: [
       {
         path: 'account',
