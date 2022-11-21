@@ -6,8 +6,8 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
+import { Outcome } from '../../shared/models';
 import { SKIP_ERROR_INTERCEPTOR_HEADER } from '../constants/skip-error-interceptor-header';
-import { Outcome } from '../models';
 import { isHttpValueOutcomeResponse } from '../utils';
 
 export const HTTP_ERROR_INTERCEPTOR = (
