@@ -25,13 +25,18 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "localize": true,
             "outputPath": "dist/@roc-web/callcenter",
             "index": "apps/callcenter/src/index.html",
             "main": "apps/callcenter/src/main.ts",
-            "polyfills": "apps/callcenter/src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "apps/callcenter/src/polyfills.ts",
+              "libs/core/scripts/console-overrides.js",
+              "libs/core/scripts/zone-flags.jsy"
+            ],
             "tsConfig": "apps/callcenter/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [

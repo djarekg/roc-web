@@ -23,7 +23,7 @@ import { fromPrescribers } from '@roc-web/callcenter/stakeholder/prescriber/stor
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [PushModule, PrescriberTableComponent],
 })
-export class PrescriberListComponent implements OnInit {
+export default class PrescriberListComponent implements OnInit {
   readonly #store = inject(Store);
 
   protected prescribers$ = this.#store.select(fromPrescribers.selectEntities);

@@ -25,7 +25,7 @@ import * as fromAuth from '../../store/reducers';
     SigninFormComponent,
   ],
 })
-export class SigninComponent {
+export default class SigninComponent {
   readonly #store = inject(Store);
 
   protected errors$ = this.#store.select(fromAuth.selectSigninPageError);

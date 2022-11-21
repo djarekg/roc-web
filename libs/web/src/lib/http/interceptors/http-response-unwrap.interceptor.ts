@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
-import { PaginationOrUnknown } from '../types';
+import { ValueOutcomePaginationResponseOrUnknown } from '../types';
 import {
   isHttpValueOutcomePaginationResponse,
   isHttpValueOutcomeResponse,
@@ -14,7 +14,7 @@ export const HTTP_RESPONSE_UNWRAP_INTERCEPTOR = (
   return next(req).pipe(
     map(resp => {
       if (isHttpValueOutcomeResponse(resp)) {
-        let body: PaginationOrUnknown = resp.body?.value;
+        let body: ValueOutcomePaginationResponseOrUnknown = resp.body?.value;
 
         if (isHttpValueOutcomePaginationResponse(body)) {
           const {
