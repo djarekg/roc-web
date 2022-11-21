@@ -4,7 +4,10 @@
   "cli": {
     "packageManager": "npm",
     "analytics": false,
-    "schematicCollections": ["@angular-eslint/schematics", "@ngrx/schematics"]
+    "schematicCollections": [
+      "@angular-eslint/schematics",
+      "@ngrx/schematics"
+    ]
   },
   "newProjectRoot": "libs",
   "projects": {
@@ -43,7 +46,9 @@
               "apps/callcenter/src/favicon.ico",
               "apps/callcenter/src/assets"
             ],
-            "styles": ["apps/callcenter/src/styles.scss"],
+            "styles": [
+              "apps/callcenter/src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "apps/callcenter/src/styles",
@@ -86,10 +91,14 @@
               "namedChunks": true
             },
             "de": {
-              "localize": ["de"]
+              "localize": [
+                "de"
+              ]
             },
             "en": {
-              "localize": ["en"]
+              "localize": [
+                "en"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -130,7 +139,9 @@
               "apps/callcenter/src/favicon.ico",
               "apps/callcenter/src/assets"
             ],
-            "styles": ["apps/callcenter/src/styles.scss"],
+            "styles": [
+              "apps/callcenter/src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -191,7 +202,10 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["libs/core/**/*.ts", "libs/core/**/*.html"]
+            "lintFilePatterns": [
+              "libs/core/**/*.ts",
+              "libs/core/**/*.html"
+            ]
           }
         }
       }
@@ -282,7 +296,10 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["libs/web/**/*.ts", "libs/web/**/*.html"]
+            "lintFilePatterns": [
+              "libs/web/**/*.ts",
+              "libs/web/**/*.html"
+            ]
           }
         }
       }
@@ -319,16 +336,30 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "libs/theme/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["libs/theme/**/*.ts", "libs/theme/**/*.html"]
+            "lintFilePatterns": [
+              "libs/theme/**/*.ts",
+              "libs/theme/**/*.html"
+            ]
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
     }
   }
 }
