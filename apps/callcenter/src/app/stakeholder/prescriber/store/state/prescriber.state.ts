@@ -1,34 +1,35 @@
-import { Sort } from '@angular/material/sort';
+import {
+  Prescriber,
+  PrescriberPaginationOptions,
+} from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { PaginationEntity } from '@roc-web/web';
 
-import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
-import { ImmutableArray } from '@roc-web/core';
-import { Pagination } from '@roc-web/web';
-
-export interface State {
-  entities: ImmutableArray<Prescriber>;
-  error: string;
-  filter: string;
-  loaded: boolean;
-  loading: boolean;
-  pagination: Pagination;
+export interface State extends PaginationEntity<Prescriber> {
   selectedPrescriberId: string | null;
-  sort: Sort;
+  paginationOptions: PrescriberPaginationOptions;
 }
 
 export const initialState: State = {
   entities: [],
-  error: '',
-  filter: '',
+  error: null,
   loaded: false,
   loading: false,
+  paginationOptions: {
+    filter: null,
+    lastName: null,
+    pageIndex: 1,
+    pageSize: 10,
+    nationalId: null,
+    sort: {
+      active: 'id',
+      direction: 'asc',
+    },
+    stakeholderId: null,
+  },
   pagination: {
-    pageIndex: 0,
+    pageIndex: 1,
     pageSize: 10,
     totalCount: 0,
   },
   selectedPrescriberId: null,
-  sort: {
-    active: 'name',
-    direction: 'asc',
-  },
 };

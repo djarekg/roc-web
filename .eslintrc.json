@@ -28,6 +28,7 @@
           "warn",
           {
             "argsIgnorePattern": "_",
+            "ignoreRestSiblings": true,
             "varsIgnorePattern": "#"
           }
         ],

@@ -26,4 +26,5 @@ export const reducer = createReducer(
   on(authActions.signout, (): State => initialState)
 );
 
+export const getToken = (state: State) => state.token;
 export const getUser = (state: State) => state.user;

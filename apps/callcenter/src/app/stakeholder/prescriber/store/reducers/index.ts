@@ -28,36 +28,31 @@ export function reducers(state: PrescriberState | undefined, action: Action) {
   })(state, action);
 }
 
-export const selectPrescriberState = createFeatureSelector<PrescriberState>(
+export const selectFeatureState = createFeatureSelector<PrescriberState>(
   prescribersFeatureKey
 );
 
-export const selectPrescriberEntitiesState = createSelector(
-  selectPrescriberState,
+export const selectState = createSelector(
+  selectFeatureState,
   state => state.prescribers
 );
 
 export const selectEntities = createSelector(
-  selectPrescriberEntitiesState,
+  selectState,
   fromPrescribers.getEntities
 );
 
 export const selectLoaded = createSelector(
-  selectPrescriberEntitiesState,
+  selectState,
   fromPrescribers.getLoaded
 );
 
 export const selectLoading = createSelector(
-  selectPrescriberEntitiesState,
+  selectState,
   fromPrescribers.getLoading
 );
 
-export const selectPagination = createSelector(
-  selectPrescriberEntitiesState,
-  fromPrescribers.getPagination
-);
-
-export const selectSort = createSelector(
-  selectPrescriberEntitiesState,
-  fromPrescribers.getSort
+export const selectPaginationOptions = createSelector(
+  selectState,
+  fromPrescribers.getPaginationOptions
 );

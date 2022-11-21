@@ -4,24 +4,16 @@
     "outDir": "../../out-tsc/app",
     "types": [],
     "paths": {
+      "@roc-web/callcenter/environments": [
+        "apps/callcenter/src/environments/index.ts"
+      ],
+      "@roc-web/callcenter/layout": ["apps/callcenter/src/app/layout/index.ts"],
+      "@roc-web/callcenter/shared/*": [
+        "apps/callcenter/src/app/shared/index.ts"
+      ],
       "@roc-web/callcenter/stakeholder/prescriber/*": [
         "apps/callcenter/src/app/stakeholder/prescriber/index.ts"
       ],
-      // "@roc-web/callcenter/stakeholder/prescriber/components": [
-      //   "apps/callcenter/src/app/stakeholder/prescriber/components/index.ts"
-      // ],
-      // "@roc-web/callcenter/stakeholder/prescriber/containers": [
-      //   "apps/callcenter/src/app/stakeholder/prescriber/containers/index.ts"
-      // ],
-      // "@roc-web/callcenter/stakeholder/prescriber/models": [
-      //   "apps/callcenter/src/app/stakeholder/prescriber/models/index.ts"
-      // ],
-      // "@roc-web/callcenter/stakeholder/prescriber/services": [
-      //   "apps/callcenter/src/app/stakeholder/prescriber/services/index.ts"
-      // ],
-      // "@roc-web/callcenter/stakeholder/prescriber/store": [
-      //   "apps/callcenter/src/app/stakeholder/prescriber/store/index.ts"
-      // ],
       "@roc-web/callcenter/store": ["apps/callcenter/src/app/store/index.ts"],
       "@roc-web/core": ["dist/@roc-web/core"],
       "@roc-web/core/*": ["dist/@roc-web/core?8"],

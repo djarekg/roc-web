@@ -2,14 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { Endpoints } from '@roc-web/callcenter/shared/models';
 import {
-  createHttpParams,
-  PaginatedEntityResponse,
-  PaginationOptions,
-} from '@roc-web/web';
-
-import { Endpoints } from '../../../shared/models';
-import { Prescriber } from '../models';
+  Prescriber,
+  PrescriberPaginationOptions,
+} from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { createHttpParams, PaginationEntityResponse } from '@roc-web/web';
 
 @Injectable()
 export class PrescriberService {
@@ -20,21 +18,11 @@ export class PrescriberService {
   }
 
   get(
-    options?: PaginationOptions
-  ): Observable<PaginatedEntityResponse<Prescriber>> {
-    if (!options) {
-      options = {
-        pageIndex: 0,
-        pageSize: 10,
-        sort: {
-          active: 'date',
-          direction: 'asc',
-        },
-      };
-    }
+    options: PrescriberPaginationOptions
+  ): Observable<PaginationEntityResponse<Prescriber>> {
     const params = createHttpParams(options);
 
-    return this.#http.get<PaginatedEntityResponse<Prescriber>>(
+    return this.#http.get<PaginationEntityResponse<Prescriber>>(
       Endpoints.prescribers,
       {
         params,
@@ -43,23 +31,25 @@ export class PrescriberService {
   }
 
   getById(id: string): Observable<Prescriber> {
-    const url = `${Endpoints.prescribers.toString()}/${id}`;
+    const url = `${Endpoints.prescribers}/${id}`;
 
     return this.#http.get<Prescriber>(url);
   }
 
   remove(prescriber: Prescriber): Observable<Prescriber> {
-    const url = `${Endpoints.prescribers}/${prescriber.id}`;
+    const { id } = prescriber;
+    const url = `${Endpoints.prescribers}/${id}`;
     return this.#http.delete<Prescriber>(url);
   }
 
-  search(filter: string): Observable<PaginatedEntityResponse<Prescriber>> {
+  search(filter: string): Observable<PaginationEntityResponse<Prescriber>> {
     const url = `${Endpoints.prescribers}/search/${filter}`;
-    return this.#http.get<PaginatedEntityResponse<Prescriber>>(url);
+    return this.#http.get<PaginationEntityResponse<Prescriber>>(url);
   }
 
   update(prescriber: Prescriber): Observable<Prescriber> {
-    const url = `${Endpoints.prescribers}/${prescriber.id}`;
+    const { id } = prescriber;
+    const url = `${Endpoints.prescribers}/${id}`;
     return this.#http.put<Prescriber>(url, prescriber);
   }
 }

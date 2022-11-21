@@ -17,9 +17,11 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { merge, startWith, Subject, tap } from 'rxjs';
 
 import { ImmutableArray, Mutable } from '@roc-web/core';
-import { PaginationOptions } from '@roc-web/web';
 
-import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
+import {
+  Prescriber,
+  PrescriberPaginationOptions,
+} from '@roc-web/callcenter/stakeholder/prescriber/models';
 
 @Component({
   selector: 'app-prescriber-table',
@@ -40,7 +42,7 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
   #prescribers: ImmutableArray<Prescriber> = [];
 
-  protected displayedColumns: string[] = ['id'];
+  protected displayedColumns: string[] = ['id', 'nationalId'];
 
   protected applyFilter(event: Event) {
     const filter = (event.target as HTMLInputElement).value;
@@ -59,7 +61,8 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   }
 
   @Output() readonly filtered = new EventEmitter<string>();
-  @Output() readonly pageChanged = new EventEmitter<PaginationOptions>();
+  @Output() readonly pageChanged =
+    new EventEmitter<PrescriberPaginationOptions>();
 
   @ViewChild(MatPaginator) protected paginator!: MatPaginator;
   @ViewChild(MatSort) protected sort!: MatSort;
@@ -74,9 +77,13 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
         const { active, direction } = this.sort;
 
         this.pageChanged.emit({
+          filter: null,
+          lastName: null,
+          nationalId: null,
           pageIndex,
           pageSize,
           sort: { active, direction },
+          stakeholderId: null,
         });
       })
     );

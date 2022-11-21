@@ -80,3 +80,12 @@ export const selectSigninPagePending = createSelector(
   selectSigninPageState,
   fromSigninPage.getPending
 );
+
+export const selectToken = createSelector(
+  selectAuthStatusState,
+  fromAuth.getToken
+);
+
+export const selectBearerToken = createSelector(selectToken, token =>
+  token ? `Bearer ${token}` : null
+);

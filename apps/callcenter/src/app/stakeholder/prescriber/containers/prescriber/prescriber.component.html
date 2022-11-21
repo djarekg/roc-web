@@ -1,10 +1,10 @@
-<div class="app-page-header">
+<div class="app-page-content">
   <h2>{{ title$ | ngrxPush }}</h2>
   <button
     mat-flat-button
     color="primary">
     Add Prescriber
   </button>
+  <mat-divider></mat-divider>
+  <router-outlet></router-outlet>
 </div>
-<mat-divider></mat-divider>
-<router-outlet></router-outlet>

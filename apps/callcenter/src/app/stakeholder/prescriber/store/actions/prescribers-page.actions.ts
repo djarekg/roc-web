@@ -1,11 +1,11 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-import { PaginationOptions } from '@roc-web/web';
+import { PrescriberPaginationOptions } from '@roc-web/callcenter/stakeholder/prescriber/models';
 
 export const prescribersPageActions = createActionGroup({
   source: 'Prescribers Page',
   events: {
-    'Change Page': props<{ options: PaginationOptions }>(),
+    'Change Page': props<{ options: PrescriberPaginationOptions }>(),
     Enter: emptyProps(),
   },
 });

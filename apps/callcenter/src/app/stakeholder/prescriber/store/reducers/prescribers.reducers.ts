@@ -21,13 +21,17 @@ export const reducer = createReducer(
   on(
     prescribersApiActions.loadPrescriberSuccess,
     prescribersApiActions.searchSuccess,
-    (state, { response }): fromState.State => ({
-      ...state,
-      entities: response.entities,
-      loaded: true,
-      loading: false,
-      pagination: response.pagination,
-    })
+    (state, { response }): fromState.State => {
+      const { entities, pagination } = response;
+
+      return {
+        ...state,
+        entities,
+        loaded: true,
+        loading: false,
+        pagination,
+      };
+    }
   ),
   on(
     prescribersPageActions.changePage,
@@ -79,6 +83,6 @@ export const reducer = createReducer(
 export const getEntities = (state: fromState.State) => state.entities;
 export const getLoaded = (state: fromState.State) => state.loaded;
 export const getLoading = (state: fromState.State) => state.loading;
-export const getPagination = (state: fromState.State) => state.pagination;
-export const getSort = (state: fromState.State) => state.sort;
+export const getPaginationOptions = (state: fromState.State) =>
+  state.paginationOptions;
 export const selectId = (state: fromState.State) => state.selectedPrescriberId;

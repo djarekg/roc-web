@@ -1,3 +1,3 @@
-export * as prescriberActions from './actions/index';
+export * from './actions';
 export * from './provider';
 export * as fromPrescribers from './reducers/index';

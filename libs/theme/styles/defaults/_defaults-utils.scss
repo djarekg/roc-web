@@ -1,5 +1,5 @@
 @use '../typography/typography-variables' as typography-vars;
-@use '../scrollbar/scrollbar-utils' as scrollbar-utils;
+@use '../scrollable/scrollable-utils' as scrollable-utils;
 
 @mixin defaults {
   html,
@@ -12,5 +12,5 @@
     font-family: typography-vars.$font-family;
   }
 
-  @include scrollbar-utils.scrollbar-theme();
+  @include scrollable-utils.scrollbar-theme();
 }

@@ -1,5 +1,5 @@
-@use 'layout-variables' as var;
+@use 'layout-variables' as vars;
 
-@mixin adjusted-height($offset: 0) {
-  height: calc(100vh - var.$header-height - $offset);
+@function adjusted-height($offset: 0px) {
+  @return calc(100vh - vars.$header-height - $offset - 4px);
 }

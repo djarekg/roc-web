@@ -6,8 +6,9 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
+import { SKIP_ERROR_INTERCEPTOR_HEADER } from '../constants/skip-error-interceptor-header';
 import { Outcome } from '../models';
-import { SKIP_ERROR_INTERCEPTOR_HEADER } from '../models/skip-error-interceptor-header';
+import { isHttpValueOutcomeResponse } from '../utils';
 
 export const HTTP_ERROR_INTERCEPTOR = (
   req: HttpRequest<unknown>,
@@ -22,7 +23,7 @@ export const HTTP_ERROR_INTERCEPTOR = (
     catchError((response: HttpErrorResponse) => {
       console.error(response);
 
-      if (response instanceof Outcome) {
+      if (isHttpValueOutcomeResponse(response)) {
         return throwError(() => response);
       }
 

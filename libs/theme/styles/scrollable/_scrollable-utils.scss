@@ -1,8 +1,10 @@
 @use '../theme/theme-variables' as theme-vars;
+@use '../layout/layout-utils' as layout-utils;
 
 @mixin scrollbar-theme {
   $scrollbar-size: 10px;
 
+  .rw-scrollable,
   .mat-drawer-content {
     &::-webkit-scrollbar {
       height: $scrollbar-size;
@@ -12,15 +14,15 @@
     &::-webkit-scrollbar-thumb {
       background: theme-vars.$scrollbar-color;
       border-radius: 5px;
-      // outline: 1px solid theme-vars.$scrollbar-color;
     }
 
     &::-webkit-scrollbar-thumb:hover {
       background: darken(theme-vars.$scrollbar-color, 2%);
     }
+  }
 
-    // &::-webkit-scrollbar-thumb:active {
-    //   background: darken(theme-vars.$scrollbar-color, 3%);
-    // }
+  .rw-scrollable {
+    height: layout-utils.adjusted-height();
+    overflow-y: auto;
   }
 }

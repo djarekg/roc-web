@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { isNullOrEmpty } from '@roc-web/core';
 import {
   asyncScheduler,
   catchError,
+  concatMap,
   debounceTime,
   EMPTY,
-  exhaustMap,
   map,
   mergeMap,
   of,
@@ -15,18 +15,22 @@ import {
   takeUntil,
 } from 'rxjs';
 
-import { PrescriberService } from '../../services';
+import { PrescriberService } from '@roc-web/callcenter/stakeholder/prescriber/services';
+
+import { Store } from '@ngrx/store';
 import {
   findPrescriberPageActions,
   prescribersApiActions,
   prescribersPageActions,
   selectedPrescriberPageActions,
 } from '../actions';
+import { selectPaginationOptions } from '../reducers';
 
 @Injectable()
 export class PrescribersEffects {
   readonly #actions$ = inject(Actions);
   readonly #prescriberService = inject(PrescriberService);
+  readonly #store = inject(Store);
 
   load$ = createEffect(() => {
     return this.#actions$.pipe(
@@ -36,8 +40,9 @@ export class PrescribersEffects {
         prescribersApiActions.updatePrescriberSuccess,
         prescribersApiActions.removePrescriberSuccess
       ),
-      exhaustMap(() =>
-        this.#prescriberService.get().pipe(
+      concatLatestFrom(() => this.#store.select(selectPaginationOptions)),
+      concatMap(([, options]) =>
+        this.#prescriberService.get(options).pipe(
           map(response =>
             prescribersApiActions.loadPrescriberSuccess({ response })
           ),

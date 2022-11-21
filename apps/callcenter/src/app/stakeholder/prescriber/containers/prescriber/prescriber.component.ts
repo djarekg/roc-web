@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
 
-import { selectTitle } from '@roc-web/core';
+import { ScrollableDirective, selectTitle } from '@roc-web/core';
 
 @Component({
   selector: 'app-prescriber',
@@ -14,6 +14,7 @@ import { selectTitle } from '@roc-web/core';
   styleUrls: ['./prescriber.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatDividerModule, PushModule, RouterOutlet],
+  hostDirectives: [ScrollableDirective],
 })
 export class PrescriberComponent {
   protected title$ = inject(Store).select(selectTitle);
