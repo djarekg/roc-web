@@ -16,12 +16,12 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { merge, startWith, Subject, tap } from 'rxjs';
 
-import { ImmutableArray, Mutable } from '@roc-web/core';
-
 import {
   Prescriber,
+  PrescriberPagination,
   PrescriberPaginationOptions,
 } from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { PaginationResponse } from '@roc-web/web';
 
 @Component({
   selector: 'app-prescriber-table',
@@ -40,28 +40,23 @@ import {
 })
 export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
-  #prescribers: ImmutableArray<Prescriber> = [];
 
   protected displayedColumns: string[] = ['id', 'nationalId'];
 
   protected applyFilter(event: Event) {
     const filter = (event.target as HTMLInputElement).value;
-    this.filtered.emit(filter);
+    this.filterChange.emit(filter);
   }
 
-  protected data = new MatTableDataSource<Prescriber>([]);
+  protected dataSource = new MatTableDataSource<Prescriber>([]);
 
   @Input()
-  get prescribers(): ImmutableArray<Prescriber> | undefined {
-    return this.#prescribers;
-  }
-  set prescribers(value: ImmutableArray<Prescriber> | undefined) {
-    this.#prescribers = value ?? [];
-    this.data.data = value as Mutable<Prescriber[]>;
+  set prescriberPagination(value: PrescriberPagination | undefined) {
+    this.#setDataSource(value);
   }
 
-  @Output() readonly filtered = new EventEmitter<string>();
-  @Output() readonly pageChanged =
+  @Output() readonly filterChange = new EventEmitter<string>();
+  @Output() readonly pageChange =
     new EventEmitter<PrescriberPaginationOptions>();
 
   @ViewChild(MatPaginator) protected paginator!: MatPaginator;
@@ -76,7 +71,7 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
         const { pageIndex, pageSize } = this.paginator;
         const { active, direction } = this.sort;
 
-        this.pageChanged.emit({
+        this.pageChange.emit({
           filter: null,
           lastName: null,
           nationalId: null,
@@ -92,5 +87,29 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.#destroy$.next();
     this.#destroy$.complete();
+  }
+
+  #setPaginator(value: PaginationResponse) {
+    if (this.paginator) {
+      const paginator = this.paginator;
+      paginator.pageIndex = 0;
+      paginator.pageSize = 0;
+      paginator.length = 0;
+    }
+  }
+
+  #setDataSource(value: PrescriberPagination | undefined) {
+    if (!value) {
+      // this.#resetDataSource();
+      return;
+    }
+
+    const entities = value.entities;
+    const { pageIndex, pageSize, totalCount } = value.pagination;
+
+    this.dataSource.data = entities;
+    this.paginator.pageIndex = pageIndex;
+    this.paginator.pageSize = pageSize;
+    this.paginator.length = totalCount;
   }
 }

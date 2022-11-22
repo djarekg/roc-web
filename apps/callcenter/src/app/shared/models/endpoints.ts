@@ -1,10 +1,11 @@
-// export const enum Endpoints {
-//   prescribers = 'api/prescribers',
-// }
+export const enum Endpoints {
+  prescribers = 'api/prescribers',
+  prescriberDelegates = 'api/prescriber-delegates',
+}
 
-export const Endpoints = {
-  prescribers: 'api/prescribers',
-  prescriberDelegates: 'api/prescriber-delegate',
-} as const;
+// export const Endpoints = {
+//   prescribers: 'api/prescribers',
+//   prescriberDelegates: 'api/prescriber-delegates',
+// } as const;
 
-export type Endpoints = typeof Endpoints[keyof typeof Endpoints];
+// export type Endpoints = typeof Endpoints[keyof typeof Endpoints];

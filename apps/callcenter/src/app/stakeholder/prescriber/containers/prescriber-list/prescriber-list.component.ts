@@ -26,13 +26,15 @@ import { fromPrescribers } from '@roc-web/callcenter/stakeholder/prescriber/stor
 export class PrescriberListComponent implements OnInit {
   readonly #store = inject(Store);
 
-  protected prescribers$ = this.#store.select(fromPrescribers.selectEntities);
+  protected prescriberPagination$ = this.#store.select(
+    fromPrescribers.selectPaginationEntity
+  );
 
   ngOnInit(): void {
     this.#store.dispatch(prescribersPageActions.enter());
   }
 
-  protected onFiltered(filter: string): void {
+  protected onFilterChange(filter: string): void {
     this.#store.dispatch(
       findPrescriberPageActions.searchPrescribers({
         filter: filter,
@@ -40,7 +42,7 @@ export class PrescriberListComponent implements OnInit {
     );
   }
 
-  protected onPageChanged(options: PrescriberPaginationOptions): void {
+  protected onPageChange(options: PrescriberPaginationOptions): void {
     this.#store.dispatch(prescribersPageActions.changePage({ options }));
   }
 }

@@ -83,6 +83,7 @@ export const reducer = createReducer(
 export const getEntities = (state: fromState.State) => state.entities;
 export const getLoaded = (state: fromState.State) => state.loaded;
 export const getLoading = (state: fromState.State) => state.loading;
+export const getPagination = (state: fromState.State) => state.pagination;
 export const getPaginationOptions = (state: fromState.State) =>
   state.paginationOptions;
 export const selectId = (state: fromState.State) => state.selectedPrescriberId;

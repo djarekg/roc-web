@@ -1,5 +1,6 @@
 .mat-mdc-form-field {
-  min-width: 200px;
-  max-width: 50%;
-  width: 100%;
+  // min-width: 200px;
+  // max-width: 50%;
+  // width: 100%;
+  width: max(min(200px), 50%);
 }

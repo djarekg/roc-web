@@ -52,7 +52,21 @@ export const selectLoading = createSelector(
   fromPrescribers.getLoading
 );
 
+export const selectPagination = createSelector(
+  selectState,
+  fromPrescribers.getPagination
+);
+
 export const selectPaginationOptions = createSelector(
   selectState,
   fromPrescribers.getPaginationOptions
+);
+
+export const selectPaginationEntity = createSelector(
+  selectEntities,
+  selectPagination,
+  (entities, pagination) => ({
+    entities,
+    pagination,
+  })
 );
