@@ -22,6 +22,7 @@ import {
   merge,
   startWith,
   Subject,
+  switchMap,
   takeUntil,
   tap,
 } from 'rxjs';
@@ -73,13 +74,15 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatSort) protected readonly sort: MatSort | undefined;
 
   ngAfterViewInit(): void {
-    const filterInputKeyUp = fromEvent(
+    const filterInputKeyUp = fromEvent<Event>(
       this.filterInput!.nativeElement,
       'keyup'
     ).pipe(
       takeUntil(this.#destroy$),
       debounceTime(FILTER_INPUT_KEYUP_DELAY),
-      distinctUntilChanged()
+      distinctUntilChanged(),
+      switchMap(event => (event.target as HTMLInputElement).value),
+      tap(value => this.onFilterChange(value))
     );
 
     this.sort!.sortChange.pipe(
@@ -94,6 +97,7 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
         tap(() => {
           const { pageIndex, pageSize } = this.paginator!;
           const { active, direction } = this.sort!;
+          fo;
           const filter = (this.filterInput!.nativeElement as HTMLInputElement)
             .value;
 
@@ -113,7 +117,7 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.#destroy$.next();
-    this.#destroy$.complete();
+    // this.#destroy$.complete();
   }
 
   protected onFilterChange(value: string) {
