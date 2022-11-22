@@ -3,8 +3,7 @@
   <input
     #input
     matInput
-    placeholder="Filter..."
-    (keyup)="applyFilter($event)" />
+    placeholder="Filter..." />
   <mat-icon matSuffix>filter_list</mat-icon>
 </mat-form-field>
 
@@ -12,7 +11,7 @@
   class="mat-elevation-z8"
   matSort
   recycleRows
-  [dataSource]="dataSource">
+  [dataSource]="presribers">
   <ng-container matColumnDef="id">
     <mat-header-cell
       *matHeaderCellDef
@@ -35,4 +34,6 @@
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
 
-<mat-paginator></mat-paginator>
+<mat-paginator
+  [pageSize]="pageSize"
+  [length]="totalCount"></mat-paginator>

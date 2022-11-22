@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnDestroy,
@@ -13,15 +14,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { merge, startWith, Subject, tap } from 'rxjs';
+import { MatTableModule } from '@angular/material/table';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  fromEvent,
+  merge,
+  startWith,
+  Subject,
+  takeUntil,
+  tap,
+} from 'rxjs';
 
 import {
   Prescriber,
   PrescriberPagination,
   PrescriberPaginationOptions,
 } from '@roc-web/callcenter/stakeholder/prescriber/models';
-import { PaginationResponse } from '@roc-web/web';
+
+const FILTER_INPUT_KEYUP_DELAY = 150;
 
 @Component({
   selector: 'app-prescriber-table',
@@ -41,14 +52,10 @@ import { PaginationResponse } from '@roc-web/web';
 export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
 
-  protected displayedColumns: string[] = ['id', 'nationalId'];
-
-  protected applyFilter(event: Event) {
-    const filter = (event.target as HTMLInputElement).value;
-    this.filterChange.emit(filter);
-  }
-
-  protected dataSource = new MatTableDataSource<Prescriber>([]);
+  protected readonly displayedColumns: string[] = ['id', 'nationalId'];
+  protected presribers: Readonly<Prescriber>[] = [];
+  protected pageSize: number = 0;
+  protected totalCount: number = 0;
 
   @Input()
   set prescriberPagination(value: PrescriberPagination | undefined) {
@@ -59,29 +66,49 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
   @Output() readonly pageChange =
     new EventEmitter<PrescriberPaginationOptions>();
 
-  @ViewChild(MatPaginator) protected paginator!: MatPaginator;
-  @ViewChild(MatSort) protected sort!: MatSort;
+  @ViewChild('input') protected readonly filterInput: ElementRef | undefined;
+  @ViewChild(MatPaginator) protected readonly paginator:
+    | MatPaginator
+    | undefined;
+  @ViewChild(MatSort) protected readonly sort: MatSort | undefined;
 
   ngAfterViewInit(): void {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-
-    merge(this.sort.sortChange, this.paginator.page).pipe(
-      startWith({}),
-      tap(() => {
-        const { pageIndex, pageSize } = this.paginator;
-        const { active, direction } = this.sort;
-
-        this.pageChange.emit({
-          filter: null,
-          lastName: null,
-          nationalId: null,
-          pageIndex,
-          pageSize,
-          sort: { active, direction },
-          stakeholderId: null,
-        });
-      })
+    const filterInputKeyUp = fromEvent(
+      this.filterInput!.nativeElement,
+      'keyup'
+    ).pipe(
+      takeUntil(this.#destroy$),
+      debounceTime(FILTER_INPUT_KEYUP_DELAY),
+      distinctUntilChanged()
     );
+
+    this.sort!.sortChange.pipe(
+      takeUntil(this.#destroy$),
+      tap(() => this.paginator!.firstPage())
+    ).subscribe();
+
+    merge(this.sort!.sortChange, this.paginator!.page, filterInputKeyUp)
+      .pipe(
+        takeUntil(this.#destroy$),
+        startWith({}),
+        tap(() => {
+          const { pageIndex, pageSize } = this.paginator!;
+          const { active, direction } = this.sort!;
+          const filter = (this.filterInput!.nativeElement as HTMLInputElement)
+            .value;
+
+          this.pageChange.emit({
+            filter,
+            lastName: null,
+            nationalId: null,
+            pageIndex,
+            pageSize,
+            sort: { active, direction },
+            stakeholderId: null,
+          });
+        })
+      )
+      .subscribe();
   }
 
   ngOnDestroy(): void {
@@ -89,27 +116,15 @@ export class PrescriberTableComponent implements AfterViewInit, OnDestroy {
     this.#destroy$.complete();
   }
 
-  #setPaginator(value: PaginationResponse) {
-    if (this.paginator) {
-      const paginator = this.paginator;
-      paginator.pageIndex = 0;
-      paginator.pageSize = 0;
-      paginator.length = 0;
-    }
+  protected onFilterChange(value: string) {
+    this.filterChange.emit(value);
   }
 
-  #setDataSource(value: PrescriberPagination | undefined) {
-    if (!value) {
-      // this.#resetDataSource();
-      return;
-    }
+  #setDataSource(data: PrescriberPagination | undefined) {
+    const { entities = [], pagination } = data ?? {};
 
-    const entities = value.entities;
-    const { pageIndex, pageSize, totalCount } = value.pagination;
-
-    this.dataSource.data = entities;
-    this.paginator.pageIndex = pageIndex;
-    this.paginator.pageSize = pageSize;
-    this.paginator.length = totalCount;
+    this.presribers = entities;
+    this.pageSize = pagination?.pageSize ?? 0;
+    this.totalCount = pagination?.totalCount ?? 0;
   }
 }

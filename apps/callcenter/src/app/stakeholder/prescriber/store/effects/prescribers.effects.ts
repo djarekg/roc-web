@@ -36,6 +36,7 @@ export class PrescribersEffects {
     return this.#actions$.pipe(
       ofType(
         prescribersPageActions.enter,
+        prescribersPageActions.changePage,
         prescribersApiActions.addPrescriberSuccess,
         prescribersApiActions.updatePrescriberSuccess,
         prescribersApiActions.removePrescriberSuccess

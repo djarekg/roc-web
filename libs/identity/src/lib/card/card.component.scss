@@ -1,8 +1,6 @@
 :host {
   display: block;
-  width: 100%;
-  max-width: 900px;
-  min-width: 300px;
+  width: max(300px, 900px);
 }
 
 .mat-mdc-card-title,
