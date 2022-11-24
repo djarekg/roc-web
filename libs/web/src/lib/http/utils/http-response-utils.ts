@@ -5,10 +5,12 @@ import {
 } from '@angular/common/http';
 
 import {
-  ValueOutcome,
-  ValueOutcomePaginationResponse,
   VALUE_OUTCOME_PAGINATION_RESPONSE_KEYS,
   VALUE_OUTCOME_REQUIRED_KEYS,
+} from '../../shared/constants';
+import {
+  ValueOutcome,
+  ValueOutcomePaginationResponse,
 } from '../../shared/models';
 
 export function isHttpResponseBodyObject(body: unknown): body is object {

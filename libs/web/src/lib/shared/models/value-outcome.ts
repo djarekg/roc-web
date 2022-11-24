@@ -1,5 +1,3 @@
-import { RequiredKeys } from '@roc-web/core';
-
 import { ValueOutcomePaginationResponse } from './value-outcome-pagination-response';
 
 export class ValueOutcome<T extends unknown> {
@@ -10,7 +8,3 @@ export class ValueOutcome<T extends unknown> {
   success: boolean = false;
   value?: ValueOutcomePaginationResponse<T> | T;
 }
-
-export const VALUE_OUTCOME_REQUIRED_KEYS: ReadonlyArray<
-  keyof RequiredKeys<ValueOutcome<unknown>>
-> = ['success', 'failure', 'messages'];
