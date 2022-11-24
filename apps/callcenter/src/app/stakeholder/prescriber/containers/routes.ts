@@ -17,7 +17,8 @@ export default [
       },
       {
         path: 'collection',
-        loadComponent: () => import('./prescriber-collection'),
+        loadComponent: () =>
+          import('./prescriber-collection/prescriber-collection.component'),
         title: 'Prescribers',
       },
     ],

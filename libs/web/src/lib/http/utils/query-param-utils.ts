@@ -16,7 +16,12 @@ export function createHttpPaginationParams(
   sort: Sort
 ): HttpParams {
   const { pageIndex, pageSize } = pagination;
-  const { active: sortColumn, direction: isSortDesc } = sort;
+  const { active: sortColumn, direction } = sort;
 
-  return createHttpParams({ pageIndex, pageSize, sortColumn, isSortDesc });
+  return createHttpParams({
+    pageIndex,
+    pageSize,
+    sortColumn,
+    isSortDesc: direction === 'desc',
+  });
 }
