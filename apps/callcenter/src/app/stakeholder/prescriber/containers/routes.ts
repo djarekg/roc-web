@@ -12,14 +12,13 @@ export default [
     children: [
       {
         path: '',
-        redirectTo: 'list',
+        redirectTo: 'collection',
         pathMatch: 'full',
       },
       {
-        path: 'list',
-        loadComponent: () =>
-          import('./prescriber-list').then(m => m.PrescriberListComponent),
-        title: 'Prescriber List',
+        path: 'collection',
+        loadComponent: () => import('./prescriber-collection'),
+        title: 'Prescribers',
       },
     ],
     canActivate: [authCanActivate],

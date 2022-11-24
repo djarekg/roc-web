@@ -1,1 +1,1 @@
-export * from './prescriber-table';
+export * from './prescriber-list';

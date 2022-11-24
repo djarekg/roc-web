@@ -6,15 +6,17 @@ import {
 } from '@ngrx/store';
 
 import * as fromRoot from '@roc-web/callcenter/store';
-import * as fromState from '../state/prescriber.state';
+import { EntityList } from '@roc-web/web';
+
+import { Prescriber } from '../../models';
+import * as fromCollection from './collection.reducers';
 import * as fromPrescribers from './prescribers.reducers';
-import * as fromSearch from './search.reducers';
 
 export const prescribersFeatureKey = 'prescribers';
 
 export interface PrescriberState {
-  [fromPrescribers.prescribersFeatureKey]: fromState.State;
-  [fromSearch.searchFeatureKey]: fromState.State;
+  [fromPrescribers.prescribersFeatureKey]: fromPrescribers.State;
+  [fromCollection.collectionFeatureKey]: fromCollection.State;
 }
 
 export interface State extends fromRoot.State {
@@ -24,49 +26,106 @@ export interface State extends fromRoot.State {
 export function reducers(state: PrescriberState | undefined, action: Action) {
   return combineReducers({
     [fromPrescribers.prescribersFeatureKey]: fromPrescribers.reducer,
-    [fromSearch.searchFeatureKey]: fromSearch.reducer,
+    [fromCollection.collectionFeatureKey]: fromCollection.reducer,
   })(state, action);
 }
 
-export const selectFeatureState = createFeatureSelector<PrescriberState>(
+export const selectPrescribersState = createFeatureSelector<PrescriberState>(
   prescribersFeatureKey
 );
 
-export const selectState = createSelector(
-  selectFeatureState,
+export const selectPrescriberEntitiesState = createSelector(
+  selectPrescribersState,
   state => state.prescribers
 );
 
-export const selectEntities = createSelector(
-  selectState,
-  fromPrescribers.getEntities
-);
-
-export const selectLoaded = createSelector(
-  selectState,
-  fromPrescribers.getLoaded
-);
-
-export const selectLoading = createSelector(
-  selectState,
-  fromPrescribers.getLoading
+export const selectSelectedPrescriberId = createSelector(
+  selectPrescriberEntitiesState,
+  fromPrescribers.selectId
 );
 
 export const selectPagination = createSelector(
-  selectState,
-  fromPrescribers.getPagination
+  selectPrescriberEntitiesState,
+  fromPrescribers.selectPagination
 );
 
-export const selectPaginationOptions = createSelector(
-  selectState,
-  fromPrescribers.getPaginationOptions
+export const selectSort = createSelector(
+  selectPrescriberEntitiesState,
+  fromPrescribers.selectSort
 );
 
-export const selectPaginationEntity = createSelector(
-  selectEntities,
+export const selectPaginationAndSort = createSelector(
   selectPagination,
-  (entities, pagination) => ({
-    entities,
-    pagination,
-  })
+  selectSort,
+  (pagination, sort) => {
+    return {
+      pagination,
+      sort,
+    };
+  }
+);
+
+export const {
+  selectIds: selectPrescriberIds,
+  selectEntities: selectPrescriberEntities,
+  selectAll: selectAllPrescribers,
+  selectTotal: selectTotalPrescribers,
+} = fromPrescribers.adapter.getSelectors(selectPrescriberEntitiesState);
+
+export const selectSelectedPrescriber = createSelector(
+  selectPrescriberEntities,
+  selectSelectedPrescriberId,
+  (entities, selectedId) => {
+    return selectedId && entities[selectedId];
+  }
+);
+
+export const selectAllPrescribersWithPaginationSort = createSelector(
+  selectAllPrescribers,
+  selectPagination,
+  selectSort,
+  (prescribers, pagination, sort): EntityList<Prescriber> => {
+    return {
+      entities: prescribers,
+      pagination,
+      sort,
+    };
+  }
+);
+
+export const selectCollectionState = createSelector(
+  selectPrescribersState,
+  state => state.collection
+);
+
+export const selectCollectionLoaded = createSelector(
+  selectCollectionState,
+  fromCollection.getLoaded
+);
+export const selectCollectionLoading = createSelector(
+  selectCollectionState,
+  fromCollection.getLoading
+);
+export const selectCollectionPrescriberIds = createSelector(
+  selectCollectionState,
+  fromCollection.getIds
+);
+
+export const selectPrescriberCollection = createSelector(
+  selectPrescriberEntities,
+  selectCollectionPrescriberIds,
+  (entities, ids) => {
+    return ids
+      .map(id => entities[id])
+      .filter((book): book is Prescriber => book != null);
+  }
+);
+
+// eslint-disable-next-line @ngrx/prefix-selectors-with-select
+export const isSelectedPrescriberInCollection = createSelector(
+  selectCollectionPrescriberIds,
+  selectSelectedPrescriberId,
+  (ids, selected) => {
+    return !!selected && ids.indexOf(selected) > -1;
+  }
 );

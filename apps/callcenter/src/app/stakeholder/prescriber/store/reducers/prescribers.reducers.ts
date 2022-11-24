@@ -1,89 +1,82 @@
+import { Sort } from '@angular/material/sort';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
+import { Pagination } from '@roc-web/web';
+
+import { Prescriber } from '../../models';
+
 import {
-  prescribersApiActions,
-  prescribersPageActions,
+  collectionApiActions,
+  collectionPageActions,
   selectedPrescriberPageActions,
 } from '../actions';
-import * as fromState from '../state/prescriber.state';
 
 export const prescribersFeatureKey = 'prescribers';
 
-export const reducer = createReducer(
-  fromState.initialState,
-  on(
-    prescribersPageActions.enter,
-    (state): fromState.State => ({
-      ...state,
-      loading: true,
-    })
-  ),
-  on(
-    prescribersApiActions.loadPrescriberSuccess,
-    prescribersApiActions.searchSuccess,
-    (state, { response }): fromState.State => {
-      const { entities, pagination } = response;
+export interface State extends EntityState<Prescriber> {
+  pagination: Pagination;
+  selectedPrescriberId: string | null;
+  sort: Sort;
+}
 
-      return {
+export const adapter: EntityAdapter<Prescriber> =
+  createEntityAdapter<Prescriber>({
+    selectId: (prescriber: Prescriber) => prescriber.id,
+    sortComparer: false,
+  });
+
+export const initialState: State = adapter.getInitialState({
+  pagination: {
+    pageIndex: 1,
+    pageSize: 10,
+    totalCount: 0,
+  },
+  selectedPrescriberId: null,
+  sort: {
+    active: 'id',
+    direction: 'asc',
+  },
+});
+
+export const reducer = createReducer(
+  initialState,
+  on(
+    collectionApiActions.loadPrescriberSuccess,
+    (state, { entities, pagination }) =>
+      adapter.addMany(entities, {
         ...state,
-        entities,
-        loaded: true,
-        loading: false,
         pagination,
-      };
-    }
+        selectedPrescriberId: null,
+      })
   ),
-  on(
-    prescribersPageActions.changePage,
-    (state, { options }): fromState.State => {
-      return {
-        ...state,
-        ...options,
-      };
-    }
-  ),
-  on(
-    prescribersApiActions.removePrescriberFailure,
-    (state, { prescriber }): fromState.State => {
-      return {
-        ...state,
-        entities: [...state.entities, prescriber],
-      };
-    }
-  ),
-  on(
-    prescribersApiActions.addPrescriberFailure,
-    (state, { prescriber }): fromState.State => {
-      return {
-        ...state,
-        entities: state.entities.filter(entity => entity.id !== prescriber.id),
-      };
-    }
-  ),
-  on(
-    prescribersApiActions.updatePrescriberFailure,
-    (state, { prescriber }): fromState.State => {
-      return {
-        ...state,
-        entities: state.entities.map(entity =>
-          entity.id === prescriber.id ? prescriber : entity
-        ),
-      };
-    }
-  ),
+  on(collectionPageActions.changePage, (state, { pageIndex }): State => {
+    return {
+      ...state,
+      pagination: {
+        ...state.pagination,
+        pageIndex,
+      },
+    };
+  }),
+  on(collectionPageActions.sortPage, (state, { active, direction }): State => {
+    return {
+      ...state,
+      sort: {
+        active,
+        direction,
+      },
+    };
+  }),
   on(
     selectedPrescriberPageActions.selectPrescriber,
-    (state, { id }): fromState.State => ({
+    (state, { id }): State => ({
       ...state,
       selectedPrescriberId: id,
     })
   )
 );
 
-export const getEntities = (state: fromState.State) => state.entities;
-export const getLoaded = (state: fromState.State) => state.loaded;
-export const getLoading = (state: fromState.State) => state.loading;
-export const getPagination = (state: fromState.State) => state.pagination;
-export const getPaginationOptions = (state: fromState.State) =>
-  state.paginationOptions;
-export const selectId = (state: fromState.State) => state.selectedPrescriberId;
+export const selectId = (state: State) => state.selectedPrescriberId;
+export const selectPagination = (state: State) => state.pagination;
+export const selectSort = (state: State) => state.sort;

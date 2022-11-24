@@ -1,8 +1,8 @@
-import { PaginationEntity } from '@roc-web/web';
+import { EntityList } from '@roc-web/web';
 
 import { Prescriber } from './prescriber';
 
 export type PrescriberPagination = Pick<
-  PaginationEntity<Prescriber>,
+  EntityList<Prescriber>,
   'entities' | 'pagination'
 >;

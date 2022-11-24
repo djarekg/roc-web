@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Sort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 
 import { Endpoints } from '@roc-web/callcenter/shared/models';
+import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 import {
-  Prescriber,
-  PrescriberPaginationOptions,
-} from '@roc-web/callcenter/stakeholder/prescriber/models';
-import { createHttpParams, PaginationEntityResponse } from '@roc-web/web';
+  createHttpPaginationParams,
+  EntityListRespones,
+  Pagination,
+} from '@roc-web/web';
 
 @Injectable()
 export class PrescriberService {
@@ -18,11 +20,12 @@ export class PrescriberService {
   }
 
   get(
-    options: PrescriberPaginationOptions
-  ): Observable<PaginationEntityResponse<Prescriber>> {
-    const params = createHttpParams(options);
+    pagination: Pagination,
+    sort: Sort
+  ): Observable<EntityListRespones<Prescriber>> {
+    const params = createHttpPaginationParams(pagination, sort);
 
-    return this.#http.get<PaginationEntityResponse<Prescriber>>(
+    return this.#http.get<EntityListRespones<Prescriber>>(
       Endpoints.prescribers,
       {
         params,
@@ -42,9 +45,9 @@ export class PrescriberService {
     return this.#http.delete<Prescriber>(url);
   }
 
-  search(filter: string): Observable<PaginationEntityResponse<Prescriber>> {
+  search(filter: string): Observable<EntityListRespones<Prescriber>> {
     const url = `${Endpoints.prescribers}/search/${filter}`;
-    return this.#http.get<PaginationEntityResponse<Prescriber>>(url);
+    return this.#http.get<EntityListRespones<Prescriber>>(url);
   }
 
   update(prescriber: Prescriber): Observable<Prescriber> {
