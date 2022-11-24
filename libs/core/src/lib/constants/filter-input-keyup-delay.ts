@@ -1,0 +1,1 @@
+export const FILTER_INPUT_KEYUP_DELAY = 150;

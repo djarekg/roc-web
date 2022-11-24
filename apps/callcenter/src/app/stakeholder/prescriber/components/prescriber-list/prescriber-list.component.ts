@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   OnDestroy,
@@ -12,26 +11,18 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginator,
+  MatPaginatorModule,
+  PageEvent,
+} from '@angular/material/paginator';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  fromEvent,
-  Subject,
-  switchMap,
-  takeUntil,
-  tap,
-} from 'rxjs';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Subject, takeUntil, tap } from 'rxjs';
 
-import {
-  Prescriber,
-  PrescriberPagination,
-} from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { FilterInputComponent } from '@roc-web/core';
 import { EntityList, PageChange } from '@roc-web/web';
-
-const FILTER_INPUT_KEYUP_DELAY = 150;
 
 @Component({
   selector: 'app-prescriber-list',
@@ -40,6 +31,7 @@ const FILTER_INPUT_KEYUP_DELAY = 150;
   styleUrls: ['./prescriber-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    FilterInputComponent,
     MatButtonModule,
     MatIconModule,
     MatInputModule,
@@ -52,49 +44,35 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
 
   protected readonly displayedColumns: string[] = ['id', 'nationalId'];
-  protected presribers: Readonly<Prescriber>[] = [];
+  protected dataSource = new MatTableDataSource<Readonly<Prescriber>>([]);
   protected pageSize: number = 0;
   protected totalCount: number = 0;
 
   @Input()
-  set prescriberList(value: EntityList<Prescriber> | undefined) {
-    this.#setDataSource(value);
+  set prescriberList(list: EntityList<Prescriber> | undefined) {
+    this.#setDataSource(list);
   }
 
   @Output() readonly pageChange = new EventEmitter<PageChange>();
   @Output() readonly pageSort = new EventEmitter<Sort>();
 
-  @ViewChild('input') protected readonly filterInput:
-    | ElementRef<HTMLInputElement>
-    | undefined;
   @ViewChild(MatPaginator) protected readonly paginator:
     | MatPaginator
     | undefined;
   @ViewChild(MatSort) protected readonly sort: MatSort | undefined;
 
   ngAfterViewInit(): void {
-    fromEvent<Event>(this.filterInput!.nativeElement, 'keyup').pipe(
-      takeUntil(this.#destroy$),
-      debounceTime(FILTER_INPUT_KEYUP_DELAY),
-      distinctUntilChanged(),
-      switchMap(event => (event.target as HTMLInputElement).value),
-      tap(value => this.#filterChanged(value))
-    );
-
     this.sort?.sortChange
       .pipe(
         takeUntil(this.#destroy$),
-        tap(() => {
-          this.paginator?.firstPage();
-          this.#sortChange();
-        })
+        tap(sort => this.#sortChange(sort))
       )
       .subscribe();
 
     this.paginator?.page
       .pipe(
         takeUntil(this.#destroy$),
-        tap(() => this.#pageChange())
+        tap(pageEvent => this.#pageChange(pageEvent))
       )
       .subscribe();
   }
@@ -104,25 +82,25 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     this.#destroy$.complete();
   }
 
-  #filterChanged(value: string) {}
-
-  #pageChange(): void {
-    const { pageIndex } = this.paginator!;
-
-    this.pageChange.emit({ pageIndex });
+  protected onFilterChanged(value: string | null) {
+    this.dataSource.filter = value?.trim().toLowerCase() ?? '';
   }
 
-  #sortChange(): void {
-    const { active, direction } = this.sort!;
-
-    this.pageSort.emit({ active, direction });
+  #pageChange(pageEvent: PageEvent): void {
+    const { pageIndex } = pageEvent;
+    return this.pageChange.emit({ pageIndex });
   }
 
-  #setDataSource(data: PrescriberPagination | undefined) {
-    const { entities = [], pagination } = data ?? {};
+  #setDataSource(list: EntityList<Prescriber> | undefined) {
+    const { entities = [], pagination } = list ?? {};
 
-    this.presribers = entities;
+    this.dataSource.data = entities;
     this.pageSize = pagination?.pageSize ?? 0;
     this.totalCount = pagination?.totalCount ?? 0;
+  }
+
+  #sortChange(sort: Sort) {
+    this.paginator?.firstPage();
+    this.pageSort.emit({ ...sort });
   }
 }

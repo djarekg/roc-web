@@ -1,5 +1,6 @@
 export * from './animations';
 export * from './components';
+export * from './constants';
 export * from './defaults';
 export * from './directives';
 export * from './i18n';

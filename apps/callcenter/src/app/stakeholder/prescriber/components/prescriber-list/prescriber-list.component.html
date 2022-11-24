@@ -1,17 +1,10 @@
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input
-    #input
-    matInput
-    placeholder="Filter..." />
-  <mat-icon matSuffix>filter_list</mat-icon>
-</mat-form-field>
+<rw-filter-input (filterChange)="onFilterChanged($event)"></rw-filter-input>
 
 <mat-table
   class="mat-elevation-z8"
   matSort
   recycleRows
-  [dataSource]="presribers">
+  [dataSource]="dataSource">
   <ng-container matColumnDef="id">
     <mat-header-cell
       *matHeaderCellDef
