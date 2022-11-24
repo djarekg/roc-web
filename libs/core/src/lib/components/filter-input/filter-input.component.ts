@@ -14,6 +14,7 @@ import {
   debounceTime,
   distinctUntilChanged,
   fromEvent,
+  map,
   Subject,
   takeUntil,
   tap,
@@ -32,7 +33,7 @@ import { FILTER_INPUT_KEYUP_DELAY } from '../../constants';
 export class FilterInputComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
 
-  @Output() filterChange = new EventEmitter<string>();
+  @Output() readonly filterChange = new EventEmitter<string>();
 
   @ViewChild('input') protected readonly filterInput:
     | ElementRef<HTMLInputElement>
@@ -43,13 +44,9 @@ export class FilterInputComponent implements AfterViewInit, OnDestroy {
       .pipe(
         takeUntil(this.#destroy$),
         debounceTime(FILTER_INPUT_KEYUP_DELAY),
+        map(event => (event.target as HTMLInputElement).value),
         distinctUntilChanged(),
-        // switchMap(event => (event.target as HTMLInputElement).value),
-        // tap(value => this.filterChange.emit(value))
-        tap(event => {
-          const value = (event.target as HTMLInputElement).value;
-          this.filterChange.emit(value);
-        })
+        tap(value => this.filterChange.emit(value))
       )
       .subscribe();
   }
