@@ -5,19 +5,41 @@
   matSort
   recycleRows
   [dataSource]="dataSource">
-  <ng-container matColumnDef="id">
+  <ng-container matColumnDef="externalId">
     <mat-header-cell
       *matHeaderCellDef
-      mat-sort-header>
-      ID
+      mat-sort-header
+      i18n="@@stakeholder.systemId">
+      System ID
     </mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    <mat-cell *matCellDef="let row">{{ row.stakeholder.externalId }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      i18n="@@stakeholder.firstName">
+      First Name
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.stakeholder.firstName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      i18n="@@stakeholder.lastName">
+      Last Name
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.stakeholder.lastName }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="nationalId">
     <mat-header-cell
       *matHeaderCellDef
-      mat-sort-header>
+      mat-sort-header
+      i18n="@@prescriber.nationalId">
       National ID
     </mat-header-cell>
     <mat-cell *matCellDef="let row">{{ row.nationalId }}</mat-cell>

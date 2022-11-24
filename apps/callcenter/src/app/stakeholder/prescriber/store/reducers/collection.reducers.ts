@@ -25,15 +25,11 @@ export const reducer = createReducer(
     collectionPageActions.enter,
     (state): State => ({ ...state, loading: true })
   ),
-  on(
-    collectionApiActions.loadPrescriberSuccess,
-    (_state, { entities, pagination }) => ({
-      loaded: true,
-      loading: false,
-      ids: entities.map(entity => entity.id),
-      pagination,
-    })
-  ),
+  on(collectionApiActions.loadPrescriberSuccess, (_state, { entities }) => ({
+    loaded: true,
+    loading: false,
+    ids: entities.map(entity => entity.id),
+  })),
   on(
     selectedPrescriberPageActions.addPrescriber,
     collectionApiActions.updatePrescriberFailure,

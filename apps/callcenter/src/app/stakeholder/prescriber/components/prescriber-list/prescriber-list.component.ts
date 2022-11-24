@@ -43,7 +43,12 @@ import { EntityList, PageChange } from '@roc-web/web';
 export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
 
-  protected readonly displayedColumns: string[] = ['id', 'nationalId'];
+  protected readonly displayedColumns: string[] = [
+    'externalId',
+    'firstName',
+    'lastName',
+    'nationalId',
+  ];
   protected dataSource = new MatTableDataSource<Readonly<Prescriber>>([]);
   protected pageSize: number = 0;
   protected totalCount: number = 0;
