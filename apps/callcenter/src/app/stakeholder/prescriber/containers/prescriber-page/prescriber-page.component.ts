@@ -1,7 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
+import {
+  RouterLinkActive,
+  RouterLinkWithHref,
+  RouterOutlet,
+} from '@angular/router';
 
 @Component({
   selector: 'app-prescriber',
@@ -9,6 +15,13 @@ import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
   templateUrl: './prescriber-page.component.html',
   styleUrls: ['./prescriber-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatSidenavModule, RouterOutlet, RouterLinkWithHref],
+  imports: [
+    MatButtonModule,
+    MatListModule,
+    MatSidenavModule,
+    RouterOutlet,
+    RouterLinkActive,
+    RouterLinkWithHref,
+  ],
 })
 export default class PrescriberPageComponent {}

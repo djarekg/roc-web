@@ -1,5 +1,27 @@
 <mat-drawer-container>
-  <mat-drawer></mat-drawer>
+  <mat-drawer
+    #drawer
+    mode="side"
+    opened="true">
+    <mat-nav-list>
+      <a
+        #accountRla="routerLinkActive"
+        mat-list-item
+        routerLink="detail"
+        routerLinkActive
+        [activated]="accountRla.isActive">
+        Summary
+      </a>
+      <a
+        #securityRla="routerLinkActive"
+        mat-list-item
+        routerLink="security"
+        routerLinkActive
+        [activated]="securityRla.isActive">
+        Attestations
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
   <mat-drawer-content>
     <div
       class="rw-settings-content"
