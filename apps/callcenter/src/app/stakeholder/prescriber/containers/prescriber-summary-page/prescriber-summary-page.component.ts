@@ -7,10 +7,10 @@ import { CardComponent, selectTitle } from '@roc-web/core';
 import { PrescriberDetailComponent } from '../../components';
 
 @Component({
-  selector: 'app-prescriber-summary',
+  selector: 'app-prescriber-summary-page',
   standalone: true,
-  templateUrl: './prescriber-summary.component.html',
-  styleUrls: ['./prescriber-summary.component.scss'],
+  templateUrl: './prescriber-summary-page.component.html',
+  styleUrls: ['./prescriber-summary-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CardComponent,
@@ -19,7 +19,7 @@ import { PrescriberDetailComponent } from '../../components';
     PushModule,
   ],
 })
-export default class PrescriberSummaryComponent {
+export default class PrescriberSummaryPageComponent {
   readonly #store = inject(Store);
 
   protected readonly title$ = this.#store.select(selectTitle);

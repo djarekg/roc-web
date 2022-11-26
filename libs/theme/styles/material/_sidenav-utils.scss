@@ -21,7 +21,7 @@
 
     &.mat-mdc-list-item-interactive:focus {
       &::before {
-        opacity: 0.08;
+        opacity: 0;
       }
 
       &:hover::before {

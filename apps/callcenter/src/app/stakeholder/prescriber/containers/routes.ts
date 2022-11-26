@@ -31,9 +31,20 @@ export default [
           {
             path: 'summary',
             loadComponent: () =>
-              import('./prescriber-summary/prescriber-summary.component'),
+              import(
+                './prescriber-summary-page/prescriber-summary-page.component'
+              ),
             title: 'Summary',
             data: { animation: 'SummaryPage' },
+          },
+          {
+            path: 'attestations',
+            loadComponent: () =>
+              import(
+                './prescriber-attestations-page/prescriber-attestations-page.component'
+              ),
+            title: 'Attestations',
+            data: { animation: 'AttestationsPage' },
           },
         ],
       },
