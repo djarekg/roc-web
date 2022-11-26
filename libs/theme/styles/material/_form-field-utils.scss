@@ -1,0 +1,13 @@
+@use '../layout/layout-variables' as layout-vars;
+
+@mixin form-field-overrides {
+  .mdc-notched-outline__leading {
+    border-top-left-radius: layout-vars.$border-radius !important;
+    border-bottom-left-radius: layout-vars.$border-radius !important;
+  }
+
+  .mdc-notched-outline__trailing {
+    border-top-right-radius: layout-vars.$border-radius !important;
+    border-bottom-right-radius: layout-vars.$border-radius !important;
+  }
+}

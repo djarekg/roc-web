@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 
-import { CardComponent } from '@roc-web/identity';
+import { CardComponent } from '@roc-web/core';
 
 import { TwoFactorComponent } from '../../../components/two-factor';
 
@@ -12,4 +12,6 @@ import { TwoFactorComponent } from '../../../components/two-factor';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CardComponent, TwoFactorComponent],
 })
-export class SecurityComponent {}
+export class SecurityComponent {
+  @HostBinding('class') readonly class = 'rw-settings-item';
+}

@@ -22,6 +22,20 @@ export default [
           import('./prescriber-page/prescriber-page.component'),
         title: 'Prescriber',
         canActivate: [prescriberExitsGuards.canActive],
+        children: [
+          {
+            path: '',
+            redirectTo: 'summary',
+            pathMatch: 'full',
+          },
+          {
+            path: 'summary',
+            loadComponent: () =>
+              import('./prescriber-summary/prescriber-summary.component'),
+            title: 'Summary',
+            data: { animation: 'SummaryPage' },
+          },
+        ],
       },
     ],
     canActivate: [authGuards.canActivate],

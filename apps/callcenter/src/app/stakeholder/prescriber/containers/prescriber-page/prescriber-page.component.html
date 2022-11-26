@@ -1,3 +1,12 @@
+<mat-toolbar>
+  <button
+    color="primary"
+    mat-icon-button
+    (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{ title$ | ngrxPush }} Detail</span>
+</mat-toolbar>
 <mat-drawer-container>
   <mat-drawer
     #drawer
@@ -5,26 +14,26 @@
     opened="true">
     <mat-nav-list>
       <a
-        #accountRla="routerLinkActive"
+        #summaryRla="routerLinkActive"
         mat-list-item
         routerLink="detail"
         routerLinkActive
-        [activated]="accountRla.isActive">
+        [activated]="summaryRla.isActive">
         Summary
       </a>
       <a
-        #securityRla="routerLinkActive"
+        #attestationsRla="routerLinkActive"
         mat-list-item
         routerLink="security"
         routerLinkActive
-        [activated]="securityRla.isActive">
+        [activated]="attestationsRla.isActive">
         Attestations
       </a>
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
     <div
-      class="rw-settings-content"
+      class="rw-drawer-content"
       [@routeAnimations]="ro?.activatedRouteData?.['animation']">
       <router-outlet #ro="outlet"></router-outlet>
     </div>

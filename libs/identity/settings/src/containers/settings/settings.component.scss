@@ -1,33 +1,18 @@
-@use '../../../../../theme/styles/layout/layout-utils' as layout-utils;
-@use '../../../../../theme/styles/layout/layout-variables' as layout-vars;
-@use '../../../../../theme/styles/theme/theme-variables' as theme-vars;
-
 :host {
   display: block;
   height: 100%;
 }
 
-.mat-toolbar {
-  gap: 10px;
-}
-
-.mat-drawer-container {
+::ng-deep .rw-settings-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   height: 100%;
+  width: 100%;
+  row-gap: 20px;
 }
 
-.mat-drawer-content {
-  height: layout-utils.adjusted-height(layout-vars.$mat-toolbar-height);
-  overflow-y: auto;
-}
-
-.mat-drawer {
-  width: 200px;
-}
-
-.mdc-list-item--activated {
-  background: theme-vars.$selection-active-color;
-}
-
-.rw-settings-content {
-  padding: 20px;
+::ng-deep .rw-settings-item .rw-card {
+  width: max(300px, 900px);
 }

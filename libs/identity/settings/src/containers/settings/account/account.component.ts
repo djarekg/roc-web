@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 
-import { CardComponent } from '@roc-web/identity';
+import { CardComponent } from '@roc-web/core';
 
 import {
-    ChangePasswordComponent,
-    UserDetailsComponent
+  ChangePasswordComponent,
+  UserDetailsComponent,
 } from '../../../components';
 
 @Component({
@@ -15,4 +15,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CardComponent, UserDetailsComponent, ChangePasswordComponent],
 })
-export class AccountComponent {}
+export class AccountComponent {
+  @HostBinding('class') readonly class = 'rw-settings-item';
+}

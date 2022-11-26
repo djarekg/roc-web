@@ -1,0 +1,37 @@
+@use '../theme/theme-variables' as theme-vars;
+@use '../layout/layout-variables' as layout-vars;
+@use '../layout/layout-utils' as layout-utils;
+
+@mixin sidenav-overrides {
+  .mat-drawer-container {
+    height: 100%;
+  }
+
+  .mat-drawer-content {
+    height: layout-utils.adjusted-height(layout-vars.$mat-toolbar-height);
+    overflow-y: auto;
+  }
+
+  .mat-drawer {
+    width: 200px;
+  }
+
+  .mdc-list-item--activated {
+    color: theme-vars.$primary;
+
+    &.mat-mdc-list-item-interactive:focus {
+      &::before {
+        opacity: 0.08;
+      }
+
+      &:hover::before {
+        opacity: 0.08;
+      }
+    }
+  }
+
+  .rw-drawer-content {
+    padding-block: 20px;
+    padding-inline: 50px;
+  }
+}

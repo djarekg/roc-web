@@ -2,6 +2,7 @@
 @use './theme-variables' as theme-vars;
 @use '../layout/layout-variables' as layout-vars;
 @use '../typography/typography-variables' as typography-vars;
+@use '../material' as mat-utils;
 
 @function dark-theme(
   $primary,
@@ -56,26 +57,8 @@
 }
 
 @mixin component-overrides {
-  .mat-mdc-card.mdc-card {
-    border-radius: layout-vars.$border-radius;
-    border-top: 6px solid theme-vars.$primary;
-  }
-
-  .mdc-notched-outline__leading {
-    border-top-left-radius: layout-vars.$border-radius !important;
-    border-bottom-left-radius: layout-vars.$border-radius !important;
-  }
-
-  .mdc-notched-outline__trailing {
-    border-top-right-radius: layout-vars.$border-radius !important;
-    border-bottom-right-radius: layout-vars.$border-radius !important;
-  }
-
-  button.mdc-button--unelevated {
-    padding-block: 0.3em;
-    padding-inline: 16px;
-    // padding: 0.3em 12px;
-    border-radius: layout-vars.$border-radius;
-    height: layout-vars.$button-height !important;
-  }
+  @include mat-utils.button-overrides();
+  @include mat-utils.card-overrides();
+  @include mat-utils.form-field-overrides();
+  @include mat-utils.sidenav-overrides();
 }

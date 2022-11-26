@@ -1,0 +1,9 @@
+@use '../theme/theme-variables' as theme-vars;
+@use '../layout/layout-variables' as layout-vars;
+
+@mixin card-overrides {
+  .mat-mdc-card.mdc-card {
+    border-radius: layout-vars.$border-radius;
+    border-top: 6px solid theme-vars.$primary;
+  }
+}

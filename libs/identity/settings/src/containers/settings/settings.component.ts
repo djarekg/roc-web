@@ -4,13 +4,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {
-    RouterLinkActive,
-    RouterLink,
-    RouterOutlet
-} from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
+
 import { selectTitle, slideInAnimation } from '@roc-web/core';
 
 @Component({
@@ -26,9 +23,9 @@ import { selectTitle, slideInAnimation } from '@roc-web/core';
     MatSidenavModule,
     MatToolbarModule,
     PushModule,
-    RouterOutlet,
-    RouterLinkActive,
     RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
   ],
   animations: [slideInAnimation],
 })

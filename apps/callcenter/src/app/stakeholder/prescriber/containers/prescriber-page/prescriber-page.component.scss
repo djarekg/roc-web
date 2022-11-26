@@ -1,29 +1,4 @@
-@use 'layout/layout-utils' as layout-utils;
-@use 'layout/layout-variables' as layout-vars;
-@use 'theme/theme-variables' as theme-vars;
-
 :host {
   display: block;
   height: 100%;
-}
-
-.mat-drawer-container {
-  height: 100%;
-}
-
-.mat-drawer-content {
-  height: layout-utils.adjusted-height(layout-vars.$mat-toolbar-height);
-  overflow-y: auto;
-}
-
-.mat-drawer {
-  width: 200px;
-}
-
-.mdc-list-item--activated {
-  background: theme-vars.$selection-active-color;
-}
-
-.rw-settings-content {
-  padding: 20px;
 }

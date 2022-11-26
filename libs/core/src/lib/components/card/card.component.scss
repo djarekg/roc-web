@@ -1,0 +1,13 @@
+$card-padding: 16px;
+
+:host {
+  display: block;
+  width: max(300px, 100%);
+}
+
+.mat-mdc-card-title,
+.mat-mdc-card-content,
+.mdc-card__actions {
+  padding-block: $card-padding;
+  padding-inline: $card-padding;
+}
