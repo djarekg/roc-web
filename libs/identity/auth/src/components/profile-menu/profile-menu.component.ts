@@ -1,18 +1,21 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { authActions } from '../../state/actions';
 
 @Component({
-  selector: 'rw-signout',
+  selector: 'rw-profile-menu',
   standalone: true,
-  templateUrl: './signout.component.html',
-  styleUrls: ['./signout.component.scss'],
+  templateUrl: './profile-menu.component.html',
+  styleUrls: ['./profile-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule],
+  imports: [MatIconModule, MatButtonModule, MatMenuModule, RouterLink],
 })
-export class SignoutComponent {
+export class ProfileMenuComponent {
   readonly #store = inject(Store);
 
   protected onSignout(): void {

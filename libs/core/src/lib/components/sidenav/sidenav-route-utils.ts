@@ -1,4 +1,5 @@
 import { Route, Routes } from '@angular/router';
+
 import { SidenavRoute } from './sidenav-route';
 
 function getRouteWithChildrenByPath(
@@ -20,7 +21,8 @@ function getRouteWithChildrenByPath(
 
 export function createSidenavRoutes(
   routes: Routes,
-  parentPath: string
+  parentPath: string,
+  icon?: string
 ): SidenavRoute[] | null {
   const route = getRouteWithChildrenByPath(routes, parentPath);
 
@@ -30,6 +32,7 @@ export function createSidenavRoutes(
       ?.map<SidenavRoute>(({ title, path }) => ({
         label: String(title),
         path: String(path),
+        icon: icon ?? null,
       }));
   }
 

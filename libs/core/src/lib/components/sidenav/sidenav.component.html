@@ -20,6 +20,11 @@
         [routerLink]="route.path"
         routerLinkActive
         [activated]="rla.isActive">
+        <mat-icon
+          *ngIf="route.icon"
+          matListItemIcon>
+          {{ route.icon }}
+        </mat-icon>
         {{ route.label }}
       </a>
     </mat-nav-list>

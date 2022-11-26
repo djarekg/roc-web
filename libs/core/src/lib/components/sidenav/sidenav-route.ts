@@ -1,5 +1,5 @@
 export interface SidenavRoute {
-  icon?: string;
+  icon: string | null;
   label: string;
   path: string;
 }

@@ -5,7 +5,6 @@ import { PushModule } from '@ngrx/component';
 import {
   createSidenavRoutes,
   SidenavComponent,
-  SidenavRoute,
   slideInAnimation,
 } from '@roc-web/core';
 
@@ -21,10 +20,6 @@ import routes from '../routes';
   imports: [PushModule, SidenavComponent],
 })
 export default class PrescriberPageComponent {
-  protected readonly routes: SidenavRoute[] | null = createSidenavRoutes(
-    routes,
-    ':id'
-  );
-
+  protected readonly routes = createSidenavRoutes(routes, ':id', 'assignment');
   protected readonly title$ = inject(ActivatedRoute).title;
 }

@@ -9,8 +9,8 @@ import {
   RouteProgressBarComponent,
 } from '@roc-web/core';
 import {
+  ProfileMenuComponent,
   selectIsAuthenticated,
-  SignoutComponent,
 } from '@roc-web/identity/auth';
 
 import { NavbarComponent } from '../../navbar';
@@ -28,8 +28,8 @@ import { NavbarComponent } from '../../navbar';
     MatButtonModule,
     MatIconModule,
     NgIf,
+    ProfileMenuComponent,
     RouteProgressBarComponent,
-    SignoutComponent,
   ],
 })
 export class HeaderComponent {

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SignoutComponent } from './signout.component';
+import { ProfileMenuComponent } from './profile-menu.component';
 
-describe('SignoutComponent', () => {
-  let component: SignoutComponent;
-  let fixture: ComponentFixture<SignoutComponent>;
+describe('ProfileMenuComponent', () => {
+  let component: ProfileMenuComponent;
+  let fixture: ComponentFixture<ProfileMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ SignoutComponent ]
+      imports: [ ProfileMenuComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SignoutComponent);
+    fixture = TestBed.createComponent(ProfileMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

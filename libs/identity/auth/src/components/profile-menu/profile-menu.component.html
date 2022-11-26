@@ -1,0 +1,23 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu">
+  <mat-icon>account_circle</mat-icon>
+</button>
+<mat-menu
+  #menu="matMenu"
+  xPosition="before">
+  <ng-template matMenuContent>
+    <a
+      mat-menu-item
+      routerLink="settings">
+      <mat-icon>manage_accounts</mat-icon>
+      <span>Settings</span>
+    </a>
+    <button
+      mat-menu-item
+      (click)="onSignout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </ng-template>
+</mat-menu>

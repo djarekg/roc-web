@@ -12,8 +12,14 @@ export default [
   {
     path: 'settings',
     component: SettingsComponent,
+    title: 'Account Settings',
     data: { role: Roles.administrator },
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'account',
+      },
       {
         path: 'account',
         component: AccountComponent,
