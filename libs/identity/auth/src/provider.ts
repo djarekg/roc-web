@@ -7,7 +7,7 @@ import { Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 
-import { authRoutes } from './containers';
+import routes from './containers/routes';
 import { TokenService } from './services';
 import { AuthEffects, authFeature } from './state';
 
@@ -28,7 +28,7 @@ export function provideAuth(): EnvironmentProviders {
 }
 
 export function provideAuthRoutes(): Routes {
-  return authRoutes;
+  return routes;
 }
 
 export function provideToken(): EnvironmentProviders {

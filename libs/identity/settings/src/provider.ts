@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { settingsRoutes } from './containers/';
+import routes from './containers/routes';
 
 export function provideSettingsRoutes(): Routes {
-  return settingsRoutes;
+  return routes;
 }

@@ -1,0 +1,34 @@
+<mat-toolbar>
+  <button
+    color="primary"
+    mat-icon-button
+    (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{ title }}</span>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer
+    #drawer
+    mode="side"
+    opened="true">
+    <mat-nav-list *ngIf="routes?.length">
+      <a
+        *ngFor="let route of routes"
+        #rla="routerLinkActive"
+        mat-list-item
+        [routerLink]="route.path"
+        routerLinkActive
+        [activated]="rla.isActive">
+        {{ route.label }}
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div
+      class="rw-router-container"
+      [@routeAnimations]="ro?.activatedRouteData?.['animation']">
+      <router-outlet #ro="outlet"></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

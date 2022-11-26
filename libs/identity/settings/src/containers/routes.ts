@@ -1,4 +1,4 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { authGuards, Roles } from '@roc-web/identity/auth';
 
@@ -8,7 +8,7 @@ import {
   SettingsComponent,
 } from './settings';
 
-export const settingsRoutes: Route[] = [
+export default [
   {
     path: 'settings',
     component: SettingsComponent,
@@ -29,4 +29,4 @@ export const settingsRoutes: Route[] = [
     ],
     canActivate: [authGuards.canActivate],
   },
-];
+] as Routes;

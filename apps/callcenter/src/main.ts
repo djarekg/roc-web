@@ -25,12 +25,12 @@ import {
   RouterEffects,
 } from '@roc-web/core';
 import {
-  authRoutes,
   provideAuth,
   provideAuthInterceptors,
+  provideAuthRoutes,
   provideToken,
 } from '@roc-web/identity/auth';
-import { settingsRoutes } from '@roc-web/identity/settings';
+import { provideSettingsRoutes } from '@roc-web/identity/settings';
 import { provideHttpInterceptors } from '@roc-web/web';
 
 import { AppComponent, APP_ROUTES } from './app';
@@ -50,7 +50,7 @@ bootstrapApplication(AppComponent, {
       ])
     ),
     provideRouter(
-      [...APP_ROUTES, ...authRoutes, ...settingsRoutes],
+      [...APP_ROUTES, ...provideAuthRoutes(), ...provideSettingsRoutes()],
       // withEnabledBlockingInitialNavigation(),
       withDebugTracing(),
       withPreloading(PreloadAllModules),

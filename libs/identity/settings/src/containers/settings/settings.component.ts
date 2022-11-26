@@ -1,14 +1,16 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
 
-import { selectTitle, slideInAnimation } from '@roc-web/core';
+import {
+  createSidenavRoutes,
+  selectTitle,
+  SidenavComponent,
+  SidenavRoute,
+  slideInAnimation,
+} from '@roc-web/core';
+
+import routes from '../routes';
 
 @Component({
   selector: 'rw-settings',
@@ -16,19 +18,14 @@ import { selectTitle, slideInAnimation } from '@roc-web/core';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    PushModule,
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet,
-  ],
+  imports: [SidenavComponent, PushModule],
   animations: [slideInAnimation],
 })
 export class SettingsComponent {
+  protected readonly routes: SidenavRoute[] | null = createSidenavRoutes(
+    routes,
+    'settings'
+  );
+
   protected title$ = inject(Store).select(selectTitle);
 }
