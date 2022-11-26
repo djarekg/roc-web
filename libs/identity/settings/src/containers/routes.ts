@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { authCanActivate, Roles } from '@roc-web/identity/auth';
+import { authGuards, Roles } from '@roc-web/identity/auth';
 
 import {
   AccountComponent,
@@ -27,6 +27,6 @@ export const settingsRoutes: Route[] = [
         data: { animation: 'SecurityPage' },
       },
     ],
-    canActivate: [authCanActivate],
+    canActivate: [authGuards.canActivate],
   },
 ];

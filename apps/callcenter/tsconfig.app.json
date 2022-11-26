@@ -14,7 +14,7 @@
       "@roc-web/callcenter/stakeholder/prescriber/*": [
         "apps/callcenter/src/app/stakeholder/prescriber/index.ts"
       ],
-      "@roc-web/callcenter/store": ["apps/callcenter/src/app/store/index.ts"],
+      "@roc-web/callcenter/state": ["apps/callcenter/src/app/state/index.ts"],
       "@roc-web/core": ["dist/@roc-web/core"],
       "@roc-web/core/*": ["dist/@roc-web/core?8"],
       "@roc-web/identity": ["dist/@roc-web/identity"],

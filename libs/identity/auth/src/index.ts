@@ -6,5 +6,5 @@ export * from './interceptors';
 export * from './models';
 export * from './provider';
 export * from './services';
-export * from './store';
+export * from './state';
 export * from './utils';

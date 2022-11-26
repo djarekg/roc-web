@@ -1,0 +1,20 @@
+<div class="app-page-content">
+  <div class="app-page-header">
+    <h2>{{ title$ | ngrxPush }}</h2>
+    <button
+      mat-flat-button
+      color="primary">
+      Add Prescriber
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <app-prescriber-list
+    [prescribers]="prescribers$ | ngrxPush"
+    [pagination]="pagination$ | ngrxPush"
+    (editPrescriber)="onEditPrescriber($event)"
+    (pageChange)="onPageChange($event)"
+    (pageSort)="onPageSort($event)"
+    (viewPrescriber)="onViewPrescriber($event)"></app-prescriber-list>
+</div>

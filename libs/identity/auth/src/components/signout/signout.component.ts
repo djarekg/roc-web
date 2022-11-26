@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 
-import { authActions } from '../../store/actions';
+import { authActions } from '../../state/actions';
 
 @Component({
   selector: 'rw-signout',

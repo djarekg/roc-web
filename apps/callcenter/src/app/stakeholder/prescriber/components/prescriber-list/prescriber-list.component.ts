@@ -20,9 +20,10 @@ import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Subject, takeUntil, tap } from 'rxjs';
 
+import { MatMenuModule } from '@angular/material/menu';
 import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 import { FilterInputComponent } from '@roc-web/core';
-import { EntityList, PageChange } from '@roc-web/web';
+import { PageChange, Pagination } from '@roc-web/web';
 
 @Component({
   selector: 'app-prescriber-list',
@@ -35,9 +36,10 @@ import { EntityList, PageChange } from '@roc-web/web';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatTableModule,
+    MatMenuModule,
     MatPaginatorModule,
     MatSortModule,
+    MatTableModule,
   ],
 })
 export class PrescriberListComponent implements AfterViewInit, OnDestroy {
@@ -48,18 +50,27 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     'firstName',
     'lastName',
     'nationalId',
+    'menu',
   ];
   protected dataSource = new MatTableDataSource<Readonly<Prescriber>>([]);
   protected pageSize: number = 0;
   protected totalCount: number = 0;
 
   @Input()
-  set prescriberList(list: EntityList<Prescriber> | undefined) {
-    this.#setDataSource(list);
+  set prescribers(
+    prescribers: ReadonlyArray<Readonly<Prescriber>> | undefined
+  ) {
+    // this is a hack to get around the MatTableDataSource not
+    // letting you change the data property to a ReadonlyArray
+    this.dataSource.data = (prescribers as Prescriber[]) ?? [];
   }
 
+  @Input() pagination: Pagination | undefined;
+
+  @Output() readonly editPrescriber = new EventEmitter<string>();
   @Output() readonly pageChange = new EventEmitter<PageChange>();
   @Output() readonly pageSort = new EventEmitter<Sort>();
+  @Output() readonly viewPrescriber = new EventEmitter<string>();
 
   @ViewChild(MatPaginator) protected readonly paginator:
     | MatPaginator
@@ -87,6 +98,14 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     this.#destroy$.complete();
   }
 
+  protected onEditPrescriber(id: string) {
+    this.editPrescriber.emit(id);
+  }
+
+  protected onViewPrescriber(id: string) {
+    this.viewPrescriber.emit(id);
+  }
+
   protected onFilterChanged(value: string | null) {
     this.dataSource.filter = value?.trim().toLowerCase() ?? '';
   }
@@ -94,14 +113,6 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   #pageChange(pageEvent: PageEvent): void {
     const { pageIndex } = pageEvent;
     return this.pageChange.emit({ pageIndex });
-  }
-
-  #setDataSource(list: EntityList<Prescriber> | undefined) {
-    const { entities = [], pagination } = list ?? {};
-
-    this.dataSource.data = entities;
-    this.pageSize = pagination?.pageSize ?? 0;
-    this.totalCount = pagination?.totalCount ?? 0;
   }
 
   #sortChange(sort: Sort) {

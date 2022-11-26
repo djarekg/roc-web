@@ -1,1 +1,1 @@
-export * from './prescriber';
+export * from './prescriber-page';

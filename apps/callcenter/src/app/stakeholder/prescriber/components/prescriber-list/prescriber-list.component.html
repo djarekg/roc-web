@@ -45,10 +45,35 @@
     <mat-cell *matCellDef="let row">{{ row.nationalId }}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="menu">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="onEditPrescriber(row.id)">
+          <mat-icon>edit</mat-icon>
+          <span i18n="form.edit">Edit</span>
+        </button>
+        <button
+          mat-menu-item
+          (click)="onViewPrescriber(row.id)">
+          <mat-icon>account_box</mat-icon>
+          <span i18n="form.view">View</span>
+        </button>
+      </mat-menu>
+    </mat-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
 
 <mat-paginator
-  [pageSize]="pageSize"
-  [length]="totalCount"></mat-paginator>
+  [pageSize]="pagination?.pageSize"
+  [length]="pagination?.totalCount"></mat-paginator>

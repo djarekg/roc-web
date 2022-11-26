@@ -7,8 +7,8 @@ import { AlertComponent } from '@roc-web/core';
 import { Store } from '@ngrx/store';
 import { SigninFormComponent } from '../../components/signin-form';
 import { Credentials } from '../../models';
-import { signinPageActions } from '../../store/actions';
-import * as fromAuth from '../../store/reducers';
+import { signinPageActions } from '../../state/actions';
+import * as fromAuth from '../../state/reducers';
 
 @Component({
   selector: 'rw-signin',
