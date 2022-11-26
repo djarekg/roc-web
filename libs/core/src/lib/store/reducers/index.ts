@@ -7,7 +7,7 @@ import {
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
-  MetaReducer
+  MetaReducer,
 } from '@ngrx/store';
 
 import * as fromRouteProgress from './route-progress.reducers';
@@ -58,7 +58,8 @@ export const selectRouteInProgress = createSelector(
   fromRouteProgress.selectRouteInProgress
 );
 
-export const { selectRouteData, selectTitle } = fromRouterStore.getSelectors();
+export const { selectRouteData, selectRouteParam, selectTitle } =
+  fromRouterStore.getSelectors();
 
 export const selectRouteRole = createSelector(
   selectRouteData,

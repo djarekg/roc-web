@@ -53,16 +53,10 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     'menu',
   ];
   protected dataSource = new MatTableDataSource<Readonly<Prescriber>>([]);
-  protected pageSize: number = 0;
-  protected totalCount: number = 0;
 
   @Input()
-  set prescribers(
-    prescribers: ReadonlyArray<Readonly<Prescriber>> | undefined
-  ) {
-    // this is a hack to get around the MatTableDataSource not
-    // letting you change the data property to a ReadonlyArray
-    this.dataSource.data = (prescribers as Prescriber[]) ?? [];
+  set prescribers(prescribers: Readonly<Prescriber>[] | undefined) {
+    this.dataSource.data = prescribers ?? [];
   }
 
   @Input() pagination: Pagination | undefined;
@@ -111,8 +105,7 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   }
 
   #pageChange(pageEvent: PageEvent): void {
-    const { pageIndex } = pageEvent;
-    return this.pageChange.emit({ pageIndex });
+    return this.pageChange.emit({ pageIndex: pageEvent.pageIndex });
   }
 
   #sortChange(sort: Sort) {

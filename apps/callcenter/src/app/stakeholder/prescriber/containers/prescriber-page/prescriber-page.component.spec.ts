@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrescriberPageComponent } from './prescriber-page.component';
+import PrescriberPageComponent from './prescriber-page.component';
 
 describe('PrescriberPageComponent', () => {
   let component: PrescriberPageComponent;
@@ -8,9 +8,8 @@ describe('PrescriberPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ PrescriberPageComponent ]
-    })
-    .compileComponents();
+      imports: [PrescriberPageComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PrescriberPageComponent);
     component = fixture.componentInstance;

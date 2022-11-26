@@ -8,7 +8,7 @@ import { prescribersApiActions, prescribersPageActions } from '../actions';
 export const prescribersFeatureKey = 'prescribers';
 
 export interface State {
-  entities: ReadonlyArray<Readonly<Prescriber>>;
+  entities: Readonly<Prescriber>[];
   loaded: boolean;
   loading: boolean;
   pagination: Pagination;
