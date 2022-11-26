@@ -39,6 +39,13 @@ export const reducer = createReducer(
     (state): State => ({ ...state, loading: true })
   ),
   on(
+    prescribersApiActions.loadPrescriberSuccess,
+    (state, { prescriber }): State => ({
+      ...state,
+      selected: prescriber,
+    })
+  ),
+  on(
     prescribersApiActions.loadPrescribersSuccess,
     (state, { entities, pagination }): State => ({
       ...state,

@@ -1,9 +1,18 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, exhaustMap, map, mergeMap, of } from 'rxjs';
+import {
+  catchError,
+  concatMap,
+  exhaustMap,
+  map,
+  mergeMap,
+  of,
+  tap,
+} from 'rxjs';
 
 import { PrescriberService } from '@roc-web/callcenter/stakeholder/prescriber/services';
 
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import {
   prescriberDetailPageActions,
@@ -16,6 +25,7 @@ import { selectPagination, selectSort } from '../reducers';
 @Injectable()
 export class PrescribersEffects {
   readonly #actions$ = inject(Actions);
+  readonly #router = inject(Router);
   readonly #prescriberService = inject(PrescriberService);
   readonly #store = inject(Store);
 
@@ -32,6 +42,16 @@ export class PrescribersEffects {
       )
     );
   });
+
+  editPrescriber$ = createEffect(
+    () => {
+      return this.#actions$.pipe(
+        ofType(prescribersPageActions.editPrescriber),
+        tap(({ id }) => void this.#router.navigate(['prescriber', id]))
+      );
+    },
+    { dispatch: false }
+  );
 
   loadPrescriber$ = createEffect(() => {
     return this.#actions$.pipe(

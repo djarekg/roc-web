@@ -6,9 +6,10 @@ import { filter, first, Observable, tap } from 'rxjs';
 import { prescriberExistsGuardActions } from '../state/actions';
 import { selectSelectedLoaded } from '../state/reducers';
 
-export const canActivate = (): Observable<boolean> => {
+export const canActivate = (
+  route: ActivatedRouteSnapshot
+): Observable<boolean> => {
   const store = inject(Store);
-  const route = inject(ActivatedRouteSnapshot);
   const id = route.params['id'];
 
   return store.select(selectSelectedLoaded).pipe(

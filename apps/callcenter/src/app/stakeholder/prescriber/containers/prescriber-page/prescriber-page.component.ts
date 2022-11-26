@@ -8,4 +8,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
 })
-export class PrescriberPageComponent {}
+export default class PrescriberPageComponent {}
