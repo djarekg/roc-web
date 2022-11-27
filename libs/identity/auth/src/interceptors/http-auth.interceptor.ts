@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { first, Observable, switchMap } from 'rxjs';
 
-import { selectBearerToken } from '../state';
+import { selectBearerToken } from '../store';
 
 export const HTTP_AUTH_INTERCEPTOR = (
   req: HttpRequest<unknown>,

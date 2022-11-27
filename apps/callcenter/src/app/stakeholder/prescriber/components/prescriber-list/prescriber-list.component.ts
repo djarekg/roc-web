@@ -17,7 +17,7 @@ import {
   PageEvent,
 } from '@angular/material/paginator';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -44,6 +44,7 @@ import { PageChange, Pagination } from '@roc-web/web';
 })
 export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
+  #prescribers: Prescriber[] = [];
 
   protected readonly displayedColumns: string[] = [
     'externalId',
@@ -52,16 +53,19 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     'nationalId',
     'menu',
   ];
-  protected dataSource = new MatTableDataSource<Readonly<Prescriber>>([]);
 
   @Input()
+  get prescribers(): Readonly<Prescriber>[] {
+    return this.#prescribers;
+  }
   set prescribers(prescribers: Readonly<Prescriber>[] | undefined) {
-    this.dataSource.data = prescribers ?? [];
+    this.#prescribers = prescribers ?? [];
   }
 
   @Input() pagination: Pagination | undefined;
 
   @Output() readonly editPrescriber = new EventEmitter<string>();
+  @Output() readonly filterChange = new EventEmitter<string>();
   @Output() readonly pageChange = new EventEmitter<PageChange>();
   @Output() readonly pageSort = new EventEmitter<Sort>();
   @Output() readonly viewPrescriber = new EventEmitter<string>();
@@ -96,12 +100,12 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     this.editPrescriber.emit(id);
   }
 
-  protected onViewPrescriber(id: string) {
-    this.viewPrescriber.emit(id);
+  protected onFilterChanged(filter: string) {
+    this.filterChange.emit(filter);
   }
 
-  protected onFilterChanged(value: string | null) {
-    this.dataSource.filter = value?.trim().toLowerCase() ?? '';
+  protected onViewPrescriber(id: string) {
+    this.viewPrescriber.emit(id);
   }
 
   #pageChange(pageEvent: PageEvent): void {

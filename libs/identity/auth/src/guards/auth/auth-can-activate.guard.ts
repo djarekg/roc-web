@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, take } from 'rxjs';
 
-import { authApiActions, selectIsAuthenticated } from '../../state';
+import { authApiActions, selectIsAuthenticated } from '../../store';
 
 export const canActivate = (): Observable<boolean> => {
   const store = inject(Store);

@@ -9,7 +9,7 @@ import { provideState } from '@ngrx/store';
 
 import routes from './containers/routes';
 import { TokenService } from './services';
-import { AuthEffects, authFeature } from './state';
+import { AuthEffects, authFeature } from './store';
 
 // export const authMetaReducerProvider = {
 //   provide: META_REDUCERS,

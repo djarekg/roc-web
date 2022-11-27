@@ -37,6 +37,11 @@ export const selectPrescribers = createSelector(
   fromPrescribers.getEntities
 );
 
+export const selectFilter = createSelector(
+  selectPrescriberEntitiesState,
+  fromPrescribers.getFilter
+);
+
 export const selectLoaded = createSelector(
   selectPrescriberEntitiesState,
   fromPrescribers.getLoaded

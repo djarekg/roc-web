@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import {
   prescriberExitsGuards,
   providePrescriber,
-} from '@roc-web/callcenter/stakeholder/prescriber/state';
+} from '@roc-web/callcenter/stakeholder/prescriber/store';
 import { authGuards } from '@roc-web/identity/auth';
 
 export default [

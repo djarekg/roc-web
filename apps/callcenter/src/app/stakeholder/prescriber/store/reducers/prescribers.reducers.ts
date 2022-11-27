@@ -9,6 +9,7 @@ export const prescribersFeatureKey = 'prescribers';
 
 export interface State {
   entities: Readonly<Prescriber>[];
+  filter: string | null;
   loaded: boolean;
   loading: boolean;
   pagination: Pagination;
@@ -18,6 +19,7 @@ export interface State {
 
 const initialState: State = {
   entities: [],
+  filter: null,
   loaded: false,
   loading: false,
   pagination: {
@@ -65,6 +67,13 @@ export const reducer = createReducer(
       },
     };
   }),
+  on(
+    prescribersPageActions.filterChange,
+    (state, { filter }): State => ({
+      ...state,
+      filter,
+    })
+  ),
   on(prescribersPageActions.sortPage, (state, { active, direction }): State => {
     return {
       ...state,
@@ -84,6 +93,7 @@ export const reducer = createReducer(
 );
 
 export const getEntities = (state: State) => state.entities;
+export const getFilter = (state: State) => state.filter;
 export const getLoaded = (state: State) => state.loaded;
 export const getLoading = (state: State) => state.loading;
 export const getPagination = (state: State) => state.pagination;

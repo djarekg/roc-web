@@ -30,7 +30,7 @@
       "@roc-web/callcenter/stakeholder/prescriber/*": [
         "apps/callcenter/src/app/stakeholder/prescriber/index.ts"
       ],
-      "@roc-web/callcenter/state": ["apps/callcenter/src/app/state/index.ts"],
+      "@roc-web/callcenter/store": ["apps/callcenter/src/app/store/index.ts"],
       "@roc-web/core": ["libs/core/src"],
       "@roc-web/core/*": ["libs/core/src/*"],
       "@roc-web/identity": ["libs/identity/src"],

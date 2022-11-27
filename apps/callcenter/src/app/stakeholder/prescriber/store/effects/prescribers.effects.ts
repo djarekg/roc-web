@@ -20,7 +20,7 @@ import {
   prescribersApiActions,
   prescribersPageActions,
 } from '../actions';
-import { selectPagination, selectSort } from '../reducers';
+import { selectFilter, selectPagination, selectSort } from '../reducers';
 
 @Injectable()
 export class PrescribersEffects {
@@ -73,19 +73,21 @@ export class PrescribersEffects {
   loadPrescribers$ = createEffect(() => {
     return this.#actions$.pipe(
       ofType(
-        prescribersPageActions.loadPrescribers,
-        prescribersPageActions.changePage,
-        prescribersPageActions.sortPage,
         prescribersApiActions.addPrescriberSuccess,
+        prescribersApiActions.removePrescriberSuccess,
         prescribersApiActions.updatePrescriberSuccess,
-        prescribersApiActions.removePrescriberSuccess
+        prescribersPageActions.changePage,
+        prescribersPageActions.filterChange,
+        prescribersPageActions.loadPrescribers,
+        prescribersPageActions.sortPage
       ),
       concatLatestFrom(() => [
+        this.#store.select(selectFilter),
         this.#store.select(selectPagination),
         this.#store.select(selectSort),
       ]),
-      concatMap(([, pagination, sort]) =>
-        this.#prescriberService.getAll(pagination, sort).pipe(
+      concatMap(([, filter, pagination, sort]) =>
+        this.#prescriberService.getAll(filter, pagination, sort).pipe(
           map(response =>
             prescribersApiActions.loadPrescribersSuccess(response)
           ),

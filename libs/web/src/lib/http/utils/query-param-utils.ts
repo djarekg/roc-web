@@ -12,6 +12,7 @@ export function createHttpParams(params: {
 }
 
 export function createHttpPaginationParams(
+  filter: string | null,
   pagination: Pagination,
   sort: Sort
 ): HttpParams {
@@ -19,9 +20,10 @@ export function createHttpPaginationParams(
   const { active: sortColumn, direction } = sort;
 
   return createHttpParams({
-    pageIndex,
-    pageSize,
-    sortColumn,
+    ...(!!filter && { filterText: filter }),
     isSortDesc: direction === 'desc',
+    pageIndex,
+    pageSize: 10, // TODO: Use default pageSize until find better solution
+    sortColumn,
   });
 }

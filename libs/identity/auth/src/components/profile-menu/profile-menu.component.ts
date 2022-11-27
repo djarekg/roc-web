@@ -5,7 +5,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { authActions } from '../../state/actions';
+import { authActions } from '../../store/actions';
 
 @Component({
   selector: 'rw-profile-menu',

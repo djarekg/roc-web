@@ -3,8 +3,8 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { filter, first, Observable, tap } from 'rxjs';
 
-import { prescriberExistsGuardActions } from '../state/actions';
-import { selectSelectedLoaded } from '../state/reducers';
+import { prescriberExistsGuardActions } from '../store/actions';
+import { selectSelectedLoaded } from '../store/reducers';
 
 export const canActivate = (
   route: ActivatedRouteSnapshot

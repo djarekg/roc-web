@@ -17,7 +17,7 @@ import {
 import { ScrollableDirective, selectTitle } from '@roc-web/core';
 import { PageChange } from '@roc-web/web';
 
-import { selectPagination, selectPrescribers } from '../../state/reducers';
+import { selectPagination, selectPrescribers } from '../../store/reducers';
 
 @Component({
   selector: 'app-prescribers-page',
@@ -47,6 +47,10 @@ export default class PrescribersPageComponent implements OnInit {
 
   protected onEditPrescriber(id: string): void {
     this.#store.dispatch(prescribersPageActions.editPrescriber({ id }));
+  }
+
+  protected onFilterChanged(filter: string): void {
+    this.#store.dispatch(prescribersPageActions.filterChange({ filter }));
   }
 
   protected onPageChange(event: PageChange): void {

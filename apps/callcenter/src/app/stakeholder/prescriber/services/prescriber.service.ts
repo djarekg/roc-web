@@ -30,10 +30,11 @@ export class PrescriberService {
   }
 
   getAll(
+    filter: string | null,
     pagination: Pagination,
     sort: Sort
   ): Observable<EntityListRespone<Prescriber>> {
-    const params = createHttpPaginationParams(pagination, sort);
+    const params = createHttpPaginationParams(filter, pagination, sort);
 
     return this.#http.get<EntityListRespone<Prescriber>>(
       Endpoints.prescribers,
