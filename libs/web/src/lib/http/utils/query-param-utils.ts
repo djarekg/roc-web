@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Sort } from '@angular/material/sort';
+import { MAX_PAGE_SIZE } from '../../shared';
 
 import { Pagination } from '../../shared/models';
 
@@ -16,14 +17,14 @@ export function createHttpPaginationParams(
   pagination: Pagination,
   sort: Sort
 ): HttpParams {
-  const { pageIndex, pageSize } = pagination;
+  const { pageIndex } = pagination;
   const { active: sortColumn, direction } = sort;
 
   return createHttpParams({
-    ...(!!filter && { filterText: filter }),
+    filterText: filter ?? '',
     isSortDesc: direction === 'desc',
     pageIndex,
-    pageSize: 10, // TODO: Use default pageSize until find better solution
+    pageSize: MAX_PAGE_SIZE,
     sortColumn,
   });
 }
