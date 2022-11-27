@@ -20,7 +20,5 @@ import { PrescriberDetailComponent } from '../../components';
   ],
 })
 export default class PrescriberSummaryPageComponent {
-  readonly #store = inject(Store);
-
-  protected readonly title$ = this.#store.select(selectTitle);
+  protected readonly title$ = inject(Store).select(selectTitle);
 }

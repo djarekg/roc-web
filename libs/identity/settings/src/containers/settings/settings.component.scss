@@ -3,16 +3,6 @@
   height: 100%;
 }
 
-::ng-deep .rw-settings-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100%;
-  width: 100%;
-  row-gap: 20px;
-}
-
 ::ng-deep .rw-settings-item .rw-card {
   width: max(300px, 900px);
 }

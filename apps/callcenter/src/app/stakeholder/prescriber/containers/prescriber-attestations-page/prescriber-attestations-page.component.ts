@@ -1,12 +1,25 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { PushModule } from '@ngrx/component';
+import { Store } from '@ngrx/store';
+
+import { CardComponent, selectTitle } from '@roc-web/core';
+
+import { PrescriberAttestationsDetailComponent } from '../../components';
 
 @Component({
   selector: 'app-prescriber-attestations-page',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './prescriber-attestations-page.component.html',
   styleUrls: ['./prescriber-attestations-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CardComponent,
+    MatDividerModule,
+    PrescriberAttestationsDetailComponent,
+    PushModule,
+  ],
 })
-export default class PrescriberAttestationsPageComponent {}
+export default class PrescriberAttestationsPageComponent {
+  protected readonly title$ = inject(Store).select(selectTitle);
+}
