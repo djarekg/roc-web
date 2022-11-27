@@ -1,3 +1,11 @@
 ::ng-deep rw-filter-input .mat-mdc-form-field {
   width: max(200px, 50%);
 }
+
+.mat-mdc-no-data-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 74px;
+  font-size: 1.5em;
+}

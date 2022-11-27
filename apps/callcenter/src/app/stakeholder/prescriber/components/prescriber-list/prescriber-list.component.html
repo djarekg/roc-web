@@ -1,82 +1,91 @@
 <rw-filter-input (filterChange)="onFilterChanged($event)"></rw-filter-input>
 
-<mat-table
-  class="mat-elevation-z8"
-  matSort
-  recycleRows
-  [dataSource]="prescribers">
-  <ng-container matColumnDef="externalId">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      i18n="@@stakeholder.systemId">
-      System ID
-    </mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.stakeholder.externalId }}</mat-cell>
-  </ng-container>
+<div class="mat-elevation-z8">
+  <mat-table
+    matSort
+    recycleRows
+    [dataSource]="prescribers">
+    <ng-container matColumnDef="externalId">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        i18n="@@stakeholder.systemId">
+        System ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{ row.stakeholder.externalId }}
+      </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="firstName">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      i18n="@@stakeholder.firstName">
-      First Name
-    </mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.stakeholder.firstName }}</mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        i18n="@@stakeholder.firstName">
+        First Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.stakeholder.firstName }}</mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="lastName">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      i18n="@@stakeholder.lastName">
-      Last Name
-    </mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.stakeholder.lastName }}</mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        i18n="@@stakeholder.lastName">
+        Last Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.stakeholder.lastName }}</mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="nationalId">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      i18n="@@prescriber.nationalId">
-      National ID
-    </mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.nationalId }}</mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="nationalId">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        i18n="@@prescriber.nationalId">
+        National ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.nationalId }}</mat-cell>
+    </ng-container>
 
-  <ng-container
-    matColumnDef="menu"
-    stickEnd>
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-    <mat-cell *matCellDef="let row">
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
+    <ng-container
+      matColumnDef="menu"
+      stickEnd>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
         <button
-          mat-menu-item
-          (click)="onEditPrescriber(row.id)">
-          <mat-icon>edit</mat-icon>
-          <span i18n="form.edit">Edit</span>
+          mat-icon-button
+          [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
-        <button
-          mat-menu-item
-          (click)="onViewPrescriber(row.id)">
-          <mat-icon>account_box</mat-icon>
-          <span i18n="form.view">View</span>
-        </button>
-      </mat-menu>
-    </mat-cell>
-  </ng-container>
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            (click)="onEditPrescriber(row.id)">
+            <mat-icon>edit</mat-icon>
+            <span i18n="form.edit">Edit</span>
+          </button>
+          <button
+            mat-menu-item
+            (click)="onViewPrescriber(row.id)">
+            <mat-icon>account_box</mat-icon>
+            <span i18n="form.view">View</span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
-<mat-paginator
-  [pageIndex]="pagination?.pageIndex"
-  [pageSize]="pagination?.pageSize"
-  [length]="pagination?.totalCount"></mat-paginator>
+    <ng-template matNoDataRow>
+      <div>
+        <span i18n="@@collection.noResults">No results found</span>
+      </div>
+    </ng-template>
+  </mat-table>
+
+  <mat-paginator
+    [pageIndex]="pagination?.pageIndex"
+    [pageSize]="pagination?.pageSize"
+    [length]="pagination?.totalCount"></mat-paginator>
+</div>

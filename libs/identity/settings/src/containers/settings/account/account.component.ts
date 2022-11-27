@@ -16,5 +16,5 @@ import {
   imports: [CardComponent, UserDetailsComponent, ChangePasswordComponent],
 })
 export class AccountComponent {
-  @HostBinding('class') readonly class = 'rw-settings-item';
+  @HostBinding('class') readonly class = 'rw-settings__item';
 }

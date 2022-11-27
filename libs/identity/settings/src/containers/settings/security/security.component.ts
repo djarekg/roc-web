@@ -13,5 +13,5 @@ import { TwoFactorComponent } from '../../../components/two-factor';
   imports: [CardComponent, TwoFactorComponent],
 })
 export class SecurityComponent {
-  @HostBinding('class') readonly class = 'rw-settings-item';
+  @HostBinding('class') readonly class = 'rw-settings__item';
 }
