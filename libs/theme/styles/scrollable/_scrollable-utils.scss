@@ -6,6 +6,10 @@
 
   .rw-scrollable,
   .mat-drawer-content {
+    @supports (scroll-behavior: smooth) {
+      scroll-behavior: smooth;
+    }
+
     &::-webkit-scrollbar {
       height: $scrollbar-size;
       width: $scrollbar-size;
