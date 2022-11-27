@@ -1,6 +1,6 @@
 import { Sort } from '@angular/material/sort';
 import { createReducer, on } from '@ngrx/store';
-import { Pagination } from '@roc-web/web';
+import { MAX_PAGE_SIZE, Pagination } from '@roc-web/web';
 import { Prescriber } from '../../models';
 
 import { prescribersApiActions, prescribersPageActions } from '../actions';
@@ -24,7 +24,7 @@ const initialState: State = {
   loading: false,
   pagination: {
     pageIndex: 1,
-    pageSize: 10,
+    pageSize: MAX_PAGE_SIZE,
     totalCount: 0,
   },
   selected: null,
