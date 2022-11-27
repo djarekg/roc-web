@@ -17,7 +17,11 @@ import {
 import { ScrollableDirective, selectTitle } from '@roc-web/core';
 import { PageChange } from '@roc-web/web';
 
-import { selectPagination, selectPrescribers } from '../../store/reducers';
+import {
+  selectLoading,
+  selectPagination,
+  selectPrescribers,
+} from '../../store/reducers';
 
 @Component({
   selector: 'app-prescribers-page',
@@ -36,6 +40,7 @@ import { selectPagination, selectPrescribers } from '../../store/reducers';
 export default class PrescribersPageComponent implements OnInit {
   readonly #store = inject(Store);
 
+  protected readonly loading$ = this.#store.select(selectLoading);
   protected readonly prescribers$ = this.#store.select(selectPrescribers);
   protected readonly pagination$ = this.#store.select(selectPagination);
   // protected readonly sort$ = this.#store.select(selectSort);

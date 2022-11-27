@@ -1,6 +1,15 @@
 <rw-filter-input (filterChange)="onFilterChanged($event)"></rw-filter-input>
 
-<div class="mat-elevation-z8">
+<div class="app-table__container mat-elevation-z8">
+  <div
+    *ngIf="loading"
+    class="app-progress-spinner__container">
+    <mat-progress-spinner
+      [diameter]="60"
+      [mode]="'indeterminate'"
+      [strokeWidth]="4"></mat-progress-spinner>
+  </div>
+
   <mat-table
     matSort
     recycleRows
@@ -79,7 +88,11 @@
 
     <ng-template matNoDataRow>
       <div>
-        <span i18n="@@collection.noResults">No results found</span>
+        <span
+          *ngIf="!loading"
+          i18n="@@collection.noResults">
+          No results found
+        </span>
       </div>
     </ng-template>
   </mat-table>

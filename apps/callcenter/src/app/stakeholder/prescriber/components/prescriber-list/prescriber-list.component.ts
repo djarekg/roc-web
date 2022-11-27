@@ -20,10 +20,14 @@ import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { Subject, takeUntil, tap } from 'rxjs';
 
+import { NgIf } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 import { FilterInputComponent } from '@roc-web/core';
 import { PageChange, Pagination } from '@roc-web/web';
+
+// TODO: this needs refracted into multiple components
 
 @Component({
   selector: 'app-prescriber-list',
@@ -38,8 +42,10 @@ import { PageChange, Pagination } from '@roc-web/web';
     MatInputModule,
     MatMenuModule,
     MatPaginatorModule,
+    MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
+    NgIf,
   ],
 })
 export class PrescriberListComponent implements AfterViewInit, OnDestroy {
@@ -53,6 +59,8 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     'nationalId',
     'menu',
   ];
+
+  @Input() loading: boolean | undefined = false;
 
   @Input()
   get prescribers(): Readonly<Prescriber>[] {
