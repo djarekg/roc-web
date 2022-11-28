@@ -19,6 +19,7 @@
         warn: $warn,
       ),
       typography: typography-vars.$typography-config,
+      density: -2,
     )
   );
 
@@ -45,6 +46,7 @@
         warn: $warn,
       ),
       typography: typography-vars.$typography-config,
+      density: 0,
     )
   );
 
@@ -61,4 +63,5 @@
   @include mat-utils.card-overrides();
   @include mat-utils.form-field-overrides();
   @include mat-utils.sidenav-overrides();
+  // @include mat-utils.table-overrides();
 }

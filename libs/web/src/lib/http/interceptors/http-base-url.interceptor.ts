@@ -1,8 +1,11 @@
-import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import {
+  type HttpEvent,
+  type HttpHandlerFn,
+  type HttpRequest,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Observable } from 'rxjs';
-
 import { CORE_OPTIONS } from '@roc-web/core';
+import { type Observable } from 'rxjs';
 
 export const HTTP_BASE_URL_INTERCEPTOR = (
   req: HttpRequest<unknown>,

@@ -1,31 +1,30 @@
+import { NgIf } from '@angular/common';
 import {
-  AfterViewInit,
+  type AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
-  OnDestroy,
+  type OnDestroy,
   Output,
   ViewChild,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import {
   MatPaginator,
   MatPaginatorModule,
-  PageEvent,
+  type PageEvent,
 } from '@angular/material/paginator';
-import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
-import { Subject, takeUntil, tap } from 'rxjs';
-
-import { NgIf } from '@angular/common';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { type Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 import { FilterInputComponent } from '@roc-web/core';
-import { PageChange, Pagination } from '@roc-web/web';
+import { type PageChange, type Pagination } from '@roc-web/web';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 // TODO: this needs refracted into multiple components
 

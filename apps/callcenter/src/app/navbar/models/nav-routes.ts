@@ -1,4 +1,4 @@
-import { NavRoute } from './nav-route';
+import { type NavRoute } from './nav-route';
 
 export const navRoutes: NavRoute[] = [
   {

@@ -1,1 +1,2 @@
-export * from './window';
+export * from './window-token';
+export * from './core-options-token';

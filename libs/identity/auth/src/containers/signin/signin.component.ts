@@ -1,14 +1,15 @@
 import { KeyValuePipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { LetModule, PushModule } from '@ngrx/component';
-
-import { AlertComponent } from '@roc-web/core';
-
 import { Store } from '@ngrx/store';
-import { SigninFormComponent } from '../../components/signin-form';
-import { Credentials } from '../../models';
+import { AlertComponent } from '@roc-web/core';
+import { SigninFormComponent } from '../../components';
+import { type Credentials } from '../../models';
 import { signinPageActions } from '../../store/actions';
-import * as fromAuth from '../../store/reducers';
+import {
+  selectSigninPageError,
+  selectSigninPagePending,
+} from '../../store/reducers';
 
 @Component({
   selector: 'rw-signin',
@@ -28,8 +29,8 @@ import * as fromAuth from '../../store/reducers';
 export class SigninComponent {
   readonly #store = inject(Store);
 
-  protected errors$ = this.#store.select(fromAuth.selectSigninPageError);
-  protected pending$ = this.#store.select(fromAuth.selectSigninPagePending);
+  protected errors$ = this.#store.select(selectSigninPageError);
+  protected pending$ = this.#store.select(selectSigninPagePending);
 
   protected onSigninSubmit(credentials: Credentials): void {
     this.#store.dispatch(signinPageActions.signin({ ...credentials }));

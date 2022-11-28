@@ -9,8 +9,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-
-import { Credentials } from '../../models';
+import { type Credentials } from '../../models';
 
 @Component({
   selector: 'rw-signin-form',
@@ -38,7 +37,7 @@ export class SigninFormComponent {
     },
     { updateOn: 'blur' }
   );
-  protected passwordInputIcon: 'visibility' | 'visibility_off' =
+  protected passwordInputIcon: 'visibility_off' | 'visibility' =
     'visibility_off';
   protected passwordInputType: 'password' | 'text' = 'password';
 

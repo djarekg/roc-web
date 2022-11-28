@@ -2,21 +2,17 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  OnInit,
+  type OnInit,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { Sort } from '@angular/material/sort';
+import { type Sort } from '@angular/material/sort';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
-
-import {
-  PrescriberListComponent,
-  prescribersPageActions,
-} from '@roc-web/callcenter/stakeholder/prescriber/components';
 import { ScrollableDirective, selectTitle } from '@roc-web/core';
-import { PageChange } from '@roc-web/web';
-
+import { type PageChange } from '@roc-web/web';
+import { PrescriberListComponent } from '../../components';
+import { prescribersPageActions } from '../../store/actions';
 import {
   selectLoading,
   selectPagination,

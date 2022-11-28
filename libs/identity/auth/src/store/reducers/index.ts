@@ -1,11 +1,10 @@
 import {
-  Action,
+  type Action,
   combineReducers,
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
-
-import { CoreState, selectRouteRole } from '@roc-web/core';
+import { type CoreState, selectRouteRole } from '@roc-web/core';
 import { parseClaimsPrincipal } from '../../utils';
 import * as fromAuth from './auth.reducers';
 import * as fromSigninPage from './signin-page.reducers';
@@ -87,5 +86,5 @@ export const selectToken = createSelector(
 );
 
 export const selectBearerToken = createSelector(selectToken, token =>
-  token ? `Bearer ${token}` : null
+  typeof token === 'string' ? `Bearer ${token}` : null
 );

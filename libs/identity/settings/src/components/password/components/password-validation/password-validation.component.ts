@@ -1,18 +1,18 @@
 import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    inject,
-    Input
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  Input,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { type FormControl } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { Subscription } from 'rxjs';
+import { type Subscription } from 'rxjs';
 
-type ValidStates = 'pristine' | 'error' | 'success';
-type ValidationIcons = 'question_mark' | 'priority_high' | 'check';
-type ValidationColors = 'accent' | 'warn' | 'success';
+type ValidStates = 'error' | 'pristine' | 'success';
+type ValidationIcons = 'check' | 'priority_high' | 'question_mark';
+type ValidationColors = 'accent' | 'success' | 'warn';
 
 interface ValidationState {
   icon: ValidationIcons;

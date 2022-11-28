@@ -1,8 +1,7 @@
-import { Sort } from '@angular/material/sort';
+import { type Sort } from '@angular/material/sort';
 import { createReducer, on } from '@ngrx/store';
-import { MAX_PAGE_SIZE, Pagination } from '@roc-web/web';
-import { Prescriber } from '../../models';
-
+import { type Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/web';
 import { prescribersApiActions, prescribersPageActions } from '../actions';
 
 export const prescribersFeatureKey = 'prescribers';

@@ -1,4 +1,4 @@
-import { Authorization } from './authorization';
+import { type Authorization } from './authorization';
 
 /**
  * A claims principal.
@@ -7,7 +7,7 @@ import { Authorization } from './authorization';
  * @interface DecodedToken
  */
 export interface DecodedToken extends Authorization {
-  readonly [key: string]: string | string[];
+  readonly [key: string]: string[] | string;
   readonly email: string;
   readonly family_name: string;
   readonly given_name: string;

@@ -1,5 +1,4 @@
-import { HttpInterceptorFn } from '@angular/common/http';
-
+import { type HttpInterceptorFn } from '@angular/common/http';
 import { HTTP_CACHE_INTERCEPTOR } from './cache';
 import {
   HTTP_BASE_URL_INTERCEPTOR,

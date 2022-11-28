@@ -20,17 +20,17 @@
     "target": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
-      "@roc-web/callcenter/environments": [
-        "apps/callcenter/src/environments/index.ts"
-      ],
-      "@roc-web/callcenter/layout": ["apps/callcenter/src/app/layout/index.ts"],
-      "@roc-web/callcenter/shared/*": [
-        "apps/callcenter/src/app/shared/index.ts"
+      "@roc-web/callcenter/environments": ["apps/callcenter/src/environments"],
+      "@roc-web/callcenter/layout": ["apps/callcenter/src/app/layout"],
+      "@roc-web/callcenter/navbar": ["apps/callcenter/src/app/navbar"],
+      "@roc-web/callcenter/shared/*": ["apps/callcenter/src/app/shared"],
+      "@roc-web/callcenter/stakeholder/*": [
+        "apps/callcenter/src/app/stakeholder/*"
       ],
       "@roc-web/callcenter/stakeholder/prescriber/*": [
-        "apps/callcenter/src/app/stakeholder/prescriber/index.ts"
+        "apps/callcenter/src/app/stakeholder/prescriber/*"
       ],
-      "@roc-web/callcenter/store": ["apps/callcenter/src/app/store/index.ts"],
+      "@roc-web/callcenter/store": ["apps/callcenter/src/app/store"],
       "@roc-web/core": ["libs/core/src"],
       "@roc-web/core/*": ["libs/core/src/*"],
       "@roc-web/identity": ["libs/identity/src"],

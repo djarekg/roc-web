@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PushModule } from '@ngrx/component';
-
+import { routes } from '@roc-web/callcenter/stakeholder/prescriber/containers';
 import {
   createSidenavRoutes,
   SidenavComponent,
   slideInAnimation,
 } from '@roc-web/core';
-
-import routes from '../routes';
 
 @Component({
   selector: 'app-prescriber',

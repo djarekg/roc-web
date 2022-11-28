@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
-
 import { CardComponent } from '@roc-web/core';
-
-import { TwoFactorComponent } from '../../../components/two-factor';
-
+import { TwoFactorComponent } from '../../../components';
 @Component({
   selector: 'rw-settings-security',
   standalone: true,

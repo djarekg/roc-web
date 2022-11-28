@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TwoFactorProcessComponent } from '../two-factor-process/two-factor-process.component';
-import { TwoFactorStatusComponent } from '../two-factor-status/two-factor-status.component';
+import { TwoFactorProcessComponent } from '../two-factor-process';
+import { TwoFactorStatusComponent } from '../two-factor-status';
 
 @Component({
   selector: 'rw-settings-two-factor',

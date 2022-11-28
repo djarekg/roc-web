@@ -1,13 +1,12 @@
 import {
   HttpErrorResponse,
-  HttpEvent,
-  HttpHandlerFn,
-  HttpRequest,
+  type HttpEvent,
+  type HttpHandlerFn,
+  type HttpRequest,
 } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
-
+import { catchError, type Observable, throwError } from 'rxjs';
 import { Outcome } from '../../shared/models';
-import { SKIP_ERROR_INTERCEPTOR_HEADER } from '../constants/skip-error-interceptor-header';
+import { SKIP_ERROR_INTERCEPTOR_HEADER } from '../constants';
 import { isHttpValueOutcomeResponse } from '../utils';
 
 export const HTTP_ERROR_INTERCEPTOR = (

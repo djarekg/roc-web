@@ -34,7 +34,12 @@
   ],
   "cSpell.ignoreWords": ["esbenp", "docthis"],
   "cSpell.words": ["ngrx", "ɵkind", "ɵproviders", "Serializability", "signin"],
-  "editor.codeActionsOnSave": ["source.organizeImports"],
+  "editor.codeActionsOnSave": [
+    // "source.organizeImports"
+    "source.organizeImports.eslint",
+    "source.fixAll.eslint"
+    // "source.sort.imports.eslint"
+  ],
   "eslint.codeAction.disableRuleComment": {
     "enable": true,
     "location": "separateLine"
@@ -46,10 +51,6 @@
     ".vscode/**": true,
     "dist/**": true,
     "node_modules/**": true
-  },
-  "files.exclude": {
-    "**/dist": true,
-    "**/node_modules": true
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "sarif-viewer.connectToGithubCodeScanning": "off"

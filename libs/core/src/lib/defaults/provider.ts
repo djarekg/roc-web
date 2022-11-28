@@ -1,11 +1,11 @@
 import {
-  EnvironmentProviders,
+  type EnvironmentProviders,
   makeEnvironmentProviders,
-  Provider,
+  type Provider,
 } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-import { CORE_OPTIONS, Environment } from '../options';
+import { type Environment } from '../models';
+import { CORE_OPTIONS } from '../tokens';
 import { MAT_FORM_FIELDS } from './mat-form-fields';
 import { MAT_ICON } from './mat-icon';
 import { META_TAGS } from './meta-tags';

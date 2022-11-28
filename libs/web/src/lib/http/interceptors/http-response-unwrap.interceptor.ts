@@ -1,7 +1,10 @@
-import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
-
-import { ValueOutcomePaginationResponseOrUnknown } from '../types';
+import {
+  type HttpEvent,
+  type HttpHandlerFn,
+  type HttpRequest,
+} from '@angular/common/http';
+import { map, type Observable } from 'rxjs';
+import { type ValueOutcomePaginationResponseOrUnknown } from '../types';
 import {
   isHttpValueOutcomePaginationResponse,
   isHttpValueOutcomeResponse,

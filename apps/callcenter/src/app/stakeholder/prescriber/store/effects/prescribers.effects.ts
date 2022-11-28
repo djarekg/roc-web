@@ -1,5 +1,8 @@
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { PrescriberService } from '@roc-web/callcenter/stakeholder/prescriber/services';
 import {
   catchError,
   concatMap,
@@ -9,11 +12,6 @@ import {
   of,
   tap,
 } from 'rxjs';
-
-import { PrescriberService } from '@roc-web/callcenter/stakeholder/prescriber/services';
-
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import {
   prescriberDetailPageActions,
   prescriberExistsGuardActions,

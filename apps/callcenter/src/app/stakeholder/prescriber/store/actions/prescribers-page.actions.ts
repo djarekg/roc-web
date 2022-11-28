@@ -1,4 +1,4 @@
-import { SortDirection } from '@angular/material/sort';
+import { type SortDirection } from '@angular/material/sort';
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
 export const prescribersPageActions = createActionGroup({

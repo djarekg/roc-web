@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Sort } from '@angular/material/sort';
-import { Observable, throwError } from 'rxjs';
-
+import { type Sort } from '@angular/material/sort';
 import { Endpoints } from '@roc-web/callcenter/shared/models';
-import { Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { type Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 import {
   createHttpPaginationParams,
-  EntityListRespone,
-  Pagination,
+  type EntityListRespone,
+  type Pagination,
 } from '@roc-web/web';
+import { type Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class PrescriberService {
@@ -46,6 +45,7 @@ export class PrescriberService {
 
   remove(prescriber: Prescriber): Observable<Prescriber> {
     const { id } = prescriber;
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     const url = `${Endpoints.prescribers}/${id}`;
     return this.#http.delete<Prescriber>(url);
   }
@@ -57,6 +57,7 @@ export class PrescriberService {
 
   update(prescriber: Prescriber): Observable<Prescriber> {
     const { id } = prescriber;
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     const url = `${Endpoints.prescribers}/${id}`;
     return this.#http.put<Prescriber>(url, prescriber);
   }

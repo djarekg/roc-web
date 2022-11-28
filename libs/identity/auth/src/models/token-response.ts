@@ -1,4 +1,4 @@
-import { TokenUser } from './token-user';
+import { type TokenUser } from './token-user';
 
 export interface TokenResponse {
   token: string | null;

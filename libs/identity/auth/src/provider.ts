@@ -1,9 +1,9 @@
 import {
-  EnvironmentProviders,
+  type EnvironmentProviders,
   makeEnvironmentProviders,
-  Provider,
+  type Provider,
 } from '@angular/core';
-import { Routes } from '@angular/router';
+import { type Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 

@@ -1,9 +1,12 @@
-import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import {
+  type HttpEvent,
+  type HttpHandlerFn,
+  type HttpRequest,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { first, Observable, switchMap } from 'rxjs';
-
-import { selectBearerToken } from '../store';
+import { first, type Observable, switchMap } from 'rxjs';
+import { selectBearerToken } from '../store/reducers';
 
 export const HTTP_AUTH_INTERCEPTOR = (
   req: HttpRequest<unknown>,

@@ -1,4 +1,4 @@
-import { Locale } from '../../i18n/models/locale';
+import { type Locale } from '../i18n/models';
 
 export interface Environment {
   apiUrl?: string;

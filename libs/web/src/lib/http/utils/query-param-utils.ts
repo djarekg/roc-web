@@ -1,11 +1,10 @@
 import { HttpParams } from '@angular/common/http';
-import { Sort } from '@angular/material/sort';
-import { MAX_PAGE_SIZE } from '../../shared';
-
-import { Pagination } from '../../shared/models';
+import { type Sort } from '@angular/material/sort';
+import { MAX_PAGE_SIZE } from '../../shared/constants';
+import { type Pagination } from '../../shared/models';
 
 export function createHttpParams(params: {
-  [key: string]: string | number | boolean;
+  [key: string]: boolean | number | string;
 }): HttpParams {
   return Object.keys(params).reduce((httpParams, key) => {
     return httpParams.set(key, params[key]);

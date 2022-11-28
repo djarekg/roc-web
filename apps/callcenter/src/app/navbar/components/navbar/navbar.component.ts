@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 
-import { navRoutes } from '../../models';
+import { navRoutes } from '@roc-web/callcenter/navbar';
 
 @Component({
   selector: 'app-navbar',

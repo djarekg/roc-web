@@ -1,7 +1,10 @@
-import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import {
+  type HttpEvent,
+  type HttpHandlerFn,
+  type HttpRequest,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
-import { finalize, Observable, shareReplay } from 'rxjs';
-
+import { finalize, type Observable, shareReplay } from 'rxjs';
 import { HttpRequestCacheService } from '../services';
 
 export const HTTP_CACHE_INTERCEPTOR = (

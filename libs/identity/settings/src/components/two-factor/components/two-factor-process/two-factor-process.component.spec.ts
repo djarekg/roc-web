@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TwoFactorProcessComponent } from './two-factor-process.component';
 
@@ -8,9 +8,8 @@ describe('TwoFactorProcessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ TwoFactorProcessComponent ]
-    })
-    .compileComponents();
+      imports: [TwoFactorProcessComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TwoFactorProcessComponent);
     component = fixture.componentInstance;

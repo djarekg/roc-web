@@ -1,12 +1,9 @@
-import { Routes } from '@angular/router';
-
-import {
-  prescriberExitsGuards,
-  providePrescriber,
-} from '@roc-web/callcenter/stakeholder/prescriber/store';
+import { type Routes } from '@angular/router';
 import { authGuards } from '@roc-web/identity/auth';
+import { prescriberExitsGuards } from '../guards';
+import { providePrescriber } from '../store';
 
-export default [
+export const routes = [
   {
     path: '',
     children: [

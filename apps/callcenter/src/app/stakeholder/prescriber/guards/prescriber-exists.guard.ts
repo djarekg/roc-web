@@ -1,10 +1,9 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { type ActivatedRouteSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, first, Observable, tap } from 'rxjs';
-
-import { prescriberExistsGuardActions } from '../store/actions';
-import { selectSelectedLoaded } from '../store/reducers';
+import { prescriberExistsGuardActions } from '@roc-web/callcenter/stakeholder/prescriber/store/actions';
+import { selectSelectedLoaded } from '@roc-web/callcenter/stakeholder/prescriber/store/reducers';
+import { filter, first, type Observable, tap } from 'rxjs';
 
 export const canActivate = (
   route: ActivatedRouteSnapshot

@@ -4,7 +4,7 @@ export * from './constants';
 export * from './defaults';
 export * from './directives';
 export * from './i18n';
-export * from './options';
+export * from './models';
 export * from './storage';
 export * from './store';
 export * from './tokens';

@@ -1,13 +1,11 @@
 import {
-  EnvironmentProviders,
+  type EnvironmentProviders,
   makeEnvironmentProviders,
-  Provider,
+  type Provider,
 } from '@angular/core';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
-
-import { PrescriberService } from '@roc-web/callcenter/stakeholder/prescriber/services';
-
+import { PrescriberService } from '../services';
 import { PrescribersEffects } from './effects';
 import { prescribersFeature } from './prescribers.features';
 

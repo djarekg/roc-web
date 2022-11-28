@@ -1,4 +1,4 @@
-import { ValueOutcomePaginationResponse } from './value-outcome-pagination-response';
+import { type ValueOutcomePaginationResponse } from './value-outcome-pagination-response';
 
 export class ValueOutcome<T extends unknown> {
   failure: boolean = false;
@@ -6,5 +6,5 @@ export class ValueOutcome<T extends unknown> {
   messages: string[] | null = null;
   statusCode?: number;
   success: boolean = false;
-  value?: ValueOutcomePaginationResponse<T> | T;
+  value?: T | ValueOutcomePaginationResponse<T>;
 }

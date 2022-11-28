@@ -1,4 +1,4 @@
-import { userRole } from './user-role';
+import { type userRole } from './user-role';
 
 export interface User {
   addDate: Date;

@@ -1,4 +1,4 @@
-import { ValueOutcomePaginationResponse } from '../models';
+import { type ValueOutcomePaginationResponse } from '../models';
 
 export const VALUE_OUTCOME_PAGINATION_RESPONSE_KEYS: ReadonlyArray<
   keyof ValueOutcomePaginationResponse<unknown>

@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 import { TwoFactorQrCodeComponent } from './two-factor-qr-code.component';
 
 describe('TwoFactorQrCodeComponent', () => {
@@ -8,9 +7,8 @@ describe('TwoFactorQrCodeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ TwoFactorQrCodeComponent ]
-    })
-    .compileComponents();
+      imports: [TwoFactorQrCodeComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TwoFactorQrCodeComponent);
     component = fixture.componentInstance;

@@ -1,6 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-
-import { TokenResponse } from '../../models';
+import { type TokenResponse } from '../../models';
 
 export const authActions = createActionGroup({
   source: 'Auth',

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordValidationComponent } from './password-validation.component';
 
@@ -8,9 +8,8 @@ describe('PasswordValidationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ PasswordValidationComponent ]
-    })
-    .compileComponents();
+      imports: [PasswordValidationComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PasswordValidationComponent);
     component = fixture.componentInstance;

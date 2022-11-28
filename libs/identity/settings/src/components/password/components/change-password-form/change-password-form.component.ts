@@ -1,26 +1,24 @@
 import { NgIf } from '@angular/common';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    Output
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
 } from '@angular/core';
 import {
-    FormBuilder,
-    FormControl,
-    ReactiveFormsModule,
-    Validators
+  FormBuilder,
+  type FormControl,
+  ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-
 import { CustomValidators } from '@roc-web/core';
-
-import { ChangePassword } from '../../models';
+import { type ChangePassword } from '../../models';
 import { PasswordValidationComponent } from '../password-validation';
 
-type ChipColor = 'error' | 'success' | '';
+// type ChipColor = '' | 'error' | 'success';
 
 @Component({
   selector: 'rw-settings-change-password-form',

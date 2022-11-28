@@ -1,7 +1,7 @@
-import { ValueOutcomePaginationResponse } from '../../shared/models';
+import { type ValueOutcomePaginationResponse } from '../../shared/models';
 
 export type ValueOutcomePaginationResponseOrUnknown =
+  | unknown
   | (object & {
       pagination: ValueOutcomePaginationResponse<unknown>;
-    })
-  | unknown;
+    });

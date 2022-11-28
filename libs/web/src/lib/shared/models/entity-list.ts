@@ -1,7 +1,6 @@
-import { Sort } from '@angular/material/sort';
-
-import { Entity } from './entity';
-import { Pagination } from './pagination';
+import { type Sort } from '@angular/material/sort';
+import { type Entity } from './entity';
+import { type Pagination } from './pagination';
 
 export interface EntityList<T extends Entity> {
   entities: Readonly<T>[];

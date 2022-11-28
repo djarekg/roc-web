@@ -1,6 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-
-import { Prescriber } from '../../models';
+import { type Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 
 export const prescriberDetailPageActions = createActionGroup({
   source: 'Selected Prescriber Page',

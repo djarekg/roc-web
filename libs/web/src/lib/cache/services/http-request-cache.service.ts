@@ -1,6 +1,6 @@
-import { HttpEvent, HttpRequest } from '@angular/common/http';
+import { type HttpEvent, type HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { type Observable } from 'rxjs';
 
 /**
  * Service to manager HTTP request caching.
@@ -40,7 +40,10 @@ export class HttpRequestCacheService {
    * @param request - The request that was made.
    * @param response - Observable<HttpEvent<unknown>>
    */
-  set(request: HttpRequest<unknown>, response: Observable<HttpEvent<unknown>>): void {
+  set(
+    request: HttpRequest<unknown>,
+    response: Observable<HttpEvent<unknown>>
+  ): void {
     this.#requests[this.key(request)] = response;
   }
 

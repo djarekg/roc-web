@@ -1,8 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-
-import { Pagination } from '@roc-web/web';
-
-import { Prescriber } from '../../models';
+import { type Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
+import { type Pagination } from '@roc-web/web';
 
 export const prescribersApiActions = createActionGroup({
   source: 'Prescribers Api',

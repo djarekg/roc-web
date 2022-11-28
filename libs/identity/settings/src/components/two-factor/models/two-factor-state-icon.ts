@@ -1,1 +1,1 @@
-export type TwoFactorStateIcon = 'clear' | 'check';
+export type TwoFactorStateIcon = 'check' | 'clear';

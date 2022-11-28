@@ -6,15 +6,15 @@ import {
   ElementRef,
   inject,
   Input,
-  OnDestroy,
-  OnInit,
+  type OnDestroy,
+  type OnInit,
   Renderer2,
 } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { type ControlValueAccessor } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { Subject } from 'rxjs';
-import { CORE_OPTIONS } from '../../options';
-import { Locale } from '../models';
+import { CORE_OPTIONS } from '../../tokens';
+import { type Locale } from '../models';
 
 @Component({
   selector: 'rw-locale-select',

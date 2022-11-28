@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TwoFactorStatusComponent } from './two-factor-status.component';
 
@@ -8,9 +8,8 @@ describe('TwoFactorStatusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ TwoFactorStatusComponent ]
-    })
-    .compileComponents();
+      imports: [TwoFactorStatusComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TwoFactorStatusComponent);
     component = fixture.componentInstance;

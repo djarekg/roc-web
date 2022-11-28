@@ -10,8 +10,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-
-import { TokenUser } from '@roc-web/identity/auth';
+import { type TokenUser } from '@roc-web/identity/auth';
 
 @Component({
   selector: 'rw-settings-user-details-form',

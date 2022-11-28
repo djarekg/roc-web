@@ -1,16 +1,15 @@
 import {
-  HttpErrorResponse,
-  HttpEvent,
+  type HttpErrorResponse,
+  type HttpEvent,
   HttpResponse,
 } from '@angular/common/http';
-
 import {
   VALUE_OUTCOME_PAGINATION_RESPONSE_KEYS,
   VALUE_OUTCOME_REQUIRED_KEYS,
 } from '../../shared/constants';
 import {
-  ValueOutcome,
-  ValueOutcomePaginationResponse,
+  type ValueOutcome,
+  type ValueOutcomePaginationResponse,
 } from '../../shared/models';
 
 export function isHttpResponseBodyObject(body: unknown): body is object {
@@ -18,7 +17,7 @@ export function isHttpResponseBodyObject(body: unknown): body is object {
 }
 
 export function isHttpValueOutcomeResponse(
-  response: HttpEvent<unknown> | HttpErrorResponse
+  response: HttpErrorResponse | HttpEvent<unknown>
 ): response is HttpResponse<ValueOutcome<unknown>> {
   if (response instanceof HttpResponse) {
     const body = response.body;

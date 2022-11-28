@@ -1,5 +1,5 @@
-import { Claim } from './claim';
-import { Permission } from './permission';
+import { type Claim } from './claim';
+import { type Permission } from './permission';
 
 export interface Role {
   claims: Claim[];
