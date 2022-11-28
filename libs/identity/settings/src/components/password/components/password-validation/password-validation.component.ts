@@ -2,8 +2,8 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  inject,
   Input,
+  inject,
 } from '@angular/core';
 import { type FormControl } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';

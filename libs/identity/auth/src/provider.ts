@@ -1,7 +1,7 @@
 import {
   type EnvironmentProviders,
-  makeEnvironmentProviders,
   type Provider,
+  makeEnvironmentProviders,
 } from '@angular/core';
 import { type Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';

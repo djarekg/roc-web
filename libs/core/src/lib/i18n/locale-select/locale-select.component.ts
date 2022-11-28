@@ -4,15 +4,16 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  inject,
   Input,
   type OnDestroy,
   type OnInit,
   Renderer2,
+  inject,
 } from '@angular/core';
 import { type ControlValueAccessor } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { Subject } from 'rxjs';
+
 import { CORE_OPTIONS } from '../../tokens';
 import { type Locale } from '../models';
 

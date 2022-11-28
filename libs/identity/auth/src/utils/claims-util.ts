@@ -1,5 +1,7 @@
 import { isNullOrEmpty } from '@roc-web/core';
+
 import { type ClaimsPrincipal } from '../models';
+
 import { decode } from './token-util';
 
 /**

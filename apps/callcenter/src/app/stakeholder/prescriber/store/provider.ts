@@ -1,11 +1,13 @@
 import {
   type EnvironmentProviders,
-  makeEnvironmentProviders,
   type Provider,
+  makeEnvironmentProviders,
 } from '@angular/core';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
+
 import { PrescriberService } from '../services';
+
 import { PrescribersEffects } from './effects';
 import { prescribersFeature } from './prescribers.features';
 

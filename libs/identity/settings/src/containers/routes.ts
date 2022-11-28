@@ -1,5 +1,6 @@
 import { type Routes } from '@angular/router';
-import { authGuards, Roles } from '@roc-web/identity/auth';
+import { Roles, authGuards } from '@roc-web/identity/auth';
+
 import {
   AccountComponent,
   SecurityComponent,

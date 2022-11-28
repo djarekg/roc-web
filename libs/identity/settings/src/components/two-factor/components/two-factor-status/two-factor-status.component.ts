@@ -1,6 +1,7 @@
 import { TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+
 import { type TwoFactorState, type TwoFactorStateIcon } from '../../models';
 
 const twoFactorStateCLassMap: Record<TwoFactorState, string> = {

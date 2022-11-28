@@ -4,7 +4,8 @@ import {
   type HttpRequest,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { finalize, type Observable, shareReplay } from 'rxjs';
+import { type Observable, finalize, shareReplay } from 'rxjs';
+
 import { HttpRequestCacheService } from '../services';
 
 export const HTTP_CACHE_INTERCEPTOR = (

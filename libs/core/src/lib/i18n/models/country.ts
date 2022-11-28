@@ -1,4 +1,4 @@
-import { Locale } from './locale';
+import { type Locale } from './locale';
 
 export interface Country {
   description: string;

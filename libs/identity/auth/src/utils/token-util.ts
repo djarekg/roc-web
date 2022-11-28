@@ -1,4 +1,4 @@
-import { type TokenUser, type DecodedToken } from '../models';
+import { type DecodedToken, type TokenUser } from '../models';
 
 /**
  * Get user from JWT token.

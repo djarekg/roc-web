@@ -1,13 +1,13 @@
 import { InjectionToken, isDevMode } from '@angular/core';
 import * as fromRouterStore from '@ngrx/router-store';
-import { BaseRouterStoreState } from '@ngrx/router-store';
+import { type BaseRouterStoreState } from '@ngrx/router-store';
 import {
-  Action,
-  ActionReducer,
-  ActionReducerMap,
+  type Action,
+  type ActionReducer,
+  type ActionReducerMap,
+  type MetaReducer,
   createFeatureSelector,
   createSelector,
-  MetaReducer,
 } from '@ngrx/store';
 
 import * as fromRouteProgress from './route-progress.reducers';

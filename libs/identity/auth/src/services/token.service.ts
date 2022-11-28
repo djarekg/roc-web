@@ -3,11 +3,12 @@ import {
   type HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { LocalStorageService } from '@roc-web/core';
 import { Endpoints } from '@roc-web/identity';
 import { type Outcome, SKIP_ERROR_INTERCEPTOR_HEADER } from '@roc-web/web';
-import { catchError, map, type Observable, throwError } from 'rxjs';
+import { type Observable, catchError, map, throwError } from 'rxjs';
+
 import {
   INCORRECT_CREDENTIALS_REGEX,
   REQUEST_TOKEN_ERROR_MESSAGE,
@@ -15,10 +16,10 @@ import {
 import {
   type DecodedToken,
   HttpCacheKey,
-  type TokenUser,
-  type TokenResponse,
   type HttpTokenResponse,
   type ResponseTokenError,
+  type TokenResponse,
+  type TokenUser,
 } from '../models';
 import { decode, parseUser } from '../utils';
 

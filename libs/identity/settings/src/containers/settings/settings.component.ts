@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PushModule } from '@ngrx/component';
 import {
-  createSidenavRoutes,
   SidenavComponent,
+  createSidenavRoutes,
   slideInAnimation,
 } from '@roc-web/core';
 

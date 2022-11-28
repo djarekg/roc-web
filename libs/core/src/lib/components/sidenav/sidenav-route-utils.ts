@@ -1,6 +1,6 @@
-import { Route, Routes } from '@angular/router';
+import { type Route, type Routes } from '@angular/router';
 
-import { SidenavRoute } from './sidenav-route';
+import { type SidenavRoute } from './sidenav-route';
 
 function getRouteWithChildrenByPath(
   routes: Routes | undefined,

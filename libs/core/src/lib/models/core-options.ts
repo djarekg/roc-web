@@ -1,3 +1,3 @@
-import { Environment } from './environment';
+import { type Environment } from './environment';
 
 export interface CoreOptions extends Environment {}

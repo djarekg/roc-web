@@ -1,4 +1,4 @@
-import { ValidatorFn } from '@angular/forms';
+import { type ValidatorFn } from '@angular/forms';
 
 import { equalToValidator } from './equal-to-validator';
 import { numericCharacterValidator } from './numeric-character-validator';

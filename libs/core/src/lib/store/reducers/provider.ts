@@ -1,13 +1,16 @@
 import {
-  EnvironmentProviders,
+  type EnvironmentProviders,
+  type Provider,
   makeEnvironmentProviders,
-  Provider,
 } from '@angular/core';
 import { META_REDUCERS } from '@ngrx/store';
-import { CoreState } from '.';
+
 
 import { LocalStorageService } from '../../storage/services';
+
 import { metaReducerFactory } from './meta-reducer-factory';
+
+import { type CoreState } from '.';
 
 export function provideCoreStore(): EnvironmentProviders {
   const providers: Provider[] = [

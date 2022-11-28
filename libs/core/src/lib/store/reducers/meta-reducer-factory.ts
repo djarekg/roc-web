@@ -1,6 +1,6 @@
-import { ActionReducer, INIT, MetaReducer, UPDATE } from '@ngrx/store';
+import { type ActionReducer, INIT, type MetaReducer, UPDATE } from '@ngrx/store';
 
-import { StorageBase } from '../../storage/storage-base';
+import { type StorageBase } from '../../storage/storage-base';
 
 export function metaReducerFactory<T = Record<string, unknown>>(
   storage: StorageBase

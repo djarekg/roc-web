@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { StorageBase } from '../storage-base';
 import { SESSION_STORAGE } from '../tokens';

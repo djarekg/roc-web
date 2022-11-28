@@ -1,4 +1,5 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { TwoFactorQrCodeComponent } from './two-factor-qr-code.component';
 
 describe('TwoFactorQrCodeComponent', () => {

@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
-import { authActions, fromAuth, type TokenUser } from '@roc-web/identity/auth';
+import { type TokenUser, authActions, fromAuth } from '@roc-web/identity/auth';
+
 import { UserDetailsFormComponent } from '../user-details-form';
 
 @Component({

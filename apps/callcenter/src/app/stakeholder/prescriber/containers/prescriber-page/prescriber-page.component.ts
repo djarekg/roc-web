@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PushModule } from '@ngrx/component';
 import { routes } from '@roc-web/callcenter/stakeholder/prescriber/containers';
 import {
-  createSidenavRoutes,
   SidenavComponent,
+  createSidenavRoutes,
   slideInAnimation,
 } from '@roc-web/core';
 

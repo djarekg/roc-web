@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { TwoFactorProcessComponent } from '../two-factor-process';
 import { TwoFactorStatusComponent } from '../two-factor-status';
 

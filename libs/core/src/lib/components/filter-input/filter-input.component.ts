@@ -1,21 +1,21 @@
 import {
-  AfterViewInit,
+  type AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  type ElementRef,
   EventEmitter,
-  OnDestroy,
+  type OnDestroy,
   Output,
   ViewChild,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {
+  Subject,
   debounceTime,
   distinctUntilChanged,
   fromEvent,
   map,
-  Subject,
   takeUntil,
   tap,
 } from 'rxjs';

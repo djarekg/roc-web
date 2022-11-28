@@ -3,7 +3,8 @@ import {
   type HttpHandlerFn,
   type HttpRequest,
 } from '@angular/common/http';
-import { map, type Observable } from 'rxjs';
+import { type Observable, map } from 'rxjs';
+
 import { type ValueOutcomePaginationResponseOrUnknown } from '../types';
 import {
   isHttpValueOutcomePaginationResponse,

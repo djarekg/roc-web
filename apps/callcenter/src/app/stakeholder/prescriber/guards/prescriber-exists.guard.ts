@@ -3,7 +3,7 @@ import { type ActivatedRouteSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { prescriberExistsGuardActions } from '@roc-web/callcenter/stakeholder/prescriber/store/actions';
 import { selectSelectedLoaded } from '@roc-web/callcenter/stakeholder/prescriber/store/reducers';
-import { filter, first, type Observable, tap } from 'rxjs';
+import { type Observable, filter, first, tap } from 'rxjs';
 
 export const canActivate = (
   route: ActivatedRouteSnapshot

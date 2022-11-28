@@ -1,6 +1,8 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { type Observable } from 'rxjs';
+
 import { type TokenResponse } from '../models';
+
 import { TokenService } from './token.service';
 
 @Injectable({

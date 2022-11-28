@@ -5,7 +5,9 @@ import {
   createSelector,
 } from '@ngrx/store';
 import { type CoreState, selectRouteRole } from '@roc-web/core';
+
 import { parseClaimsPrincipal } from '../../utils';
+
 import * as fromAuth from './auth.reducers';
 import * as fromSigninPage from './signin-page.reducers';
 

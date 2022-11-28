@@ -8,7 +8,6 @@ import {
   LocaleSelectComponent,
   RouteProgressBarComponent,
 } from '@roc-web/core';
-
 import {
   ProfileMenuComponent,
   selectIsAuthenticated,

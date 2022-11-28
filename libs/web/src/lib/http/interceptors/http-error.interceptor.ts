@@ -4,7 +4,8 @@ import {
   type HttpHandlerFn,
   type HttpRequest,
 } from '@angular/common/http';
-import { catchError, type Observable, throwError } from 'rxjs';
+import { type Observable, catchError, throwError } from 'rxjs';
+
 import { Outcome } from '../../shared/models';
 import { SKIP_ERROR_INTERCEPTOR_HEADER } from '../constants';
 import { isHttpValueOutcomeResponse } from '../utils';

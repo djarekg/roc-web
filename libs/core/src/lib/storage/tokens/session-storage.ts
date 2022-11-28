@@ -1,4 +1,4 @@
-import { inject, InjectionToken } from '@angular/core';
+import { InjectionToken, inject } from '@angular/core';
 
 import { WINDOW } from '../../tokens';
 

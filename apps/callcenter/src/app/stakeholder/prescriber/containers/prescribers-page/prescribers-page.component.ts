@@ -1,8 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  inject,
   type OnInit,
+  inject,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -11,6 +11,7 @@ import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
 import { ScrollableDirective, selectTitle } from '@roc-web/core';
 import { type PageChange } from '@roc-web/web';
+
 import { PrescriberListComponent } from '../../components';
 import { prescribersPageActions } from '../../store/actions';
 import {

@@ -50,6 +50,7 @@
         "import/order": [
           "error",
           {
+            "newlines-between": "always",
             "groups": [
               "builtin",
               "external",
@@ -64,30 +65,44 @@
                 "pattern": "@/**/**",
                 "group": "parent",
                 "position": "before"
+              },
+              {
+                "pattern": "@roc-web/**/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "(./|../**/**)",
+                "group": "external",
+                "position": "after"
               }
             ],
             "alphabetize": { "order": "asc" }
           }
-        ]
+        ],
         // "no-restricted-imports": [
         //   "error",
         //   {
         //     "patterns": ["../"]
         //   }
         // ]
-        // "sort-imports": [
-        //   "error",
-        //   {
-        //     "ignoreDeclarationSort": false,
-        //     "ignoreCase": true,
-        //     "ignoreMemberSort": false,
-        //     "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
-        //     "allowSeparatedGroups": true,
-        //     "fixAll": true
-        //   }
-        // ]
+        "sort-imports": [
+          "error",
+          {
+            "ignoreDeclarationSort": true,
+            "ignoreCase": false,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["all", "single", "multiple", "none"],
+            "allowSeparatedGroups": true
+          }
+        ],
+        "unused-imports/no-unused-imports": "error"
       },
-      "plugins": ["eslint-plugin-import", "@typescript-eslint"]
+      "plugins": [
+        "eslint-plugin-import",
+        "unused-imports",
+        "@typescript-eslint"
+      ]
     },
     {
       "files": ["*.html"],

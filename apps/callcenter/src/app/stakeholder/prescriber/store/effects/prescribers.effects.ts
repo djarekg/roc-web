@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -12,6 +12,7 @@ import {
   of,
   tap,
 } from 'rxjs';
+
 import {
   prescriberDetailPageActions,
   prescriberExistsGuardActions,

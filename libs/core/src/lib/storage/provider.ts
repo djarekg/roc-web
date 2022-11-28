@@ -1,7 +1,7 @@
 import {
-  EnvironmentProviders,
+  type EnvironmentProviders,
+  type Provider,
   makeEnvironmentProviders,
-  Provider,
 } from '@angular/core';
 
 import { LocalStorageService, SessionStorageService } from './services';

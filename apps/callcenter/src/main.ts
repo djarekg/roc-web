@@ -10,19 +10,17 @@ import {
   withRouterConfig,
 } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
-
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-
 import {
+  ROOT_REDUCERS,
+  RouterEffects,
   debugMetaReducers,
   provideCoreConfig,
   provideCoreStore,
   provideSharedImports,
   provideStorage,
-  ROOT_REDUCERS,
-  RouterEffects,
 } from '@roc-web/core';
 import {
   provideAuth,
@@ -33,7 +31,7 @@ import {
 import { provideSettingsRoutes } from '@roc-web/identity/settings';
 import { provideHttpInterceptors } from '@roc-web/web';
 
-import { AppComponent, APP_ROUTES } from './app';
+import { APP_ROUTES, AppComponent } from './app';
 import { environment } from './environments';
 
 if (environment.production) {

@@ -1,12 +1,13 @@
 /* eslint-disable @ngrx/prefer-effect-callback-in-block-statement */
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
+
 import { Roles, RouteUrl } from '../../models';
 import { AuthService } from '../../services';
 import { hasRole } from '../../utils';
-import { signinPageActions, authApiActions, authActions } from '../actions';
+import { authActions, authApiActions, signinPageActions } from '../actions';
 
 @Injectable()
 export class AuthEffects {

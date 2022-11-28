@@ -1,4 +1,5 @@
 import { type Sort } from '@angular/material/sort';
+
 import { type Entity } from './entity';
 import { type Pagination } from './pagination';
 

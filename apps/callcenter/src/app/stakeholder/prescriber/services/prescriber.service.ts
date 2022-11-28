@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { type Sort } from '@angular/material/sort';
 import { Endpoints } from '@roc-web/callcenter/shared/models';
 import { type Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 import {
-  createHttpPaginationParams,
   type EntityListRespone,
   type Pagination,
+  createHttpPaginationParams,
 } from '@roc-web/web';
 import { type Observable, throwError } from 'rxjs';
 

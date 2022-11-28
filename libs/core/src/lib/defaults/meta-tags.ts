@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, Provider } from '@angular/core';
+import { APP_INITIALIZER, type Provider } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 
 export const META_TAGS: Provider = {

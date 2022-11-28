@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, type Observable, take } from 'rxjs';
+import { type Observable, map, take } from 'rxjs';
+
 import { authApiActions } from '../../store/actions';
 import { selectIsAuthenticated } from '../../store/reducers';
 
