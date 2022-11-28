@@ -2,9 +2,8 @@
   <mat-label i18n="@@i18n.region">Region</mat-label>
   <mat-select>
     <mat-option
-      *ngFor="let locale of locales"
-      [value]="locale"
-    >
+      *ngFor="let locale of locales; trackByProperty: 'id'"
+      [value]="locale">
       {{ locale.countryId }}
     </mat-option>
   </mat-select>

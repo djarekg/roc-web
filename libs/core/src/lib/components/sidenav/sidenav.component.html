@@ -15,7 +15,7 @@
     opened="true">
     <mat-nav-list *ngIf="routes?.length">
       <a
-        *ngForOfEmpty="let route of routes"
+        *ngFor="let route of routes; trackByProperty: 'path'"
         #rla="routerLinkActive"
         mat-list-item
         [routerLink]="route.path"
