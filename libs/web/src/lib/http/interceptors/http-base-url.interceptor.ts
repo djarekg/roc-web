@@ -12,13 +12,13 @@ export const HTTP_BASE_URL_INTERCEPTOR = (
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> => {
   const options = inject(CORE_OPTIONS);
-  const baseUrl = options.apiUrl;
+  // TODO: explicitly set type as string to avoid type error
+  // until satisfies operator is available in TypeScript 4.9
+  const baseUrl: string = options.apiUrl ?? '';
 
-  if (baseUrl) {
-    req = req.clone({
-      url: `${baseUrl}/${req.url.replace(/^\//, '')}`,
-    });
-  }
+  req = req.clone({
+    url: `${baseUrl}/${req.url.replace(/^\//, '')}`,
+  });
 
   return next(req);
 };

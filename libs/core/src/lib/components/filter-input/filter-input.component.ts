@@ -40,6 +40,7 @@ export class FilterInputComponent implements AfterViewInit, OnDestroy {
     | undefined;
 
   ngAfterViewInit(): void {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     fromEvent<Event>(this.filterInput!.nativeElement, 'keyup')
       .pipe(
         takeUntil(this.#destroy$),

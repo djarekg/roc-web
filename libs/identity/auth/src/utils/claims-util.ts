@@ -1,4 +1,4 @@
-import { isNullOrEmpty } from '@roc-web/core';
+import { isNullOrEmptyOrUndefined } from '@roc-web/core';
 
 import { type ClaimsPrincipal } from '../models';
 
@@ -40,7 +40,7 @@ function hasProperty(
   value: string,
   token: string | null
 ): boolean {
-  if (isNullOrEmpty(token)) {
+  if (isNullOrEmptyOrUndefined(token)) {
     return false;
   }
 
@@ -50,7 +50,7 @@ function hasProperty(
     return false;
   }
 
-  if (isNullOrEmpty(value)) {
+  if (isNullOrEmptyOrUndefined(value)) {
     return false;
   }
 
