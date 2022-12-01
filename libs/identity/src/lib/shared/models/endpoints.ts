@@ -1,5 +1,5 @@
 export const enum Endpoints {
-  twoFactor = 'identity/twofactor',
   token = 'identity/token',
+  twoFactor = 'identity/twofactor',
   user = 'identity/user',
 }

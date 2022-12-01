@@ -4,6 +4,7 @@
   "overrides": [
     {
       "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "project": ["tsconfig.json"],
         "createDefaultProgram": true
@@ -13,7 +14,14 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:@ngrx/strict-requiring-type-checking",
+        "plugin:typescript-sort-keys/recommended",
         "prettier"
+      ],
+      "plugins": [
+        "@typescript-eslint",
+        "eslint-plugin-import",
+        // "typescript-sort-keys",
+        "unused-imports"
       ],
       "rules": {
         "@angular-eslint/no-empty-lifecycle-method": "error",
@@ -100,13 +108,19 @@
             "allowSeparatedGroups": true
           }
         ],
+        "sort-keys": [
+          "error",
+          "asc",
+          {
+            "caseSensitive": true,
+            "minKeys": 2,
+            "natural": true
+          }
+        ],
+        // "typescript-sort-keys/interface": "error",
+        // "typescript-sort-keys/string-enum": "error",
         "unused-imports/no-unused-imports": "error"
-      },
-      "plugins": [
-        "eslint-plugin-import",
-        "unused-imports",
-        "@typescript-eslint"
-      ]
+      }
     },
     {
       "files": ["*.html"],

@@ -1,4 +1,4 @@
 export interface HttpTokenResponse {
-  token: string;
   expiration: string;
+  token: string;
 }

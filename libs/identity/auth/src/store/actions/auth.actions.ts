@@ -6,7 +6,7 @@ export const authActions = createActionGroup({
   source: 'Auth',
   events: {
     'Set User': props<Pick<TokenResponse, 'user'>>(),
-    Signin: props<{ userName: string; password: string }>(),
+    Signin: props<{ password: string, userName: string; }>(),
     Signout: emptyProps(),
     'Signout Confirmation': emptyProps(),
     'Signout Confirmation Dismiss': emptyProps(),

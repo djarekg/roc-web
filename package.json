@@ -1,6 +1,10 @@
 {
   "name": "roc-web",
   "version": "3.0.0",
+  "engines": {
+    "node": ">=14",
+    "pnpm": ">=7"
+  },
   "scripts": {
     "ng": "ng",
     "build:core": "ng build @roc-web/core ",
@@ -61,6 +65,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-typescript-sort-keys": "^2.1.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.1",

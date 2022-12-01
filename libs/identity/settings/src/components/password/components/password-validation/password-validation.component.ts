@@ -15,8 +15,8 @@ type ValidationIcons = 'check' | 'priority_high' | 'question_mark';
 type ValidationColors = 'accent' | 'success' | 'warn';
 
 interface ValidationState {
-  icon: ValidationIcons;
   color: ValidationColors;
+  icon: ValidationIcons;
 }
 
 const validationState: Record<ValidStates, ValidationState> = {

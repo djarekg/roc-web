@@ -1,0 +1,100 @@
+<div
+  *ngIf="loading"
+  class="rw-progress-spinner-container">
+  <mat-progress-spinner
+    [diameter]="60"
+    [mode]="'indeterminate'"
+    [strokeWidth]="4"></mat-progress-spinner>
+</div>
+
+<mat-table
+  matSort
+  recycleRows
+  [dataSource]="items">
+  <ng-container matColumnDef="externalId">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      i18n="@@stakeholder.systemId">
+      System ID
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      {{ row.stakeholder.externalId }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      i18n="@@stakeholder.firstName">
+      First Name
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.stakeholder.firstName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      i18n="@@stakeholder.lastName">
+      Last Name
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.stakeholder.lastName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nationalId">
+    <mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      i18n="@@prescriber.nationalId">
+      National ID
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.nationalId }}</mat-cell>
+  </ng-container>
+
+  <ng-container
+    matColumnDef="menu"
+    stickEnd>
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="onEdit(row.id)">
+          <mat-icon>edit</mat-icon>
+          <span i18n="form.edit">Edit</span>
+        </button>
+        <button
+          mat-menu-item
+          (click)="onView(row.id)">
+          <mat-icon>account_box</mat-icon>
+          <span i18n="form.view">View</span>
+        </button>
+      </mat-menu>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  <ng-template matNoDataRow>
+    <div>
+      <span
+        *ngIf="!loading"
+        i18n="@@collection.noResults">
+        No results found
+      </span>
+    </div>
+  </ng-template>
+</mat-table>
+
+<mat-paginator
+  [pageIndex]="pagination?.pageIndex"
+  [pageSize]="pagination?.pageSize"
+  [length]="pagination?.totalCount"></mat-paginator>

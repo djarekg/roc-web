@@ -17,6 +17,6 @@ export const isString = (value: unknown): value is string => {
 
 export const isNotNullUndefinedOrEmpty = (
   value: string | null | undefined
-): value is NonNullable<string> => {
+): value is string => {
   return !isNullUndefinedOrEmpty(value);
 };
