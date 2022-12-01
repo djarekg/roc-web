@@ -8,7 +8,7 @@ specifiers:
   '@angular-eslint/schematics': 15.0.0
   '@angular-eslint/template-parser': 15.0.0
   '@angular/animations': ^15.1.0-next.1
-  '@angular/cdk': ^15.0.0
+  '@angular/cdk': ^15.1.0-next.0
   '@angular/cli': ~15.1.0-next.1
   '@angular/common': ^15.1.0-next.1
   '@angular/compiler': ^15.1.0-next.1
@@ -16,7 +16,7 @@ specifiers:
   '@angular/core': ^15.1.0-next.1
   '@angular/forms': ^15.1.0-next.1
   '@angular/localize': ^15.1.0-next.1
-  '@angular/material': ^15.0.0
+  '@angular/material': ^15.1.0-next.0
   '@angular/platform-browser': ^15.1.0-next.1
   '@angular/platform-browser-dynamic': ^15.1.0-next.1
   '@angular/router': ^15.1.0-next.1
@@ -55,12 +55,12 @@ specifiers:
 
 dependencies:
   '@angular/animations': 15.1.0-next.1_fkqahuapbgc4jvkeh6rowhjiz4
-  '@angular/cdk': 15.0.1_sqdncyi3pt7a7ttvh7o7f46khq
+  '@angular/cdk': 15.1.0-next.0_sqdncyi3pt7a7ttvh7o7f46khq
   '@angular/common': 15.1.0-next.1_w3r4lsmtdkwuuld7py5jh3j2nm
   '@angular/compiler': 15.1.0-next.1_fkqahuapbgc4jvkeh6rowhjiz4
   '@angular/core': 15.1.0-next.1_rxjs@7.5.7+zone.js@0.12.0
   '@angular/forms': 15.1.0-next.1_jayijezcvr4ylhzjwgvrhpgyam
-  '@angular/material': 15.0.1_n64e46yry5dvlmoqaykhljevxm
+  '@angular/material': 15.1.0-next.0_rzkuz7ulkslvovjhuugldeensy
   '@angular/platform-browser': 15.1.0-next.1_gtq3fcq3jyj4kdxmgfgpgvpl4i
   '@angular/platform-browser-dynamic': 15.1.0-next.1_w5og6mj5yrhhou22ktb5rk4qvy
   '@angular/router': 15.1.0-next.1_jayijezcvr4ylhzjwgvrhpgyam
@@ -437,8 +437,8 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@angular/cdk/15.0.1_sqdncyi3pt7a7ttvh7o7f46khq:
-    resolution: {integrity: sha512-yV/nietivRC8JJrEt0M3RXo+4PMk8cReZVhbV0ME6MOehJ7NBw7uIBjfIbLWE9YGEHZi+TCzdxqDuWqH5RCiog==}
+  /@angular/cdk/15.1.0-next.0_sqdncyi3pt7a7ttvh7o7f46khq:
+    resolution: {integrity: sha512-NXIOCt+K/NS8zTjasVP9X9DH8yUpK8g+OASk0gzF8SDQY1fpWQnaq8NuCyBonsdDj/cGabqt+yQZpQ1TeQI4iw==}
     peerDependencies:
       '@angular/common': ^15.0.0 || ^16.0.0
       '@angular/core': ^15.0.0 || ^16.0.0
@@ -573,11 +573,11 @@ packages:
       - supports-color
     dev: true
 
-  /@angular/material/15.0.1_n64e46yry5dvlmoqaykhljevxm:
-    resolution: {integrity: sha512-JXMcRf27HgXwjoNOKD04YubJ14M9Y66g5Ol4R5EDShnwvvzU1OKLjaYN3SYpH5iMauZztjljsVBsLlO8n/TVFA==}
+  /@angular/material/15.1.0-next.0_rzkuz7ulkslvovjhuugldeensy:
+    resolution: {integrity: sha512-aE6goik73yiuZZHlgh6U29M4rudN/URqwlB9pmu/TKVDXge4y3lV2CrKXd1NAvZfpy9WV1cupRFRIUXnIEFMHg==}
     peerDependencies:
       '@angular/animations': ^15.0.0 || ^16.0.0
-      '@angular/cdk': 15.0.1
+      '@angular/cdk': 15.1.0-next.0
       '@angular/common': ^15.0.0 || ^16.0.0
       '@angular/core': ^15.0.0 || ^16.0.0
       '@angular/forms': ^15.0.0 || ^16.0.0
@@ -585,7 +585,7 @@ packages:
       rxjs: ^6.5.3 || ^7.4.0
     dependencies:
       '@angular/animations': 15.1.0-next.1_fkqahuapbgc4jvkeh6rowhjiz4
-      '@angular/cdk': 15.0.1_sqdncyi3pt7a7ttvh7o7f46khq
+      '@angular/cdk': 15.1.0-next.0_sqdncyi3pt7a7ttvh7o7f46khq
       '@angular/common': 15.1.0-next.1_w3r4lsmtdkwuuld7py5jh3j2nm
       '@angular/core': 15.1.0-next.1_rxjs@7.5.7+zone.js@0.12.0
       '@angular/forms': 15.1.0-next.1_jayijezcvr4ylhzjwgvrhpgyam

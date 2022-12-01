@@ -1,25 +1,25 @@
-@use '../../../../../../../theme/styles/theme/theme-variables' as theme-vars;
-@use '../../../../../../../theme/styles/layout/layout-variables' as layout-vars;
+// @use '../../../../../../../theme/styles/theme/theme-variables' as theme-vars;
+// @use '../../../../../../../theme/styles/layout/layout-variables' as layout-vars;
 
-:host {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: flex-start;
-  column-gap: 10px;
-  border-radius: layout-vars.$border-radius;
-  border: 1px solid theme-vars.$grey-border-color;
-  padding-block: 25px;
-  padding-inline: 20px;
-  font-size: 1.1em;
-  color: theme-vars.$grey-text-color;
-}
+// :host {
+//   display: inline-flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: flex-start;
+//   align-self: flex-start;
+//   column-gap: 10px;
+//   border-radius: layout-vars.$border-radius;
+//   border: 1px solid theme-vars.$grey-border-color;
+//   padding-block: 25px;
+//   padding-inline: 20px;
+//   font-size: 1.1em;
+//   color: theme-vars.$grey-text-color;
+// }
 
-.mat-success {
-  color: theme-vars.$success;
-}
+// .mat-success {
+//   color: theme-vars.$success;
+// }
 
-.mat-danger {
-  color: theme-vars.$danger;
-}
+// .mat-danger {
+//   color: theme-vars.$danger;
+// }
