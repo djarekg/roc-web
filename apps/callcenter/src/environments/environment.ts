@@ -9,10 +9,10 @@ export const environment: Environment = {
   googleAnalyticsId: 'UA-137235656-2',
   locales: [
     {
-      localeCode: 'en',
-      languageCode: 'en',
       countryId: 'US',
       isDefault: true,
+      languageCode: 'en',
+      localeCode: 'en',
     },
   ],
   production: false,

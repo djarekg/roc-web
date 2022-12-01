@@ -10,13 +10,13 @@ import {
 import routes from '../routes';
 
 @Component({
-  selector: 'rw-settings',
-  standalone: true,
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
+  animations: [slideInAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [SidenavComponent, PushModule],
-  animations: [slideInAnimation],
+  selector: 'rw-settings',
+  standalone: true,
+  styleUrls: ['./settings.component.scss'],
+  templateUrl: './settings.component.html',
 })
 export class SettingsComponent {
   protected readonly routes = createSidenavRoutes(routes, 'settings');

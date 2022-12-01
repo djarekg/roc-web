@@ -30,9 +30,9 @@ export function createSidenavRoutes(
     return route.children
       ?.filter(route => route.path !== '')
       ?.map<SidenavRoute>(({ title, path }) => ({
+        icon: icon ?? null,
         label: String(title),
         path: String(path),
-        icon: icon ?? null,
       }));
   }
 

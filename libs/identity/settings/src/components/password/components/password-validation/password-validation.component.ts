@@ -20,9 +20,9 @@ interface ValidationState {
 }
 
 const validationState: Record<ValidStates, ValidationState> = {
-  pristine: { icon: 'question_mark', color: 'accent' },
-  error: { icon: 'priority_high', color: 'warn' },
-  success: { icon: 'check', color: 'success' },
+  error: { color: 'warn', icon: 'priority_high' },
+  pristine: { color: 'accent', icon: 'question_mark' },
+  success: { color: 'success', icon: 'check' },
 };
 
 const SPECIAL_CHARACTER_NAME = 'specialCharacter';
@@ -45,12 +45,12 @@ function hasChanged(control: FormControl): boolean {
 }
 
 @Component({
-  selector: 'rw-settings-password-validation',
-  standalone: true,
-  templateUrl: './password-validation.component.html',
-  styleUrls: ['./password-validation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatChipsModule, MatIconModule],
+  selector: 'rw-settings-password-validation',
+  standalone: true,
+  styleUrls: ['./password-validation.component.scss'],
+  templateUrl: './password-validation.component.html',
 })
 export class PasswordValidationComponent {
   #changeDetectorRef = inject(ChangeDetectorRef);

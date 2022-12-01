@@ -14,11 +14,11 @@ export type AlertType =
   | 'warning';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'rw-alert',
   standalone: true,
-  templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './alert.component.html',
 })
 export class AlertComponent {
   @Input() type: AlertType = 'info';

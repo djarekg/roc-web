@@ -18,12 +18,12 @@ import { CORE_OPTIONS } from '../../tokens';
 import { type Locale } from '../models';
 
 @Component({
-  selector: 'rw-locale-select',
-  standalone: true,
-  templateUrl: './locale-select.component.html',
-  styleUrls: ['./locale-select.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatSelectModule],
+  selector: 'rw-locale-select',
+  standalone: true,
+  styleUrls: ['./locale-select.component.css'],
+  templateUrl: './locale-select.component.html',
 })
 export class LocaleSelectComponent
   implements OnInit, OnDestroy, ControlValueAccessor

@@ -21,18 +21,18 @@ import {
 } from '../../store/reducers';
 
 @Component({
-  selector: 'app-prescribers-page',
-  standalone: true,
-  templateUrl: './prescribers-page.component.html',
-  styleUrls: ['./prescribers-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  hostDirectives: [ScrollableDirective],
   imports: [
     MatButtonModule,
     MatDividerModule,
     PrescriberListComponent,
     PushModule,
   ],
-  hostDirectives: [ScrollableDirective],
+  selector: 'app-prescribers-page',
+  standalone: true,
+  styleUrls: ['./prescribers-page.component.scss'],
+  templateUrl: './prescribers-page.component.html',
 })
 export default class PrescribersPageComponent implements OnInit {
   readonly #store = inject(Store);

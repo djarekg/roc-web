@@ -29,10 +29,6 @@ import { Subject, takeUntil, tap } from 'rxjs';
 // TODO: this needs refracted into multiple components
 
 @Component({
-  selector: 'app-prescriber-list',
-  standalone: true,
-  templateUrl: './prescriber-list.component.html',
-  styleUrls: ['./prescriber-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FilterInputComponent,
@@ -46,6 +42,10 @@ import { Subject, takeUntil, tap } from 'rxjs';
     MatTableModule,
     NgIf,
   ],
+  selector: 'app-prescriber-list',
+  standalone: true,
+  styleUrls: ['./prescriber-list.component.scss'],
+  templateUrl: './prescriber-list.component.html',
 })
 export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();

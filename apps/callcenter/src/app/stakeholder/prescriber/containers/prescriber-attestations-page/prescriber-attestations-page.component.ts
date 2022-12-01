@@ -6,10 +6,6 @@ import { PrescriberAttestationsDetailComponent } from '@roc-web/callcenter/stake
 import { CardComponent, selectTitle } from '@roc-web/core';
 
 @Component({
-  selector: 'app-prescriber-attestations-page',
-  standalone: true,
-  templateUrl: './prescriber-attestations-page.component.html',
-  styleUrls: ['./prescriber-attestations-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CardComponent,
@@ -17,6 +13,10 @@ import { CardComponent, selectTitle } from '@roc-web/core';
     PrescriberAttestationsDetailComponent,
     PushModule,
   ],
+  selector: 'app-prescriber-attestations-page',
+  standalone: true,
+  styleUrls: ['./prescriber-attestations-page.component.scss'],
+  templateUrl: './prescriber-attestations-page.component.html',
 })
 export default class PrescriberAttestationsPageComponent {
   protected readonly title$ = inject(Store).select(selectTitle);

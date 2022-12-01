@@ -57,19 +57,22 @@ bootstrapApplication(AppComponent, {
     provideStore(ROOT_REDUCERS, {
       metaReducers: debugMetaReducers,
       runtimeChecks: {
-        // strictStateImmutability and strictActionImmutability are enabled by default
-        strictStateSerializability: true,
+        
         strictActionSerializability: true,
-        strictActionWithinNgZone: true,
-        strictActionTypeUniqueness: true,
+        
+strictActionTypeUniqueness: true,
+        
+strictActionWithinNgZone: true,
+        // strictStateImmutability and strictActionImmutability are enabled by default
+strictStateSerializability: true,
       },
     }),
     provideCoreStore(),
     provideRouterStore(),
     provideEffects(RouterEffects),
     provideStoreDevtools({
-      maxAge: 25,
       logOnly: environment.production,
+      maxAge: 25,
       name: 'Call Center',
     }),
     /**

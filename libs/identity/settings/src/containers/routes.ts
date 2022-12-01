@@ -9,10 +9,7 @@ import {
 
 export default [
   {
-    path: 'settings',
-    component: SettingsComponent,
-    title: 'Account Settings',
-    data: { role: Roles.administrator },
+    canActivate: [authGuards.canActivate],
     children: [
       {
         path: '',
@@ -20,18 +17,21 @@ export default [
         redirectTo: 'account',
       },
       {
-        path: 'account',
         component: AccountComponent,
-        title: 'Account',
         data: { animation: 'AccountPage' },
+        path: 'account',
+        title: 'Account',
       },
       {
-        path: 'security',
         component: SecurityComponent,
-        title: 'Security',
         data: { animation: 'SecurityPage' },
+        path: 'security',
+        title: 'Security',
       },
     ],
-    canActivate: [authGuards.canActivate],
+    component: SettingsComponent,
+    data: { role: Roles.administrator },
+    path: 'settings',
+    title: 'Account Settings',
   },
 ] as Routes;

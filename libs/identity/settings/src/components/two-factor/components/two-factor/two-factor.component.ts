@@ -4,11 +4,11 @@ import { TwoFactorProcessComponent } from '../two-factor-process';
 import { TwoFactorStatusComponent } from '../two-factor-status';
 
 @Component({
-  selector: 'rw-settings-two-factor',
-  standalone: true,
-  templateUrl: './two-factor.component.html',
-  styleUrls: ['./two-factor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TwoFactorStatusComponent, TwoFactorProcessComponent],
+  selector: 'rw-settings-two-factor',
+  standalone: true,
+  styleUrls: ['./two-factor.component.scss'],
+  templateUrl: './two-factor.component.html',
 })
 export class TwoFactorComponent {}

@@ -38,15 +38,19 @@
   ],
   "cSpell.ignoreWords": ["esbenp", "docthis"],
   "cSpell.words": ["ngrx", "ɵkind", "ɵproviders", "Serializability", "signin"],
-  "editor.codeActionsOnSave": [
-    "source.organizeImports.eslint",
-    "source.fixAll.eslint"
-  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "eslint.enable": true,
+  "eslint.run": "onType",
+  "eslint.format.enable": false,
   "eslint.codeAction.disableRuleComment": {
     "enable": true,
     "location": "separateLine"
   },
-  "eslint.validate": ["html", "javascript", "typescript"],
+  "eslint.packageManager": "pnpm",
+  "eslint.onIgnoredFiles": "off",
   "files.watcherExclude": {
     ".git/**": true,
     ".out/**": true,

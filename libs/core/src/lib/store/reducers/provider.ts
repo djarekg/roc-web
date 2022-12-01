@@ -15,10 +15,10 @@ import { type CoreState } from '.';
 export function provideCoreStore(): EnvironmentProviders {
   const providers: Provider[] = [
     {
-      provide: META_REDUCERS,
       deps: [LocalStorageService],
-      useFactory: metaReducerFactory<CoreState>,
       multi: true,
+      provide: META_REDUCERS,
+      useFactory: metaReducerFactory<CoreState>,
     },
   ];
 

@@ -21,7 +21,7 @@ export const HTTP_CACHE_INTERCEPTOR = (
   if (!cache.has(req)) {
     const response = next(req).pipe(
       finalize(() => cache.delete(req)),
-      shareReplay({ refCount: true, bufferSize: 1 })
+      shareReplay({ bufferSize: 1, refCount: true })
     );
 
     cache.set(req, response);

@@ -15,9 +15,9 @@ export const slideInAnimation = trigger('routeAnimations', [
       ':enter, :leave',
       [
         style({
+          left: 0,
           position: 'absolute',
           top: 20,
-          left: 0,
           width: '100%',
         }),
       ],
@@ -42,9 +42,9 @@ export const slideInAnimation = trigger('routeAnimations', [
     style({ position: 'relative' }),
     query(':enter, :leave', [
       style({
+        left: 0,
         position: 'absolute',
         top: 20,
-        left: 0,
         width: '100%',
       }),
     ]),

@@ -6,48 +6,48 @@ import { providePrescriber } from '../store';
 
 export const routes = [
   {
-    path: '',
+    canActivate: [authGuards.canActivate],
     children: [
       {
-        path: '',
         loadComponent: () =>
           import('./prescribers-page/prescribers-page.component'),
+        path: '',
         title: 'Prescribers',
       },
       {
-        path: ':id',
-        loadComponent: () =>
-          import('./prescriber-page/prescriber-page.component'),
-        title: 'Prescriber',
         canActivate: [prescriberExitsGuards.canActive],
         children: [
           {
             path: '',
-            redirectTo: 'summary',
             pathMatch: 'full',
+            redirectTo: 'summary',
           },
           {
-            path: 'summary',
+            data: { animation: 'SummaryPage' },
             loadComponent: () =>
               import(
                 './prescriber-summary-page/prescriber-summary-page.component'
               ),
+            path: 'summary',
             title: 'Summary',
-            data: { animation: 'SummaryPage' },
           },
           {
-            path: 'attestations',
+            data: { animation: 'AttestationsPage' },
             loadComponent: () =>
               import(
                 './prescriber-attestations-page/prescriber-attestations-page.component'
               ),
+            path: 'attestations',
             title: 'Attestations',
-            data: { animation: 'AttestationsPage' },
           },
         ],
+        loadComponent: () =>
+          import('./prescriber-page/prescriber-page.component'),
+        path: ':id',
+        title: 'Prescriber',
       },
     ],
-    canActivate: [authGuards.canActivate],
+    path: '',
     providers: [providePrescriber()],
   },
 ] as Routes;

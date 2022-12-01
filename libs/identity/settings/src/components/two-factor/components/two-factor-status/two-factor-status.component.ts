@@ -5,17 +5,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { type TwoFactorState, type TwoFactorStateIcon } from '../../models';
 
 const twoFactorStateCLassMap: Record<TwoFactorState, string> = {
-  enabled: 'success',
   disabled: 'danger',
+  enabled: 'success',
 };
 
 @Component({
-  selector: 'rw-settings-two-factor-status',
-  standalone: true,
-  templateUrl: './two-factor-status.component.html',
-  styleUrls: ['./two-factor-status.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule, TitleCasePipe],
+  selector: 'rw-settings-two-factor-status',
+  standalone: true,
+  styleUrls: ['./two-factor-status.component.scss'],
+  templateUrl: './two-factor-status.component.html',
 })
 export class TwoFactorStatusComponent {
   protected get twoFactorState(): TwoFactorState {

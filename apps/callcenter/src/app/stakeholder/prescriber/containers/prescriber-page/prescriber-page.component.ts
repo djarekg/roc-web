@@ -9,13 +9,13 @@ import {
 } from '@roc-web/core';
 
 @Component({
+  animations: [slideInAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [PushModule, SidenavComponent],
   selector: 'app-prescriber',
   standalone: true,
-  templateUrl: './prescriber-page.component.html',
   styleUrls: ['./prescriber-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [slideInAnimation],
-  imports: [PushModule, SidenavComponent],
+  templateUrl: './prescriber-page.component.html',
 })
 export default class PrescriberPageComponent {
   protected readonly routes = createSidenavRoutes(routes, ':id', 'assignment');

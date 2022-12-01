@@ -7,10 +7,6 @@ import { RouterLink } from '@angular/router';
 import { navRoutes } from '@roc-web/callcenter/navbar';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
@@ -22,6 +18,10 @@ import { navRoutes } from '@roc-web/callcenter/navbar';
     RouterLink,
     RouterLink,
   ],
+  selector: 'app-navbar',
+  standalone: true,
+  styleUrls: ['./navbar.component.scss'],
+  templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
   protected routes = navRoutes;

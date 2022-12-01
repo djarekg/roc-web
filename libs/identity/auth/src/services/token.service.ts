@@ -110,9 +110,9 @@ export class TokenService {
       .post<HttpTokenResponse>(
         Endpoints.token,
         {
-          userName,
           password,
           token: null,
+          userName,
         },
         { headers }
       )

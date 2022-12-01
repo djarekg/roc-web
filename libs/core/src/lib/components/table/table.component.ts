@@ -28,10 +28,6 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { type TableColumn } from './table-column';
 
 @Component({
-  selector: 'rw-table',
-  standalone: true,
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
@@ -44,6 +40,10 @@ import { type TableColumn } from './table-column';
     MatTableModule,
     NgIf,
   ],
+  selector: 'rw-table',
+  standalone: true,
+  styleUrls: ['./table.component.scss'],
+  templateUrl: './table.component.html',
 })
 export class TableComponent<T extends object>
   implements AfterViewInit, OnDestroy

@@ -7,12 +7,12 @@ import { type TokenUser, authActions, fromAuth } from '@roc-web/identity/auth';
 import { UserDetailsFormComponent } from '../user-details-form';
 
 @Component({
-  selector: 'rw-settings-user-details',
-  standalone: true,
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, UserDetailsFormComponent, PushModule],
+  selector: 'rw-settings-user-details',
+  standalone: true,
+  styleUrls: ['./user-details.component.scss'],
+  templateUrl: './user-details.component.html',
 })
 export class UserDetailsComponent {
   readonly #store = inject(Store);

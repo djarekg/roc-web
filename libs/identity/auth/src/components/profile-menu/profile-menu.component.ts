@@ -8,12 +8,12 @@ import { Store } from '@ngrx/store';
 import { authActions } from '../../store/actions';
 
 @Component({
-  selector: 'rw-profile-menu',
-  standalone: true,
-  templateUrl: './profile-menu.component.html',
-  styleUrls: ['./profile-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule, MatButtonModule, MatMenuModule, RouterLink],
+  selector: 'rw-profile-menu',
+  standalone: true,
+  styleUrls: ['./profile-menu.component.scss'],
+  templateUrl: './profile-menu.component.html',
 })
 export class ProfileMenuComponent {
   readonly #store = inject(Store);

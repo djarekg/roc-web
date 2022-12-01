@@ -4,7 +4,7 @@ import { SigninComponent } from './signin';
 
 export default [
   {
-    path: 'signin',
     component: SigninComponent,
+    path: 'signin',
   },
 ] as Routes;

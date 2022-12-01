@@ -48,7 +48,7 @@ export const selectClaims = createSelector(selectAuthStatusState, state =>
 export const selectAuthentication = createSelector(
   selectIsAuthenticated,
   selectClaims,
-  (isAuthenticated, claims) => ({ isAuthenticated, claims })
+  (isAuthenticated, claims) => ({ claims, isAuthenticated })
 );
 
 export const selectUser = createSelector(

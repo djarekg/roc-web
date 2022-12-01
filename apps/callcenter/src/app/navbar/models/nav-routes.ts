@@ -2,7 +2,6 @@ import { type NavRoute } from './nav-route';
 
 export const navRoutes: NavRoute[] = [
   {
-    name: 'Stakeholder',
     children: [
       {
         name: 'Prescriber',
@@ -37,6 +36,7 @@ export const navRoutes: NavRoute[] = [
         relativeUrl: 'lab-test',
       },
     ],
+    name: 'Stakeholder',
   },
   {
     name: 'Administrators',

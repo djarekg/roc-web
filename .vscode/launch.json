@@ -8,14 +8,14 @@
       "name": "ng serve: callcenter",
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm run start:callcenter",
+      "command": "pnpm run start:callcenter",
       "preLaunchTask": "build libs"
     },
     {
       "name": "ng serve: callcenter de",
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm run start:callcenter:de",
+      "command": "pnpm run start:callcenter:de",
       "preLaunchTask": "build libs"
     },
     {

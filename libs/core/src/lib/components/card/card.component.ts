@@ -8,12 +8,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'rw-card',
-  standalone: true,
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatCardModule],
+  selector: 'rw-card',
+  standalone: true,
+  styleUrls: ['./card.component.scss'],
+  templateUrl: './card.component.html',
 })
 export class CardComponent {
   @HostBinding('class') readonly class = 'rw-card';

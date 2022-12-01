@@ -3,7 +3,6 @@ import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { type TokenResponse } from '../../models';
 
 export const authActions = createActionGroup({
-  source: 'Auth',
   events: {
     'Set User': props<Pick<TokenResponse, 'user'>>(),
     Signin: props<{ password: string, userName: string; }>(),
@@ -11,4 +10,5 @@ export const authActions = createActionGroup({
     'Signout Confirmation': emptyProps(),
     'Signout Confirmation Dismiss': emptyProps(),
   },
+  source: 'Auth',
 });

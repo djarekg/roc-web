@@ -23,12 +23,12 @@ import {
 import { FILTER_INPUT_KEYUP_DELAY } from '../../constants';
 
 @Component({
-  selector: 'rw-filter-input',
-  standalone: true,
-  templateUrl: './filter-input.component.html',
-  styleUrls: ['./filter-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule, MatInputModule],
+  selector: 'rw-filter-input',
+  standalone: true,
+  styleUrls: ['./filter-input.component.scss'],
+  templateUrl: './filter-input.component.html',
 })
 export class FilterInputComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();

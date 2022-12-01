@@ -36,8 +36,8 @@ export const HTTP_ERROR_INTERCEPTOR = (
       const outcome: Outcome = {
         ...new Outcome(),
         failure: true,
-        success: false,
         messages: ['An error occurred when executing your req.'],
+        success: false,
       };
 
       return throwError(() => outcome);

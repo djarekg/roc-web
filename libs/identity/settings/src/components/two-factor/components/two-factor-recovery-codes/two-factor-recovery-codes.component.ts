@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
   selector: 'rw-settings-two-factor-recovery-codes',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './two-factor-recovery-codes.component.html',
   styleUrls: ['./two-factor-recovery-codes.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './two-factor-recovery-codes.component.html',
 })
 export class TwoFactorRecoveryCodesComponent {}
