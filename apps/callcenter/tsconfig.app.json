@@ -2,30 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": [],
-    "paths": {
-      "@roc-web/callcenter/environments": ["apps/callcenter/src/environments"],
-      "@roc-web/callcenter/layout": ["apps/callcenter/src/app/layout"],
-      "@roc-web/callcenter/navbar": ["apps/callcenter/src/app/navbar"],
-      "@roc-web/callcenter/shared/*": ["apps/callcenter/src/app/shared"],
-      "@roc-web/callcenter/stakeholder/*": [
-        "apps/callcenter/src/app/stakeholder/*"
-      ],
-      "@roc-web/callcenter/stakeholder/prescriber/*": [
-        "apps/callcenter/src/app/stakeholder/prescriber/*"
-      ],
-      "@roc-web/callcenter/store": ["apps/callcenter/src/app/store"],
-      "@roc-web/core": ["dist/@roc-web/core"],
-      "@roc-web/core/*": ["dist/@roc-web/core/*"],
-      "@roc-web/identity": ["dist/@roc-web/identity"],
-      "@roc-web/identity/*": ["dist/@roc-web/identity/*"],
-      "@roc-web/identity/auth": ["dist/@roc-web/identity/auth"],
-      "@roc-web/identity/auth/*": ["dist/@roc-web/identity/auth/*"],
-      "@roc-web/identity/settings": ["dist/@roc-web/identity/settings"],
-      "@roc-web/identity/settings/*": ["dist/@roc-web/identity/settings/*"],
-      "@roc-web/web": ["dist/@roc-web/web"],
-      "@roc-web/web/*": ["dist/@roc-web/web/*"]
-    }
+    "types": []
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": ["src/**/*.d.ts"]

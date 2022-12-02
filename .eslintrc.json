@@ -14,13 +14,11 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:@ngrx/strict-requiring-type-checking",
-        "plugin:typescript-sort-keys/recommended",
         "prettier"
       ],
       "plugins": [
         "@typescript-eslint",
         "eslint-plugin-import",
-        "sort-keys-fix",
         "unused-imports"
       ],
       "rules": {
@@ -108,7 +106,6 @@
             "allowSeparatedGroups": true
           }
         ],
-        "sort-keys-fix/sort-keys-fix": "warn",
         "unused-imports/no-unused-imports": "error"
       }
     },

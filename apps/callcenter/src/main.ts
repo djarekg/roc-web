@@ -28,6 +28,7 @@ import {
   provideAuthRoutes,
   provideToken,
 } from '@roc-web/identity/auth';
+// import { provideSettingsRoutes } from '@roc-web/identity/settings';
 import { provideSettingsRoutes } from '@roc-web/identity/settings';
 import { provideHttpInterceptors } from '@roc-web/web';
 
@@ -57,14 +58,11 @@ bootstrapApplication(AppComponent, {
     provideStore(ROOT_REDUCERS, {
       metaReducers: debugMetaReducers,
       runtimeChecks: {
-        
         strictActionSerializability: true,
-        
-strictActionTypeUniqueness: true,
-        
-strictActionWithinNgZone: true,
+        strictActionTypeUniqueness: true,
+        strictActionWithinNgZone: true,
         // strictStateImmutability and strictActionImmutability are enabled by default
-strictStateSerializability: true,
+        strictStateSerializability: true,
       },
     }),
     provideCoreStore(),

@@ -20,29 +20,89 @@
     "target": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
-      "@roc-web/callcenter/environments": ["apps/callcenter/src/environments"],
-      "@roc-web/callcenter/layout": ["apps/callcenter/src/app/layout"],
-      "@roc-web/callcenter/navbar": ["apps/callcenter/src/app/navbar"],
-      "@roc-web/callcenter/shared/*": ["apps/callcenter/src/app/shared"],
+      "@roc-web/callcenter/environments/*": [
+        "apps/callcenter/src/environments/*",
+        "app/callcenter/src/environments/*"
+      ],
+      "@roc-web/callcenter/environments": [
+        "dist/@roc-web/callcenter/src/environments/*",
+        "dist/@roc-web/callcenter/src/environments"
+      ],
+      "@roc-web/callcenter/layout/*": [
+        "apps/callcenter/src/app/layout/*",
+        "apps/callcenter/src/app/layout"
+      ],
+      "@roc-web/callcenter/layout": [
+        "dist/@roc-web/callcenter/src/app/layout/*",
+        "dist/@roc-web/callcenter/src/app/layout"
+      ],
+      "@roc-web/callcenter/navbar/*": [
+        "apps/callcenter/src/app/navbar/*",
+        "apps/callcenter/src/app/navbar"
+      ],
+      "@roc-web/callcenter/navbar": [
+        "dist/@roc-web/callcenter/src/app/navbar/*",
+        "dist/@roc-web/callcenter/src/app/navbar"
+      ],
+      "@roc-web/callcenter/shared/*": [
+        "apps/callcenter/src/app/shared/*",
+        "apps/callcenter/src/app/shared"
+      ],
+      "@roc-web/callcenter/shared": [
+        "dist/@roc-web/callcenter/src/app/shared/*",
+        "dist/@roc-web/callcenter/src/app/shared"
+      ],
       "@roc-web/callcenter/stakeholder/*": [
-        "apps/callcenter/src/app/stakeholder/*"
+        "apps/callcenter/src/app/stakeholder/*",
+        "apps/callcenter/src/app/stakeholder"
+      ],
+      "@roc-web/callcenter/stakeholder": [
+        "dist/@roc-web/callcenter/src/app/stakeholder/*",
+        "dist/@roc-web/callcenter/src/app/stakeholder"
       ],
       "@roc-web/callcenter/stakeholder/prescriber/*": [
-        "apps/callcenter/src/app/stakeholder/prescriber/*"
+        "apps/callcenter/src/app/stakeholder/prescriber/*",
+        "apps/callcenter/src/app/stakeholder/prescriber"
       ],
-      "@roc-web/callcenter/store": ["apps/callcenter/src/app/store"],
-      "@roc-web/core": ["libs/core/src"],
-      "@roc-web/core/*": ["libs/core/src/*"],
-      "@roc-web/identity": ["libs/identity/src"],
-      "@roc-web/identity/*": ["libs/identity/src/*"],
-      "@roc-web/identity/auth": ["libs/identity/auth/src"],
-      "@roc-web/identity/auth/*": ["libs/identity/auth/src/*"],
-      "@roc-web/identity/settings": ["libs/identity/settings/src"],
-      "@roc-web/identity/settings/*": ["libs/identity/settings/src/*"],
-      "@roc-web/theme": ["libs/theme/src"],
-      "@roc-web/theme/*": ["libs/theme/src/*"],
-      "@roc-web/web": ["libs/web/src"],
-      "@roc-web/web/*": ["libs/web/src/*"]
+      "@roc-web/callcenter/stakeholder/prescriber": [
+        "dist/@roc-web/callcenter/src/app/stakeholder/prescriber/*",
+        "dist/@roc-web/callcenter/src/app/stakeholder/prescriber"
+      ],
+      "@roc-web/callcenter/store/*": [
+        "apps/callcenter/src/app/store/*",
+        "apps/callcenter/src/app/store"
+      ],
+      "@roc-web/callcenter/store": [
+        "dist/@roc-web/callcenter/src/app/store/*",
+        "dist/@roc-web/callcenter/src/app/store"
+      ],
+      "@roc-web/core/*": ["libs/core/*", "libs/core"],
+      "@roc-web/core": ["dist/@roc-web/core/*", "dist/@roc-web/core"],
+      "@roc-web/identity/*": ["libs/identity/*", "libs/identity"],
+      "@roc-web/identity": [
+        "dist/@roc-web/identity/*",
+        "dist/@roc-web/identity"
+      ],
+      "@roc-web/identity/auth/*": [
+        "libs/identity/auth/*",
+        "libs/identity/auth"
+      ],
+      "@roc-web/identity/auth": [
+        "dist/@roc-web/identity/auth/*",
+        "dist/@roc-web/identity/auth"
+      ],
+      "@roc-web/identity/settings/*": [
+        "libs/identity/settings/*",
+        "libs/identity/settings"
+      ],
+      "@roc-web/identity/settings": [
+        "dist/@roc-web/identity/settings/*",
+        "dist/@roc-web/identity/settings"
+      ],
+      "@roc-web/theme/*": ["libs/theme/*", "libs/theme"],
+      "@roc-web/theme": ["dist/@roc-web/theme/*", "dist/@roc-web/theme"],
+      "@roc-web/web/*": ["libs/web/*", "libs/web"],
+      "@roc-web/web": ["dist/@roc-web/web/*", "dist/@roc-web/web"]
     }
   },
   "angularCompilerOptions": {
