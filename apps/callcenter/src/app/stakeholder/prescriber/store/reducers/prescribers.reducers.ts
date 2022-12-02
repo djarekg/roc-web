@@ -23,7 +23,7 @@ const initialState: State = {
   loaded: false,
   loading: false,
   pagination: {
-    pageIndex: 1,
+    pageIndex: 0,
     pageSize: MAX_PAGE_SIZE,
     totalCount: 0,
   },

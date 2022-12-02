@@ -7,6 +7,9 @@
   },
   "scripts": {
     "ng": "ng",
+    "build:callcenter": "ng build @roc-web/callcenter",
+    "build:callcenter:prod": "ng build @roc-web/callcenter --prod",
+    "build:callcenter:analyze": "ng build @roc-web/callcenter --configuration production --stats-json true",
     "build:core": "ng build @roc-web/core ",
     "build:identity": "ng build @roc-web/identity ",
     "build:theme": "ng build @roc-web/theme ",
@@ -14,14 +17,13 @@
     "build:libs": "pnpm run build:theme && pnpm run build:core && pnpm run build:web && pnpm run build:identity",
     "start:callcenter": "ng serve @roc-web/callcenter --port 4400 --hmr",
     "start:callcenter:de": "ng serve @roc-web/callcenter --port 4400 --hmr --configuration de",
-    "build:callcenter": "ng build @roc-web/callcenter",
     "watch:core": "ng build @roc-web/core --watch",
     "watch:identity": "ng build @roc-web/identity --watch",
     "watch:theme": "ng build @roc-web/theme --watch",
     "watch:web": "ng build @roc-web/web --watch",
     "test": "ng test",
     "lint": "ng lint",
-    "bundle-analyzer:callcenter": "webpack-bundle-analyzer -m static dist/@roc-web/callcenter/stats.json"
+    "analyzer:callcenter": "pnpm build:libs && pnpm build:callcenter:analyze && webpack-bundle-analyzer -m static ./dist/@roc-web/callcenter/en-US/stats.json"
   },
   "private": true,
   "dependencies": {

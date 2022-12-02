@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import {
   type AfterViewInit,
   ChangeDetectionStrategy,
@@ -22,7 +22,7 @@ import {
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { type PageChange, type Pagination } from '@roc-web/web';
+import { type PageChange, type ViewModel } from '@roc-web/web';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { type TableColumn } from './table-column';
@@ -39,6 +39,7 @@ import { type TableColumn } from './table-column';
     MatSortModule,
     MatTableModule,
     NgIf,
+    NgFor,
   ],
   selector: 'rw-table',
   standalone: true,
@@ -62,17 +63,7 @@ export class TableComponent<T extends object>
     this.displayedColumns = columns.map(column => column.propertyName);
   }
 
-  @Input() loading: boolean | undefined = false;
-
-  @Input()
-  get items(): Readonly<T>[] {
-    return this.#items;
-  }
-  set items(prescribers: Readonly<T>[] | undefined) {
-    this.#items = prescribers ?? [];
-  }
-
-  @Input() pagination: Pagination | undefined;
+  @Input() viewModel: ViewModel<T> | undefined;
 
   @Output() readonly edit = new EventEmitter<string>();
   @Output() readonly pageChange = new EventEmitter<PageChange>();

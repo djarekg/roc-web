@@ -71,3 +71,16 @@ export const selectSort = createSelector(
   selectPrescriberEntitiesState,
   fromPrescribers.getSort
 );
+
+export const selectViewModel = createSelector(
+  selectPrescriberEntitiesState,
+  selectLoading,
+  selectPrescribers,
+  selectPagination,
+  (state, loading, prescribers, pagination) => ({
+    loading,
+    prescribers,
+    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+    ...pagination,
+  })
+);

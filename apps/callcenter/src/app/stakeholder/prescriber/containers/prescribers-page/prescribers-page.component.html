@@ -11,9 +11,7 @@
   <mat-divider></mat-divider>
 
   <app-prescriber-list
-    [loading]="loading$ | ngrxPush"
-    [prescribers]="prescribers$ | ngrxPush"
-    [pagination]="pagination$ | ngrxPush"
+    [viewModel]="viewModel$ | ngrxPush"
     (editPrescriber)="onEditPrescriber($event)"
     (filterChange)="onFilterChanged($event)"
     (pageChange)="onPageChange($event)"

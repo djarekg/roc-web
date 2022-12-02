@@ -1,5 +1,5 @@
 <div
-  *ngIf="loading"
+  *ngIf="viewModel?.loading"
   class="rw-progress-spinner-container">
   <mat-progress-spinner
     [diameter]="60"
@@ -10,47 +10,18 @@
 <mat-table
   matSort
   recycleRows
-  [dataSource]="items">
-  <ng-container matColumnDef="externalId">
+  [dataSource]="viewModel?.entities ?? []">
+  <ng-container
+    *ngFor="let column of columns"
+    [matColumnDef]="column.propertyName">
     <mat-header-cell
       *matHeaderCellDef
-      mat-sort-header
-      i18n="@@stakeholder.systemId">
-      System ID
+      mat-sort-header>
+      {{ column.headerText }}
     </mat-header-cell>
-    <mat-cell *matCellDef="let row">
-      {{ row.stakeholder.externalId }}
+    <mat-cell *matCellDef="let entity">
+      {{ entity[column.propertyName] }}
     </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="firstName">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      i18n="@@stakeholder.firstName">
-      First Name
-    </mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.stakeholder.firstName }}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="lastName">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      i18n="@@stakeholder.lastName">
-      Last Name
-    </mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.stakeholder.lastName }}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="nationalId">
-    <mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      i18n="@@prescriber.nationalId">
-      National ID
-    </mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.nationalId }}</mat-cell>
   </ng-container>
 
   <ng-container
@@ -86,7 +57,7 @@
   <ng-template matNoDataRow>
     <div>
       <span
-        *ngIf="!loading"
+        *ngIf="!viewModel?.loading"
         i18n="@@collection.noResults">
         No results found
       </span>
@@ -95,6 +66,6 @@
 </mat-table>
 
 <mat-paginator
-  [pageIndex]="pagination?.pageIndex"
-  [pageSize]="pagination?.pageSize"
-  [length]="pagination?.totalCount"></mat-paginator>
+  [pageIndex]="viewModel?.pageIndex"
+  [pageSize]="viewModel?.pageSize"
+  [length]="viewModel?.totalCount"></mat-paginator>

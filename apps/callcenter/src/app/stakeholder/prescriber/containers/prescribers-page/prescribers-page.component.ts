@@ -14,11 +14,7 @@ import { type PageChange } from '@roc-web/web';
 
 import { PrescriberListComponent } from '../../components';
 import { prescribersPageActions } from '../../store/actions';
-import {
-  selectLoading,
-  selectPagination,
-  selectPrescribers,
-} from '../../store/reducers';
+import { selectViewModel } from '../../store/reducers';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,10 +33,7 @@ import {
 export default class PrescribersPageComponent implements OnInit {
   readonly #store = inject(Store);
 
-  protected readonly loading$ = this.#store.select(selectLoading);
-  protected readonly prescribers$ = this.#store.select(selectPrescribers);
-  protected readonly pagination$ = this.#store.select(selectPagination);
-  // protected readonly sort$ = this.#store.select(selectSort);
+  protected readonly viewModel$ = this.#store.select(selectViewModel);
   protected readonly title$ = this.#store.select(selectTitle);
 
   ngOnInit(): void {

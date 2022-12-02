@@ -84,12 +84,6 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
-            },
-            "de": {
-              "localize": ["de"]
-            },
-            "en": {
-              "localize": ["en"]
             }
           },
           "defaultConfiguration": "production"
@@ -102,9 +96,6 @@
             },
             "development": {
               "browserTarget": "@roc-web/callcenter:build:development"
-            },
-            "de": {
-              "browserTarget": "@roc-web/callcenter:build:development,de"
             }
           },
           "defaultConfiguration": "development"
@@ -146,10 +137,7 @@
       },
       "i18n": {
         "sourceLocale": "en-US",
-        "locales": {
-          "de": "apps/callcenter/src/locale/messages.de.json",
-          "en": "apps/callcenter/src/locale/messages.en.json"
-        }
+        "locales": {}
       }
     },
     "@roc-web/core": {

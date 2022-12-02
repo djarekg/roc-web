@@ -2,7 +2,7 @@
 
 <div class="app-table-container mat-elevation-z8">
   <div
-    *ngIf="loading"
+    *ngIf="viewModel?.loading"
     class="app-progress-spinner-container">
     <mat-progress-spinner
       [diameter]="60"
@@ -13,7 +13,7 @@
   <mat-table
     matSort
     recycleRows
-    [dataSource]="prescribers">
+    [dataSource]="viewModel?.prescribers ?? []">
     <ng-container matColumnDef="externalId">
       <mat-header-cell
         *matHeaderCellDef
@@ -89,7 +89,7 @@
     <ng-template matNoDataRow>
       <div>
         <span
-          *ngIf="!loading"
+          *ngIf="!viewModel?.loading"
           i18n="@@collection.noResults">
           No results found
         </span>
@@ -98,7 +98,7 @@
   </mat-table>
 
   <mat-paginator
-    [pageIndex]="pagination?.pageIndex"
-    [pageSize]="pagination?.pageSize"
-    [length]="pagination?.totalCount"></mat-paginator>
+    [pageIndex]="viewModel?.pageIndex"
+    [pageSize]="viewModel?.pageSize"
+    [length]="viewModel?.totalCount"></mat-paginator>
 </div>

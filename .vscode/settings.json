@@ -43,7 +43,7 @@
     "source.fixAll.eslint": true
   },
   "eslint.enable": true,
-  "eslint.run": "onType",
+  // "eslint.run": "onType",
   "eslint.format.enable": false,
   "eslint.codeAction.disableRuleComment": {
     "enable": true,

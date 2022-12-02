@@ -21,10 +21,11 @@ import {
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { type Prescriber } from '@roc-web/callcenter/stakeholder/prescriber/models';
 import { FilterInputComponent } from '@roc-web/core';
-import { type PageChange, type Pagination } from '@roc-web/web';
+import { type PageChange } from '@roc-web/web';
 import { Subject, takeUntil, tap } from 'rxjs';
+
+import { type PrescriberViewModel } from '../../models/prescriber-view-model';
 
 // TODO: this needs refracted into multiple components
 
@@ -49,7 +50,6 @@ import { Subject, takeUntil, tap } from 'rxjs';
 })
 export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
-  #prescribers: Prescriber[] = [];
 
   protected readonly displayedColumns: string[] = [
     'externalId',
@@ -59,17 +59,7 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     'menu',
   ];
 
-  @Input() loading: boolean | undefined = false;
-
-  @Input()
-  get prescribers(): Readonly<Prescriber>[] {
-    return this.#prescribers;
-  }
-  set prescribers(prescribers: Readonly<Prescriber>[] | undefined) {
-    this.#prescribers = prescribers ?? [];
-  }
-
-  @Input() pagination: Pagination | undefined;
+  @Input() viewModel: PrescriberViewModel | undefined;
 
   @Output() readonly editPrescriber = new EventEmitter<string>();
   @Output() readonly filterChange = new EventEmitter<string>();
