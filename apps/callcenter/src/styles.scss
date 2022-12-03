@@ -1,5 +1,5 @@
 /* library */
 @use 'theme';
-@use 'defaults' as defaults;
+@use 'defaults/defaults-utils' as defaults-utils;
 
-@include defaults.rw-defaults();
+@include defaults-utils.set-defaults();

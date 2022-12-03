@@ -1,7 +1,7 @@
 @use '../typography/typography-variables' as typography-vars;
 @use '../scrollable/scrollable-utils' as scrollable-utils;
 
-@mixin defaults {
+@mixin set-defaults {
   html,
   body {
     height: 100%;
