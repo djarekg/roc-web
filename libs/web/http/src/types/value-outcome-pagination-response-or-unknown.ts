@@ -1,4 +1,4 @@
-import { type ValueOutcomePaginationResponse } from '../../shared/models';
+import { type ValueOutcomePaginationResponse } from '@roc-web/web/shared';
 
 export type ValueOutcomePaginationResponseOrUnknown =
   | unknown

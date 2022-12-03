@@ -1,1 +1,1 @@
-export * from './shared';
+export declare const dummy = true;

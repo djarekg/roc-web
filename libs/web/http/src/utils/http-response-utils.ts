@@ -3,15 +3,12 @@ import {
   type HttpEvent,
   HttpResponse,
 } from '@angular/common/http';
-
 import {
   VALUE_OUTCOME_PAGINATION_RESPONSE_KEYS,
   VALUE_OUTCOME_REQUIRED_KEYS,
-} from '../../shared/constants';
-import {
   type ValueOutcome,
   type ValueOutcomePaginationResponse,
-} from '../../shared/models';
+} from '@roc-web/web/shared';
 
 export function isHttpResponseBodyObject(body: unknown): body is object {
   return !!body && typeof body === 'object';

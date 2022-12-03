@@ -1,8 +1,9 @@
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { prescribersGuardActions } from '@roc-web/callcenter/stakeholder/prescriber/store/actions';
-import { selectLoaded } from '@roc-web/callcenter/stakeholder/prescriber/store/reducers';
 import { type Observable, filter, first, tap } from 'rxjs';
+
+import { prescribersGuardActions } from '../store/actions';
+import { selectLoaded } from '../store/reducers';
 
 export const canActivate = (): Observable<boolean> => {
   const store = inject(Store);

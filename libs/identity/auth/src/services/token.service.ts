@@ -5,8 +5,9 @@ import {
 } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { LocalStorageService } from '@roc-web/core';
-import { Endpoints } from '@roc-web/identity';
-import { type Outcome, SKIP_ERROR_INTERCEPTOR_HEADER } from '@roc-web/web';
+import { Endpoints } from '@roc-web/identity/shared';
+import { SKIP_ERROR_INTERCEPTOR_HEADER } from '@roc-web/web/http';
+import { type Outcome } from '@roc-web/web/shared';
 import { type Observable, catchError, map, throwError } from 'rxjs';
 
 import {

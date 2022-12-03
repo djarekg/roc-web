@@ -6,7 +6,11 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "paths": {
+      "@roc-web/core": ["dist/@roc-web/core"],
+      "@roc-web/web/*": ["dist/@roc-web/web/*"]
+    }
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"]
 }

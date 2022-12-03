@@ -30,7 +30,8 @@ import {
 } from '@roc-web/identity/auth';
 // import { provideSettingsRoutes } from '@roc-web/identity/settings';
 import { provideSettingsRoutes } from '@roc-web/identity/settings';
-import { provideHttpInterceptors } from '@roc-web/web';
+import { provideHttpCacheInterceptors } from '@roc-web/web/cache';
+import { provideHttpInterceptors } from '@roc-web/web/http';
 
 import { APP_ROUTES, AppComponent } from './app';
 import { environment } from './environments';
@@ -45,6 +46,7 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(
       withInterceptors([
         ...provideHttpInterceptors(),
+        ...provideHttpCacheInterceptors(),
         ...provideAuthInterceptors(),
       ])
     ),

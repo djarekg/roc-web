@@ -1,8 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { type Sort } from '@angular/material/sort';
-
-import { MAX_PAGE_SIZE } from '../../shared/constants';
-import { type Pagination } from '../../shared/models';
+import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/web/shared';
 
 export function createHttpParams(params: {
   [key: string]: boolean | number | string;

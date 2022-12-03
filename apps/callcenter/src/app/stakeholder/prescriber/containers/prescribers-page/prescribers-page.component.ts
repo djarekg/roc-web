@@ -10,7 +10,7 @@ import { type Sort } from '@angular/material/sort';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
 import { ScrollableDirective, selectTitle } from '@roc-web/core';
-import { type PageChange } from '@roc-web/web';
+import { type PageChange } from '@roc-web/web/shared';
 
 import { PrescriberListComponent } from '../../components';
 import { prescribersPageActions } from '../../store/actions';

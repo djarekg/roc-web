@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
-import { PrescriberAttestationsDetailComponent } from '@roc-web/callcenter/stakeholder/prescriber/components';
 import { CardComponent, selectTitle } from '@roc-web/core';
+
+import { PrescriberAttestationsDetailComponent } from '../../components';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

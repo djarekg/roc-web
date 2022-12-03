@@ -1,6 +1,7 @@
-import { type Stakeholder } from '@roc-web/callcenter/stakeholder/models';
-import { type Auditable } from '@roc-web/identity';
-import { type Entity } from '@roc-web/web';
+import { type Auditable } from '@roc-web/identity/shared';
+import { type Entity } from '@roc-web/web/shared';
+
+import { type Stakeholder } from '../../models';
 
 export interface Prescriber extends Entity, Auditable {
   alternateContact: unknown; //AlternateContact;

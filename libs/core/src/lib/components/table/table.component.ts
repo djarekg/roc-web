@@ -22,7 +22,7 @@ import {
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { type PageChange, type ViewModel } from '@roc-web/web';
+import { type PageChange, type ViewModel } from '@roc-web/web/shared';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { type TableColumn } from './table-column';

@@ -1,4 +1,4 @@
-import { type EntityList } from '@roc-web/web';
+import { type EntityList } from '@roc-web/web/shared';
 
 import { type Prescriber } from './prescriber';
 

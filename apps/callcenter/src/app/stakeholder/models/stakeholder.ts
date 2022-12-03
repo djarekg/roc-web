@@ -1,5 +1,5 @@
-import { type Auditable } from '@roc-web/identity';
-import { type Entity } from '@roc-web/web';
+import { type Auditable } from '@roc-web/identity/shared';
+import { type Entity } from '@roc-web/web/shared';
 
 export interface Stakeholder extends Entity, Auditable {
   address: unknown; //Address;
