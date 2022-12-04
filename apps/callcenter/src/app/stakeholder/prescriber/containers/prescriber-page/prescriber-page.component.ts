@@ -10,13 +10,13 @@ import {
 import { routes } from '../routes';
 
 @Component({
+  selector: 'app-prescriber',
+  standalone: true,
+  templateUrl: './prescriber-page.component.html',
+  styleUrls: ['./prescriber-page.component.scss'],
   animations: [slideInAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [PushModule, SidenavComponent],
-  selector: 'app-prescriber',
-  standalone: true,
-  styleUrls: ['./prescriber-page.component.scss'],
-  templateUrl: './prescriber-page.component.html',
 })
 export default class PrescriberPageComponent {
   protected readonly routes = createSidenavRoutes(routes, ':id', 'assignment');

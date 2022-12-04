@@ -28,6 +28,10 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { type TableColumn } from './models/table-column';
 
 @Component({
+  selector: 'rw-table',
+  standalone: true,
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
@@ -41,10 +45,6 @@ import { type TableColumn } from './models/table-column';
     NgIf,
     NgFor,
   ],
-  selector: 'rw-table',
-  standalone: true,
-  styleUrls: ['./table.component.scss'],
-  templateUrl: './table.component.html',
 })
 export class TableComponent<T extends object>
   implements AfterViewInit, OnDestroy
@@ -79,14 +79,14 @@ export class TableComponent<T extends object>
     this.sort?.sortChange
       .pipe(
         takeUntil(this.#destroy$),
-        tap(sort => this.#sortChange(sort))
+        tap(sort => this.#sortChange(sort)),
       )
       .subscribe();
 
     this.paginator?.page
       .pipe(
         takeUntil(this.#destroy$),
-        tap(pageEvent => this.#pageChange(pageEvent))
+        tap(pageEvent => this.#pageChange(pageEvent)),
       )
       .subscribe();
   }

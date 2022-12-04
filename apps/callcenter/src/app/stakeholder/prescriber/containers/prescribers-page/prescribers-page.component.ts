@@ -17,6 +17,10 @@ import { prescribersPageActions } from '../../store/actions';
 import { selectViewModel } from '../../store/reducers';
 
 @Component({
+  selector: 'app-prescribers-page',
+  standalone: true,
+  templateUrl: './prescribers-page.component.html',
+  styleUrls: ['./prescribers-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [ScrollableDirective],
   imports: [
@@ -25,10 +29,6 @@ import { selectViewModel } from '../../store/reducers';
     PrescriberListComponent,
     PushModule,
   ],
-  selector: 'app-prescribers-page',
-  standalone: true,
-  styleUrls: ['./prescribers-page.component.scss'],
-  templateUrl: './prescribers-page.component.html',
 })
 export default class PrescribersPageComponent implements OnInit {
   readonly #store = inject(Store);

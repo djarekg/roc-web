@@ -25,14 +25,8 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser-esbuild",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "externalDependencies": [
-              "@roc-web/core",
-              "@roc-web/identity",
-              "@roc-web/theme",
-              "@roc-web/web"
-            ],
             "localize": true,
             "outputPath": "dist/@roc-web/callcenter",
             "index": "apps/callcenter/src/index.html",

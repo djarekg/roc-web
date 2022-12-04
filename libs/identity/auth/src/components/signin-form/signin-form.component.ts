@@ -13,6 +13,10 @@ import { MatInputModule } from '@angular/material/input';
 import { type Credentials } from '../../models';
 
 @Component({
+  selector: 'rw-signin-form',
+  standalone: true,
+  templateUrl: './signin-form.component.html',
+  styleUrls: ['./signin-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
@@ -20,10 +24,6 @@ import { type Credentials } from '../../models';
     MatInputModule,
     ReactiveFormsModule,
   ],
-  selector: 'rw-signin-form',
-  standalone: true,
-  styleUrls: ['./signin-form.component.scss'],
-  templateUrl: './signin-form.component.html',
 })
 export class SigninFormComponent {
   @Input() disabled: boolean | undefined = false;
@@ -36,7 +36,7 @@ export class SigninFormComponent {
       password: ['', Validators.required],
       userName: ['', Validators.required],
     },
-    { updateOn: 'blur' }
+    { updateOn: 'blur' },
   );
   protected passwordInputIcon: 'visibility_off' | 'visibility' =
     'visibility_off';

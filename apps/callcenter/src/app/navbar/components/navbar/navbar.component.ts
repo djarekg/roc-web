@@ -8,6 +8,10 @@ import { RouterLink } from '@angular/router';
 import { navRoutes } from '../../models';
 
 @Component({
+  selector: 'app-navbar',
+  standalone: true,
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
@@ -19,10 +23,6 @@ import { navRoutes } from '../../models';
     RouterLink,
     RouterLink,
   ],
-  selector: 'app-navbar',
-  standalone: true,
-  styleUrls: ['./navbar.component.scss'],
-  templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
   protected routes = navRoutes;

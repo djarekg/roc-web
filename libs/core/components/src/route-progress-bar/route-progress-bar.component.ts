@@ -5,12 +5,12 @@ import { Store } from '@ngrx/store';
 import { selectRouteInProgress } from '@roc-web/core/store';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatProgressBarModule, LetModule],
   selector: 'rw-route-progress-bar',
   standalone: true,
-  styleUrls: ['./route-progress-bar.component.scss'],
   templateUrl: './route-progress-bar.component.html',
+  styleUrls: ['./route-progress-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatProgressBarModule, LetModule],
 })
 export class RouteProgressBarComponent {
   readonly #store = inject(Store);

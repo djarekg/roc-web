@@ -13,6 +13,10 @@ import {
 import { NavbarComponent } from '../../navbar';
 
 @Component({
+  selector: 'app-header',
+  standalone: true,
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
@@ -24,10 +28,6 @@ import { NavbarComponent } from '../../navbar';
     ProfileMenuComponent,
     RouteProgressBarComponent,
   ],
-  selector: 'app-header',
-  standalone: true,
-  styleUrls: ['./header.component.scss'],
-  templateUrl: './header.component.html',
 })
 export class HeaderComponent {
   protected isAuthenticated$ = inject(Store).select(selectIsAuthenticated);

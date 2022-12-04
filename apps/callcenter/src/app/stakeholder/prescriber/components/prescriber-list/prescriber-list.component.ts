@@ -30,6 +30,10 @@ import { type PrescriberViewModel } from '../../models/prescriber-view-model';
 // TODO: this needs refracted into multiple components
 
 @Component({
+  selector: 'app-prescriber-list',
+  standalone: true,
+  templateUrl: './prescriber-list.component.html',
+  styleUrls: ['./prescriber-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FilterInputComponent,
@@ -43,10 +47,6 @@ import { type PrescriberViewModel } from '../../models/prescriber-view-model';
     MatTableModule,
     NgIf,
   ],
-  selector: 'app-prescriber-list',
-  standalone: true,
-  styleUrls: ['./prescriber-list.component.scss'],
-  templateUrl: './prescriber-list.component.html',
 })
 export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
@@ -76,14 +76,14 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     this.sort?.sortChange
       .pipe(
         takeUntil(this.#destroy$),
-        tap(sort => this.#sortChange(sort))
+        tap(sort => this.#sortChange(sort)),
       )
       .subscribe();
 
     this.paginator?.page
       .pipe(
         takeUntil(this.#destroy$),
-        tap(pageEvent => this.#pageChange(pageEvent))
+        tap(pageEvent => this.#pageChange(pageEvent)),
       )
       .subscribe();
   }

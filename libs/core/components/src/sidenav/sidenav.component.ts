@@ -13,6 +13,10 @@ import { CardComponent } from '../card';
 import { type SidenavRoute } from './sidenav-route';
 
 @Component({
+  selector: 'rw-sidenav',
+  standalone: true,
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.scss'],
   animations: [slideInAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -28,10 +32,6 @@ import { type SidenavRoute } from './sidenav-route';
     RouterLinkActive,
     RouterOutlet,
   ],
-  selector: 'rw-sidenav',
-  standalone: true,
-  styleUrls: ['./sidenav.component.scss'],
-  templateUrl: './sidenav.component.html',
 })
 export class SidenavComponent {
   @Input() routes: SidenavRoute[] | null = null;

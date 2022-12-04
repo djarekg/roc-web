@@ -2,13 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule],
   selector: 'app-prescriber-attestations-detail',
   standalone: true,
+  templateUrl: './prescriber-attestations-detail.component.html',
   styleUrls: ['./prescriber-attestations-detail.component.scss'],
-  templateUrl: './prescriber-attestations-detail.component.html'
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
 })
-export class PrescriberAttestationsDetailComponent {
-
-}
+export class PrescriberAttestationsDetailComponent {}

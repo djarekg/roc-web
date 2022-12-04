@@ -10,12 +10,12 @@ const twoFactorStateCLassMap: Record<TwoFactorState, string> = {
 };
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule, TitleCasePipe],
   selector: 'rw-settings-two-factor-status',
   standalone: true,
-  styleUrls: ['./two-factor-status.component.scss'],
   templateUrl: './two-factor-status.component.html',
+  styleUrls: ['./two-factor-status.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatIconModule, TitleCasePipe],
 })
 export class TwoFactorStatusComponent {
   protected get twoFactorState(): TwoFactorState {

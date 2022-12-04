@@ -22,6 +22,10 @@ import { PasswordValidationComponent } from '../password-validation';
 // type ChipColor = '' | 'error' | 'success';
 
 @Component({
+  selector: 'rw-settings-change-password-form',
+  standalone: true,
+  templateUrl: './change-password-form.component.html',
+  styleUrls: ['./change-password-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
@@ -31,10 +35,6 @@ import { PasswordValidationComponent } from '../password-validation';
     PasswordValidationComponent,
     ReactiveFormsModule,
   ],
-  selector: 'rw-settings-change-password-form',
-  standalone: true,
-  styleUrls: ['./change-password-form.component.scss'],
-  templateUrl: './change-password-form.component.html',
 })
 export class ChangePasswordFormComponent {
   protected form = new FormBuilder().nonNullable.group({

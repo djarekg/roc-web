@@ -13,6 +13,10 @@ import { MatInputModule } from '@angular/material/input';
 import { type TokenUser } from '@roc-web/identity/auth';
 
 @Component({
+  selector: 'rw-settings-user-details-form',
+  standalone: true,
+  templateUrl: './user-details-form.component.html',
+  styleUrls: ['./user-details-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButtonModule,
@@ -21,10 +25,6 @@ import { type TokenUser } from '@roc-web/identity/auth';
     NgIf,
     ReactiveFormsModule,
   ],
-  selector: 'rw-settings-user-details-form',
-  standalone: true,
-  styleUrls: ['./user-details-form.component.scss'],
-  templateUrl: './user-details-form.component.html',
 })
 export class UserDetailsFormComponent {
   #user: TokenUser | null | undefined = null;

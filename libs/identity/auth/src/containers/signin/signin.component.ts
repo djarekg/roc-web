@@ -13,6 +13,10 @@ import {
 } from '../../store/reducers';
 
 @Component({
+  selector: 'rw-signin',
+  standalone: true,
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AlertComponent,
@@ -22,10 +26,6 @@ import {
     PushModule,
     SigninFormComponent,
   ],
-  selector: 'rw-signin',
-  standalone: true,
-  styleUrls: ['./signin.component.scss'],
-  templateUrl: './signin.component.html',
 })
 export class SigninComponent {
   readonly #store = inject(Store);

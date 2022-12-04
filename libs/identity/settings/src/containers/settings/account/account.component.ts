@@ -7,12 +7,12 @@ import {
 } from '../../../components';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CardComponent, UserDetailsComponent, ChangePasswordComponent],
   selector: 'rw-settings-account',
   standalone: true,
-  styleUrls: ['./account.component.scss'],
   templateUrl: './account.component.html',
+  styleUrls: ['./account.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CardComponent, UserDetailsComponent, ChangePasswordComponent],
 })
 export class AccountComponent {
   @HostBinding('class') readonly class = 'rw-settings__item';

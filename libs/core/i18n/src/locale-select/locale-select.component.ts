@@ -17,12 +17,12 @@ import { type Locale } from '@roc-web/core/shared';
 import { Subject } from 'rxjs';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatSelectModule],
   selector: 'rw-locale-select',
   standalone: true,
-  styleUrls: ['./locale-select.component.css'],
   templateUrl: './locale-select.component.html',
+  styleUrls: ['./locale-select.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatSelectModule],
 })
 export class LocaleSelectComponent
   implements OnInit, OnDestroy, ControlValueAccessor
@@ -87,7 +87,7 @@ export class LocaleSelectComponent
     this.#renderer.setProperty(
       this.#elementRef.nativeElement,
       'disabled',
-      this.#disabled
+      this.#disabled,
     );
     this.#stateChanged();
   }

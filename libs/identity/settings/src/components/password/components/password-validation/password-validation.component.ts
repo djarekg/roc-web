@@ -31,7 +31,7 @@ const MIN_LENGTH_NAME = 'minlength';
 
 function setValidationState(
   control: FormControl,
-  validator: string
+  validator: string,
 ): ValidationState {
   if (control.errors?.[validator]) {
     return validationState.error;
@@ -45,12 +45,12 @@ function hasChanged(control: FormControl): boolean {
 }
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatChipsModule, MatIconModule],
   selector: 'rw-settings-password-validation',
   standalone: true,
-  styleUrls: ['./password-validation.component.scss'],
   templateUrl: './password-validation.component.html',
+  styleUrls: ['./password-validation.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatChipsModule, MatIconModule],
 })
 export class PasswordValidationComponent {
   #changeDetectorRef = inject(ChangeDetectorRef);
@@ -91,7 +91,7 @@ export class PasswordValidationComponent {
         }
 
         this.#changeDetectorRef.markForCheck();
-      }
+      },
     );
   }
 
