@@ -44,7 +44,6 @@ export class PrescriberService {
 
   remove(prescriber: Prescriber): Observable<Prescriber> {
     const { id } = prescriber;
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     const url = `${Endpoints.prescribers}/${id}`;
     return this.#http.delete<Prescriber>(url);
   }
@@ -56,7 +55,6 @@ export class PrescriberService {
 
   update(prescriber: Prescriber): Observable<Prescriber> {
     const { id } = prescriber;
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     const url = `${Endpoints.prescribers}/${id}`;
     return this.#http.put<Prescriber>(url, prescriber);
   }
