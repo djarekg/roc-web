@@ -34,7 +34,7 @@
             "polyfills": [
               "zone.js",
               "apps/callcenter/src/polyfills.ts",
-              "libs/core/scripts/console-overrides.js",
+              "libs/core/scripts/console-disable.js",
               "libs/core/scripts/zone-flags.js"
             ],
             "tsConfig": "apps/callcenter/tsconfig.app.json",
