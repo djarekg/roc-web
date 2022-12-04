@@ -12,7 +12,7 @@
   recycleRows
   [dataSource]="viewModel?.entities ?? []">
   <ng-container
-    *ngFor="let column of columns"
+    *ngFor="let column of columns; trackByProperty: 'propertyName'"
     [matColumnDef]="column.propertyName">
     <mat-header-cell
       *matHeaderCellDef
