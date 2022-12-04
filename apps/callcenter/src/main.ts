@@ -13,15 +13,15 @@ import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideCoreConfig } from '@roc-web/core/config';
+import { provideSharedImports } from '@roc-web/core/shared';
+import { provideStorage } from '@roc-web/core/storage';
 import {
   ROOT_REDUCERS,
   RouterEffects,
   debugMetaReducers,
-  provideCoreConfig,
   provideCoreStore,
-  provideSharedImports,
-  provideStorage,
-} from '@roc-web/core';
+} from '@roc-web/core/store';
 import {
   provideAuth,
   provideAuthInterceptors,

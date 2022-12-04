@@ -3,10 +3,8 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
-import {
-  LocaleSelectComponent,
-  RouteProgressBarComponent,
-} from '@roc-web/core';
+import { RouteProgressBarComponent } from '@roc-web/core/components';
+import { LocaleSelectComponent } from '@roc-web/core/i18n';
 import {
   ProfileMenuComponent,
   selectIsAuthenticated,

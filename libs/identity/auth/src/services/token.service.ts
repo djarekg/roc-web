@@ -4,7 +4,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { LocalStorageService } from '@roc-web/core';
+import { LocalStorageService } from '@roc-web/core/storage';
 import { Endpoints } from '@roc-web/identity/shared';
 import { SKIP_ERROR_INTERCEPTOR_HEADER } from '@roc-web/web/http';
 import { type Outcome } from '@roc-web/web/shared';

@@ -9,8 +9,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { type Sort } from '@angular/material/sort';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
-import { ScrollableDirective, selectTitle } from '@roc-web/core';
-import { type PageChange } from '@roc-web/web/shared';
+import { type PageChange, ScrollableDirective } from '@roc-web/core/shared';
+import { selectTitle } from '@roc-web/core/store';
 
 import { PrescriberListComponent } from '../../components';
 import { prescribersPageActions } from '../../store/actions';

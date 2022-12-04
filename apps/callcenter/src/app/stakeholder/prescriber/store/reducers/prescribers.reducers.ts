@@ -1,6 +1,6 @@
 import { type Sort } from '@angular/material/sort';
 import { createReducer, on } from '@ngrx/store';
-import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/web/shared';
+import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/core/shared';
 
 import { type Prescriber } from '../../models';
 import { prescribersApiActions, prescribersPageActions } from '../actions';

@@ -1,4 +1,4 @@
-import { isNullUndefinedOrEmpty } from '@roc-web/core';
+import { isNullUndefinedOrEmpty } from '@roc-web/core/shared';
 
 import { type ClaimsPrincipal } from '../models';
 

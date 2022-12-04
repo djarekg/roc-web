@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { type Pagination } from '@roc-web/web/shared';
+import { type Pagination } from '@roc-web/core/shared';
 
 import { type Prescriber } from '../../models';
 

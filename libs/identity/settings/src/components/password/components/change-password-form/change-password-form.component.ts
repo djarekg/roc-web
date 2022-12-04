@@ -14,7 +14,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { CustomValidators } from '@roc-web/core';
+import { CustomValidators } from '@roc-web/core/shared';
 
 import { type ChangePassword } from '../../models';
 import { PasswordValidationComponent } from '../password-validation';

@@ -21,8 +21,8 @@ import {
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { FilterInputComponent } from '@roc-web/core';
-import { type PageChange } from '@roc-web/web/shared';
+import { FilterInputComponent } from '@roc-web/core/components';
+import { type PageChange } from '@roc-web/core/shared';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { type PrescriberViewModel } from '../../models/prescriber-view-model';

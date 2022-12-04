@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { type Sort } from '@angular/material/sort';
+import { type Pagination } from '@roc-web/core/shared';
 import { createHttpPaginationParams } from '@roc-web/web/http';
-import { type EntityListRespone, type Pagination } from '@roc-web/web/shared';
+import { type EntityListRespone } from '@roc-web/web/shared';
 import { type Observable, throwError } from 'rxjs';
 
 import { Endpoints } from '../../../shared/models';

@@ -1,5 +1,5 @@
+import { type Entity } from '@roc-web/core/shared';
 import { type Auditable } from '@roc-web/identity/shared';
-import { type Entity } from '@roc-web/web/shared';
 
 import { type Stakeholder } from '../../models';
 

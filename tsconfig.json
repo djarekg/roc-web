@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
@@ -20,7 +20,7 @@
     "target": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
-      "@roc-web/core": ["libs/core/src"],
+      "@roc-web/core/*": ["libs/core/*"],
       "@roc-web/identity/*": ["libs/identity/*"],
       "@roc-web/theme/*": ["libs/theme/*"],
       "@roc-web/web/*": ["libs/web/*"]

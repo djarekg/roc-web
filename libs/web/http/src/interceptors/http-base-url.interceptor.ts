@@ -4,7 +4,7 @@ import {
   type HttpRequest,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { CORE_OPTIONS } from '@roc-web/core';
+import { CORE_OPTIONS } from '@roc-web/core/config';
 import { type Observable } from 'rxjs';
 
 export const HTTP_BASE_URL_INTERCEPTOR = (

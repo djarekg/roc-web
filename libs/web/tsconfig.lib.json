@@ -8,7 +8,7 @@
     "inlineSources": true,
     "types": [],
     "paths": {
-      "@roc-web/core": ["dist/@roc-web/core"]
+      "@roc-web/core/*": ["dist/@roc-web/core/*"]
     }
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"]

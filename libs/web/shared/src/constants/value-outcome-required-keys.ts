@@ -1,4 +1,4 @@
-import { type RequiredKeys } from '@roc-web/core';
+import { type RequiredKeys } from '@roc-web/core/shared';
 
 import { type ValueOutcome } from '../models';
 
