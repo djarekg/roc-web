@@ -78,6 +78,25 @@
       }
     },
     {
+      "label": "build ui",
+      "detail": "ng build @roc-web/ui --watch",
+      "type": "npm",
+      "script": "watch:ui",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^File change detected.*",
+          "endsPattern": "^Compilation complete.*"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
       "label": "build identity",
       "detail": "ng build @roc-web/identity --watch",
       "type": "npm",
@@ -102,7 +121,13 @@
       "command": "echo build finished...",
       "isBackground": true,
       "dependsOrder": "sequence",
-      "dependsOn": ["build theme", "build core", "build web", "build identity"],
+      "dependsOn": [
+        "build theme",
+        "build core",
+        "build ui",
+        "build web",
+        "build identity"
+      ],
       "problemMatcher": {
         "owner": "npm",
         "background": {

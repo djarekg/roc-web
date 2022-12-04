@@ -14,5 +14,6 @@
     ".": {
       "sass": "./styles/_index.scss"
     }
-  }
+  },
+  "sideEffects": false
 }

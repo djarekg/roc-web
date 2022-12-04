@@ -1,10 +1,10 @@
 <div class="rw-signin-content">
   <ng-container *ngrxLet="errors$ as errors">
-    <rw-alert
+    <rw-ui-alert
       *ngFor="let error of errors | keyvalue"
       [type]="'danger'">
       {{ error.value }}
-    </rw-alert>
+    </rw-ui-alert>
   </ng-container>
   <rw-signin-form
     [disabled]="pending$ | ngrxPush"

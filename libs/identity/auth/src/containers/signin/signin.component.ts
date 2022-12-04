@@ -2,7 +2,7 @@ import { KeyValuePipe, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { LetModule, PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
-import { AlertComponent } from '@roc-web/core/components';
+import { AlertComponent } from '@roc-web/ui/notification';
 
 import { SigninFormComponent } from '../../components';
 import { type Credentials } from '../../models';

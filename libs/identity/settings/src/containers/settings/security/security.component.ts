@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
-import { CardComponent } from '@roc-web/core/components';
+import { CardComponent } from '@roc-web/ui/card';
 
 import { TwoFactorComponent } from '../../../components';
 @Component({
