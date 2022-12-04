@@ -22,12 +22,12 @@ import {
 } from 'rxjs';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIconModule, MatInputModule],
   selector: 'rw-filter-input',
-  standalone: true,
-  styleUrls: ['./filter-input.component.scss'],
   templateUrl: './filter-input.component.html',
+  styleUrls: ['./filter-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatIconModule, MatInputModule],
 })
 export class FilterInputComponent implements AfterViewInit, OnDestroy {
   readonly #destroy$ = new Subject<void>();
