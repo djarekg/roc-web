@@ -65,10 +65,8 @@ export class TableComponent<T extends object>
 
   @Input() viewModel: ViewModel<T> | undefined;
 
-  @Output() readonly edit = new EventEmitter<string>();
   @Output() readonly pageChange = new EventEmitter<PageChange>();
   @Output() readonly pageSort = new EventEmitter<Sort>();
-  @Output() readonly view = new EventEmitter<string>();
 
   @ViewChild(MatPaginator) protected readonly paginator:
     | MatPaginator
@@ -94,14 +92,6 @@ export class TableComponent<T extends object>
   ngOnDestroy(): void {
     this.#destroy$.next();
     this.#destroy$.complete();
-  }
-
-  protected onEdit(id: string) {
-    this.edit.emit(id);
-  }
-
-  protected onView(id: string) {
-    this.view.emit(id);
   }
 
   #pageChange(pageEvent: PageEvent): void {

@@ -1,0 +1,12 @@
+<ng-container
+  *ngIf="!!column"
+  [matColumnDef]="column!.propertyName">
+  <mat-header-cell
+    *matHeaderCellDef
+    mat-sort-header>
+    {{ column?.headerText }}
+  </mat-header-cell>
+  <mat-cell *matCellDef="let entity">
+    {{ entity[column!.propertyName] }}
+  </mat-cell>
+</ng-container>

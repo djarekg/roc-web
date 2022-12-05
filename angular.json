@@ -329,7 +329,7 @@
       },
       "root": "libs/ui",
       "sourceRoot": "libs/ui/src",
-      "prefix": "lib",
+      "prefix": "rw-ui",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

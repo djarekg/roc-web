@@ -1,0 +1,26 @@
+<ng-container
+  matColumnDef="menu"
+  stickEnd>
+  <mat-header-cell *matHeaderCellDef></mat-header-cell>
+  <mat-cell *matCellDef="let row">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        mat-menu-item
+        (click)="onEdit(row.id)">
+        <mat-icon>edit</mat-icon>
+        <span i18n="form.edit">Edit</span>
+      </button>
+      <button
+        mat-menu-item
+        (click)="onView(row.id)">
+        <mat-icon>account_box</mat-icon>
+        <span i18n="form.view">View</span>
+      </button>
+    </mat-menu>
+  </mat-cell>
+</ng-container>

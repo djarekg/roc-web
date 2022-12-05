@@ -4,6 +4,9 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
+import { type ViewModel } from '@roc-web/core/shared';
+
+import { type Prescriber } from '../../models';
 
 import * as fromPrescribers from './prescribers.reducers';
 
@@ -24,52 +27,52 @@ export function reducers(state: PrescriberState | undefined, action: Action) {
 }
 
 export const selectPrescribersState = createFeatureSelector<PrescriberState>(
-  prescribersFeatureKey
+  prescribersFeatureKey,
 );
 
 export const selectPrescriberEntitiesState = createSelector(
   selectPrescribersState,
-  state => state.prescribers
+  state => state.prescribers,
 );
 
 export const selectPrescribers = createSelector(
   selectPrescriberEntitiesState,
-  fromPrescribers.getEntities
+  fromPrescribers.getEntities,
 );
 
 export const selectFilter = createSelector(
   selectPrescriberEntitiesState,
-  fromPrescribers.getFilter
+  fromPrescribers.getFilter,
 );
 
 export const selectLoaded = createSelector(
   selectPrescriberEntitiesState,
-  fromPrescribers.getLoaded
+  fromPrescribers.getLoaded,
 );
 
 export const selectLoading = createSelector(
   selectPrescriberEntitiesState,
-  fromPrescribers.getLoading
+  fromPrescribers.getLoading,
 );
 
 export const selectPagination = createSelector(
   selectPrescriberEntitiesState,
-  fromPrescribers.getPagination
+  fromPrescribers.getPagination,
 );
 
 export const selectSelected = createSelector(
   selectPrescriberEntitiesState,
-  fromPrescribers.getSelected
+  fromPrescribers.getSelected,
 );
 
 export const selectSelectedLoaded = createSelector(
   selectPrescriberEntitiesState,
-  fromPrescribers.getSelectedLoaded
+  fromPrescribers.getSelectedLoaded,
 );
 
 export const selectSort = createSelector(
   selectPrescriberEntitiesState,
-  fromPrescribers.getSort
+  fromPrescribers.getSort,
 );
 
 export const selectViewModel = createSelector(
@@ -77,9 +80,9 @@ export const selectViewModel = createSelector(
   selectLoading,
   selectPrescribers,
   selectPagination,
-  (state, loading, prescribers, pagination) => ({
+  (state, loading, prescribers, pagination): ViewModel<Prescriber> => ({
     loading,
-    prescribers,
+    entities: prescribers,
     ...pagination,
-  })
+  }),
 );
