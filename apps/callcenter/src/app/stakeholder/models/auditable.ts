@@ -1,4 +1,4 @@
-import { type User } from './user';
+import { type User } from '@roc-web/identity/shared';
 
 export interface Auditable {
   addDate: Date;

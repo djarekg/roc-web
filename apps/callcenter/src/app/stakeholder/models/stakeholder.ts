@@ -1,9 +1,15 @@
 import { type Entity } from '@roc-web/core/shared';
-import { type Auditable } from '@roc-web/identity/shared';
+import { type User } from '@roc-web/identity/shared';
+
+import { type StakeholderType } from '../enums';
+
+import { type Attestation } from './attestation';
+import { type Auditable } from './auditable';
+import { type Status } from './status';
 
 export interface Stakeholder extends Entity, Auditable {
   address: unknown; //Address;
-  attestations: unknown; //Attestation[];
+  attestations: Attestation[];
   email: string;
   externalId: number;
   fax: string;
@@ -12,8 +18,8 @@ export interface Stakeholder extends Entity, Auditable {
   middleName: string;
   notes: string;
   phone: string;
-  stakeholderType: unknown; //StakeholderTypes;
-  statuses: unknown; //Status[];
+  stakeholderType: StakeholderType;
+  statuses: Status[];
   suffix: string;
-  user: unknown; //User;
+  user: User;
 }

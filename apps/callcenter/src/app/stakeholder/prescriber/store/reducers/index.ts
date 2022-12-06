@@ -75,12 +75,18 @@ export const selectSort = createSelector(
   fromPrescribers.getSort,
 );
 
+// export const selectPrescribersFlatten = createSelector(
+//   selectPrescribers,
+//   prescribers => {
+//     return Object.keys(prescribers).map(key => prescribers[key]);
+//   },
+// );
+
 export const selectViewModel = createSelector(
-  selectPrescriberEntitiesState,
   selectLoading,
   selectPrescribers,
   selectPagination,
-  (state, loading, prescribers, pagination): ViewModel<Prescriber> => ({
+  (loading, prescribers, pagination): ViewModel<Prescriber> => ({
     loading,
     entities: prescribers,
     ...pagination,

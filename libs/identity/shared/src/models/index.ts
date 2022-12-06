@@ -1,4 +1,3 @@
-export * from './auditable';
 export * from './claim';
 export * from './endpoints';
 export * from './permission';
