@@ -1,6 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-import { type TokenResponse } from '../../models';
+import { type TokenResponse } from '../../shared/models';
 
 export const authApiActions = createActionGroup({
   events: {

@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { type Credentials } from '../../models';
+import { type Credentials } from '../../shared/models';
 
 @Component({
   selector: 'rw-signin-form',

@@ -4,9 +4,8 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
 
-import { Roles, RouteUrl } from '../../models';
-import { AuthService } from '../../services';
-import { hasRole } from '../../utils';
+import { Roles, RouteUrl, hasRole } from '../../shared';
+import { AuthService } from '../../shared/services';
 import { authActions, authApiActions, signinPageActions } from '../actions';
 
 @Injectable()
@@ -21,12 +20,12 @@ export class AuthEffects {
       mergeMap(({ userName, password }) =>
         this.#authService.signin(userName, password).pipe(
           map(({ token, user }) =>
-            authApiActions.signinSuccess({ token, user })
+            authApiActions.signinSuccess({ token, user }),
           ),
-          catchError(error => of(authApiActions.signinFailure({ error })))
-        )
-      )
-    )
+          catchError(error => of(authApiActions.signinFailure({ error }))),
+        ),
+      ),
+    ),
   );
 
   signinSuccess$ = createEffect(
@@ -40,26 +39,26 @@ export class AuthEffects {
           const relativeUrl = isAdministrator ? RouteUrl.settingsAccount : '';
 
           return this.#router.navigate([relativeUrl]);
-        })
+        }),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   signinRedirect$ = createEffect(
     () =>
       this.#actions$.pipe(
         ofType(authApiActions.signinRedirect),
-        map(() => this.#router.navigate([RouteUrl.signin]))
+        map(() => this.#router.navigate([RouteUrl.signin])),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   signoutRedirect$ = createEffect(
     () =>
       this.#actions$.pipe(
         ofType(authActions.signout),
-        map(() => this.#router.navigate([RouteUrl.signin]))
+        map(() => this.#router.navigate([RouteUrl.signin])),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 }

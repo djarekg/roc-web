@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { type TokenResponse } from '../../models';
+import { type TokenResponse } from '../../shared/models';
 import { authActions, authApiActions } from '../actions';
 
 export const statusFeatureKey = 'status';
@@ -21,9 +21,9 @@ export const reducer = createReducer(
       ...state,
       token,
       user,
-    })
+    }),
   ),
-  on(authActions.signout, (): State => initialState)
+  on(authActions.signout, (): State => initialState),
 );
 
 export const getToken = (state: State) => state.token;

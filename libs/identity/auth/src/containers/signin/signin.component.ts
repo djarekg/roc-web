@@ -5,12 +5,12 @@ import { Store } from '@ngrx/store';
 import { AlertComponent } from '@roc-web/ui/notification';
 
 import { SigninFormComponent } from '../../components';
-import { type Credentials } from '../../models';
-import { signinPageActions } from '../../store/actions';
+import { type Credentials } from '../../shared/models';
 import {
   selectSigninPageError,
   selectSigninPagePending,
-} from '../../store/reducers';
+  signinPageActions,
+} from '../../store';
 
 @Component({
   selector: 'rw-signin',

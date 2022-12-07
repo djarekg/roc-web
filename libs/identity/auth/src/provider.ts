@@ -8,7 +8,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 
 import routes from './containers/routes';
-import { TokenService } from './services';
+import { TokenService } from './shared/services';
 import { AuthEffects, authFeature } from './store';
 
 // export const authMetaReducerProvider = {
@@ -31,6 +31,7 @@ export function provideAuthRoutes(): Routes {
   return routes;
 }
 
+// TODO: this should be scoped to specific feature
 export function provideToken(): EnvironmentProviders {
   const providers: Provider[] = [
     {

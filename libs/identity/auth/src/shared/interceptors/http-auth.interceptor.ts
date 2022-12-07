@@ -7,11 +7,11 @@ import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { type Observable, first, switchMap } from 'rxjs';
 
-import { selectBearerToken } from '../store/reducers';
+import { selectBearerToken } from '../../store/reducers';
 
 export const HTTP_AUTH_INTERCEPTOR = (
   req: HttpRequest<unknown>,
-  next: HttpHandlerFn
+  next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> => {
   const store = inject(Store);
 
@@ -23,6 +23,6 @@ export const HTTP_AUTH_INTERCEPTOR = (
       }
 
       return next(req);
-    })
+    }),
   );
 };
