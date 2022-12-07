@@ -6,7 +6,7 @@ import {
 } from '@ngrx/store';
 import { type ViewModel } from '@roc-web/core/shared';
 
-import { type Prescriber } from '../../models';
+import { type Prescriber, type PrescriberList } from '../../models';
 
 import * as fromPrescribers from './prescribers.reducers';
 
@@ -75,18 +75,27 @@ export const selectSort = createSelector(
   fromPrescribers.getSort,
 );
 
-// export const selectPrescribersFlatten = createSelector(
-//   selectPrescribers,
-//   prescribers => {
-//     return Object.keys(prescribers).map(key => prescribers[key]);
-//   },
-// );
+export const selectPrescribersFlatten = createSelector(
+  selectPrescribers,
+  prescribers =>
+    /* return prescribers.flatMap(item => {*/ /*   return*/ /* });*/ /* return prescribers.flatMap(item => {*/ /*   return*/ /* });*/ prescribers.flatMap(
+      (item: Readonly<Prescriber>) => {
+        return {
+          id: item.id,
+          externalId: item.stakeholder.externalId,
+          firstName: item.stakeholder.firstName,
+          lastName: item.stakeholder.lastName,
+          nationalId: item.nationalId,
+        };
+      },
+    ) as unknown as Readonly<PrescriberList>[],
+);
 
 export const selectViewModel = createSelector(
   selectLoading,
-  selectPrescribers,
+  selectPrescribersFlatten,
   selectPagination,
-  (loading, prescribers, pagination): ViewModel<Prescriber> => ({
+  (loading, prescribers, pagination): ViewModel<PrescriberList> => ({
     loading,
     entities: prescribers,
     ...pagination,

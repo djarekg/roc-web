@@ -23,7 +23,7 @@
         System ID
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{ row.stakeholder.externalId }}
+        {{ row.externalId }}
       </mat-cell>
     </ng-container>
 
@@ -34,7 +34,7 @@
         i18n="@@stakeholder.firstName">
         First Name
       </mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.stakeholder.firstName }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.firstName }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
@@ -44,7 +44,7 @@
         i18n="@@stakeholder.lastName">
         Last Name
       </mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.stakeholder.lastName }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.lastName }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nationalId">

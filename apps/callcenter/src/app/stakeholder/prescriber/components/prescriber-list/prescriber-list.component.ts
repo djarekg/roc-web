@@ -21,13 +21,11 @@ import {
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { type PageChange } from '@roc-web/core/shared';
+import { type PageChange, type ViewModel } from '@roc-web/core/shared';
 import { FilterInputComponent } from '@roc-web/ui/filter-input';
 import { Subject, takeUntil, tap } from 'rxjs';
 
-import { type PrescriberViewModel } from '../../models/prescriber-view-model';
-
-// TODO: this needs refracted into multiple components
+import { type PrescriberList } from '../../models';
 
 @Component({
   selector: 'app-prescriber-list',
@@ -59,7 +57,7 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     'menu',
   ];
 
-  @Input() viewModel: PrescriberViewModel | undefined;
+  @Input() viewModel: ViewModel<PrescriberList> | undefined;
 
   @Output() readonly editPrescriber = new EventEmitter<string>();
   @Output() readonly filterChange = new EventEmitter<string>();
