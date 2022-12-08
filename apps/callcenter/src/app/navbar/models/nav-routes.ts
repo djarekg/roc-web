@@ -1,3 +1,5 @@
+import { Roles } from '@roc-web/identity/auth';
+
 import { type NavRoute } from './nav-route';
 
 export const navRoutes: NavRoute[] = [
@@ -41,5 +43,6 @@ export const navRoutes: NavRoute[] = [
   {
     name: 'Administrators',
     relativeUrl: '/admin',
+    roles: Roles.administrator,
   },
 ];

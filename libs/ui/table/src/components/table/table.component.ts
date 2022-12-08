@@ -22,7 +22,11 @@ import {
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { type PageChange, type ViewModel } from '@roc-web/core/shared';
+import {
+  type PageChange,
+  TrackByPropertyDirective,
+  type ViewModel,
+} from '@roc-web/core/shared';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { type TableColumn } from '../../models';
@@ -44,6 +48,7 @@ import { type TableColumn } from '../../models';
     MatTableModule,
     NgIf,
     NgFor,
+    TrackByPropertyDirective,
   ],
 })
 export class TableComponent<T extends object>

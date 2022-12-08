@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
+import { TrackByPropertyDirective } from '@roc-web/core/shared';
+import { HasRolesDirective } from '@roc-web/identity/auth';
 
 import { navRoutes } from '../../models';
 
@@ -14,6 +16,7 @@ import { navRoutes } from '../../models';
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    HasRolesDirective,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -22,6 +25,7 @@ import { navRoutes } from '../../models';
     NgIf,
     RouterLink,
     RouterLink,
+    TrackByPropertyDirective,
   ],
 })
 export class NavbarComponent {

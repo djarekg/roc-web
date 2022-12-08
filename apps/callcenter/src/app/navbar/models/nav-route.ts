@@ -3,4 +3,5 @@ export interface NavRoute {
   menuOpen?: boolean;
   name: string;
   relativeUrl?: string;
+  roles?: string[] | string | undefined;
 }

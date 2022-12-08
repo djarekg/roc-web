@@ -1,29 +1,32 @@
-<ng-container *ngFor="let route of routes">
-  <button
-    *ngIf="route.relativeUrl"
-    mat-button
-    routerLink="route.relativeUrl">
-    {{ route.name }}
-  </button>
-  <ng-container *ngIf="route.children?.length">
+<ng-container
+  *ngFor="let route of routes; trackByProperty: 'route.relativeUrl'">
+  <ng-container *rwHasRoles="route?.roles">
     <button
-      [ngClass]="{ 'app-menu-expanded': route.menuOpen }"
+      *ngIf="route.relativeUrl"
       mat-button
-      [matMenuTriggerFor]="menu"
-      (menuOpened)="route.menuOpen = true"
-      (menuClosed)="route.menuOpen = false">
+      routerLink="route.relativeUrl">
       {{ route.name }}
-      <mat-icon iconPositionEnd>expand_more</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-      <ng-template matMenuContent>
-        <a
-          *ngFor="let childRoute of route.children; trackByProperty: 'path'"
-          mat-menu-item
-          [routerLink]="childRoute.relativeUrl">
-          {{ childRoute.name }}
-        </a>
-      </ng-template>
-    </mat-menu>
+    <ng-container *ngIf="route.children?.length">
+      <button
+        [ngClass]="{ 'app-menu-expanded': route.menuOpen }"
+        mat-button
+        [matMenuTriggerFor]="menu"
+        (menuOpened)="route.menuOpen = true"
+        (menuClosed)="route.menuOpen = false">
+        {{ route.name }}
+        <mat-icon iconPositionEnd>expand_more</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <ng-template matMenuContent>
+          <a
+            *ngFor="let childRoute of route.children; trackByProperty: 'path'"
+            mat-menu-item
+            [routerLink]="childRoute.relativeUrl">
+            {{ childRoute.name }}
+          </a>
+        </ng-template>
+      </mat-menu>
+    </ng-container>
   </ng-container>
 </ng-container>

@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { slideInAnimation } from '@roc-web/core/animations';
+import { TrackByPropertyDirective } from '@roc-web/core/shared';
 import { CardComponent } from '@roc-web/ui/card';
 
 import { type SidenavRoute } from '../../models';
@@ -30,6 +31,7 @@ import { type SidenavRoute } from '../../models';
     RouterLink,
     RouterLinkActive,
     RouterOutlet,
+    TrackByPropertyDirective,
   ],
 })
 export class SidenavComponent {

@@ -13,7 +13,7 @@ import {
 import { type ControlValueAccessor } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { CORE_OPTIONS } from '@roc-web/core/config';
-import { type Locale } from '@roc-web/core/shared';
+import { type Locale, TrackByPropertyDirective } from '@roc-web/core/shared';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -22,7 +22,7 @@ import { Subject } from 'rxjs';
   templateUrl: './locale-select.component.html',
   styleUrls: ['./locale-select.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatSelectModule],
+  imports: [MatSelectModule, TrackByPropertyDirective],
 })
 export class LocaleSelectComponent
   implements OnInit, OnDestroy, ControlValueAccessor

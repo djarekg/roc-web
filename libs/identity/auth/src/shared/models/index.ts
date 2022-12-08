@@ -6,7 +6,6 @@ export * from './http-cache-key';
 export * from './http-token-response';
 export * from './permissions';
 export * from './response-token-error';
-export * from './roles';
 export * from './route-url';
 export * from './token-response';
 export * from './token-user';
