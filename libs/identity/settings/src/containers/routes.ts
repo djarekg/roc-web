@@ -34,4 +34,4 @@ export default [
     path: 'settings',
     title: 'Account Settings',
   },
-] as Routes;
+] satisfies Routes;

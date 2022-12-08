@@ -7,4 +7,4 @@ export default [
     component: SigninComponent,
     path: 'signin',
   },
-] as Routes;
+] satisfies Routes;

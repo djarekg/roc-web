@@ -6,8 +6,8 @@ import {
   Output,
 } from '@angular/core';
 import {
+  type AbstractControl,
   FormBuilder,
-  type FormControl,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -56,8 +56,8 @@ export class ChangePasswordFormComponent {
     ],
   });
 
-  protected get newPassword(): FormControl {
-    return this.form.get('newPassword') as FormControl;
+  protected get newPassword(): AbstractControl<string, string> | null {
+    return this.form.get('newPassword');
   }
 
   @Output() submitted = new EventEmitter<ChangePassword>();

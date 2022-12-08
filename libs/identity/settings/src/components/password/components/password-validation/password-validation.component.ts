@@ -5,7 +5,7 @@ import {
   Input,
   inject,
 } from '@angular/core';
-import { type FormControl } from '@angular/forms';
+import { type AbstractControl } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { type Subscription } from 'rxjs';
@@ -30,7 +30,7 @@ const NUMERIC_CHARACTER_NAME = 'numericCharacter';
 const MIN_LENGTH_NAME = 'minlength';
 
 function setValidationState(
-  control: FormControl,
+  control: AbstractControl,
   validator: string,
 ): ValidationState {
   if (control.errors?.[validator]) {
@@ -40,7 +40,7 @@ function setValidationState(
   return validationState.success;
 }
 
-function hasChanged(control: FormControl): boolean {
+function hasChanged(control: AbstractControl): boolean {
   return control.invalid && (control.dirty || control.touched);
 }
 
@@ -54,7 +54,7 @@ function hasChanged(control: FormControl): boolean {
 })
 export class PasswordValidationComponent {
   #changeDetectorRef = inject(ChangeDetectorRef);
-  #control: FormControl | null = null;
+  #control: AbstractControl | null = null;
   #statusChangesSubscription: Subscription | undefined;
 
   protected minLengthState: ValidationState = validationState.pristine;
@@ -62,10 +62,10 @@ export class PasswordValidationComponent {
   protected specialCharacterState: ValidationState = validationState.pristine;
 
   @Input()
-  get control(): FormControl | null {
+  get control(): AbstractControl | null {
     return this.#control;
   }
-  set control(value: FormControl | null) {
+  set control(value: AbstractControl | null) {
     if (this.#statusChangesSubscription) {
       this.#statusChangesSubscription.unsubscribe();
     }

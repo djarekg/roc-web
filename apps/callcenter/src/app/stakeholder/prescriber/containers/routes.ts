@@ -50,4 +50,4 @@ export const routes = [
     path: '',
     providers: [providePrescriber()],
   },
-] as Routes;
+] satisfies Routes;
