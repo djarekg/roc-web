@@ -1,0 +1,8 @@
+@use '../layout/layout-variables' as layout-vars;
+
+@mixin snackbar-overrides {
+  // TODO: Move to @roc-web/core with toast logic
+  .rw-snackbar-panel {
+    border-radius: layout-vars.$border-radius;
+  }
+}

@@ -63,5 +63,6 @@
   @include mat-utils.card-overrides();
   @include mat-utils.form-field-overrides();
   @include mat-utils.sidenav-overrides();
+  @include mat-utils.snackbar-overrides();
   // @include mat-utils.table-overrides();
 }

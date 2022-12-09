@@ -32,10 +32,10 @@
             "index": "apps/callcenter/src/index.html",
             "main": "apps/callcenter/src/main.ts",
             "polyfills": [
+              "libs/core/polyfills/zone-flags.js",
               "zone.js",
               "apps/callcenter/src/polyfills.ts",
-              "libs/core/scripts/console-disable.js",
-              "libs/core/scripts/zone-flags.js"
+              "libs/core/polyfills/console-disable.js"
             ],
             "tsConfig": "apps/callcenter/tsconfig.app.json",
             "inlineStyleLanguage": "scss",

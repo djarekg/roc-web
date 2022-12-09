@@ -19,11 +19,11 @@ export class RouterEffects {
         ofType(routerNavigatedAction),
         concatLatestFrom(() => this.#store.select(fromRoot.selectTitle)),
         map(([, title]) => `Call Center ${title ? ' - ' : ''}${title ?? ''}`),
-        tap(title => this.#titleService.setTitle(title))
+        tap(title => this.#titleService.setTitle(title)),
       );
     },
     {
       dispatch: false,
-    }
+    },
   );
 }

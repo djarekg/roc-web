@@ -1,5 +1,5 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
@@ -9,27 +9,17 @@ import {
   withPreloading,
   withRouterConfig,
 } from '@angular/router';
-import { provideEffects } from '@ngrx/effects';
-import { provideRouterStore } from '@ngrx/router-store';
-import { provideStore } from '@ngrx/store';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { providerRoutes } from '@roc-web/core/common';
 import { provideCoreConfig } from '@roc-web/core/config';
 import { provideSharedImports } from '@roc-web/core/shared';
+import { provideCoreState } from '@roc-web/core/state';
 import { provideStorage } from '@roc-web/core/storage';
 import {
-  ROOT_REDUCERS,
-  RouterEffects,
-  debugMetaReducers,
-  provideCoreStore,
-} from '@roc-web/core/store';
-import {
-  provideAuth,
+  IDENTITY_AUTH_ROUTES,
   provideAuthInterceptors,
-  provideAuthRoutes,
-  provideToken,
+  provideIdentity,
 } from '@roc-web/identity/auth';
-// import { provideSettingsRoutes } from '@roc-web/identity/settings';
-import { provideSettingsRoutes } from '@roc-web/identity/settings';
+import { IDENTITY_SETTINGS_ROUTES } from '@roc-web/identity/settings';
 import { provideHttpCacheInterceptors } from '@roc-web/web/cache';
 import { provideHttpInterceptors } from '@roc-web/web/http';
 
@@ -48,43 +38,22 @@ bootstrapApplication(AppComponent, {
         ...provideHttpInterceptors(),
         ...provideHttpCacheInterceptors(),
         ...provideAuthInterceptors(),
-      ])
+      ]),
     ),
     provideRouter(
-      [...APP_ROUTES, ...provideAuthRoutes(), ...provideSettingsRoutes()],
-      // withEnabledBlockingInitialNavigation(),
+      providerRoutes(
+        APP_ROUTES,
+        IDENTITY_AUTH_ROUTES,
+        IDENTITY_SETTINGS_ROUTES,
+      ),
       withDebugTracing(),
       withPreloading(PreloadAllModules),
-      withRouterConfig({ paramsInheritanceStrategy: 'always' })
+      withRouterConfig({ paramsInheritanceStrategy: 'always' }),
     ),
-    provideStore(ROOT_REDUCERS, {
-      metaReducers: debugMetaReducers,
-      runtimeChecks: {
-        strictActionSerializability: true,
-        strictActionTypeUniqueness: true,
-        strictActionWithinNgZone: true,
-        // strictStateImmutability and strictActionImmutability are enabled by default
-        strictStateSerializability: true,
-      },
-    }),
-    provideCoreStore(),
-    provideRouterStore(),
-    provideEffects(RouterEffects),
-    provideStoreDevtools({
-      logOnly: environment.production,
-      maxAge: 25,
-      name: 'Call Center',
-    }),
-    /**
-     * provideAuthStore() is imported once in the root so that
-     * the auth state is initialized.
-     *
-     * @see: https://ngrx.io/guide/effects#registering-root-effects
-     */
-    provideAuth(),
-    provideToken(),
+    provideCoreState(),
+    provideIdentity(),
     provideCoreConfig(environment),
     provideStorage(),
-    provideSharedImports(),
+    importProvidersFrom(provideSharedImports()),
   ],
 }).catch(error => console.error(error));

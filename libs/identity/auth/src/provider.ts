@@ -3,7 +3,6 @@ import {
   type Provider,
   makeEnvironmentProviders,
 } from '@angular/core';
-import { type Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 
@@ -11,34 +10,17 @@ import routes from './containers/routes';
 import { TokenService } from './shared/services';
 import { AuthEffects, authFeature } from './store';
 
-// export const authMetaReducerProvider = {
-//   provide: META_REDUCERS,
-//   deps: [LocalStorageService],
-//   useFactory: metaReducerFactory<AuthState>,
-//   multi: true,
-// };
+const authState = [provideState(authFeature), provideEffects(AuthEffects)];
 
-export function provideAuth(): EnvironmentProviders {
-  const providers: Provider = [
-    provideState(authFeature),
-    provideEffects(AuthEffects),
-  ];
+const providers: Provider[] = [
+  {
+    provide: TokenService,
+    useClass: TokenService,
+  },
+];
 
-  return makeEnvironmentProviders(providers);
+export function provideIdentity(): EnvironmentProviders {
+  return makeEnvironmentProviders([authState, providers]);
 }
 
-export function provideAuthRoutes(): Routes {
-  return routes;
-}
-
-// TODO: this should be scoped to specific feature
-export function provideToken(): EnvironmentProviders {
-  const providers: Provider[] = [
-    {
-      provide: TokenService,
-      useClass: TokenService,
-    },
-  ];
-
-  return makeEnvironmentProviders(providers);
-}
+export { routes as IDENTITY_AUTH_ROUTES };

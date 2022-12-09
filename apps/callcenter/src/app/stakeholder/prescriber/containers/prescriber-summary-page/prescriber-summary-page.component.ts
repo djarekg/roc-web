@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
-import { selectTitle } from '@roc-web/core/store';
+import { selectTitle } from '@roc-web/core/state';
 import { CardComponent } from '@roc-web/ui/card';
 
 import { PrescriberDetailComponent } from '../../components';

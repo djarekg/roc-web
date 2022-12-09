@@ -13,23 +13,23 @@ export class RouteProgressEffects {
     () => {
       return this.#actions$.pipe(
         ofType(routerRequestAction),
-        tap(() => routeProgressActions.navigationStarted())
+        tap(() => routeProgressActions.navigationStarted()),
       );
     },
     {
       dispatch: false,
-    }
+    },
   );
 
   completed$ = createEffect(
     () => {
       return this.#actions$.pipe(
         ofType(routerRequestAction),
-        tap(() => routeProgressActions.navigationCompleted())
+        tap(() => routeProgressActions.navigationCompleted()),
       );
     },
     {
       dispatch: false,
-    }
+    },
   );
 }

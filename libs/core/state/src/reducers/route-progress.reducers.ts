@@ -16,12 +16,12 @@ export const reducer = createReducer(
   initialState,
   on(
     routeProgressActions.navigationStarted,
-    (): State => ({ inProgress: true })
+    (): State => ({ inProgress: true }),
   ),
   on(
     routeProgressActions.navigationCompleted,
-    (): State => ({ inProgress: false })
-  )
+    (): State => ({ inProgress: false }),
+  ),
 );
 
 export const selectRouteInProgress = (state: State) => state.inProgress;
