@@ -11,7 +11,7 @@ import {
 } from '@angular/router';
 import { providerRoutes } from '@roc-web/core/common';
 import { provideCoreConfig } from '@roc-web/core/config';
-import { provideSharedImports } from '@roc-web/core/shared';
+import { SHARED_IMPORTS } from '@roc-web/core/shared';
 import { provideCoreState } from '@roc-web/core/state';
 import { provideStorage } from '@roc-web/core/storage';
 import {
@@ -54,6 +54,6 @@ bootstrapApplication(AppComponent, {
     provideIdentity(),
     provideCoreConfig(environment),
     provideStorage(),
-    importProvidersFrom(provideSharedImports()),
+    importProvidersFrom(SHARED_IMPORTS),
   ],
 }).catch(error => console.error(error));
