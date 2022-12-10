@@ -1,0 +1,29 @@
+<!-- <ng-container>
+  <button
+    *ngIf="route.relativeUrl"
+    mat-button
+    routerLink="route.relativeUrl">
+    {{ route.name }}
+  </button>
+  <ng-container *ngIf="route.children?.length">
+    <button
+      [ngClass]="{ 'app-menu-expanded': route.menuOpen }"
+      mat-button
+      [matMenuTriggerFor]="menu"
+      (menuOpened)="route.menuOpen = true"
+      (menuClosed)="route.menuOpen = false">
+      {{ route.name }}
+      <mat-icon iconPositionEnd>expand_more</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <ng-template matMenuContent>
+        <a
+          *ngFor="let childRoute of route.children"
+          mat-menu-item
+          [routerLink]="childRoute.relativeUrl">
+          {{ childRoute.name }}
+        </a>
+      </ng-template>
+    </mat-menu>
+  </ng-container>
+</ng-container> -->

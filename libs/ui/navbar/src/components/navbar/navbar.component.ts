@@ -1,22 +1,19 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
-import { TrackByPropertyDirective } from '@roc-web/core/shared';
-import { HasRolesDirective } from '@roc-web/identity/auth';
 
-import { navRoutes } from '../../models';
+import { type NavRoute } from '../../models';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'rw-ui-navbar',
   standalone: true,
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    HasRolesDirective,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -24,10 +21,9 @@ import { navRoutes } from '../../models';
     NgFor,
     NgIf,
     RouterLink,
-    RouterLink,
-    TrackByPropertyDirective,
   ],
 })
-export class NavbarComponent {
-  protected routes = navRoutes;
+export class NavbarComponent<T = unknown> {
+  @Input()
+  routes: NavRoute<T>[] = [];
 }

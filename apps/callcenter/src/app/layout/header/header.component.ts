@@ -8,9 +8,10 @@ import {
   ProfileMenuComponent,
   selectIsAuthenticated,
 } from '@roc-web/identity/auth';
+import { NavbarComponent } from '@roc-web/ui/navbar';
 import { RouteProgressBarComponent } from '@roc-web/ui/route-progress-bar';
 
-import { NavbarComponent } from '../../navbar';
+import { navRoutes } from '../nav-routes';
 
 @Component({
   selector: 'app-header',
@@ -31,4 +32,5 @@ import { NavbarComponent } from '../../navbar';
 })
 export class HeaderComponent {
   protected isAuthenticated$ = inject(Store).select(selectIsAuthenticated);
+  protected readonly routes = navRoutes;
 }

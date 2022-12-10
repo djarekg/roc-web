@@ -1,6 +1,5 @@
-<ng-container
-  *ngFor="let route of routes; trackByProperty: 'route.relativeUrl'">
-  <ng-container *rwHasRoles="route?.roles">
+<ng-container *ngFor="let route of routes">
+  <ng-container>
     <button
       *ngIf="route.relativeUrl"
       mat-button
@@ -20,7 +19,7 @@
       <mat-menu #menu="matMenu">
         <ng-template matMenuContent>
           <a
-            *ngFor="let childRoute of route.children; trackByProperty: 'path'"
+            *ngFor="let childRoute of route.children"
             mat-menu-item
             [routerLink]="childRoute.relativeUrl">
             {{ childRoute.name }}

@@ -13,7 +13,7 @@
   [dataSource]="viewModel?.entities ?? []">
   <ng-content></ng-content>
   <ng-container
-    *ngFor="let column of columns; trackByProperty: 'propertyName'"
+    *ngFor="let column of columns"
     [matColumnDef]="column.propertyName">
     <mat-header-cell
       *matHeaderCellDef

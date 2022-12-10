@@ -93,13 +93,16 @@
           }
         ],
         "import/no-duplicates": "error",
-        "no-extra-parens": [
-          "warn",
-          {
-            "enforceForArrowConditionals": true,
-            "returnAssign": true
-          }
-        ],
+        // "no-extra-parens": [
+        //   "warn",
+        //   {
+        //     "enforceForArrowConditionals": true,
+        //     "returnAssign": true
+        //   },
+        //   {
+        //     "fixAll": true
+        //   }
+        // ],
         "sort-imports": [
           "error",
           {

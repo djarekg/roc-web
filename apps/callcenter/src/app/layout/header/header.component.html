@@ -8,7 +8,9 @@
     class="app-header-title">
     Roctavian EUMEA Call Center Portal
   </a>
-  <app-navbar *ngIf="isAuthenticated$ | async"></app-navbar>
+  <rw-ui-navbar
+    *ngIf="isAuthenticated$ | async"
+    [routes]="routes"></rw-ui-navbar>
   <div class="app-header-content-center">
     <ng-content></ng-content>
   </div>
