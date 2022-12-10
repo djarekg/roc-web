@@ -1,6 +1,5 @@
-export const TOAST_DURATION = 5_000;
-
-export type ToastActionType = 'DISMISS' | 'OK' | 'UNDO';
+import { TOAST_DURATION } from '../constants';
+import { type ToastActionType } from '../types';
 
 export interface ToastOptions {
   action?: ToastActionType | undefined;

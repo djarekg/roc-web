@@ -1,20 +1,36 @@
 import { Injectable, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { type ToastOptions, toastOptionsDefaults } from '../models';
-
-export const TOAST_PANEL_CLASS = 'rw-toast-panel';
+import { TOAST_DURATION, toastPanelsClasses } from '../constants';
+import { ToastType } from '../enums';
+import { type ToastOptions } from '../models';
 
 @Injectable()
 export class ToastService {
   readonly #snackBar = inject(MatSnackBar);
 
-  show(options: ToastOptions = toastOptionsDefaults) {
-    const { action, duration, message } = options;
+  error(error: string) {
+    this.#showSnackBar({ message: error }, ToastType.error);
+  }
+
+  info(message: string) {
+    this.#showSnackBar({ message }, ToastType.info);
+  }
+
+  show(options: ToastOptions) {
+    this.#showSnackBar(options, ToastType.show);
+  }
+
+  success(message: string) {
+    this.#showSnackBar({ message, action: 'OK' }, ToastType.success);
+  }
+
+  #showSnackBar(options: ToastOptions, type: ToastType) {
+    const { action = 'OK', duration = TOAST_DURATION, message } = options;
 
     this.#snackBar.open(message, action, {
       duration: duration,
-      panelClass: TOAST_PANEL_CLASS,
+      panelClass: toastPanelsClasses[type],
     });
   }
 }

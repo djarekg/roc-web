@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { toastActions } from '@roc-web/core/state';
 import {
   catchError,
   concatMap,
@@ -35,10 +36,10 @@ export class PrescribersEffects {
         this.#prescriberService.add(prescriber).pipe(
           map(() => prescribersApiActions.addPrescriberSuccess({ prescriber })),
           catchError(error =>
-            of(prescribersApiActions.addPrescriberFailure({ error }))
-          )
-        )
-      )
+            of(prescribersApiActions.addPrescriberFailure({ error })),
+          ),
+        ),
+      ),
     );
   });
 
@@ -46,10 +47,26 @@ export class PrescribersEffects {
     () => {
       return this.#actions$.pipe(
         ofType(prescribersPageActions.editPrescriber),
-        tap(({ id }) => void this.#router.navigate(['prescriber', id]))
+        tap(({ id }) => void this.#router.navigate(['prescriber', id])),
       );
     },
-    { dispatch: false }
+    { dispatch: false },
+  );
+
+  failure$ = createEffect(
+    () => {
+      return this.#actions$.pipe(
+        ofType(
+          prescribersApiActions.addPrescriberFailure,
+          prescribersApiActions.loadPrescriberFailure,
+          prescribersApiActions.loadPrescribersFailure,
+          prescribersApiActions.removePrescriberFailure,
+          prescribersApiActions.updatePrescriberFailure,
+        ),
+        tap(({ error }) => this.#store.dispatch(toastActions.error({ error }))),
+      );
+    },
+    { dispatch: false },
   );
 
   loadPrescriber$ = createEffect(() => {
@@ -61,11 +78,11 @@ export class PrescribersEffects {
             prescriber =>
               prescribersApiActions.loadPrescriberSuccess({ prescriber }),
             catchError(error =>
-              of(prescribersApiActions.loadPrescriberFailure({ error }))
-            )
-          )
-        )
-      )
+              of(prescribersApiActions.loadPrescriberFailure({ error })),
+            ),
+          ),
+        ),
+      ),
     );
   });
 
@@ -78,7 +95,7 @@ export class PrescribersEffects {
         prescribersPageActions.changePage,
         prescribersPageActions.filterChange,
         prescribersPageActions.loadPrescribers,
-        prescribersPageActions.sortPage
+        prescribersPageActions.sortPage,
       ),
       concatLatestFrom(() => [
         this.#store.select(selectFilter),
@@ -88,13 +105,13 @@ export class PrescribersEffects {
       concatMap(([, filter, pagination, sort]) =>
         this.#prescriberService.getAll(filter, pagination, sort).pipe(
           map(response =>
-            prescribersApiActions.loadPrescribersSuccess(response)
+            prescribersApiActions.loadPrescribersSuccess(response),
           ),
           catchError(error =>
-            of(prescribersApiActions.loadPrescribersFailure({ error }))
-          )
-        )
-      )
+            of(prescribersApiActions.loadPrescribersFailure({ error })),
+          ),
+        ),
+      ),
     );
   });
 
@@ -105,10 +122,10 @@ export class PrescribersEffects {
         this.#prescriberService.remove(prescriber).pipe(
           map(() => prescribersApiActions.removePrescriberSuccess()),
           catchError(error =>
-            of(prescribersApiActions.removePrescriberFailure({ error }))
-          )
-        )
-      )
+            of(prescribersApiActions.removePrescriberFailure({ error })),
+          ),
+        ),
+      ),
     );
   });
 
@@ -119,10 +136,10 @@ export class PrescribersEffects {
         this.#prescriberService.update(prescriber).pipe(
           map(() => prescribersApiActions.updatePrescriberSuccess()),
           catchError(error =>
-            of(prescribersApiActions.updatePrescriberFailure({ error }))
-          )
-        )
-      )
+            of(prescribersApiActions.updatePrescriberFailure({ error })),
+          ),
+        ),
+      ),
     );
   });
 }

@@ -10,12 +10,24 @@ export class ToastEffects {
   readonly #actions$ = inject(Actions);
   readonly #toastService = inject(ToastService);
 
-  show$ = createEffect(
+  // show$ = createEffect(
+  //   () => {
+  //     return this.#actions$.pipe(
+  //       ofType(toastActions.show),
+  //       map(({ toast }) => {
+  //         this.#toastService.show(toast);
+  //       }),
+  //     );
+  //   },
+  //   { dispatch: false },
+  // );
+
+  error$ = createEffect(
     () => {
       return this.#actions$.pipe(
-        ofType(toastActions.show),
-        map(({ toast }) => {
-          this.#toastService.show(toast);
+        ofType(toastActions.error),
+        map(({ error }) => {
+          this.#toastService.error(error);
         }),
       );
     },

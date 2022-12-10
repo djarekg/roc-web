@@ -5,6 +5,9 @@ import { type ToastOptions } from '../models';
 export const toastActions = createActionGroup({
   source: 'Toast',
   events: {
-    Show: props<{ toast: ToastOptions }>(),
+    Info: props<{ message: string }>(),
+    Show: props<{ options: ToastOptions }>(),
+    Success: props<{ message: string }>(),
+    Error: props<{ error: string }>(),
   },
 });
