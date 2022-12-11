@@ -13,35 +13,45 @@ import { LocalStorageService } from '@roc-web/core/storage';
 import { coreEffects } from './effects';
 import { type CoreState, ROOT_REDUCERS, debugMetaReducers } from './reducers';
 import { metaReducerFactory } from './reducers/meta-reducer-factory';
+import { ToastService } from './services';
+
+const metaReducersProvider: Provider = {
+  provide: META_REDUCERS,
+  useFactory: metaReducerFactory<CoreState>,
+  deps: [LocalStorageService],
+  multi: true,
+};
+
+const serviceProviders: Provider[] = [
+  {
+    provide: ToastService,
+    useClass: ToastService,
+    multi: true,
+  },
+];
+
+const storeProviders: EnvironmentProviders[] = [
+  provideStore(ROOT_REDUCERS, {
+    metaReducers: debugMetaReducers,
+    runtimeChecks: {
+      strictActionSerializability: true,
+      strictActionTypeUniqueness: true,
+      strictActionWithinNgZone: true,
+      strictStateSerializability: true,
+    },
+  }),
+  provideRouterStore(),
+  provideEffects(coreEffects),
+  provideStoreDevtools({
+    logOnly: !isDevMode(),
+    maxAge: 25,
+    name: 'Call Center',
+  }),
+];
 
 export function provideCoreState(): EnvironmentProviders[] {
-  const providers: Provider[] = [
-    {
-      provide: META_REDUCERS,
-      multi: true,
-      useFactory: metaReducerFactory<CoreState>,
-      deps: [LocalStorageService],
-    },
-  ];
-
   return [
-    provideStore(ROOT_REDUCERS, {
-      metaReducers: debugMetaReducers,
-      runtimeChecks: {
-        strictActionSerializability: true,
-        strictActionTypeUniqueness: true,
-        strictActionWithinNgZone: true,
-        // strictStateImmutability and strictActionImmutability are enabled by default
-        strictStateSerializability: true,
-      },
-    }),
-    provideRouterStore(),
-    provideEffects(coreEffects),
-    provideStoreDevtools({
-      logOnly: !isDevMode(),
-      maxAge: 25,
-      name: 'Call Center',
-    }),
-    makeEnvironmentProviders(providers),
+    ...storeProviders,
+    makeEnvironmentProviders([metaReducersProvider, serviceProviders]),
   ];
 }
