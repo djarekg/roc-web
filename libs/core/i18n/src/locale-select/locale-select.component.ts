@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { CORE_OPTIONS } from '@roc-web/core/config';
+import { CORE_OPTIONS } from '@roc-web/core/options';
 import { type Locale, TrackByPropertyDirective } from '@roc-web/core/shared';
 import { Subject } from 'rxjs';
 

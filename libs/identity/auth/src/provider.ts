@@ -1,3 +1,4 @@
+import { withInterceptors } from '@angular/common/http';
 import {
   type EnvironmentProviders,
   type Provider,
@@ -7,10 +8,9 @@ import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 
 import routes from './containers/routes';
+import { HTTP_AUTH_INTERCEPTOR } from './shared/interceptors';
 import { TokenService } from './shared/services';
 import { AuthEffects, authFeature } from './store';
-
-const authState = [provideState(authFeature), provideEffects(AuthEffects)];
 
 const providers: Provider[] = [
   {
@@ -20,7 +20,14 @@ const providers: Provider[] = [
 ];
 
 export function provideIdentity(): EnvironmentProviders {
-  return makeEnvironmentProviders([authState, providers]);
+  return makeEnvironmentProviders([
+    [
+      withInterceptors([HTTP_AUTH_INTERCEPTOR]),
+      provideState(authFeature),
+      provideEffects(AuthEffects),
+    ],
+    providers,
+  ]);
 }
 
 export { routes as IDENTITY_AUTH_ROUTES };

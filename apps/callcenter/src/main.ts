@@ -10,18 +10,14 @@ import {
   withRouterConfig,
 } from '@angular/router';
 import { providerRoutes } from '@roc-web/core/common';
-import { provideCoreConfig } from '@roc-web/core/config';
+import { provideCoreDefaults } from '@roc-web/core/options';
 import { SHARED_IMPORTS } from '@roc-web/core/shared';
 import { provideCoreState } from '@roc-web/core/state';
 import { provideStorage } from '@roc-web/core/storage';
-import {
-  IDENTITY_AUTH_ROUTES,
-  provideAuthInterceptors,
-  provideIdentity,
-} from '@roc-web/identity/auth';
+import { IDENTITY_AUTH_ROUTES, provideIdentity } from '@roc-web/identity/auth';
 import { IDENTITY_SETTINGS_ROUTES } from '@roc-web/identity/settings';
-import { provideHttpCacheInterceptors } from '@roc-web/web/cache';
-import { provideHttpInterceptors } from '@roc-web/web/http';
+import { HTTP_CACHE_INTERCEPTORS } from '@roc-web/web/cache';
+import { HTTP_CORE_INTERCEPTORS } from '@roc-web/web/http';
 
 import { APP_ROUTES, AppComponent } from './app';
 import { environment } from './environments';
@@ -34,11 +30,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
     provideHttpClient(
-      withInterceptors([
-        ...provideHttpInterceptors(),
-        ...provideHttpCacheInterceptors(),
-        ...provideAuthInterceptors(),
-      ]),
+      withInterceptors([...HTTP_CORE_INTERCEPTORS, ...HTTP_CACHE_INTERCEPTORS]),
     ),
     provideRouter(
       providerRoutes(
@@ -50,9 +42,9 @@ bootstrapApplication(AppComponent, {
       withPreloading(PreloadAllModules),
       withRouterConfig({ paramsInheritanceStrategy: 'always' }),
     ),
+    provideCoreDefaults(environment),
     provideCoreState(),
     provideIdentity(),
-    provideCoreConfig(environment),
     provideStorage(),
     importProvidersFrom(SHARED_IMPORTS),
   ],

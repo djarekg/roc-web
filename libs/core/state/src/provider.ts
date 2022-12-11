@@ -13,7 +13,6 @@ import { LocalStorageService } from '@roc-web/core/storage';
 import { coreEffects } from './effects';
 import { type CoreState, ROOT_REDUCERS, debugMetaReducers } from './reducers';
 import { metaReducerFactory } from './reducers/meta-reducer-factory';
-import { ToastService } from './services';
 
 export function provideCoreState(): EnvironmentProviders[] {
   const providers: Provider[] = [
@@ -22,10 +21,6 @@ export function provideCoreState(): EnvironmentProviders[] {
       multi: true,
       useFactory: metaReducerFactory<CoreState>,
       deps: [LocalStorageService],
-    },
-    {
-      provide: ToastService,
-      useClass: ToastService,
     },
   ];
 
