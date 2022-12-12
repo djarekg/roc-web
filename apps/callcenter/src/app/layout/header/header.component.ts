@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,9 +6,10 @@ import { Store } from '@ngrx/store';
 import { LocaleSelectComponent } from '@roc-web/core/i18n';
 import {
   ProfileMenuComponent,
+  RwIfHasRole,
   selectIsAuthenticated,
 } from '@roc-web/identity/auth';
-import { NavbarComponent } from '@roc-web/ui/navbar';
+import { NavbarComponent, NavbarItemComponent } from '@roc-web/ui/navbar';
 import { RouteProgressBarComponent } from '@roc-web/ui/route-progress-bar';
 
 import { navRoutes } from '../nav-routes';
@@ -23,11 +24,14 @@ import { navRoutes } from '../nav-routes';
     AsyncPipe,
     LocaleSelectComponent,
     NavbarComponent,
+    NavbarItemComponent,
     MatButtonModule,
     MatIconModule,
+    NgFor,
     NgIf,
     ProfileMenuComponent,
     RouteProgressBarComponent,
+    RwIfHasRole,
   ],
 })
 export class HeaderComponent {

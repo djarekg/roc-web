@@ -1,0 +1,12 @@
+.mdc-button {
+  &.rw-ui-navbar--item__expanded,
+  &:hover {
+    .mat-icon {
+      opacity: 1;
+    }
+  }
+
+  .mat-icon {
+    opacity: 0;
+  }
+}

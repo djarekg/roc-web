@@ -1,11 +1,13 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { RouterLink } from '@angular/router';
+import { NgTemplateOutlet } from '@angular/common';
+import {
+  type AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  type QueryList,
+} from '@angular/core';
 
-import { type NavRoute } from '../../models';
+import { NavbarItemComponent } from '../navbar-item';
 
 @Component({
   selector: 'rw-ui-navbar',
@@ -13,17 +15,14 @@ import { type NavRoute } from '../../models';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    NgClass,
-    NgFor,
-    NgIf,
-    RouterLink,
-  ],
+  imports: [NgTemplateOutlet],
 })
-export class NavbarComponent<T = unknown> {
-  @Input()
-  routes: NavRoute<T>[] = [];
+export class NavbarComponent<T> implements AfterContentInit {
+  @ContentChildren(NavbarItemComponent) items!: QueryList<
+    NavbarItemComponent<T>
+  >;
+
+  ngAfterContentInit(): void {
+    this.items.forEach(item => console.log(item));
+  }
 }

@@ -8,9 +8,16 @@
     class="app-header-title">
     Roctavian EUMEA Call Center Portal
   </a>
-  <rw-ui-navbar
-    *ngIf="isAuthenticated$ | async"
-    [routes]="routes"></rw-ui-navbar>
+  <rw-ui-navbar *ngIf="isAuthenticated$ | async">
+    <rw-ui-navbar-item
+      *ngFor="let route of routes"
+      [route]="route"></rw-ui-navbar-item>
+    <!-- <ng-container *ngFor="let route of routes">
+      <rw-ui-navbar-item
+        *rwIfHasRole="route?.role"
+        [route]="route"></rw-ui-navbar-item>
+    </ng-container> -->
+  </rw-ui-navbar>
   <div class="app-header-content-center">
     <ng-content></ng-content>
   </div>

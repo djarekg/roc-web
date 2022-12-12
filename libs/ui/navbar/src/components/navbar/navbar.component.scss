@@ -3,16 +3,3 @@
   flex-direction: row;
   column-gap: 5px;
 }
-
-.mdc-button {
-  &.app-menu-expanded,
-  &:hover {
-    .mat-icon {
-      opacity: 1;
-    }
-  }
-
-  .mat-icon {
-    opacity: 0;
-  }
-}

@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Directive, Input, inject } from '@angular/core';
 
-import { type Roles } from '../enums';
+import { type RolesType } from '../enums';
 import { AuthService } from '../services';
 
 @Directive({
@@ -20,7 +20,7 @@ export class IfHasRoleDirective {
   readonly #authService = inject(AuthService);
 
   @Input('rwIfHasRole')
-  set role(role: Roles | undefined) {
+  set role(role: RolesType | undefined) {
     this.#ngIfDirective.ngIf = role && this.#authService.hasRole(role);
   }
 }

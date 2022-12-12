@@ -1,9 +1,11 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
+
+import { type NavRoute } from '../../models';
 
 @Component({
   selector: 'rw-ui-navbar-item',
@@ -21,4 +23,6 @@ import { RouterLink } from '@angular/router';
     RouterLink,
   ],
 })
-export default class NavbarItemComponent {}
+export class NavbarItemComponent<T> {
+  @Input() route: NavRoute<T> | undefined;
+}
