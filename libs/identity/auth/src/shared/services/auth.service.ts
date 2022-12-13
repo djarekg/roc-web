@@ -16,15 +16,23 @@ export class AuthService {
     return this.#tokenService.requestToken(userName, password);
   }
 
-  hasRole(roles: string[] | string | undefined): Observable<boolean> {
-    if (!roles) {
-      return of(false);
+  hasRoleOrDefault(role: string | undefined): Observable<boolean> {
+    if (role) {
+      return this.hasRole(role).pipe(
+        switchMap(hasRole => of(hasRole || false)),
+      );
     }
 
-    return this.#tokenService.token$.pipe(
-      switchMap(token =>
-        of(Array.from(roles).some(role => hasRole(role, token))),
-      ),
-    );
+    return of(true);
+  }
+
+  hasRole(role: string | undefined): Observable<boolean> {
+    if (role) {
+      return this.#tokenService.token$.pipe(
+        switchMap(token => of(hasRole(role, token))),
+      );
+    }
+
+    return of(false);
   }
 }

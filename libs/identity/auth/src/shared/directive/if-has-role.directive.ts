@@ -21,7 +21,7 @@ export class IfHasRoleDirective {
 
   @Input('rwIfHasRole')
   set role(role: RolesType | undefined) {
-    this.#ngIfDirective.ngIf = role && this.#authService.hasRole(role);
+    this.#ngIfDirective.ngIf = this.#authService.hasRoleOrDefault(role);
   }
 }
 
