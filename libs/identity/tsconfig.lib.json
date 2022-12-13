@@ -9,6 +9,7 @@
     "types": [],
     "paths": {
       "@roc-web/core/*": ["dist/@roc-web/core/*"],
+      "@roc-web/core": ["dist/@roc-web/core/lib"],
       "@roc-web/ui/*": ["dist/@roc-web/ui/*"],
       "@roc-web/web/*": ["dist/@roc-web/web/*"]
     }

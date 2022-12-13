@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, NgZone, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { TOAST_DURATION, toastPanelClass } from '../constants';
@@ -7,6 +7,7 @@ import { type ToastOptions } from '../models';
 
 @Injectable()
 export class ToastService {
+  readonly #ngZone = inject(NgZone);
   readonly #snackBar = inject(MatSnackBar);
 
   error(message: string) {
@@ -29,11 +30,13 @@ export class ToastService {
     const { action = 'OK', duration = TOAST_DURATION, message } = options;
     const panelClass = toastPanelClass[type];
 
-    this.#snackBar.open(message, action, {
-      duration,
-      panelClass,
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
+    this.#ngZone.runOutsideAngular(() => {
+      this.#snackBar.open(message, action, {
+        duration,
+        panelClass,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      });
     });
   }
 }

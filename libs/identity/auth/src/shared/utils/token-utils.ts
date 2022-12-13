@@ -44,7 +44,9 @@ export function isValidToken(token: string, expiration: string): boolean {
  * @param {string} token The token to decode.
  * @returns {*}  {unknown} The payload of the token.
  */
-export function decode<T = Record<string, unknown>>(token: string): T | null {
+export function decode<T = Record<string, unknown>>(
+  token: string | null,
+): T | null {
   if (!token || token === '') {
     return null;
   }

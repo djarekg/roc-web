@@ -10,6 +10,7 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
+import { stringify } from '@roc-web/core';
 
 import * as fromRouteProgress from './route-progress.reducers';
 
@@ -33,7 +34,7 @@ export const ROOT_REDUCERS = new InjectionToken<
 
 // console.log all actions
 export function logger(
-  reducer: ActionReducer<CoreState>
+  reducer: ActionReducer<CoreState>,
 ): ActionReducer<CoreState> {
   return (state, action) => {
     const result = reducer(state, action);
@@ -51,17 +52,17 @@ export const debugMetaReducers: MetaReducer[] = isDevMode() ? [logger] : [];
 
 export const selectRouteProgressState =
   createFeatureSelector<fromRouteProgress.State>(
-    fromRouteProgress.routeProgressFeatureKey
+    fromRouteProgress.routeProgressFeatureKey,
   );
 
 export const selectRouteInProgress = createSelector(
   selectRouteProgressState,
-  fromRouteProgress.selectRouteInProgress
+  fromRouteProgress.selectRouteInProgress,
 );
 
 export const { selectRouteData, selectRouteParam, selectTitle } =
   fromRouterStore.getSelectors();
 
 export const selectRouteRole = createSelector(selectRouteData, (data: Data) =>
-  String(data?.['role'] ?? '')
+  stringify(data?.['role'] ?? ''),
 );

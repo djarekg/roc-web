@@ -9,7 +9,7 @@ import {
   withPreloading,
   withRouterConfig,
 } from '@angular/router';
-import { providerRoutes } from '@roc-web/core/common';
+import { providerRoutes } from '@roc-web/core';
 import { provideCoreDefaults } from '@roc-web/core/options';
 import { SHARED_IMPORTS } from '@roc-web/core/shared';
 import { provideCoreState } from '@roc-web/core/state';

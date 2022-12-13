@@ -21,6 +21,7 @@
     "useDefineForClassFields": false,
     "paths": {
       "@roc-web/core/*": ["libs/core/*"],
+      "@roc-web/core": ["libs/core/src/index"],
       "@roc-web/identity/*": ["libs/identity/*"],
       "@roc-web/theme/*": ["libs/theme/*"],
       "@roc-web/ui/*": ["libs/ui/*"],
