@@ -53,11 +53,11 @@ export function decode<T = Record<string, unknown>>(token: string): T | null {
 
   if (parts.length !== 3) {
     throw new Error(
-      `The inspected token doesn't appear to be a JWT. Check to make sure it has three parts and see https://jwt.io for more.`
+      `The inspected token doesn't appear to be a JWT. Check to make sure it has three parts and see https://jwt.io for more.`,
     );
   }
 
-  const decoded = urlBase64Decode(parts[1]);
+  const decoded = base64UrlDecode(parts[1]);
   if (!decoded) {
     throw new Error('Cannot decode the token.');
   }
@@ -65,7 +65,7 @@ export function decode<T = Record<string, unknown>>(token: string): T | null {
   return JSON.parse(decoded);
 }
 
-function urlBase64Decode(part: string): string {
+function base64UrlDecode(part: string): string {
   let output = part.replace(/-/g, '+').replace(/_/g, '/');
   switch (output.length % 4) {
     case 0: {
@@ -83,10 +83,10 @@ function urlBase64Decode(part: string): string {
       throw new Error('Illegal base64url string!');
     }
   }
-  return b64DecodeUnicode(output);
+  return base64DecodeUnicode(output);
 }
 
-function b64decode(str: string): string {
+function base64Decode(str: string): string {
   const chars =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
   let output = '';
@@ -95,7 +95,7 @@ function b64decode(str: string): string {
 
   if (str.length % 4 === 1) {
     throw new Error(
-      `'atob' failed: The string to be decoded is not correctly encoded.`
+      `'atob' failed: The string to be decoded is not correctly encoded.`,
     );
   }
 
@@ -120,13 +120,13 @@ function b64decode(str: string): string {
   return output;
 }
 
-function b64DecodeUnicode(token: string) {
+function base64DecodeUnicode(token: string) {
   return decodeURIComponent(
     Array.prototype.map
-      .call(b64decode(token), (c: any) => {
+      .call(base64Decode(token), (c: any) => {
         // eslint-disable-next-line @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-unsafe-call
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       })
-      .join('')
+      .join(''),
   );
 }

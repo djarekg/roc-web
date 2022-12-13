@@ -8,6 +8,6 @@ export const toastActions = createActionGroup({
     Info: props<{ message: string }>(),
     Show: props<{ options: ToastOptions }>(),
     Success: props<{ message: string }>(),
-    Error: props<{ error: string }>(),
+    Error: props<{ message: string }>(),
   },
 });

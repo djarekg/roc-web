@@ -24,8 +24,7 @@
       "@roc-web/identity/*": ["libs/identity/*"],
       "@roc-web/theme/*": ["libs/theme/*"],
       "@roc-web/ui/*": ["libs/ui/*"],
-      "@roc-web/web/*": ["libs/web/*"],
-      "ui": ["dist/ui"]
+      "@roc-web/web/*": ["libs/web/*"]
     }
   },
   "angularCompilerOptions": {

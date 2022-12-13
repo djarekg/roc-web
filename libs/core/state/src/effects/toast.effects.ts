@@ -26,8 +26,8 @@ export class ToastEffects {
     () => {
       return this.#actions$.pipe(
         ofType(toastActions.error),
-        map(({ error }) => {
-          this.#toastService.error(error);
+        map(({ message }) => {
+          this.#toastService.error(message);
         }),
       );
     },

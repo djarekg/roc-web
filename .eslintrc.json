@@ -89,20 +89,12 @@
                 "position": "after"
               }
             ],
-            "alphabetize": { "order": "asc" }
+            "alphabetize": {
+              "order": "asc"
+            }
           }
         ],
         "import/no-duplicates": "error",
-        // "no-extra-parens": [
-        //   "warn",
-        //   {
-        //     "enforceForArrowConditionals": true,
-        //     "returnAssign": true
-        //   },
-        //   {
-        //     "fixAll": true
-        //   }
-        // ],
         "sort-imports": [
           "error",
           {

@@ -2,7 +2,7 @@ import { isNullUndefinedOrEmpty } from '@roc-web/core/shared';
 
 import { type ClaimsPrincipal } from '../models';
 
-import { decode } from './token-util';
+import { decode } from './token-utils';
 
 /**
  * Check if the token has the specified role.
@@ -38,7 +38,7 @@ export function hasPermission(name: string, token: string | null): boolean {
 function hasProperty(
   property: string,
   value: string,
-  token: string | null
+  token: string | null,
 ): boolean {
   if (isNullUndefinedOrEmpty(token)) {
     return false;

@@ -1,5 +1,6 @@
 /* library */
 @use 'theme';
 @use 'defaults/defaults-utils' as defaults-utils;
+@use 'toast/toast';
 
 @include defaults-utils.set-defaults();

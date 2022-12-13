@@ -26,7 +26,7 @@ const serviceProviders: Provider[] = [
   {
     provide: ToastService,
     useClass: ToastService,
-    multi: true,
+    // multi: true,
   },
 ];
 

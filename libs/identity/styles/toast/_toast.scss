@@ -1,0 +1,29 @@
+@use '../../../theme/styles/theme/theme-variables' as theme-vars;
+@use '../../../theme/styles/layout/layout-variables' as layout-vars;
+
+.mdc-snackbar .mdc-snackbar__surface {
+  margin-block-start: layout-vars.$header-height + 10px;
+
+  .mdc-snackbar__label {
+    color: #fff;
+  }
+}
+
+// TODO: convert to mixin
+.mdc-snackbar {
+  &.rw-toast-error .mdc-snackbar__surface {
+    background-color: theme-vars.$danger;
+  }
+
+  &.rw-toast-info .mdc-snackbar__surface {
+    background-color: theme-vars.$primary;
+  }
+
+  &.rw-toast-show .mdc-snackbar__surface {
+    background-color: theme-vars.$primary;
+  }
+
+  &.rw-toast-success .mdc-snackbar__surface {
+    background-color: theme-vars.$success;
+  }
+}

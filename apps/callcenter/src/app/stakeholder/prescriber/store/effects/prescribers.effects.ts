@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { toastActions } from '@roc-web/core/state';
+import { parseActionEvent, toastActions } from '@roc-web/core/state';
 import {
   catchError,
   concatMap,
@@ -63,7 +63,10 @@ export class PrescribersEffects {
           prescribersApiActions.removePrescriberFailure,
           prescribersApiActions.updatePrescriberFailure,
         ),
-        tap(({ error }) => this.#store.dispatch(toastActions.error({ error }))),
+        tap(({ type }) => {
+          const message = parseActionEvent(type);
+          this.#store.dispatch(toastActions.error({ message }));
+        }),
       );
     },
     { dispatch: false },

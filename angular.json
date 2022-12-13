@@ -47,6 +47,7 @@
             "stylePreprocessorOptions": {
               "includePaths": [
                 "apps/callcenter/src/styles",
+                "libs/identity/styles",
                 "libs/theme/styles"
               ]
             },
