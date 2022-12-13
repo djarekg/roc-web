@@ -10,6 +10,7 @@ import {
   map,
   mergeMap,
   of,
+  switchMap,
   tap,
 } from 'rxjs';
 
@@ -63,10 +64,8 @@ export class PrescribersEffects {
           prescribersApiActions.removePrescriberFailure,
           prescribersApiActions.updatePrescriberFailure,
         ),
-        tap(({ type }) => {
-          const message = parseActionEvent(type);
-          this.#store.dispatch(toastActions.error({ message }));
-        }),
+        switchMap(({ type }) => of(parseActionEvent(type))),
+        tap(message => this.#store.dispatch(toastActions.error({ message }))),
       );
     },
     { dispatch: false },

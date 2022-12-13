@@ -11,19 +11,19 @@
 
 // TODO: convert to mixin
 .mdc-snackbar {
-  &.rw-toast-error .mdc-snackbar__surface {
+  &.rw-toast--error .mdc-snackbar__surface {
     background-color: theme-vars.$danger;
   }
 
-  &.rw-toast-info .mdc-snackbar__surface {
+  &.rw-toast--info .mdc-snackbar__surface {
     background-color: theme-vars.$primary;
   }
 
-  &.rw-toast-show .mdc-snackbar__surface {
+  &.rw-toast--show .mdc-snackbar__surface {
     background-color: theme-vars.$primary;
   }
 
-  &.rw-toast-success .mdc-snackbar__surface {
+  &.rw-toast--success .mdc-snackbar__surface {
     background-color: theme-vars.$success;
   }
 }
