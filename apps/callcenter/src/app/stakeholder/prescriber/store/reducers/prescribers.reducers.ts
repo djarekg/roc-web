@@ -38,14 +38,14 @@ export const reducer = createReducer(
   initialState,
   on(
     prescribersPageActions.loadPrescribers,
-    (state): State => ({ ...state, loading: true })
+    (state): State => ({ ...state, loading: true }),
   ),
   on(
     prescribersApiActions.loadPrescriberSuccess,
     (state, { prescriber }): State => ({
       ...state,
       selected: prescriber,
-    })
+    }),
   ),
   on(
     prescribersApiActions.loadPrescribersSuccess,
@@ -56,7 +56,7 @@ export const reducer = createReducer(
       loading: false,
       pagination,
       selected: null,
-    })
+    }),
   ),
   on(prescribersPageActions.changePage, (state, { pageIndex }): State => {
     return {
@@ -72,7 +72,7 @@ export const reducer = createReducer(
     (state, { filter }): State => ({
       ...state,
       filter,
-    })
+    }),
   ),
   on(prescribersPageActions.sortPage, (state, { active, direction }): State => {
     return {
@@ -88,8 +88,20 @@ export const reducer = createReducer(
     (state, { id }): State => ({
       ...state,
       selected: state.entities.find(p => p.id === id) ?? null,
-    })
-  )
+    }),
+  ),
+  on(
+    prescribersApiActions.addPrescriberFailure,
+    prescribersApiActions.loadPrescriberFailure,
+    prescribersApiActions.loadPrescribersFailure,
+    prescribersApiActions.removePrescriberFailure,
+    prescribersApiActions.updatePrescriberFailure,
+    (state): State => ({
+      ...state,
+      loaded: true,
+      loading: false,
+    }),
+  ),
 );
 
 export const getEntities = (state: State) => state.entities;
