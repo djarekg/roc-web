@@ -24,4 +24,4 @@ export const reducer = createReducer(
   ),
 );
 
-export const selectRouteInProgress = (state: State) => state.inProgress;
+export const selectInProgress = (state: State) => state.inProgress;

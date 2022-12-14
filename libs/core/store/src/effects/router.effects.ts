@@ -5,7 +5,7 @@ import { routerNavigatedAction } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { map, tap } from 'rxjs';
 
-import * as fromRoot from '../reducers';
+import { selectTitle } from '../selectors';
 
 @Injectable()
 export class RouterEffects {
@@ -17,7 +17,7 @@ export class RouterEffects {
     () => {
       return this.#actions$.pipe(
         ofType(routerNavigatedAction),
-        concatLatestFrom(() => this.#store.select(fromRoot.selectTitle)),
+        concatLatestFrom(() => this.#store.select(selectTitle)),
         map(([, title]) => `Call Center ${title ? ' - ' : ''}${title ?? ''}`),
         tap(title => this.#titleService.setTitle(title)),
       );

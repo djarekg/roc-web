@@ -5,3 +5,4 @@ export * from './provider';
 export * from './models/toast-options';
 export * from './actions';
 export * from './utils';
+export * from './selectors';

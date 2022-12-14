@@ -2,8 +2,7 @@ import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { type Observable, filter, first, tap } from 'rxjs';
 
-import { prescribersGuardActions } from '../store/actions';
-import { selectLoaded } from '../store/reducers';
+import { prescribersGuardActions, selectLoaded } from '../store';
 
 export const canActivate = (): Observable<boolean> => {
   const store = inject(Store);
@@ -15,6 +14,6 @@ export const canActivate = (): Observable<boolean> => {
       }
     }),
     filter(isLoaded => isLoaded),
-    first()
+    first(),
   );
 };

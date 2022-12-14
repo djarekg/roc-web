@@ -1,8 +1,8 @@
 import { createFeature } from '@ngrx/store';
 
-import { prescribersFeatureKey, reducers } from './reducers';
+import { featureKey, reducers } from './reducers';
 
 export const prescribersFeature = createFeature({
-  name: prescribersFeatureKey,
+  name: featureKey,
   reducer: reducers,
 });

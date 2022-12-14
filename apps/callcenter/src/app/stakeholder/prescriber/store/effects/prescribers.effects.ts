@@ -21,7 +21,7 @@ import {
   prescribersApiActions,
   prescribersPageActions,
 } from '../actions';
-import { selectFilter, selectPagination, selectSort } from '../reducers';
+import { selectFilter, selectPagination, selectSort } from '../selectors';
 
 @Injectable()
 export class PrescribersEffects {

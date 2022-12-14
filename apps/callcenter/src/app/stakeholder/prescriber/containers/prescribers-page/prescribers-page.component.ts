@@ -13,8 +13,7 @@ import { type PageChange, ScrollableDirective } from '@roc-web/core/shared';
 import { selectTitle } from '@roc-web/core/store';
 
 import { PrescriberListComponent } from '../../components';
-import { prescribersPageActions } from '../../store/actions';
-import { selectViewModel } from '../../store/reducers';
+import { prescribersPageActions, selectViewModel } from '../../store';
 
 @Component({
   selector: 'app-prescribers-page',

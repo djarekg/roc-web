@@ -11,7 +11,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { LocalStorageService } from '@roc-web/core/storage';
 
 import { coreEffects } from './effects';
-import { type CoreState, ROOT_REDUCERS, debugMetaReducers } from './reducers';
+import { type CoreState, ROOT_REDUCERS, metaReducers } from './reducers';
 import { metaReducerFactory } from './reducers/meta-reducer-factory';
 import { ToastService } from './services';
 
@@ -32,7 +32,7 @@ const serviceProviders: Provider[] = [
 
 const storeProviders: EnvironmentProviders[] = [
   provideStore(ROOT_REDUCERS, {
-    metaReducers: debugMetaReducers,
+    metaReducers: metaReducers,
     runtimeChecks: {
       strictActionSerializability: true,
       strictActionTypeUniqueness: true,

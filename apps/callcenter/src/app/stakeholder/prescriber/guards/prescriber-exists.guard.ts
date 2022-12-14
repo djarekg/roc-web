@@ -3,11 +3,10 @@ import { type ActivatedRouteSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { type Observable, filter, first, tap } from 'rxjs';
 
-import { prescriberExistsGuardActions } from '../store/actions';
-import { selectSelectedLoaded } from '../store/reducers';
+import { prescriberExistsGuardActions, selectSelectedLoaded } from '../store';
 
 export const canActivate = (
-  route: ActivatedRouteSnapshot
+  route: ActivatedRouteSnapshot,
 ): Observable<boolean> => {
   const store = inject(Store);
   const id = route.params['id'];
@@ -19,6 +18,6 @@ export const canActivate = (
       }
     }),
     filter(isLoaded => isLoaded),
-    first()
+    first(),
   );
 };

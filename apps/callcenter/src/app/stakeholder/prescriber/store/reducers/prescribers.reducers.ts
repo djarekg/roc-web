@@ -5,7 +5,7 @@ import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/core/shared';
 import { type Prescriber } from '../../models';
 import { prescribersApiActions, prescribersPageActions } from '../actions';
 
-export const prescribersFeatureKey = 'prescribers';
+export const prescribersKey = 'prescribers';
 
 export interface State {
   entities: Readonly<Prescriber>[];
