@@ -20,6 +20,7 @@
         "@typescript-eslint",
         "eslint-plugin-import",
         "typescript-sort-keys",
+        "sort-exports",
         "unused-imports"
       ],
       "rules": {
@@ -95,6 +96,14 @@
           }
         ],
         "import/no-duplicates": "error",
+        "sort-exports/sort-exports": [
+          "error",
+          {
+            "sortDir": "asc",
+            "ignoreCase": false,
+            "sortExportKindFirst": "none"
+          }
+        ],
         "sort-imports": [
           "error",
           {

@@ -1,4 +1,4 @@
-export * from './country';
+export * from './locale-country';
 export * from './entity';
 export * from './entity-list';
 export * from './environment';

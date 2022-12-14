@@ -4,7 +4,7 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
-import { type CoreState, selectRouteRole } from '@roc-web/core/state';
+import { type CoreState, selectRouteRole } from '@roc-web/core/store';
 
 import { parseClaimsPrincipal } from '../../shared/utils';
 

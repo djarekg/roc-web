@@ -3,12 +3,13 @@ import { type User } from '@roc-web/identity/shared';
 
 import { type StakeholderType } from '../enums';
 
+import { type Address } from './address';
 import { type Attestation } from './attestation';
 import { type Auditable } from './auditable';
 import { type Status } from './status';
 
 export interface Stakeholder extends Entity, Auditable {
-  address: unknown; //Address;
+  address: Address;
   attestations: Attestation[];
   email: string;
   externalId: number;

@@ -12,7 +12,7 @@ import {
 import { providerRoutes } from '@roc-web/core';
 import { provideCoreDefaults } from '@roc-web/core/options';
 import { SHARED_IMPORTS } from '@roc-web/core/shared';
-import { provideCoreState } from '@roc-web/core/state';
+import { provideCoreState } from '@roc-web/core/store';
 import { provideStorage } from '@roc-web/core/storage';
 import { IDENTITY_AUTH_ROUTES, provideIdentity } from '@roc-web/identity/auth';
 import { IDENTITY_SETTINGS_ROUTES } from '@roc-web/identity/settings';

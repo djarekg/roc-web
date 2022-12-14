@@ -1,7 +1,7 @@
-import { type Country } from './country';
+import { type LocaleCountry } from './locale-country';
 
 export interface Locale {
-  country: Country;
+  country: LocaleCountry;
   countryId: string;
   id: string;
   isDefault: boolean;

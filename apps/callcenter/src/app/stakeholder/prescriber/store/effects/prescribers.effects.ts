@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { parseActionEvent, toastActions } from '@roc-web/core/state';
+import { parseActionEvent, toastActions } from '@roc-web/core/store';
 import {
   catchError,
   concatMap,

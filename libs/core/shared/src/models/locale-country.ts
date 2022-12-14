@@ -1,6 +1,6 @@
 import { type Locale } from './locale';
 
-export interface Country {
+export interface LocaleCountry {
   description: string;
   id: string;
   isSupported: boolean;
