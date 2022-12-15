@@ -5,3 +5,4 @@ export * from './provider';
 export * from './tokens';
 export * from './types';
 export * from './validators';
+export * from './pipes';

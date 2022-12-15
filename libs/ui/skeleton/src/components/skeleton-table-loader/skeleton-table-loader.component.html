@@ -1,9 +1,16 @@
-<rw-skeleton-loader
-  class="rw-skeleton-table__header"
-  [count]="columnCount"></rw-skeleton-loader>
-
-<div *ngFor="let i of [0, 1, 3, 4]">
+<div class="rw-skeleton-table">
   <rw-skeleton-loader
-    class="rw-skeleton-table__row"
-    [count]="columnCount"></rw-skeleton-loader>
+    *ngFor="let column of columns"
+    class="rw-skeleton-table__cell rw-skeleton-table__header"></rw-skeleton-loader>
+
+  <ng-container *ngFor="let row of rows; index as rowIndex">
+    <rw-skeleton-loader
+      *ngFor="let column of columns; index as columnIndex"
+      class="rw-skeleton-table__cell rw-skeleton-table__row"
+      [ngStyle]="{
+        'grid-row': rowIndex + 2,
+        'grid-column': columnIndex + 1
+      }"
+      [width]="{} | random : 0.4 : 1 | percent"></rw-skeleton-loader>
+  </ng-container>
 </div>

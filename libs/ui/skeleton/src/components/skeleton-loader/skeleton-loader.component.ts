@@ -33,7 +33,8 @@ export class SkeletonLoaderComponent implements OnInit, OnChanges {
 
   readonly #config = inject(SKELETON_LOADER_CONFIG, { optional: true });
 
-  items: unknown[];
+  protected items: unknown[];
+  protected widthStyle: { [k: string]: any } | undefined;
 
   @Input() animation: SkeletonAnimation;
   @Input() appearance: SkeletonAppearance;
@@ -41,6 +42,13 @@ export class SkeletonLoaderComponent implements OnInit, OnChanges {
   @Input() count: number;
   @Input() loadingText: string;
   @Input() theme: SkeletonLoaderConfigTheme;
+
+  @Input()
+  set width(value: string | null) {
+    if (value) {
+      this.widthStyle = { width: value };
+    }
+  }
 
   constructor() {
     const {
