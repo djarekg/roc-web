@@ -1,0 +1,9 @@
+<rw-skeleton-loader
+  class="rw-skeleton-table__header"
+  [count]="columnCount"></rw-skeleton-loader>
+
+<div *ngFor="let i of [0, 1, 3, 4]">
+  <rw-skeleton-loader
+    class="rw-skeleton-table__row"
+    [count]="columnCount"></rw-skeleton-loader>
+</div>

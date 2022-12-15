@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'rw-ui-card',
+  selector: 'rw-card',
   standalone: true,
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
@@ -16,6 +16,6 @@ import { MatCardModule } from '@angular/material/card';
   imports: [MatButtonModule, MatCardModule],
 })
 export class CardComponent {
-  @HostBinding('class') readonly class = 'rw-ui-card';
+  @HostBinding('class') readonly class = 'rw-card';
   @Input() title: string | undefined;
 }

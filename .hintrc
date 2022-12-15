@@ -1,11 +1,19 @@
 {
-  "extends": ["development"],
+  "extends": [
+    "development"
+  ],
   "hints": {
     "button-type": "off",
     "axe/forms": [
       "default",
       {
         "label": "off"
+      }
+    ],
+    "axe/aria": [
+      "default",
+      {
+        "aria-progressbar-name": "off"
       }
     ]
   }

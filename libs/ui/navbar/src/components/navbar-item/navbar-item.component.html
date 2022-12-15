@@ -8,7 +8,7 @@
 <ng-template #routeChildren>
   <ng-container *ngIf="route?.children?.length">
     <button
-      [ngClass]="{ 'rw-ui-navbar__item--expanded': route!.menuOpen }"
+      [ngClass]="{ 'rw-navbar__item--expanded': route!.menuOpen }"
       mat-button
       [matMenuTriggerFor]="menu"
       (menuOpened)="route!.menuOpen = true"

@@ -1,17 +1,18 @@
-<div
+<!-- <div
   *ngIf="viewModel?.loading"
   class="rw-progress-spinner-container">
   <mat-progress-spinner
     [diameter]="60"
     [mode]="'indeterminate'"
     [strokeWidth]="4"></mat-progress-spinner>
-</div>
+</div> -->
 
 <mat-table
   matSort
   recycleRows
   [dataSource]="viewModel?.entities ?? []">
   <ng-content></ng-content>
+
   <ng-container
     *ngFor="let column of columns"
     [matColumnDef]="column.propertyName">
@@ -25,7 +26,7 @@
     </mat-cell>
   </ng-container>
 
-  <ng-content select="rw-ui-table-column-menu"></ng-content>
+  <ng-content select="rw-table-column-menu"></ng-content>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>

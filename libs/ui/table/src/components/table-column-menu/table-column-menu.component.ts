@@ -10,7 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
-  selector: 'rw-ui-table-column-menu',
+  selector: 'rw-table-column-menu',
   standalone: true,
   templateUrl: './table-column-menu.component.html',
   styleUrls: ['./table-column-menu.component.scss'],

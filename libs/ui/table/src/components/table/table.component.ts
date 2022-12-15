@@ -29,10 +29,10 @@ import {
 } from '@roc-web/core/shared';
 import { Subject, takeUntil, tap } from 'rxjs';
 
-import { type TableColumn } from '../../models';
+import { type TableColumn } from '../../shared/models';
 
 @Component({
-  selector: 'rw-ui-table',
+  selector: 'rw-table',
   standalone: true,
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],

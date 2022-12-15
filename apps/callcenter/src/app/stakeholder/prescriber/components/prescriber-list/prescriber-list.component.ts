@@ -18,11 +18,11 @@ import {
   MatPaginatorModule,
   type PageEvent,
 } from '@angular/material/paginator';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { type PageChange, type ViewModel } from '@roc-web/core/shared';
 import { FilterInputComponent } from '@roc-web/ui/filter-input';
+import { SkeletonTableLoaderComponent } from '@roc-web/ui/skeleton';
 import { Subject, takeUntil, tap } from 'rxjs';
 
 import { type PrescriberList } from '../../models';
@@ -40,10 +40,10 @@ import { type PrescriberList } from '../../models';
     MatInputModule,
     MatMenuModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
     NgIf,
+    SkeletonTableLoaderComponent,
   ],
 })
 export class PrescriberListComponent implements AfterViewInit, OnDestroy {

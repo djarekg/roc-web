@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
 import { type NavRoute } from '../../models';
 
 @Component({
-  selector: 'rw-ui-navbar-item',
+  selector: 'rw-navbar-item',
   standalone: true,
   templateUrl: './navbar-item.component.html',
   styleUrls: ['./navbar-item.component.scss'],

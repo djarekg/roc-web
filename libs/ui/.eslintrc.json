@@ -12,7 +12,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "rw-ui",
+            "prefix": "rw",
             "style": "camelCase"
           }
         ],
@@ -20,7 +20,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "rw-ui",
+            "prefix": "rw",
             "style": "kebab-case"
           }
         ]

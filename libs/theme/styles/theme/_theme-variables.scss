@@ -1,4 +1,6 @@
 @use '@angular/material' as mat;
+// @use './theme-utils';
+// @import '../theme';
 
 $primary: mat.get-color-from-palette(mat.$indigo-palette, 500);
 $accent: mat.get-color-from-palette(mat.$light-blue-palette);
@@ -19,6 +21,9 @@ $accent-text-color: mat.get-color-from-palette(
   mat.$light-blue-palette,
   'darker-contrast'
 );
+
+// $config: mat.get-color-config(theme.$core-dark-theme);
+// $background: map.get($config, background);
 
 $scrollbar-color: darken(
   mat.get-color-from-palette(mat.$grey-palette, 700),

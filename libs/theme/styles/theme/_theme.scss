@@ -1,28 +1,39 @@
 @use '@angular/material' as mat;
 @use './theme-utils' as theme-utils;
+@use '../typography/typography-variables' as typography-vars;
 
 @include mat.core();
 
-/*
-* global variable to disable duplication warning
-* https://rc.material.angular.io/guide/duplicate-theming-styles#disabling-duplication-warnings
-*/
-mat.$theme-ignore-duplication-warnings: true;
+@function dark-theme(
+  $primary,
+  $accent,
+  $warn: mat.define-palette(mat.$red-palette),
+  $success: mat.define-palette(mat.$green-palette),
+  $danger: mat.define-palette(mat.$red-palette)
+) {
+  $dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+      ),
+      typography: typography-vars.$typography-config,
+    )
+  );
+
+  $danger-success: (
+    success: $success,
+    danger: $danger,
+  );
+
+  @return map-merge($dark-theme, $danger-success);
+}
 
 // dark theme
 $primary-dark: mat.define-palette(mat.$indigo-palette);
 $accent-dark: mat.define-palette(mat.$pink-palette);
-$core-dark-theme: theme-utils.dark-theme($primary-dark, $accent-dark);
-
-// light theme
-$primary-light: mat.define-palette(mat.$indigo-palette);
-$accent-light: mat.define-palette(mat.$pink-palette);
-$core-light-theme: theme-utils.light-theme($primary-dark, $accent-dark);
+$core-dark-theme: dark-theme($primary-dark, $accent-dark);
 
 @include mat.all-component-themes($core-dark-theme);
-
-.core-light-theme {
-  @include mat.all-component-themes($core-light-theme);
-}
-
 @include theme-utils.component-overrides();

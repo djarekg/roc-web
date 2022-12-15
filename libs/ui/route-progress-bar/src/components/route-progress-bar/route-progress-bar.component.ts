@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { selectRouteInProgress } from '@roc-web/core/store';
 
 @Component({
-  selector: 'rw-ui-route-progress-bar',
+  selector: 'rw-route-progress-bar',
   standalone: true,
   templateUrl: './route-progress-bar.component.html',
   styleUrls: ['./route-progress-bar.component.scss'],

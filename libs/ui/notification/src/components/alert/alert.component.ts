@@ -8,7 +8,7 @@ import {
 import { type AlertType } from '../../types';
 
 @Component({
-  selector: 'rw-ui-alert',
+  selector: 'rw-alert',
   standalone: true,
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
@@ -18,6 +18,6 @@ export class AlertComponent {
   @Input() type: AlertType = 'info';
   @HostBinding('att.role') role = 'alert';
   @HostBinding('attr.class') get typeClass() {
-    return `rw-ui-alert-${this.type}`;
+    return `rw-alert-${this.type}`;
   }
 }

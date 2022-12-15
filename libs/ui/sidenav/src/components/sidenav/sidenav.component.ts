@@ -13,7 +13,7 @@ import { CardComponent } from '@roc-web/ui/card';
 import { type SidenavRoute } from '../../models';
 
 @Component({
-  selector: 'rw-ui-sidenav',
+  selector: 'rw-sidenav',
   standalone: true,
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],

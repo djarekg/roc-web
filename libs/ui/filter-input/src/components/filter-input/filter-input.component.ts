@@ -22,7 +22,7 @@ import {
 } from 'rxjs';
 
 @Component({
-  selector: 'rw-ui-filter-input',
+  selector: 'rw-filter-input',
   templateUrl: './filter-input.component.html',
   styleUrls: ['./filter-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

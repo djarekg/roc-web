@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 
-import { type TableColumn } from '../../models';
+import { type TableColumn } from '../../shared/models';
 
 @Component({
-  selector: 'rw-ui-table-column',
+  selector: 'rw-table-column',
   standalone: true,
   templateUrl: './table-column.component.html',
   styleUrls: ['./table-column.component.scss'],
