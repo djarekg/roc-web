@@ -11,6 +11,8 @@
         'grid-row': rowIndex + 2,
         'grid-column': columnIndex + 1
       }"
-      [width]="{} | random : 0.4 : 1 | percent"></rw-skeleton-loader>
+      [width]="
+        columnIndex === 0 ? '30px' : ({} | random : 0.3 : 1 | percent)
+      "></rw-skeleton-loader>
   </ng-container>
 </div>

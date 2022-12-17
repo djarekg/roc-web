@@ -1,5 +1,5 @@
-@use '../../../theme/styles/theme/theme-variables' as theme-vars;
-@use '../../../theme/styles/layout/layout-variables' as layout-vars;
+@use './theme/theme-variables' as theme-vars;
+@use './layout/layout-variables' as layout-vars;
 
 .mdc-snackbar .mdc-snackbar__surface {
   margin-block-start: layout-vars.$header-height + 10px;

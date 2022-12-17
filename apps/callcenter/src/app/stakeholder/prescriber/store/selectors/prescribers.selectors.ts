@@ -74,7 +74,7 @@ export const selectViewModel = createSelector(
   selectPrescribersFlatten,
   selectPagination,
   (loading, prescribers, pagination): ViewModel<PrescriberList> => ({
-    loading,
+    loading: true,
     entities: prescribers,
     ...pagination,
   }),

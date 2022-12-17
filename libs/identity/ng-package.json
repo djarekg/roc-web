@@ -3,6 +3,7 @@
   "dest": "../../dist/@roc-web/identity",
   "assets": ["styles"],
   "lib": {
-    "entryFile": "src/public-api.ts"
+    "entryFile": "src/public-api.ts",
+    "styleIncludePaths": ["../theme/styles"]
   }
 }

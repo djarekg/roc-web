@@ -6,7 +6,7 @@ import { RandomPipe } from '@roc-web/core/shared';
 import { SkeletonLoaderComponent } from '../skeleton-loader';
 
 const COLUMN_COUNT = 6;
-const ROW_COUNT = 4;
+const ROW_COUNT = 5;
 
 function initializeArray(length: number) {
   return Array(length).fill(0);

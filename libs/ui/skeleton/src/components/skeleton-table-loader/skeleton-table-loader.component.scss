@@ -1,17 +1,17 @@
+@use './layout/layout-variables';
+@use './skeleton-variables';
+
 :host {
   display: block;
-  background: #424242;
+  background: layout-variables.$mat-table-background;
 }
 
 .rw-skeleton-table {
   display: grid;
-  // grid-template-areas: header;
-  grid-template-columns: auto;
-  column-gap: 30px;
-  row-gap: 20px;
-  // justify-items: start;
-  padding-block: 20px;
-  padding-inline: 20px;
+  grid-template-columns: skeleton-variables.$skeleton-table-column-1-width auto;
+  gap: skeleton-variables.$skeleton-table-gap;
+  padding-block: skeleton-variables.$skeleton-table-gap;
+  padding-inline: skeleton-variables.$skeleton-table-gap;
 
   ::ng-deep .rw-skeleton-loader__item {
     margin-bottom: 0;
@@ -22,20 +22,13 @@
   grid-row: 1;
 
   &.rw-skeleton-table__cell {
-    // grid-area: header;
-
     ::ng-deep .rw-skeleton-loader__item {
-      // margin-inline-end: 20px;
-      width: 60%;
-      margin-block-end: 10px;
+      width: skeleton-variables.$skeleton-table-column-width;
+      margin-block-end: 20px;
     }
-  }
-}
 
-.rw-skeleton-table__row {
-  row-gap: 10px;
-
-  &.rw-skeleton-table__cell {
-    // height: 46px;
+    &:first-child ::ng-deep .rw-skeleton-loader__item:nth-child(1) {
+      width: skeleton-variables.$skeleton-table-column-1-width / 1.8;
+    }
   }
 }
