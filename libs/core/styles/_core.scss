@@ -1,0 +1,5 @@
+@use '../components/styles/index';
+
+@mixin style {
+  @include index.component-styles();
+}

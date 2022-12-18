@@ -1,8 +1,9 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/@roc-web/core",
-  "assets": ["polyfills"],
+  "assets": ["polyfills", "./styles"],
   "lib": {
-    "entryFile": "src/public-api.ts"
+    "entryFile": "src/public-api.ts",
+    "styleIncludePaths": ["./styles"]
   }
 }

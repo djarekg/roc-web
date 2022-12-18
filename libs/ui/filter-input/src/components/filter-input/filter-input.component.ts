@@ -4,6 +4,7 @@ import {
   Component,
   type ElementRef,
   EventEmitter,
+  HostBinding,
   type OnDestroy,
   Output,
   ViewChild,
@@ -30,6 +31,8 @@ import {
   imports: [MatIconModule, MatInputModule],
 })
 export class FilterInputComponent implements AfterViewInit, OnDestroy {
+  @HostBinding('class') readonly hostClasses = 'rw-filter-input';
+
   readonly #destroy$ = new Subject<void>();
 
   @Output() readonly filterChange = new EventEmitter<string>();

@@ -1,5 +1,6 @@
-@use '../typography/typography-variables' as typography-vars;
-@use '../scrollable/scrollable-utils' as scrollable-utils;
+@use '../typography/typography-variables';
+@use '../scrollable/scrollable-utils';
+@use '../toast/toast-theme';
 
 @mixin set-defaults {
   html,
@@ -9,8 +10,9 @@
   body {
     margin: 0;
     overflow: hidden;
-    font-family: typography-vars.$font-family;
+    font-family: typography-variables.$font-family;
   }
 
   @include scrollable-utils.scrollbar-theme();
+  @include toast-theme.styles();
 }

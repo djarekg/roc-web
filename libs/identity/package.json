@@ -17,10 +17,5 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "exports": {
-    ".": {
-      "sass": "./styles/_index.scss"
-    }
-  },
   "sideEffects": false
 }

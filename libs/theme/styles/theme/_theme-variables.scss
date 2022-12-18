@@ -1,6 +1,4 @@
 @use '@angular/material' as mat;
-// @use './theme-utils';
-// @import '../theme';
 
 $primary: mat.get-color-from-palette(mat.$indigo-palette, 500);
 $accent: mat.get-color-from-palette(mat.$light-blue-palette);
