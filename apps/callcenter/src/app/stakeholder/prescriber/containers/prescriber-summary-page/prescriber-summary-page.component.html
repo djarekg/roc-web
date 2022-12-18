@@ -1,4 +1,5 @@
 <rw-card [title]="title$ | ngrxPush">
   <mat-divider></mat-divider>
-  <app-prescriber-detail></app-prescriber-detail>
+  <app-prescriber-detail
+    [prescriber]="prescriber$ | ngrxPush"></app-prescriber-detail>
 </rw-card>

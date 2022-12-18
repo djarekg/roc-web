@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rw-form-field__label {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.rw-form-field__text {
+  font-weight: 400;
+}

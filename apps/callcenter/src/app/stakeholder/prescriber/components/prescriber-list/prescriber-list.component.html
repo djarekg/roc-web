@@ -65,13 +65,13 @@
         <mat-menu #menu="matMenu">
           <button
             mat-menu-item
-            (click)="onEditPrescriber(row.id)">
+            (click)="onEdit(row.id)">
             <mat-icon>edit</mat-icon>
             <span i18n="form.edit">Edit</span>
           </button>
           <button
             mat-menu-item
-            (click)="onViewPrescriber(row.id)">
+            (click)="onView(row.id)">
             <mat-icon>account_box</mat-icon>
             <span i18n="form.view">View</span>
           </button>

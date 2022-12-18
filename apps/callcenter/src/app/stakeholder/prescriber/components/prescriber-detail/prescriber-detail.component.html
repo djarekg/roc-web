@@ -1,1 +1,13 @@
-<p>prescriber-detail works!</p>
+<div>
+  <rw-form-field
+    [label]="'National ID'"
+    [value]="prescriber?.stakeholder?.externalId"></rw-form-field>
+</div>
+<div>
+  <rw-form-field
+    [label]="'First Name'"
+    [value]="prescriber?.stakeholder?.firstName"></rw-form-field>
+  <rw-form-field
+    [label]="'Last Name'"
+    [value]="prescriber?.stakeholder?.lastName"></rw-form-field>
+</div>

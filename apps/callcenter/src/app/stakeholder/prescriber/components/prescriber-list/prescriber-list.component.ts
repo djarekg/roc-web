@@ -59,11 +59,11 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
 
   @Input() viewModel: ViewModel<PrescriberList> | undefined;
 
-  @Output() readonly editPrescriber = new EventEmitter<string>();
+  @Output() readonly edit = new EventEmitter<string>();
   @Output() readonly filterChange = new EventEmitter<string>();
   @Output() readonly pageChange = new EventEmitter<PageChange>();
   @Output() readonly pageSort = new EventEmitter<Sort>();
-  @Output() readonly viewPrescriber = new EventEmitter<string>();
+  @Output() readonly view = new EventEmitter<string>();
 
   @ViewChild(MatPaginator) protected readonly paginator:
     | MatPaginator
@@ -91,16 +91,16 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
     this.#destroy$.complete();
   }
 
-  protected onEditPrescriber(id: string) {
-    this.editPrescriber.emit(id);
+  protected onEdit(id: string) {
+    this.edit.emit(id);
   }
 
   protected onFilterChanged(filter: string) {
     this.filterChange.emit(filter);
   }
 
-  protected onViewPrescriber(id: string) {
-    this.viewPrescriber.emit(id);
+  protected onView(id: string) {
+    this.view.emit(id);
   }
 
   #pageChange(pageEvent: PageEvent): void {

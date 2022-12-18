@@ -1,5 +1,7 @@
 import { type Routes } from '@angular/router';
+import { RouteAction } from '@roc-web/core';
 import { authGuards } from '@roc-web/identity/auth';
+import { PRESCRIBER_ROUTE_DEFAULT } from '../constants';
 
 import { prescriberExitsGuards } from '../guards';
 import { providePrescriber } from '../store';
@@ -15,12 +17,16 @@ export const routes = [
         title: 'Prescribers',
       },
       {
+        path: ':id',
+        loadComponent: () =>
+          import('./prescriber-page/prescriber-page.component'),
+        title: 'Prescriber',
         canActivate: [prescriberExitsGuards.canActive],
         children: [
           {
             path: '',
             pathMatch: 'full',
-            redirectTo: 'summary',
+            redirectTo: `${PRESCRIBER_ROUTE_DEFAULT}/${RouteAction.view}`,
           },
           {
             data: { animation: 'SummaryPage' },
@@ -28,7 +34,7 @@ export const routes = [
               import(
                 './prescriber-summary-page/prescriber-summary-page.component'
               ),
-            path: 'summary',
+            path: 'summary/:action',
             title: 'Summary',
           },
           {
@@ -37,14 +43,10 @@ export const routes = [
               import(
                 './prescriber-attestations-page/prescriber-attestations-page.component'
               ),
-            path: 'attestations',
+            path: 'attestations/:action',
             title: 'Attestations',
           },
         ],
-        loadComponent: () =>
-          import('./prescriber-page/prescriber-page.component'),
-        path: ':id',
-        title: 'Prescriber',
       },
     ],
     path: '',

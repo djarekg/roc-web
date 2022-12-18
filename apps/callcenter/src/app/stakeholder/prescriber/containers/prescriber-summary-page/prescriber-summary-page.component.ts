@@ -6,6 +6,7 @@ import { selectTitle } from '@roc-web/core/store';
 import { CardComponent } from '@roc-web/ui/card';
 
 import { PrescriberDetailComponent } from '../../components';
+import { prescribersApiActions, selectSelected } from '../../store';
 
 @Component({
   selector: 'app-prescriber-summary-page',
@@ -21,5 +22,7 @@ import { PrescriberDetailComponent } from '../../components';
   ],
 })
 export default class PrescriberSummaryPageComponent {
-  protected readonly title$ = inject(Store).select(selectTitle);
+  readonly #store = inject(Store);
+  protected readonly prescriber$ = this.#store.select(selectSelected);
+  protected readonly title$ = this.#store.select(selectTitle);
 }

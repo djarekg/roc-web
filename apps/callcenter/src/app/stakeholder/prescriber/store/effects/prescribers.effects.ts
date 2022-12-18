@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { type ToastOptions } from '@roc-web/core/components';
+import { RouteAction } from '@roc-web/core';
 import { parseActionEvent, toastActions } from '@roc-web/core/store';
 import {
   catchError,
@@ -23,6 +24,7 @@ import {
   prescribersPageActions,
 } from '../actions';
 import { selectFilter, selectPagination, selectSort } from '../selectors';
+import { PRESCRIBER_ROUTE_DEFAULT } from '../../constants';
 
 @Injectable()
 export class PrescribersEffects {
@@ -49,7 +51,14 @@ export class PrescribersEffects {
     () => {
       return this.#actions$.pipe(
         ofType(prescribersPageActions.editPrescriber),
-        tap(({ id }) => void this.#router.navigate(['prescriber', id])),
+        tap(({ id }) =>
+          this.#router.navigate([
+            'prescriber',
+            id,
+            PRESCRIBER_ROUTE_DEFAULT,
+            RouteAction.edit,
+          ]),
+        ),
       );
     },
     { dispatch: false },
@@ -148,4 +157,21 @@ export class PrescribersEffects {
       ),
     );
   });
+
+  viewPrescriber$ = createEffect(
+    () => {
+      return this.#actions$.pipe(
+        ofType(prescribersPageActions.viewPrescriber),
+        tap(({ id }) =>
+          this.#router.navigate([
+            'prescriber',
+            id,
+            PRESCRIBER_ROUTE_DEFAULT,
+            RouteAction.view,
+          ]),
+        ),
+      );
+    },
+    { dispatch: false },
+  );
 }

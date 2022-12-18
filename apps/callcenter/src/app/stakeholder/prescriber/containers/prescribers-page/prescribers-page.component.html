@@ -12,9 +12,9 @@
 
   <app-prescriber-list
     [viewModel]="viewModel$ | ngrxPush"
-    (editPrescriber)="onEditPrescriber($event)"
+    (edit)="onEditPrescriber($event)"
     (filterChange)="onFilterChanged($event)"
     (pageChange)="onPageChange($event)"
     (pageSort)="onPageSort($event)"
-    (viewPrescriber)="onViewPrescriber($event)"></app-prescriber-list>
+    (view)="onViewPrescriber($event)"></app-prescriber-list>
 </div>
