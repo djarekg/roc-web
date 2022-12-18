@@ -1,15 +1,6 @@
 <rw-filter-input (filterChange)="onFilterChanged($event)"></rw-filter-input>
 
 <div class="app-table-container mat-elevation-z8">
-  <!-- <div
-    *ngIf="viewModel?.loading"
-    class="app-progress-spinner-container">
-    <mat-progress-spinner
-      [diameter]="60"
-      [mode]="'indeterminate'"
-      [strokeWidth]="4"></mat-progress-spinner>
-  </div> -->
-
   <rw-skeleton-table-loader
     *ngIf="viewModel?.loading"
     [columnCount]="displayedColumns.length"></rw-skeleton-table-loader>

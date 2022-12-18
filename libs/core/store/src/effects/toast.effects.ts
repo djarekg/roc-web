@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { ToastService } from '@roc-web/core/components';
 import { map } from 'rxjs';
 
 import { toastActions } from '../actions';
-import { ToastService } from '../services';
 
 @Injectable()
 export class ToastEffects {
@@ -26,9 +26,7 @@ export class ToastEffects {
     () => {
       return this.#actions$.pipe(
         ofType(toastActions.error),
-        map(({ message }) => {
-          this.#toastService.error(message);
-        }),
+        map(({ options }) => this.#toastService.error(options)),
       );
     },
     { dispatch: false },

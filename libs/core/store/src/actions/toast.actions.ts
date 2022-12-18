@@ -1,13 +1,12 @@
 import { createActionGroup, props } from '@ngrx/store';
-
-import { type ToastOptions } from '../models';
+import { type ToastOptions } from '@roc-web/core/components';
 
 export const toastActions = createActionGroup({
   source: 'Toast',
   events: {
-    Info: props<{ message: string }>(),
+    Info: props<{ options: ToastOptions }>(),
     Show: props<{ options: ToastOptions }>(),
-    Success: props<{ message: string }>(),
-    Error: props<{ message: string }>(),
+    Success: props<{ options: ToastOptions }>(),
+    Error: props<{ options: ToastOptions }>(),
   },
 });
