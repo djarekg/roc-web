@@ -1,12 +1,12 @@
 <span
-  *ngIf="readonly; else writableTemplate"
-  class="rw-input__element--readonly"
-  formControlName="valueInput">
-  {{ form.controls.valueInput.value }}
+  *ngIf="!readonly; else writableTemplate"
+  class="rw-input__element--readonly">
+  {{ value }}
 </span>
 <ng-template #writableTemplate>
   <input
+    matInput
     class="rw-input__element--writable"
-    formControlName="valueInput"
+    [placeholder]="placeholder"
     [attr.aria-label]="formField?.floatLabel" />
 </ng-template>

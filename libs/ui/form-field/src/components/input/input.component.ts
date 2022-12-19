@@ -1,45 +1,25 @@
-import { FocusMonitor } from '@angular/cdk/a11y';
 import { type BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  EventEmitter,
   HostBinding,
-  HostListener,
   Input,
   type OnChanges,
   type OnDestroy,
-  type SimpleChanges,
-  ViewChild,
+  Output,
   inject,
 } from '@angular/core';
-import {
-  type ControlValueAccessor,
-  FormBuilder,
-  FormControl,
-  NgControl,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { type ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD, MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_INPUT_VALUE_ACCESSOR, MatInputModule } from '@angular/material/input';
 import { Subject } from 'rxjs';
 
 export const INPUT_CLASS = 'rw-input';
 
-export abstract class ValueInputBase<T> extends FormControl {
-  readonly: boolean;
-
-  constructor(value: T, readonly: boolean) {
-    super(value);
-    this.readonly = readonly;
-  }
-}
-
 export type InputValueType = boolean | number | string | null | undefined;
-
-interface InputForm {
-  valueInput: FormControl<InputValueType>;
-}
 
 @Component({
   selector: 'rw-input',
@@ -48,51 +28,39 @@ interface InputForm {
   styleUrls: ['./input.component.scss'],
   providers: [{ provide: MatFormFieldControl, useExisting: InputComponent }],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatFormFieldModule, NgIf, ReactiveFormsModule],
+  imports: [MatFormFieldModule, MatInputModule, NgIf, ReactiveFormsModule],
 })
 export class InputComponent
-  implements ControlValueAccessor, MatFormFieldControl<InputValueType>, OnDestroy, OnChanges
+  implements MatFormFieldControl<InputValueType>, ControlValueAccessor, OnDestroy, OnChanges
 {
   static nextId = 0;
 
-  #disabled = false;
-  #placeholder = '';
-  #readonly = false;
-  #required = false;
-
-  readonly #focusMonitor = inject(FocusMonitor);
   readonly #elementRef: ElementRef<HTMLElement> = inject(ElementRef);
 
-  protected readonly formField = inject(MAT_FORM_FIELD, { optional: true });
-  protected readonly form = inject(FormBuilder).group<InputForm>({
-    valueInput: new FormControl<InputValueType>(null),
-  });
-
   readonly controlType = 'rw-input';
-  focused = false;
-  readonly ngControl: NgControl | null = inject(NgControl, {
-    optional: true,
-    self: true,
-  });
+  protected readonly formField = inject(MAT_FORM_FIELD, { optional: true });
+  protected readonly inputValueAccessor = inject(MAT_INPUT_VALUE_ACCESSOR, { optional: true, self: true });
+  readonly ngControl = inject(NgControl, { optional: true, self: true });
   readonly stateChanges = new Subject<void>();
-  touched = false;
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onChange = (_: any) => {};
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onTouched = () => {};
+  autofilled?: boolean | undefined;
+  userAriaDescribedBy?: string | undefined;
+
+  errorState: boolean = false;
+  focused: boolean = false;
 
   get empty() {
-    return !this.form.controls?.valueInput;
-  }
-
-  get errorState(): boolean {
-    return this.form.invalid && this.touched;
+    return !this.value;
   }
 
   get shouldLabelFloat() {
     return this.focused || !this.empty;
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onChange = (_: any) => {};
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onTouched = () => {};
 
   @Input()
   get disabled(): boolean {
@@ -100,9 +68,13 @@ export class InputComponent
   }
   set disabled(value: BooleanInput) {
     this.#disabled = coerceBooleanProperty(value);
-    this.#disabled ? this.form.disable() : this.form.enable();
-    this.stateChanges.next();
+
+    if (this.focused) {
+      this.focused = false;
+      this.stateChanges.next();
+    }
   }
+  #disabled = false;
 
   @Input()
   get placeholder(): string {
@@ -112,6 +84,7 @@ export class InputComponent
     this.#placeholder = value;
     this.stateChanges.next();
   }
+  #placeholder = '';
 
   @Input()
   get readonly(): boolean {
@@ -119,14 +92,9 @@ export class InputComponent
   }
   set readonly(value: BooleanInput) {
     this.#readonly = coerceBooleanProperty(value);
-
-    if (this.#readonly) {
-      if (!this.form.contains('readonlyInput')) {
-      }
-    }
-
     this.stateChanges.next();
   }
+  #readonly = false;
 
   @Input()
   get required(): boolean {
@@ -136,71 +104,49 @@ export class InputComponent
     this.#required = coerceBooleanProperty(value);
     this.stateChanges.next();
   }
+  #required = false;
 
   @Input()
   get value(): InputValueType {
-    return this.form.valid ? this.form.controls.valueInput.value : null;
+    return this.ngControl?.control?.value;
   }
   set value(value: InputValueType) {
-    this.form.setValue({ valueInput: value });
+    this.ngControl?.control?.setValue(value, { emitEvent: false });
     this.stateChanges.next();
   }
 
-  // eslint-disable-next-line @angular-eslint/no-input-rename
-  @Input('aria-describedby') userAriaDescribedBy: string;
-
-  @ViewChild('input') input: HTMLInputElement | undefined;
+  // eslint-disable-next-line @angular-eslint/no-output-native
+  @Output() change = new EventEmitter<unknown>();
 
   @HostBinding('class') readonly classes = INPUT_CLASS;
-  @HostBinding('attr.aria-describedby') readonly describedBy = this.formField?.getLabelId();
-  @HostBinding('formGroup') readonly formGroup = this.form;
   @HostBinding('id') readonly id = `rw-input-${InputComponent.nextId++}`;
-  @HostBinding('attr.role') readonly role = 'group';
 
   constructor() {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
+    this.inputValueAccessor ??= this.#elementRef.nativeElement as any;
+  }
+
+  focus(options?: FocusOptions): void {
+    this.#elementRef.nativeElement.focus(options);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setDescribedByIds(ids: string[]): void {
+    throw new Error('Method not implemented.');
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onContainerClick(event: MouseEvent): void {
+    if (!this.focused) {
+      this.focus();
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['readonly']) {
-    }
+  ngOnChanges() {
+    this.stateChanges.next();
   }
 
   ngOnDestroy() {
     this.stateChanges.complete();
-    this.#focusMonitor.stopMonitoring(this.#elementRef);
-  }
-
-  @HostListener('focusin', ['$event'])
-  onFocusIn(_event: FocusEvent) {
-    if (!this.focused) {
-      this.focused = true;
-      this.stateChanges.next();
-    }
-  }
-
-  @HostListener('focusout', ['$event'])
-  onFocusOut(event: FocusEvent) {
-    if (!this.#elementRef.nativeElement.contains(event.relatedTarget as Element)) {
-      this.touched = true;
-      this.focused = false;
-      this.onTouched();
-      this.stateChanges.next();
-    }
-  }
-
-  setDescribedByIds(ids: string[]) {
-    const controlElement = this.#elementRef.nativeElement.querySelector(`.${INPUT_CLASS}`);
-
-    controlElement?.setAttribute('aria-describedby', ids.join(' '));
-  }
-
-  onContainerClick() {
-    if (!this.readonly && this.input && this.form.controls.valueInput.valid) {
-      this.#focusMonitor.focusVia(this.input, 'program');
-    }
   }
 
   writeValue(value: InputValueType): void {
