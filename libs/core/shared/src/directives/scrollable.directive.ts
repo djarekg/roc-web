@@ -5,5 +5,5 @@ import { Directive, HostBinding } from '@angular/core';
   standalone: true,
 })
 export class ScrollableDirective {
-  @HostBinding('class') readonly scrollableClass = 'rw-scrollable';
+  @HostBinding('class') readonly classes = 'rw-scrollable';
 }

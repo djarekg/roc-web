@@ -39,8 +39,9 @@
   "cSpell.ignoreWords": ["esbenp", "docthis"],
   "cSpell.words": ["ngrx", "ɵkind", "ɵproviders", "Serializability", "signin"],
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll.eslint": true
   },
+  // "editor.formatOnSave": false,
   "eslint.enable": true,
   "eslint.format.enable": false,
   "eslint.codeAction.disableRuleComment": {
