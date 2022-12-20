@@ -28,7 +28,7 @@
     }
 
     &:first-child ::ng-deep .rw-skeleton-loader__item:nth-child(1) {
-      width: skeleton-variables.$skeleton-table-column-1-width / 1.8;
+      width: math.div(skeleton-variables.$skeleton-table-column-1-width, 1.8);
     }
   }
 }
