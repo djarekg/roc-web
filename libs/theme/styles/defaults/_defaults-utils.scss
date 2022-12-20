@@ -1,6 +1,7 @@
 @use '../typography/typography-variables';
 @use '../scrollable/scrollable-utils';
 @use '../toast/toast-theme';
+@use './breakpoints';
 
 @mixin set-defaults {
   html,
@@ -15,4 +16,6 @@
 
   @include scrollable-utils.scrollbar-theme();
   @include toast-theme.styles();
+
+  @include breakpoints.responsive-styles();
 }

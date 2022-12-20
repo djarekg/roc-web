@@ -1,15 +1,43 @@
-<!-- <div>
-  <rw-form-field [label]="'National ID'">
-    <rw-input
-      [readonly]="true"
-      [value]="prescriber?.stakeholder?.externalId"></rw-input>
-  </rw-form-field>
-</div>
-<div>
-  <rw-form-field [label]="'First Name'">
-    <rw-input [value]="prescriber?.stakeholder?.firstName"></rw-input>
-  </rw-form-field>
-  <rw-form-field [label]="'Last Name'">
-    <rw-input [value]="prescriber?.stakeholder?.lastName"></rw-input>
-  </rw-form-field>
-</div> -->
+<form [formGroup]="form">
+  <div>
+    <mat-form-field>
+      <mat-label>National ID</mat-label>
+      <input
+        matInput
+        formControlName="externalId" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        formControlName="lastName" />
+    </mat-form-field>
+  </div>
+</form>
+<!-- <form [formGroup]="form">
+  <div>
+    <rw-form-field
+      [label]="'National ID'"
+      [readonly]="true">
+      <rw-input
+        formControlName="externalId"
+        [readonly]="true"></rw-input>
+    </rw-form-field>
+  </div>
+  <div>
+    <rw-form-field [label]="'First Name'">
+      <rw-input formControlName="firstName"></rw-input>
+    </rw-form-field>
+    <rw-form-field [label]="'Last Name'">
+      <rw-input formControlName="lastName"></rw-input>
+    </rw-form-field>
+  </div>
+</form> -->

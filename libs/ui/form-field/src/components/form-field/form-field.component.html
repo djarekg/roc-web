@@ -1,4 +1,12 @@
+<!-- <ng-container *ngIf="readonly; else writableTemplate">
+  <label class="rw-form-field__label">{{ label }}</label>
+  <div class="rw-form-field-text__wrapper">
+    <ng-content select="rw-input"></ng-content>
+  </div>
+</ng-container>
+<ng-template #writableTemplate> -->
 <mat-form-field>
   <mat-label>{{ label }}</mat-label>
-  <ng-content></ng-content>
+  <ng-content select="rw-input"></ng-content>
 </mat-form-field>
+<!-- </ng-template> -->

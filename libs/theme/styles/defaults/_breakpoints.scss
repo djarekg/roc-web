@@ -1,0 +1,10 @@
+@mixin responsive-styles {
+  body {
+    width: max(800px, 100%);
+  }
+  @media screen and (min-width: 800px) {
+    body {
+      width: max(800px, 100%);
+    }
+  }
+}

@@ -1,8 +1,7 @@
-<span
-  *ngIf="!readonly; else writableTemplate"
-  class="rw-input__element--readonly">
-  {{ value }}
-</span>
+<ng-container *ngIf="readonly; else writableTemplate">
+  <span rwReadonlyInput>class="rw-input__element--readonly"></span>
+</ng-container>
+
 <ng-template #writableTemplate>
   <input
     matInput

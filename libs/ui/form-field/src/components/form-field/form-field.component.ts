@@ -1,3 +1,4 @@
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgIf } from '@angular/common';
 import {
   type AfterContentInit,
@@ -27,6 +28,15 @@ export class FormFieldComponent implements AfterContentInit, OnDestroy {
   #explicitFormFieldControl: MatFormFieldControl<any>;
 
   @Input() label: string | undefined;
+
+  @Input()
+  get readonly(): boolean {
+    return this.#readonly;
+  }
+  set readonly(value: boolean) {
+    this.#readonly = coerceBooleanProperty(value);
+  }
+  #readonly: boolean = false;
 
   @ContentChild(MatFormField) private readonly _formField: MatFormField;
   @ContentChild(MatFormFieldControl) private readonly _formFieldControl: MatFormFieldControl<unknown>;

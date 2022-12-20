@@ -14,12 +14,11 @@ import {
 } from '@angular/core';
 import { type ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD, MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
-import { MAT_INPUT_VALUE_ACCESSOR, MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { Subject } from 'rxjs';
 
 export const INPUT_CLASS = 'rw-input';
-
-export type InputValueType = boolean | number | string | null | undefined;
+export const INPUT_CONTAINER_CLASS = 'rw-input-container';
 
 @Component({
   selector: 'rw-input',
@@ -31,17 +30,16 @@ export type InputValueType = boolean | number | string | null | undefined;
   imports: [MatFormFieldModule, MatInputModule, NgIf, ReactiveFormsModule],
 })
 export class InputComponent
-  implements MatFormFieldControl<InputValueType>, ControlValueAccessor, OnDestroy, OnChanges
+  implements MatFormFieldControl<string>, ControlValueAccessor, OnDestroy, OnChanges
 {
   static nextId = 0;
 
-  readonly #elementRef: ElementRef<HTMLElement> = inject(ElementRef);
+  #elementRef: ElementRef<HTMLElement> = inject(ElementRef);
 
-  readonly controlType = 'rw-input';
-  protected readonly formField = inject(MAT_FORM_FIELD, { optional: true });
-  protected readonly inputValueAccessor = inject(MAT_INPUT_VALUE_ACCESSOR, { optional: true, self: true });
-  readonly ngControl = inject(NgControl, { optional: true, self: true });
-  readonly stateChanges = new Subject<void>();
+  controlType = 'rw-input';
+  formField = inject(MAT_FORM_FIELD, { optional: true });
+  ngControl = inject(NgControl, { optional: true, self: true });
+  stateChanges = new Subject<void>();
 
   autofilled?: boolean | undefined;
   userAriaDescribedBy?: string | undefined;
@@ -107,39 +105,31 @@ export class InputComponent
   #required = false;
 
   @Input()
-  get value(): InputValueType {
+  get value(): string {
     return this.ngControl?.control?.value;
   }
-  set value(value: InputValueType) {
-    this.ngControl?.control?.setValue(value, { emitEvent: false });
+  set value(value: string) {
+    this.ngControl?.control?.setValue(value);
     this.stateChanges.next();
   }
 
   // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() change = new EventEmitter<unknown>();
 
+  // @ViewChild(MatInput) matInput: MatInput;
+
   @HostBinding('class') readonly classes = INPUT_CLASS;
   @HostBinding('id') readonly id = `rw-input-${InputComponent.nextId++}`;
 
   constructor() {
-    this.inputValueAccessor ??= this.#elementRef.nativeElement as any;
-  }
-
-  focus(options?: FocusOptions): void {
-    this.#elementRef.nativeElement.focus(options);
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  setDescribedByIds(ids: string[]): void {
-    throw new Error('Method not implemented.');
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onContainerClick(event: MouseEvent): void {
-    if (!this.focused) {
-      this.focus();
+    if (this.ngControl !== null) {
+      this.ngControl.valueAccessor = this;
     }
   }
+
+  // ngAfterViewInit() {
+  //   this.#inputValueAccessor = this.matInput ?? this.#elementRef.nativeElement;
+  // }
 
   ngOnChanges() {
     this.stateChanges.next();
@@ -149,7 +139,24 @@ export class InputComponent
     this.stateChanges.complete();
   }
 
-  writeValue(value: InputValueType): void {
+  focus(options?: FocusOptions): void {
+    this.#elementRef.nativeElement.focus(options);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setDescribedByIds(ids: string[]): void {
+    const controlElement = this.#elementRef.nativeElement.querySelector(`.${INPUT_CONTAINER_CLASS}}`);
+    controlElement?.setAttribute('aria-describedby', ids.join(' '));
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onContainerClick(event: MouseEvent): void {
+    if (!this.focused) {
+      this.focus();
+    }
+  }
+
+  writeValue(value: string): void {
     this.value = value;
   }
 
