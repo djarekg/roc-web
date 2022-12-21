@@ -29,7 +29,7 @@
     }
 
     &:first-child ::ng-deep .rw-skeleton-loader__item:nth-child(1) {
-      width: math.div(skeleton.$skeleton-table-column-1-width, 1.8);
+      width: skeleton.$skeleton-table-column-1-width / 1.8;
     }
   }
 }

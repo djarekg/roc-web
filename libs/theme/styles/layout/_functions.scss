@@ -3,10 +3,4 @@
 @function adjusted-height($offset: 0px) {
   $adjusted-height: calc(100vh - #{layout.$header-height});
   @return (#{$adjusted-height} - #{$offset} - 4px);
-  // @return calc(100vh - 52px) - $offset - 4px;
 }
-// @use './layout';
-
-// @mixin adjusted-height($offset: 0px) {
-//   height: calc(100vh - #{layout.$header-height}) - #{$offset} - 4px;
-// }

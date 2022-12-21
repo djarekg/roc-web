@@ -1,5 +1,15 @@
-@use './colors';
-@use './layout';
+@use 'colors';
+@use 'layout';
+
+// $border-radius: 0.375rem;
+// $margin: 1rem;
+// $padding: 1rem;
+// $line-height: 1.25;
+// $header-padding: 0px 16px;
+// $header-height: 52px;
+// $button-height: 46px;
+// $mat-toolbar-height: 64px;
+// $mat-table-background: #424242;
 
 :host {
   ::ng-deep .mdc-button {
@@ -16,7 +26,7 @@ header {
   height: layout.$header-height;
   padding: layout.$header-padding;
   background: colors.$primary;
-  color: layout.$border-color;
+  // color: layout.$border-color;
 }
 
 .app-header-title {
@@ -30,5 +40,5 @@ header {
 }
 
 a.mat-mdc-button:not(:disabled) {
-  color: layout.$border-color;
+  // color: layout.$border-color;
 }
