@@ -1,8 +1,0 @@
-@use '@angular/material' as mat;
-
-$header-background: mat.get-color-from-palette(mat.$indigo-palette, 500);
-$header-color: mat.get-color-from-palette(mat.$indigo-palette, '500-contrast');
-$header-link-color: rgba(255, 255, 255, 0.5);
-
-// $main-color: #212529;
-// $main-background: #fff;

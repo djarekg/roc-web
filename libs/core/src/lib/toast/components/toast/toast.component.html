@@ -1,0 +1,19 @@
+<div class="rw-toast__container">
+  <mat-icon class="rw-toast__type--icon">{{ data.icon }}</mat-icon>
+  <div class="rw-toast__content">
+    <div class="rw-toast__title">{{ data.title | titlecase }}</div>
+    <div class="rw-toast__message">{{ data.message }}</div>
+  </div>
+  <mat-icon
+    class="rw-toast__close--icon"
+    matRipple
+    [matRippleCentered]="true"
+    (click)="snackBarRef.dismissWithAction()">
+    close
+  </mat-icon>
+</div>
+<div class="rw-toast-progress__container">
+  <div
+    class="rw-toast-progress__bar"
+    [style.width.%]="width"></div>
+</div>

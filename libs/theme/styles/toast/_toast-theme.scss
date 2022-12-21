@@ -1,12 +1,12 @@
-@use '../layout/layout-variables';
-@use '../theme/theme-variables';
+@use '../layout';
+@use '../colors';
 
 $toast-container-padding: 12px;
 
 @mixin styles {
   .mdc-snackbar.rw-toast__panel {
     .mdc-snackbar__surface {
-      margin-block-start: layout-variables.$header-height + 10px;
+      margin-block-start: layout.$header-height + 10px;
       padding: 0;
     }
 
@@ -16,19 +16,19 @@ $toast-container-padding: 12px;
     }
 
     &.rw-toast--error .mdc-snackbar__surface {
-      background-color: theme-variables.$danger;
+      background-color: colors.$danger;
     }
 
     &.rw-toast--info .mdc-snackbar__surface {
-      background-color: theme-variables.$primary;
+      background-color: colors.$primary;
     }
 
     &.rw-toast--show .mdc-snackbar__surface {
-      background-color: theme-variables.$primary;
+      background-color: colors.$primary;
     }
 
     &.rw-toast--success .mdc-snackbar__surface {
-      background-color: theme-variables.$success;
+      background-color: colors.$success;
     }
   }
 }

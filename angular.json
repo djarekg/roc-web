@@ -39,17 +39,10 @@
             ],
             "tsConfig": "apps/callcenter/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/callcenter/src/favicon.ico",
-              "apps/callcenter/src/assets"
-            ],
+            "assets": ["apps/callcenter/src/favicon.ico", "apps/callcenter/src/assets"],
             "styles": ["apps/callcenter/src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "apps/callcenter/src/styles",
-                "dist/@roc-web/core/styles",
-                "dist/@roc-web/theme/styles"
-              ]
+              "includePaths": ["apps/callcenter/src/styles", "dist/@roc-web/theme/styles"]
             },
             "scripts": [],
             "i18nDuplicateTranslation": "error",
@@ -118,10 +111,7 @@
             "tsConfig": "apps/callcenter/tsconfig.spec.json",
             "karmaConfig": "apps/callcenter/karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/callcenter/src/favicon.ico",
-              "apps/callcenter/src/assets"
-            ],
+            "assets": ["apps/callcenter/src/favicon.ico", "apps/callcenter/src/assets"],
             "styles": ["apps/callcenter/src/styles.scss"],
             "scripts": []
           }
@@ -129,10 +119,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "apps/callcenter/**/*.ts",
-              "apps/callcenter/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/callcenter/**/*.ts", "apps/callcenter/**/*.html"]
           }
         }
       },
@@ -224,10 +211,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "libs/identity/**/*.ts",
-              "libs/identity/**/*.html"
-            ]
+            "lintFilePatterns": ["libs/identity/**/*.ts", "libs/identity/**/*.html"]
           }
         }
       }

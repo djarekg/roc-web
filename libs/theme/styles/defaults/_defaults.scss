@@ -1,0 +1,22 @@
+@use '../scrollable/scrollable';
+@use '../toast/toast-theme';
+@use './breakpoints';
+
+@mixin styles {
+  $font-family: 'Exo 2';
+
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: $font-family;
+  }
+
+  @include scrollable.scrollbar-theme();
+  @include toast-theme.styles();
+
+  @include breakpoints.responsive-styles();
+}

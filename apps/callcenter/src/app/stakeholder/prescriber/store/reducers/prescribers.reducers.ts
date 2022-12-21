@@ -1,6 +1,6 @@
 import { type Sort } from '@angular/material/sort';
 import { createReducer, on } from '@ngrx/store';
-import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/core/shared';
+import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/core';
 
 import { type Prescriber } from '../../models';
 import { prescribersApiActions, prescribersPageActions } from '../actions';
@@ -36,10 +36,7 @@ const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(
-    prescribersPageActions.loadPrescribers,
-    (state): State => ({ ...state, loading: true }),
-  ),
+  on(prescribersPageActions.loadPrescribers, (state): State => ({ ...state, loading: true })),
   on(
     prescribersApiActions.loadPrescriberSuccess,
     (state, { prescriber }): State => ({
@@ -107,7 +104,7 @@ export const reducer = createReducer(
 export const getEntities = (state: State) => state.entities;
 export const getFilter = (state: State) => state.filter;
 export const getLoaded = (state: State) => state.loaded;
-export const getLoading = (state: State) => state.loading;
+export const getLoading = (state: State) => true; //state.loading;
 export const getPagination = (state: State) => state.pagination;
 export const getSelected = (state: State) => state.selected;
 export const getSelectedLoaded = (state: State) => !!state.selected;

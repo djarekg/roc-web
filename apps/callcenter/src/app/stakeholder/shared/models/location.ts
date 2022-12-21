@@ -1,4 +1,4 @@
-import { type Entity } from '@roc-web/core/shared';
+import { type Entity } from '@roc-web/core';
 
 export interface Location extends Entity {
   description: string;

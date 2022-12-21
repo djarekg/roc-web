@@ -1,16 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  type OnInit,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, type OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { type Sort } from '@angular/material/sort';
 import { PushModule } from '@ngrx/component';
 import { Store } from '@ngrx/store';
-import { type PageChange, ScrollableDirective } from '@roc-web/core/shared';
-import { selectTitle } from '@roc-web/core/store';
+import { type PageChange, ScrollableDirective, selectTitle } from '@roc-web/core';
 
 import { PrescriberListComponent } from '../../components';
 import { prescribersPageActions, selectViewModel } from '../../store';
@@ -22,12 +16,7 @@ import { prescribersPageActions, selectViewModel } from '../../store';
   styleUrls: ['./prescribers-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [ScrollableDirective],
-  imports: [
-    MatButtonModule,
-    MatDividerModule,
-    PrescriberListComponent,
-    PushModule,
-  ],
+  imports: [MatButtonModule, MatDividerModule, PrescriberListComponent, PushModule],
 })
 export default class PrescribersPageComponent implements OnInit {
   readonly #store = inject(Store);

@@ -1,20 +1,10 @@
 import { NgIf } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Output,
-} from '@angular/core';
-import {
-  type AbstractControl,
-  FormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { type AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { CustomValidators } from '@roc-web/core/shared';
+import { CustomValidators } from '@roc-web/core';
 
 import { type ChangePassword } from '../../models';
 import { PasswordValidationComponent } from '../password-validation';
@@ -38,11 +28,7 @@ import { PasswordValidationComponent } from '../password-validation';
 })
 export class ChangePasswordFormComponent {
   protected form = new FormBuilder().nonNullable.group({
-    confirmNewPassword: [
-      '',
-      Validators.required,
-      CustomValidators.equalTo('newPassword'),
-    ],
+    confirmNewPassword: ['', Validators.required, CustomValidators.equalTo('newPassword')],
     currentPassword: ['', Validators.required],
     newPassword: [
       '',

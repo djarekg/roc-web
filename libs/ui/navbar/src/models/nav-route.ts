@@ -1,4 +1,4 @@
-import { type EnumLike } from '@roc-web/core/shared';
+import { type EnumLike } from '@roc-web/core';
 
 export interface NavRoute<T = EnumLike<string>> {
   children?: NavRoute<T>[];

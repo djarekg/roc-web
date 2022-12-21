@@ -26,12 +26,13 @@ export class PrescriberDetailComponent implements OnInit {
     lastName: new FormControl(),
   });
 
+  protected loading: boolean | undefined;
+
   @Input()
   set prescriber(value: Readonly<Prescriber> | null | undefined) {
     const { stakeholder } = value ?? {};
     const { externalId, firstName, lastName } = stakeholder ?? {};
-
-    this.form.patchValue({ externalId, firstName, lastName });
+    this.form.patchValue({ externalId, firstName, lastName }, { emitEvent: false });
   }
 
   ngOnInit() {

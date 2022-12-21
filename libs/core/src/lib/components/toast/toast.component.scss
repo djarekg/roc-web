@@ -1,0 +1,56 @@
+// @use 'toast/toast-theme';
+@use './layout';
+
+$toast-container-padding: 12px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.rw-toast__container {
+  display: flex;
+  flex-direction: row;
+  padding-block: $toast-container-padding;
+  padding-inline: $toast-container-padding;
+}
+
+.rw-toast__type--icon,
+.rw-toast__content {
+  margin-inline-end: 20px;
+}
+
+.rw-toast__type--icon {
+  width: 42px;
+  height: 42px;
+  font-size: 42px;
+}
+
+.rw-toast__close--icon {
+  cursor: pointer;
+  overflow: visible;
+}
+
+.rw-toast__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rw-toast__title {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.rw-toast-progress__container {
+  height: 5px;
+  width: 100%;
+
+  .rw-toast-progress__bar {
+    border-bottom-left-radius: layout.$border-radius;
+    height: 100%;
+    width: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}

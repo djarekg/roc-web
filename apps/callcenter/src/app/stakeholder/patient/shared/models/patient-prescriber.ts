@@ -1,4 +1,4 @@
-import { type Entity } from '@roc-web/core/shared';
+import { type Entity } from '@roc-web/core';
 
 import { type Prescriber } from '../../../prescriber/models';
 import { type Auditable } from '../../../shared/models';

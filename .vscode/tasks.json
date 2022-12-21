@@ -121,13 +121,7 @@
       "command": "echo build finished...",
       "isBackground": true,
       "dependsOrder": "sequence",
-      "dependsOn": [
-        "build theme",
-        "build core",
-        "build ui",
-        "build web",
-        "build identity"
-      ],
+      "dependsOn": ["build theme", "build core", "build ui", "build web", "build identity"],
       "problemMatcher": {
         "owner": "npm",
         "background": {

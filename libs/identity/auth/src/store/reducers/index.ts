@@ -1,10 +1,5 @@
-import {
-  type Action,
-  combineReducers,
-  createFeatureSelector,
-  createSelector,
-} from '@ngrx/store';
-import { type CoreState, selectRouteRole } from '@roc-web/core/store';
+import { type Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
+import { type CoreState, selectRouteRole } from '@roc-web/core';
 
 import { parseClaimsPrincipal } from '../../shared/utils';
 
@@ -31,15 +26,9 @@ export function reducers(state: AuthState | undefined, action: Action) {
 
 export const selectAuthState = createFeatureSelector<AuthState>(authFeatureKey);
 
-export const selectAuthStatusState = createSelector(
-  selectAuthState,
-  state => state.status,
-);
+export const selectAuthStatusState = createSelector(selectAuthState, state => state.status);
 
-export const selectIsAuthenticated = createSelector(
-  selectAuthStatusState,
-  state => !!state.token,
-);
+export const selectIsAuthenticated = createSelector(selectAuthStatusState, state => !!state.token);
 
 export const selectClaims = createSelector(selectAuthStatusState, state =>
   parseClaimsPrincipal(state.token),
@@ -51,41 +40,24 @@ export const selectAuthentication = createSelector(
   (isAuthenticated, claims) => ({ claims, isAuthenticated }),
 );
 
-export const selectUser = createSelector(
-  selectAuthStatusState,
-  state => state.user,
+export const selectUser = createSelector(selectAuthStatusState, state => state.user);
+
+export const selectRoles = createSelector(selectClaims, claims => claims?.roles ?? []);
+
+export const selectHasRouteRole = createSelector(selectRoles, selectRouteRole, (roles, routeRole) =>
+  roles.includes(routeRole),
 );
 
-export const selectRoles = createSelector(
-  selectClaims,
-  claims => claims?.roles ?? [],
-);
+export const selectSigninPageState = createSelector(selectAuthState, state => state.signinPage);
 
-export const selectHasRouteRole = createSelector(
-  selectRoles,
-  selectRouteRole,
-  (roles, routeRole) => roles.includes(routeRole),
-);
-
-export const selectSigninPageState = createSelector(
-  selectAuthState,
-  state => state.signinPage,
-);
-
-export const selectSigninPageError = createSelector(
-  selectSigninPageState,
-  fromSigninPage.getError,
-);
+export const selectSigninPageError = createSelector(selectSigninPageState, fromSigninPage.getError);
 
 export const selectSigninPagePending = createSelector(
   selectSigninPageState,
   fromSigninPage.getPending,
 );
 
-export const selectToken = createSelector(
-  selectAuthStatusState,
-  fromAuth.getToken,
-);
+export const selectToken = createSelector(selectAuthStatusState, fromAuth.getToken);
 
 export const selectBearerToken = createSelector(selectToken, token =>
   typeof token === 'string' ? `Bearer ${token}` : null,

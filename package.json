@@ -10,7 +10,7 @@
     "build:callcenter": "ng build @roc-web/callcenter",
     "build:callcenter:prod": "ng build @roc-web/callcenter --prod",
     "build:callcenter:analyze": "ng build @roc-web/callcenter --configuration production --stats-json true",
-    "build:core": "ng build @roc-web/core ",
+    "build:core": "ng build @roc-web/core",
     "build:identity": "ng build @roc-web/identity ",
     "build:theme": "ng build @roc-web/theme ",
     "build:ui": "ng build @roc-web/ui ",

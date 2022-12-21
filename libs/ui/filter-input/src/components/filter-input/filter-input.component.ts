@@ -11,16 +11,8 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { FILTER_INPUT_KEYUP_DELAY } from '@roc-web/core/shared';
-import {
-  Subject,
-  debounceTime,
-  distinctUntilChanged,
-  fromEvent,
-  map,
-  takeUntil,
-  tap,
-} from 'rxjs';
+import { FILTER_INPUT_KEYUP_DELAY } from '@roc-web/core';
+import { Subject, debounceTime, distinctUntilChanged, fromEvent, map, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'rw-filter-input',
@@ -37,9 +29,7 @@ export class FilterInputComponent implements AfterViewInit, OnDestroy {
 
   @Output() readonly filterChange = new EventEmitter<string>();
 
-  @ViewChild('input') protected readonly filterInput:
-    | ElementRef<HTMLInputElement>
-    | undefined;
+  @ViewChild('input') protected readonly filterInput: ElementRef<HTMLInputElement> | undefined;
 
   ngAfterViewInit(): void {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

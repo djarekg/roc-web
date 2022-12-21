@@ -3,12 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
-import { LocaleSelectComponent } from '@roc-web/core/i18n';
-import {
-  ProfileMenuComponent,
-  RwIfHasRole,
-  selectIsAuthenticated,
-} from '@roc-web/identity/auth';
+import { ProfileMenuComponent, RwIfHasRole, selectIsAuthenticated } from '@roc-web/identity/auth';
 import { NavbarComponent, NavbarItemComponent } from '@roc-web/ui/navbar';
 import { RouteProgressBarComponent } from '@roc-web/ui/route-progress-bar';
 
@@ -22,7 +17,7 @@ import { navRoutes } from '../nav-routes';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
-    LocaleSelectComponent,
+    // LocaleSelectComponent,
     NavbarComponent,
     NavbarItemComponent,
     MatButtonModule,

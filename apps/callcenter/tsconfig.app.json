@@ -4,7 +4,6 @@
     "outDir": "../../out-tsc/app",
     "types": [],
     "paths": {
-      "@roc-web/core/*": ["dist/@roc-web/core/*"],
       "@roc-web/core": ["dist/@roc-web/core/lib"],
       "@roc-web/identity/*": ["dist/@roc-web/identity/*"],
       "@roc-web/ui/*": ["dist/@roc-web/ui/*"],

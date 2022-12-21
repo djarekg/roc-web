@@ -1,7 +1,7 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { NgFor, NgStyle, PercentPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { RandomPipe } from '@roc-web/core/shared';
+import { RandomPipe } from '@roc-web/core';
 
 import { SkeletonLoaderComponent } from '../skeleton-loader';
 

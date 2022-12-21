@@ -13,14 +13,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import {
-  MatPaginator,
-  MatPaginatorModule,
-  type PageEvent,
-} from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule, type PageEvent } from '@angular/material/paginator';
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { type PageChange, type ViewModel } from '@roc-web/core/shared';
+import { type PageChange, type ViewModel } from '@roc-web/core';
 import { FilterInputComponent } from '@roc-web/ui/filter-input';
 import { SkeletonTableLoaderComponent } from '@roc-web/ui/skeleton';
 import { Subject, takeUntil, tap } from 'rxjs';
@@ -65,9 +61,7 @@ export class PrescriberListComponent implements AfterViewInit, OnDestroy {
   @Output() readonly pageSort = new EventEmitter<Sort>();
   @Output() readonly view = new EventEmitter<string>();
 
-  @ViewChild(MatPaginator) protected readonly paginator:
-    | MatPaginator
-    | undefined;
+  @ViewChild(MatPaginator) protected readonly paginator: MatPaginator | undefined;
   @ViewChild(MatSort) protected readonly sort: MatSort | undefined;
 
   ngAfterViewInit(): void {

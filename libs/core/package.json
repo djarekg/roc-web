@@ -15,8 +15,8 @@
     "tslib": "^2.3.0"
   },
   "exports": {
-    ".": {
-      "sass": "./styles/_index.scss"
+    "./polyfills": {
+      "default": "./polyfills/*.js"
     }
   },
   "sideEffects": false

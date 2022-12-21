@@ -1,9 +1,10 @@
-@use '../theme/theme-variables' as theme-vars;
-@use '../layout/layout-variables' as layout-vars;
+@use '../layout';
+@use '../colors';
 
 @mixin card-overrides {
+  .rw-card .rw-skeleton-card__form--details--loader,
   .mat-mdc-card.mdc-card {
-    border-radius: layout-vars.$border-radius;
-    border-top: 6px solid theme-vars.$primary;
+    border-radius: layout.$border-radius;
+    border-top: 6px solid colors.$primary;
   }
 }

@@ -1,12 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { type ViewModel } from '@roc-web/core/shared';
+import { type ViewModel } from '@roc-web/core';
 
 import { type Prescriber, type PrescriberList } from '../../models';
 import { type PrescriberState, featureKey } from '../reducers';
 import * as fromPrescribers from '../reducers/prescribers.reducers';
 
-export const selectPrescribersState =
-  createFeatureSelector<PrescriberState>(featureKey);
+export const selectPrescribersState = createFeatureSelector<PrescriberState>(featureKey);
 
 export const selectPrescriberEntitiesState = createSelector(
   selectPrescribersState,
@@ -48,10 +47,7 @@ export const selectSelectedLoaded = createSelector(
   fromPrescribers.getSelectedLoaded,
 );
 
-export const selectSort = createSelector(
-  selectPrescriberEntitiesState,
-  fromPrescribers.getSort,
-);
+export const selectSort = createSelector(selectPrescriberEntitiesState, fromPrescribers.getSort);
 
 export const selectPrescribersFlatten = createSelector(
   selectPrescribers,

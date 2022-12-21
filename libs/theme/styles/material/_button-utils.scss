@@ -1,8 +1,8 @@
-@use '../layout/layout-variables' as layout-vars;
+@use '../layout';
 
 @mixin button-overrides {
   button.mdc-button--unelevated {
-    border-radius: layout-vars.$border-radius;
-    height: layout-vars.$button-height !important;
+    border-radius: layout.$border-radius;
+    height: layout.$button-height !important;
   }
 }

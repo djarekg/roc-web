@@ -1,6 +1,5 @@
-@use '../theme/theme-variables' as theme-vars;
-@use '../layout/layout-variables' as layout-vars;
-@use '../layout/layout-utils' as layout-utils;
+@use '../layout';
+@use '../colors';
 
 @mixin sidenav-overrides {
   .mat-drawer-container {
@@ -8,7 +7,7 @@
   }
 
   .mat-drawer-content {
-    height: layout-utils.adjusted-height(layout-vars.$mat-toolbar-height);
+    height: layout.adjusted-height(layout.$mat-toolbar-height);
     overflow-y: auto;
   }
 
@@ -17,7 +16,7 @@
   }
 
   .mdc-list-item--activated {
-    color: theme-vars.$primary;
+    color: colors.$primary;
 
     &.mat-mdc-list-item-interactive:focus {
       &::before {

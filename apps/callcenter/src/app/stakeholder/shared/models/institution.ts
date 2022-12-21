@@ -1,4 +1,4 @@
-import { type Entity } from '@roc-web/core/shared';
+import { type Entity } from '@roc-web/core';
 
 import { type Stakeholder } from './stakeholder';
 

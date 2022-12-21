@@ -1,0 +1,32 @@
+@use '../colors/colors';
+@use '../layout/functions';
+
+@mixin scrollbar-theme {
+  $scrollbar-size: 10px;
+
+  .rw-scrollable,
+  .mat-drawer-content {
+    @supports (scroll-behavior: smooth) {
+      scroll-behavior: smooth;
+    }
+
+    &::-webkit-scrollbar {
+      height: $scrollbar-size;
+      width: $scrollbar-size;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: colors.$scrollbar;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: colors.$scrollbar-hover;
+    }
+  }
+
+  .rw-scrollable {
+    height: functions.adjusted-height();
+    overflow-y: auto;
+  }
+}

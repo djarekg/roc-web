@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { type Sort } from '@angular/material/sort';
-import { type Pagination } from '@roc-web/core/shared';
+import { type Pagination } from '@roc-web/core';
 import { createHttpPaginationParams } from '@roc-web/web/http';
 import { type EntityListRespone } from '@roc-web/web/shared';
 import { type Observable, throwError } from 'rxjs';
@@ -30,16 +30,13 @@ export class PrescriberService {
   getAll(
     filter: string | null,
     pagination: Pagination,
-    sort: Sort
+    sort: Sort,
   ): Observable<EntityListRespone<Prescriber>> {
     const params = createHttpPaginationParams(filter, pagination, sort);
 
-    return this.#http.get<EntityListRespone<Prescriber>>(
-      Endpoints.prescribers,
-      {
-        params,
-      }
-    );
+    return this.#http.get<EntityListRespone<Prescriber>>(Endpoints.prescribers, {
+      params,
+    });
   }
 
   remove(prescriber: Prescriber): Observable<Prescriber> {

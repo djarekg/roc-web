@@ -1,5 +1,5 @@
-@use 'layout/layout-variables' as layout-vars;
-@use 'colors' as colors;
+@use './colors';
+@use './layout';
 
 :host {
   ::ng-deep .mdc-button {
@@ -13,10 +13,10 @@ header {
   flex: 1 1 100%;
   align-items: center;
   column-gap: 20px;
-  height: layout-vars.$header-height;
-  padding: layout-vars.$header-padding;
-  background: colors.$header-background;
-  color: colors.$header-color;
+  height: layout.$header-height;
+  padding: layout.$header-padding;
+  background: colors.$primary;
+  color: layout.$border-color;
 }
 
 .app-header-title {
@@ -30,5 +30,5 @@ header {
 }
 
 a.mat-mdc-button:not(:disabled) {
-  color: colors.$header-color;
+  color: layout.$border-color;
 }

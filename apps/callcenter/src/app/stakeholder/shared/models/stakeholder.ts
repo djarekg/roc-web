@@ -1,4 +1,4 @@
-import { type Entity } from '@roc-web/core/shared';
+import { type Entity } from '@roc-web/core';
 import { type User } from '@roc-web/identity/shared';
 
 import { type StakeholderType } from '../enums';

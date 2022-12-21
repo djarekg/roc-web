@@ -1,10 +1,8 @@
 import { HttpParams } from '@angular/common/http';
 import { type Sort } from '@angular/material/sort';
-import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/core/shared';
+import { MAX_PAGE_SIZE, type Pagination } from '@roc-web/core';
 
-export function createHttpParams(params: {
-  [key: string]: boolean | number | string;
-}): HttpParams {
+export function createHttpParams(params: { [key: string]: boolean | number | string }): HttpParams {
   return Object.keys(params).reduce((httpParams, key) => {
     return httpParams.set(key, params[key]);
   }, new HttpParams());
@@ -13,7 +11,7 @@ export function createHttpParams(params: {
 export function createHttpPaginationParams(
   filter: string | null,
   pagination: Pagination,
-  sort: Sort
+  sort: Sort,
 ): HttpParams {
   const { pageIndex } = pagination;
   const { active: sortColumn, direction } = sort;

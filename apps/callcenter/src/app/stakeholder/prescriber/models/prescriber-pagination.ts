@@ -1,8 +1,5 @@
-import { type EntityList } from '@roc-web/core/shared';
+import { type EntityList } from '@roc-web/core';
 
 import { type Prescriber } from './prescriber';
 
-export type PrescriberPagination = Pick<
-  EntityList<Prescriber>,
-  'entities' | 'pagination'
->;
+export type PrescriberPagination = Pick<EntityList<Prescriber>, 'entities' | 'pagination'>;

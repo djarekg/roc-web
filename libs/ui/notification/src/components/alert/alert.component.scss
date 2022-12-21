@@ -1,40 +1,35 @@
-// @use '../../../../../../theme/styles/theme/theme-variables' as theme-vars;
-// @use '../../../../../../theme/styles/color/color-variables' as color-vars;
-// @use '../../../../../../theme/styles/layout/layout-variables' as layout-vars;
+@use './layout';
+@use './colors';
 
-// :host {
-//   display: block;
-//   border-radius: layout-vars.$border-radius;
-//   margin-bottom: layout-vars.$margin;
-//   padding: layout-vars.$padding;
-//   color: theme-vars.$primary-text-color;
-//   font-weight: 500;
-//   font-size: 1rem;
-//   line-height: layout-vars.$line-height;
-// }
+:host {
+  display: block;
+  border-radius: layout.$border-radius;
+  margin-bottom: layout.$margin;
+  padding: layout.$padding;
+  // color: theme-variables.$primary-text-color;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: layout.$line-height;
+}
 
-// :host.rw-alert- {
-//   &danger {
-//     background: color-vars.$notification-danger;
-//   }
+:host.rw-alert- {
+  &danger {
+    background: colors.$danger;
+  }
 
-//   &info {
-//     background: color-vars.$notification-info;
-//   }
+  &info {
+    background: colors.$primary;
+  }
 
-//   &primary {
-//     background: color-vars.$notification-primary;
-//   }
+  &primary {
+    background: colors.$primary;
+  }
 
-//   &secondary {
-//     background: color-vars.$notification-secondary;
-//   }
+  &success {
+    background: colors.$success;
+  }
 
-//   &success {
-//     background: color-vars.$notification-success;
-//   }
-
-//   &warning {
-//     background: color-vars.$notification-warning;
-//   }
-// }
+  &warning {
+    background: colors.$warn;
+  }
+}

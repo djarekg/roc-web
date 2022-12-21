@@ -2,20 +2,11 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { type ToastOptions } from '@roc-web/core/components';
-import { RouteAction } from '@roc-web/core';
-import { parseActionEvent, toastActions } from '@roc-web/core/store';
-import {
-  catchError,
-  concatMap,
-  exhaustMap,
-  map,
-  mergeMap,
-  of,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { RouteAction, parseActionEvent, toastActions } from '@roc-web/core';
+import { type ToastOptions } from 'libs/core/src/lib/toast';
+import { catchError, concatMap, exhaustMap, map, mergeMap, of, switchMap, tap } from 'rxjs';
 
+import { PRESCRIBER_ROUTE_DEFAULT } from '../../constants';
 import { PrescriberService } from '../../services';
 import {
   prescriberDetailPageActions,
@@ -24,7 +15,6 @@ import {
   prescribersPageActions,
 } from '../actions';
 import { selectFilter, selectPagination, selectSort } from '../selectors';
-import { PRESCRIBER_ROUTE_DEFAULT } from '../../constants';
 
 @Injectable()
 export class PrescribersEffects {
@@ -39,9 +29,7 @@ export class PrescribersEffects {
       mergeMap(({ prescriber }) =>
         this.#prescriberService.add(prescriber).pipe(
           map(() => prescribersApiActions.addPrescriberSuccess({ prescriber })),
-          catchError(error =>
-            of(prescribersApiActions.addPrescriberFailure({ error })),
-          ),
+          catchError(error => of(prescribersApiActions.addPrescriberFailure({ error }))),
         ),
       ),
     );
@@ -51,13 +39,14 @@ export class PrescribersEffects {
     () => {
       return this.#actions$.pipe(
         ofType(prescribersPageActions.editPrescriber),
-        tap(({ id }) =>
-          this.#router.navigate([
-            'prescriber',
-            id,
-            PRESCRIBER_ROUTE_DEFAULT,
-            RouteAction.edit,
-          ]),
+        tap(
+          ({ id }) =>
+            void this.#router.navigate([
+              'prescriber',
+              id,
+              PRESCRIBER_ROUTE_DEFAULT,
+              RouteAction.edit,
+            ]),
         ),
       );
     },
@@ -90,11 +79,8 @@ export class PrescribersEffects {
       exhaustMap(({ id }) =>
         this.#prescriberService.get(id).pipe(
           map(
-            prescriber =>
-              prescribersApiActions.loadPrescriberSuccess({ prescriber }),
-            catchError(error =>
-              of(prescribersApiActions.loadPrescriberFailure({ error })),
-            ),
+            prescriber => prescribersApiActions.loadPrescriberSuccess({ prescriber }),
+            catchError(error => of(prescribersApiActions.loadPrescriberFailure({ error }))),
           ),
         ),
       ),
@@ -119,12 +105,8 @@ export class PrescribersEffects {
       ]),
       concatMap(([, filter, pagination, sort]) =>
         this.#prescriberService.getAll(filter, pagination, sort).pipe(
-          map(response =>
-            prescribersApiActions.loadPrescribersSuccess(response),
-          ),
-          catchError(error =>
-            of(prescribersApiActions.loadPrescribersFailure({ error })),
-          ),
+          map(response => prescribersApiActions.loadPrescribersSuccess(response)),
+          catchError(error => of(prescribersApiActions.loadPrescribersFailure({ error }))),
         ),
       ),
     );
@@ -136,9 +118,7 @@ export class PrescribersEffects {
       mergeMap(({ prescriber }) =>
         this.#prescriberService.remove(prescriber).pipe(
           map(() => prescribersApiActions.removePrescriberSuccess()),
-          catchError(error =>
-            of(prescribersApiActions.removePrescriberFailure({ error })),
-          ),
+          catchError(error => of(prescribersApiActions.removePrescriberFailure({ error }))),
         ),
       ),
     );
@@ -150,9 +130,7 @@ export class PrescribersEffects {
       mergeMap(({ prescriber }) =>
         this.#prescriberService.update(prescriber).pipe(
           map(() => prescribersApiActions.updatePrescriberSuccess()),
-          catchError(error =>
-            of(prescribersApiActions.updatePrescriberFailure({ error })),
-          ),
+          catchError(error => of(prescribersApiActions.updatePrescriberFailure({ error }))),
         ),
       ),
     );
@@ -162,13 +140,14 @@ export class PrescribersEffects {
     () => {
       return this.#actions$.pipe(
         ofType(prescribersPageActions.viewPrescriber),
-        tap(({ id }) =>
-          this.#router.navigate([
-            'prescriber',
-            id,
-            PRESCRIBER_ROUTE_DEFAULT,
-            RouteAction.view,
-          ]),
+        tap(
+          ({ id }) =>
+            void this.#router.navigate([
+              'prescriber',
+              id,
+              PRESCRIBER_ROUTE_DEFAULT,
+              RouteAction.view,
+            ]),
         ),
       );
     },

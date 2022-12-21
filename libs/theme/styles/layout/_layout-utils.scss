@@ -1,5 +1,0 @@
-@use 'layout-variables' as vars;
-
-@function adjusted-height($offset: 0px) {
-  @return calc(100vh - vars.$header-height - $offset - 4px);
-}

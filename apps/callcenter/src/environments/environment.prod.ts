@@ -1,4 +1,4 @@
-import { type Environment } from '@roc-web/core/shared';
+import { type Environment } from '@roc-web/core';
 
 export const environment: Environment = {
   apiUrl: 'https://api.biomarinaavtestingcca.com',

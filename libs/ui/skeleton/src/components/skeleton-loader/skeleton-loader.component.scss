@@ -1,5 +1,5 @@
-@use './layout/layout-variables';
-@use './skeleton-variables';
+@use './layout';
+@use './skeleton';
 
 .rw-skeleton-loader__item {
   box-sizing: border-box;
@@ -12,8 +12,8 @@
   overflow: hidden;
   position: relative;
 
-  background: skeleton-variables.$skeleton-loader-item-background no-repeat;
-  border-radius: layout-variables.$border-radius;
+  background: skeleton.$skeleton-loader-item-background no-repeat;
+  border-radius: layout.$border-radius;
   width: 100%;
   height: 20px;
   display: inline-block;
@@ -80,12 +80,7 @@
 
   &.progress-dark {
     &:before {
-      background-image: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 0, 0, 0.2),
-        transparent
-      );
+      background-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
     }
   }
 
