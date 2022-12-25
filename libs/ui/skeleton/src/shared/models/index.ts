@@ -1,1 +1,1 @@
-export * from './skeleton-loader-config';
+export * from './skeleton-config';

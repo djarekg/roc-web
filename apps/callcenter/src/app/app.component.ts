@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './layout';
@@ -11,4 +11,6 @@ import { HeaderComponent } from './layout';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [HeaderComponent, RouterOutlet, RouterLink],
 })
-export class AppComponent {}
+export class AppComponent {
+  @HostBinding('class') classes = 'app-root';
+}

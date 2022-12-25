@@ -2,6 +2,7 @@ import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  HostBinding,
   Input,
   type OnChanges,
   type OnInit,
@@ -10,29 +11,30 @@ import {
   isDevMode,
 } from '@angular/core';
 
-import { SKELETON_LOADER_CONFIG } from '../../shared/models';
+import { SKELETON_CONFIG } from '../../shared/models';
 import {
   SKELETON_ANIMATION,
   SKELETON_APPEARANCE,
   type SkeletonAnimation,
   type SkeletonAppearance,
-  type SkeletonLoaderConfigTheme,
+  type SkeletonConfigTheme,
 } from '../../shared/types';
 
 @Component({
-  selector: 'rw-skeleton-loader',
+  selector: 'rw-skeleton',
   standalone: true,
-  templateUrl: './skeleton-loader.component.html',
-  styleUrls: ['./skeleton-loader.component.scss'],
+  templateUrl: './skeleton.component.html',
+  styleUrls: ['./skeleton.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, NgFor, NgIf, NgStyle],
 })
-export class SkeletonLoaderComponent implements OnInit, OnChanges {
+export class SkeletonComponent implements OnInit, OnChanges {
+  @HostBinding('class') protected readonly classes = 'rw-skeleton';
+
   static ngAcceptInputType_count: number | string;
   static ngAcceptInputType_animation: boolean | string;
 
-  readonly #config = inject(SKELETON_LOADER_CONFIG, { optional: true });
-
+  readonly #config = inject(SKELETON_CONFIG, { optional: true });
   protected items: unknown[];
   protected widthStyle: { [k: string]: any } | undefined;
 
@@ -41,7 +43,7 @@ export class SkeletonLoaderComponent implements OnInit, OnChanges {
   @Input() ariaLabel: string;
   @Input() count: number;
   @Input() loadingText: string;
-  @Input() theme: SkeletonLoaderConfigTheme;
+  @Input() theme: SkeletonConfigTheme;
 
   @Input()
   set width(value: string | null) {

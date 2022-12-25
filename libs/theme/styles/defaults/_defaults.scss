@@ -15,6 +15,39 @@
     font-family: $font-family;
   }
 
+  .app-root {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 0;
+    height: 100vh;
+  }
+
+  .rw-route-content,
+  .rw-content-fill {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    box-sizing: border-box;
+  }
+
+  .rw-route-content {
+    padding-block: 20px;
+    padding-inline: 20px;
+  }
+
+  .rw-route-content__header {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    column-gap: 30px;
+    align-items: center;
+
+    + .mat-divider {
+      margin-block: 30px;
+    }
+  }
+
   @include scrollable.scrollbar-theme();
   @include toast-theme.styles();
 

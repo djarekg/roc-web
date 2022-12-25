@@ -1,9 +1,11 @@
 <rw-filter-input (filterChange)="onFilterChanged($event)"></rw-filter-input>
 
-<div class="app-table-container mat-elevation-z8">
-  <rw-skeleton-table-loader
+<div
+  rwContentFill
+  class="app-table-container mat-elevation-z8">
+  <rw-skeleton-table
     *ngIf="viewModel?.loading"
-    [columnCount]="displayedColumns.length"></rw-skeleton-table-loader>
+    [columnCount]="displayedColumns.length"></rw-skeleton-table>
 
   <mat-table
     *ngIf="!viewModel?.loading"

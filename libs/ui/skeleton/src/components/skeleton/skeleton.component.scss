@@ -1,7 +1,7 @@
 @use './layout';
 @use './skeleton';
 
-.rw-skeleton-loader__item {
+.rw-skeleton__item {
   box-sizing: border-box;
 
   /**
@@ -12,10 +12,10 @@
   overflow: hidden;
   position: relative;
 
-  background: skeleton.$skeleton-loader-item-background no-repeat;
-  border-radius: layout.$border-radius;
+  background: skeleton.$skeleton-item-background no-repeat;
+  border-radius: layout.$border-radius / 1.5;
   width: 100%;
-  height: 20px;
+  height: 14px;
   display: inline-block;
   margin-block-end: 10px;
 
@@ -80,7 +80,12 @@
 
   &.progress-dark {
     &:before {
-      background-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
+      background-image: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 0, 0, 0.2),
+        transparent
+      );
     }
   }
 

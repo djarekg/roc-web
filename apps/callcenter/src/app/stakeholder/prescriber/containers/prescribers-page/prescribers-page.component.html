@@ -1,20 +1,19 @@
-<div class="app-page-content">
-  <div class="app-page-header">
-    <h2>{{ title$ | ngrxPush }}</h2>
-    <button
-      mat-flat-button
-      color="primary">
-      Add Prescriber
-    </button>
-  </div>
+<header rwRouteContentHeader>
+  <h2>{{ title$ | ngrxPush }}</h2>
+  <button
+    mat-flat-button
+    color="primary">
+    Add Prescriber
+  </button>
+</header>
 
-  <mat-divider></mat-divider>
+<mat-divider></mat-divider>
 
-  <app-prescriber-list
-    [viewModel]="viewModel$ | ngrxPush"
-    (edit)="onEditPrescriber($event)"
-    (filterChange)="onFilterChanged($event)"
-    (pageChange)="onPageChange($event)"
-    (pageSort)="onPageSort($event)"
-    (view)="onViewPrescriber($event)"></app-prescriber-list>
-</div>
+<app-prescriber-list
+  rwContentFill
+  [viewModel]="viewModel$ | ngrxPush"
+  (edit)="onEditPrescriber($event)"
+  (filterChange)="onFilterChanged($event)"
+  (pageChange)="onPageChange($event)"
+  (pageSort)="onPageSort($event)"
+  (view)="onViewPrescriber($event)"></app-prescriber-list>

@@ -5,7 +5,6 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   PreloadAllModules,
   provideRouter,
-  withDebugTracing,
   withPreloading,
   withRouterConfig,
 } from '@angular/router';
@@ -31,10 +30,16 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
-    provideHttpClient(withInterceptors([...HTTP_CORE_INTERCEPTORS, ...HTTP_CACHE_INTERCEPTORS])),
+    provideHttpClient(
+      withInterceptors([...HTTP_CORE_INTERCEPTORS, ...HTTP_CACHE_INTERCEPTORS]),
+    ),
     provideRouter(
-      providerRoutes(APP_ROUTES, IDENTITY_AUTH_ROUTES, IDENTITY_SETTINGS_ROUTES),
-      withDebugTracing(),
+      providerRoutes(
+        APP_ROUTES,
+        IDENTITY_AUTH_ROUTES,
+        IDENTITY_SETTINGS_ROUTES,
+      ),
+      // withDebugTracing(),
       withPreloading(PreloadAllModules),
       withRouterConfig({ paramsInheritanceStrategy: 'always' }),
     ),

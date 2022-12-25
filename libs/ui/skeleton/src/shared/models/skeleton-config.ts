@@ -3,18 +3,18 @@ import { InjectionToken } from '@angular/core';
 import {
   type SkeletonAnimation,
   type SkeletonAppearance,
-  type SkeletonLoaderConfigTheme,
+  type SkeletonConfigTheme,
 } from '../types';
 
-export interface SkeletonLoaderConfig {
+export interface SkeletonConfig {
   animation: SkeletonAnimation;
   appearance: SkeletonAppearance;
   ariaLabel: string;
   count: number;
   loadingText: string;
-  theme: SkeletonLoaderConfigTheme;
+  theme: SkeletonConfigTheme;
 }
 
-export const SKELETON_LOADER_CONFIG = new InjectionToken<SkeletonLoaderConfig>(
-  'skeleton-loader-config',
+export const SKELETON_CONFIG = new InjectionToken<SkeletonConfig>(
+  'skeleton-config',
 );

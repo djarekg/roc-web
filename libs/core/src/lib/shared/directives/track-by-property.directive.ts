@@ -6,7 +6,7 @@ import { Directive, Input, inject } from '@angular/core';
   selector: '[ngForTrackByProperty]',
   standalone: true,
 })
-export class TrackByPropertyDirective {
+class TrackByPropertyDirective {
   readonly #ngFor = inject(NgForOf<unknown>, { host: true });
   #propertyName: string = '';
 

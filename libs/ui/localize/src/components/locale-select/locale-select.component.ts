@@ -13,7 +13,7 @@ import {
 import { type ControlValueAccessor } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { CORE_OPTIONS } from '@roc-web/core';
-import { type Locale, TrackByPropertyDirective } from '@roc-web/core';
+import { type Locale, TrackByProperty } from '@roc-web/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -22,9 +22,11 @@ import { Subject } from 'rxjs';
   templateUrl: './locale-select.component.html',
   styleUrls: ['./locale-select.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatSelectModule, TrackByPropertyDirective],
+  imports: [MatSelectModule, TrackByProperty],
 })
-export class LocaleSelectComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class LocaleSelectComponent
+  implements OnInit, OnDestroy, ControlValueAccessor
+{
   readonly #changeDetectorRef = inject(ChangeDetectorRef);
   readonly #coreOptions = inject(CORE_OPTIONS);
   readonly #destroy$ = new Subject<void>();
@@ -82,7 +84,11 @@ export class LocaleSelectComponent implements OnInit, OnDestroy, ControlValueAcc
 
   setDisabledState(isDisabled: boolean | string): void {
     this.#disabled = coerceBooleanProperty(isDisabled);
-    this.#renderer.setProperty(this.#elementRef.nativeElement, 'disabled', this.#disabled);
+    this.#renderer.setProperty(
+      this.#elementRef.nativeElement,
+      'disabled',
+      this.#disabled,
+    );
     this.#stateChanged();
   }
 

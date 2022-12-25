@@ -1,0 +1,18 @@
+<ng-container *ngIf="viewChecked">
+  <ng-container *ngFor="let row of rows; index as rowIndex">
+    <rw-skeleton
+      *ngFor="let column of columns; index as columnIndex"
+      class="rw-skeleton-table__cell"
+      [ngClass]="{
+        'rw-skeleton-table__header': rowIndex === 0
+      }"
+      [ngStyle]="{
+        'grid-area.header': rowIndex === 0,
+        'grid-row': rowIndex + 1,
+        'grid-column': columnIndex + 1
+      }"
+      [width]="
+        columnIndex === 0 ? '30px' : ({} | random : 0.3 : 1 | percent)
+      "></rw-skeleton>
+  </ng-container>
+</ng-container>

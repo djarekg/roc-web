@@ -1,0 +1,38 @@
+@use 'sass:math';
+@use './layout';
+@use './skeleton';
+
+:host {
+  display: grid;
+  grid-template-columns: skeleton.$skeleton-table-column-1-width auto;
+  column-gap: skeleton.$skeleton-table-column-gap;
+  padding-block: skeleton.$skeleton-table-column-gap;
+  padding-inline: skeleton.$skeleton-table-column-gap;
+  background: layout.$mat-table-background;
+}
+
+.rw-skeleton-table__header {
+  &.rw-skeleton-table__cell {
+    ::ng-deep .rw-skeleton__item {
+      width: skeleton.$skeleton-table-column-width;
+    }
+
+    &:first-child ::ng-deep .rw-skeleton__item:nth-child(1) {
+      width: math.div(skeleton.$skeleton-table-column-1-width, 1.8);
+    }
+  }
+}
+
+::ng-deep.rw-skeleton:not(.rw-skeleton-table__header) {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  .rw-skeleton__item {
+    margin-block-end: 0;
+  }
+}
+
+::ng-deep .rw-skeleton {
+  height: skeleton.$skeleton-table-row-height;
+}

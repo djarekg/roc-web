@@ -46,7 +46,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.format.enable": true,
+  "eslint.format.enable": false,
   "eslint.codeAction.disableRuleComment": {
     "enable": true,
     "location": "separateLine"
